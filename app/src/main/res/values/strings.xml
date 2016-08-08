@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">夺宝</string>
+
+    <string name="bottom_menu_item_1">首页</string>
+    <string name="bottom_menu_item_2">商城</string>
+    <string name="bottom_menu_item_3">抽奖</string>
+    <string name="bottom_menu_item_4">夺宝</string>
+    <string name="bottom_menu_item_5">抢钱</string>
+    <string name="app_intro">引导</string>
+    <string name="phone">请输入手机号</string>
+    <string name="input_phone">请输入手机号</string>
+    <string name="input_code">请输入验证码</string>
+    <string name="get_code">获取</string>
+    <string name="input_password">请输入密码</string>
+    <string name="register">注册</string>
+    <string name="login">登陆</string>
+    <string name="repeat_password">请确认密码</string>
+    <string name="confirm">确认</string>
+</resources>

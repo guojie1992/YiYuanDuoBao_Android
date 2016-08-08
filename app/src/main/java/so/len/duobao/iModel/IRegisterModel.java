@@ -1,0 +1,10 @@
+package so.len.duobao.iModel;
+
+/**
+ * Created by Chung on 2016/8/5.
+ */
+public interface IRegisterModel {
+    String getServerCode(String phone);
+    String doRegister(String phone, String code, String password);
+    boolean saveData(String phone, String password);
+}

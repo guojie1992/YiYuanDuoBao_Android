@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <so.len.duobao.customView.LoopViewPager
+            android:id="@+id/lvp_fragment_one"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_200">
+
+        </so.len.duobao.customView.LoopViewPager>
+
+        <LinearLayout
+            android:id="@+id/ll_dot_fragment_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|bottom"
+            android:orientation="horizontal"
+            android:paddingBottom="2dp"
+            android:paddingRight="20dp">
+
+        </LinearLayout>
+    </FrameLayout>
+
+    <com.rey.material.widget.Button
+        android:id="@+id/btn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="register"/>
+    <com.rey.material.widget.Button
+        android:id="@+id/btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="login"/>
+    <com.rey.material.widget.Button
+        android:id="@+id/btn3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="forget"/>
+</LinearLayout>

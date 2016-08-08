@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MenuItemView">
+        <attr name="image_src" format="reference"/>
+        <attr name="text_content" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="TopMenuBar">
+        <attr name="tmb_backSrc" format="reference"/>
+        <attr name="tmb_addSrc" format="reference"/>
+        <attr name="tmb_menuSrc" format="reference"/>
+        <attr name="tmb_textSize" format="dimension"/>
+        <attr name="tmb_text" format="string"/>
+        <attr name="tmb_textColor" format="color"/>
+        <attr name="tmb_backgroundColor" format="color"/>
+        <attr name="tmb_backVisibility" format="boolean"/>
+        <attr name="tmb_addVisibility" format="boolean"/>
+        <attr name="tmb_menuVisibility" format="boolean"/>
+        <attr name="tmb_textVisibility" format="boolean"/>
+        <attr name="tmb_padding" format="dimension"/>
+        <attr name="tmb_paddingTop" format="dimension"/>
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <so.len.duobao.customView.TopMenuBar
+        android:id="@+id/tmb_activity_register"
+        style="@style/topMenuBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </so.len.duobao.customView.TopMenuBar>
+
+    <EditText
+        android:id="@+id/et_activity_register_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:hint="@string/input_phone"
+        android:inputType="phone"
+        android:maxLength="11"
+        android:singleLine="true" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/et_activity_register_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_10"
+            android:hint="@string/input_code"
+            android:inputType="number"
+            android:maxLength="6"
+            android:singleLine="true" />
+
+        <com.rey.material.widget.Button
+            android:id="@+id/btn_activity_register_getcode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|top"
+            android:layout_marginRight="@dimen/dp_10"
+            android:text="@string/get_code"
+            android:textColor="@color/theme" />
+    </FrameLayout>
+
+    <EditText
+        android:id="@+id/et_activity_register_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:hint="@string/input_password"
+        android:inputType="textPassword"
+        android:singleLine="true" />
+
+    <com.rey.material.widget.Button
+        android:id="@+id/btn_activity_register_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:text="@string/register"
+        android:textColor="@color/white"/>
+
+</LinearLayout>

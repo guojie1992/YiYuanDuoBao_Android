@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:BottomMenuItem="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <so.len.duobao.customView.TopMenuBar
+        android:id="@+id/top_menu_bar"
+        style="@style/topMenuBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </so.len.duobao.customView.TopMenuBar>
+
+    <LinearLayout
+        android:id="@+id/ll_mian"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <so.len.duobao.customView.BottomMenuItem
+            android:id="@+id/menu_item_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            BottomMenuItem:image_src="@drawable/bottom_menu_item_1"
+            BottomMenuItem:text_content="@string/bottom_menu_item_1">
+
+        </so.len.duobao.customView.BottomMenuItem>
+
+        <so.len.duobao.customView.BottomMenuItem
+            android:id="@+id/menu_item_2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            BottomMenuItem:image_src="@drawable/bottom_menu_item_2"
+            BottomMenuItem:text_content="@string/bottom_menu_item_2">
+
+        </so.len.duobao.customView.BottomMenuItem>
+
+        <so.len.duobao.customView.BottomMenuItem
+            android:id="@+id/menu_item_3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            BottomMenuItem:image_src="@drawable/bottom_menu_item_3"
+            BottomMenuItem:text_content="@string/bottom_menu_item_3">
+
+        </so.len.duobao.customView.BottomMenuItem>
+
+        <so.len.duobao.customView.BottomMenuItem
+            android:id="@+id/menu_item_4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            BottomMenuItem:image_src="@drawable/bottom_menu_item_4"
+            BottomMenuItem:text_content="@string/bottom_menu_item_4">
+
+        </so.len.duobao.customView.BottomMenuItem>
+
+        <so.len.duobao.customView.BottomMenuItem
+            android:id="@+id/menu_item_5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            BottomMenuItem:image_src="@drawable/bottom_menu_item_1"
+            BottomMenuItem:text_content="@string/bottom_menu_item_5">
+
+        </so.len.duobao.customView.BottomMenuItem>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/v_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_above="@id/ll_mian"
+        android:background="@color/dark_gray" />
+
+    <so.len.duobao.customView.FragmentViewPager
+        android:id="@+id/vp_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/v_divider"
+        android:layout_below="@id/top_menu_bar">
+
+    </so.len.duobao.customView.FragmentViewPager>
+</RelativeLayout>

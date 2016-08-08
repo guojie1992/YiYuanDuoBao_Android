@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+
+    <Button
+        android:id="@+id/pop_btn_take_photo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_popupwindow_take"
+        android:padding="15dp"
+        android:text="拍  照"
+        android:textColor="@color/skyblue"
+        android:textSize="15sp" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="@color/darker_gray" />
+
+    <Button
+        android:id="@+id/pop_btn_choose_photo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_popupwindow_choose"
+        android:padding="15dp"
+        android:text="从相册选取"
+        android:textColor="@color/skyblue"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/pop_btn_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/shape_popupwindow"
+        android:padding="15dp"
+        android:text="取  消"
+        android:textColor="@color/skyblue"
+        android:textSize="15sp" />
+
+</LinearLayout>
