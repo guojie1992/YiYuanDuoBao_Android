@@ -30,8 +30,8 @@ public class LoopViewPagerAdapter extends PagerAdapter {
         viewList=new ArrayList<>();
         VolleyHttp vh = VolleyHttp.getInstance();
         Options opt = new Options();
-        opt.defImage(R.mipmap.ic_launcher)
-                .errImage(R.mipmap.ic_launcher);
+//        opt.defImage(R.mipmap.ic_launcher)
+//                .errImage(R.mipmap.ic_launcher);
         onCreateView(context,vh,urls.get(urls.size()-1),opt);
         for(String url:urls){
             onCreateView(context,vh,url,opt);

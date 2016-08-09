@@ -12,7 +12,6 @@ import com.orhanobut.logger.Logger;
  * Created by Chung on 2016/8/3.
  */
 public class BaseActivity extends FragmentActivity {
-    private String TAG = getClass().getSimpleName();
     protected int statusHeight = 0;
 
     @Override
@@ -32,18 +31,18 @@ public class BaseActivity extends FragmentActivity {
         Toast.makeText(getApplicationContext(),text,Toast.LENGTH_SHORT).show();
     }
     protected void logInfo(String text){
-        Logger.i(TAG,text);
+        Logger.i(text);
     }
     protected void logError(String text){
-        Logger.e(TAG,text);
+        Logger.e(text);
     }
     protected void logWarn(String text){
-        Logger.w(TAG,text);
+        Logger.w(text);
     }
     protected void logDebug(String text){
-        Logger.d(TAG,text);
+        Logger.d(text);
     }
     protected void logVerbose(String text){
-        Logger.v(TAG,text);
+        Logger.v(text);
     }
 }

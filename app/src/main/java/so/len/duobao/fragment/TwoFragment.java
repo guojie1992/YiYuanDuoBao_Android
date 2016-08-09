@@ -112,12 +112,12 @@ public class TwoFragment extends BaseFragment implements ITwoView {
                     case 0:
                         tvPointsFragmentTwo.setSelected(true);
                         tvPointsFragmentTwo.setTextColor(getActivity().getResources().getColor(R.color.theme));
-                        tvMFragmentTwo.setTextColor(getActivity().getResources().getColor(R.color.darker_gray));
+                        tvMFragmentTwo.setTextColor(getActivity().getResources().getColor(R.color.black));
                         break;
                     case 1:
                         tvMFragmentTwo.setSelected(true);
                         tvMFragmentTwo.setTextColor(getActivity().getResources().getColor(R.color.theme));
-                        tvPointsFragmentTwo.setTextColor(getActivity().getResources().getColor(R.color.darker_gray));
+                        tvPointsFragmentTwo.setTextColor(getActivity().getResources().getColor(R.color.black));
                         break;
                 }
             }

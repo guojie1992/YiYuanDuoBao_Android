@@ -2,6 +2,8 @@ package so.len.duobao;
 
 import android.app.Application;
 
+import com.orhanobut.logger.Logger;
+
 import so.len.duobao.bean.BaseBean;
 import so.len.duobao.http.VolleyHttp;
 
@@ -16,5 +18,6 @@ public class App extends Application {
 
         BASEBEAN = new BaseBean();
         VolleyHttp.getInstance().init(getApplicationContext());
+        Logger.init("LOGGER");
     }
 }

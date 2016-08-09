@@ -2,19 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/light_gray">
 
     <ImageView
         android:id="@+id/iv_top_fragment_two"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_180"
-        android:scaleType="fitXY"
-        android:src="@mipmap/test"/>
+        android:scaleType="fitXY"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/lighter_gray"
+        android:background="@color/white"
         android:orientation="vertical">
 
         <LinearLayout
@@ -30,7 +30,7 @@
                 android:gravity="center"
                 android:text="@string/points"
                 android:textSize="@dimen/sp_15"
-                android:textColor="@color/darker_gray"/>
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/tv_m_fragment_two"
@@ -41,7 +41,7 @@
                 android:gravity="center"
                 android:text="@string/M"
                 android:textSize="@dimen/sp_15"
-                android:textColor="@color/darker_gray"/>
+                android:textColor="@color/black"/>
         </LinearLayout>
 
         <ImageView

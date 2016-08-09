@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/light_gray">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -25,6 +26,47 @@
 
         </LinearLayout>
     </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_speaker_fragment_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <so.len.duobao.customView.SpeakerView
+            android:id="@+id/sv_speaker_fragment_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:id="@+id/tv_speaker_fragment_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/sv_speaker_fragment_one"
+            android:padding="5dp"
+            android:textSize="13sp"
+            android:textColor="@color/darker_gray"
+            android:text=""
+            android:singleLine="true"
+            android:scrollHorizontally="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"/>
+    </RelativeLayout>
+
+    <so.len.duobao.customView.LotteryListView
+        android:id="@+id/llv_lottery_fragment_one"
+        android:scrollbars="none"
+        android:divider="@null"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10">
+
+    </so.len.duobao.customView.LotteryListView>
+
 
     <com.rey.material.widget.Button
         android:id="@+id/btn1"

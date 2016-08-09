@@ -8,8 +8,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 
-import com.orhanobut.logger.Logger;
-
 import java.util.ArrayList;
 import java.util.List;
 

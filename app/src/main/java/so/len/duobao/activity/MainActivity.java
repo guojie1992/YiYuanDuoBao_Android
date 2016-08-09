@@ -142,9 +142,16 @@ public class MainActivity extends BaseActivity implements IMainView {
                 topMenuBar.setTitleText(res.getString(R.string.bottom_menu_item_1));
                 topMenuBar.setVisibility(View.VISIBLE);
                 topMenuBar.setTitleVisibility(View.VISIBLE);
-                topMenuBar.setBackVisibility(View.INVISIBLE);
+                topMenuBar.setBackVisibility(View.VISIBLE);
+                topMenuBar.setBackSrc(R.mipmap.my);
                 topMenuBar.setMenuVisibility(View.INVISIBLE);
                 topMenuBar.setAddVisibility(View.INVISIBLE);
+                topMenuBar.setOnBackClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toast("mine");
+                    }
+                });
                 break;
             case 1:
                 menuItem2.setSelected(true);
