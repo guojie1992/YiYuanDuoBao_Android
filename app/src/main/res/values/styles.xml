@@ -57,4 +57,21 @@
         <item name="android:windowIsTranslucent">true</item>
     </style>
 
+    <style name="TreasureLinearProgress">
+        <item name="lpd_maxLineWidth">80%</item>
+        <item name="lpd_minLineWidth">10%</item>
+        <item name="lpd_strokeSize">8dp</item>
+        <item name="lpd_strokeColor">@color/theme</item>
+        <item name="lpd_strokeSecondaryColor">@color/light_gray</item>
+        <item name="lpd_reverse">false</item>
+        <item name="lpd_travelDuration">1000</item>
+        <item name="lpd_transformDuration">400</item>
+        <item name="lpd_keepDuration">400</item>
+        <item name="lpd_transformInterpolator">@android:anim/decelerate_interpolator</item>
+        <item name="pv_progressMode">determinate</item>
+        <item name="lpd_inAnimDuration">400</item>
+        <item name="lpd_outAnimDuration">400</item>
+        <item name="lpd_verticalAlign">center</item>
+    </style>
+
 </resources>
