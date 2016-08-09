@@ -6,4 +6,5 @@ package so.len.duobao.iPresenter;
 public interface IOnePresenter {
     void initLoopViewPager();
     void initLotteryList();
+    void initRefresh();
 }

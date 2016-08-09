@@ -6,4 +6,5 @@ package so.len.duobao.iView;
 public interface IOneView {
     void initLoopViewPager();
     void initLotteryList();
+    void initRefresh();
 }

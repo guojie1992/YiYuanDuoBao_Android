@@ -21,4 +21,9 @@ public class OnePresenter implements IOnePresenter {
     public void initLotteryList() {
         iOneView.initLotteryList();
     }
+
+    @Override
+    public void initRefresh() {
+        iOneView.initRefresh();
+    }
 }

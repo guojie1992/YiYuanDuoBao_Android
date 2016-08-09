@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/iv_title_item_gridview_treasure"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/dp_130"
         android:scaleType="fitXY"/>
     <TextView
         android:id="@+id/tv_title_item_gridview_treasure"

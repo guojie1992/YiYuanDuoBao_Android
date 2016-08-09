@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/iv_top_fragment_two"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_180"
+        android:layout_height="@dimen/dp_130"
         android:scaleType="fitXY"/>
 
     <LinearLayout

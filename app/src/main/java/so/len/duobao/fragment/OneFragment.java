@@ -1,9 +1,10 @@
 package so.len.duobao.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,11 +19,7 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import so.len.duobao.R;
-import so.len.duobao.activity.ForgetActivity;
-import so.len.duobao.activity.LoginActivity;
-import so.len.duobao.activity.RegisterActivity;
 import so.len.duobao.customAdapter.LotteryListViewAdapter;
 import so.len.duobao.customView.LoopViewPager;
 import so.len.duobao.customView.LotteryListView;
@@ -44,6 +41,8 @@ public class OneFragment extends BaseFragment implements IOneView {
     SpeakerView svSpeakerFragmentOne;
     @BindView(R.id.tv_speaker_fragment_one)
     TextView tvSpeakerFragmentOne;
+    @BindView(R.id.srl_fragment_one)
+    SwipeRefreshLayout srlFragmentOne;
 
     private OnePresenter onePresenter;
     private List<ImageView> dots;
@@ -66,23 +65,7 @@ public class OneFragment extends BaseFragment implements IOneView {
         onePresenter = new OnePresenter(this);
         onePresenter.initLoopViewPager();
         onePresenter.initLotteryList();
-    }
-
-    @OnClick({R.id.btn1, R.id.btn2, R.id.btn3})
-    public void onClick(View view) {
-        Intent intent = new Intent();
-        switch (view.getId()) {
-            case R.id.btn1:
-                intent.setClass(getActivity(), RegisterActivity.class);
-                break;
-            case R.id.btn2:
-                intent.setClass(getActivity(), LoginActivity.class);
-                break;
-            case R.id.btn3:
-                intent.setClass(getActivity(), ForgetActivity.class);
-                break;
-        }
-        startActivity(intent);
+        onePresenter.initRefresh();
     }
 
     @Override
@@ -149,6 +132,22 @@ public class OneFragment extends BaseFragment implements IOneView {
         logInfo(lotteryListData.toString());
         lotteryListViewAdapter = new LotteryListViewAdapter(getActivity(), lotteryListData);
         llvLotteryFragmentOne.setAdapter(lotteryListViewAdapter);
+    }
+
+    @Override
+    public void initRefresh() {
+        srlFragmentOne.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                toast("refresh");
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        srlFragmentOne.setRefreshing(false);
+                    }
+                }, 2000);
+            }
+        });
     }
 
     @Override

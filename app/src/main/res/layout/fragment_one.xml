@@ -1,87 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/srl_fragment_one"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:background="@color/light_gray">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <so.len.duobao.customView.LoopViewPager
-            android:id="@+id/lvp_fragment_one"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_180">
-
-        </so.len.duobao.customView.LoopViewPager>
-
-        <LinearLayout
-            android:id="@+id/ll_dot_fragment_one"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|bottom"
-            android:orientation="horizontal"
-            android:paddingBottom="2dp">
-
-        </LinearLayout>
-    </FrameLayout>
-
-    <RelativeLayout
-        android:id="@+id/rl_speaker_fragment_one"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white">
+        android:orientation="vertical">
 
-        <so.len.duobao.customView.SpeakerView
-            android:id="@+id/sv_speaker_fragment_one"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tv_speaker_fragment_one"
+            <so.len.duobao.customView.LoopViewPager
+                android:id="@+id/lvp_fragment_one"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_130">
+
+            </so.len.duobao.customView.LoopViewPager>
+
+            <LinearLayout
+                android:id="@+id/ll_dot_fragment_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|bottom"
+                android:orientation="horizontal"
+                android:paddingBottom="2dp">
+
+            </LinearLayout>
+        </FrameLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_speaker_fragment_one"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/sv_speaker_fragment_one"
-            android:layout_marginLeft="@dimen/dp_5"
-            android:padding="5dp"
-            android:textSize="13sp"
-            android:textColor="@color/darker_gray"
-            android:text=""
-            android:singleLine="true"
-            android:scrollHorizontally="true"
-            android:ellipsize="marquee"
-            android:marqueeRepeatLimit="marquee_forever"/>
-    </RelativeLayout>
+            android:background="@color/white">
 
-    <so.len.duobao.customView.LotteryListView
-        android:id="@+id/llv_lottery_fragment_one"
-        android:scrollbars="none"
-        android:divider="@null"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp_10"
-        android:layout_marginRight="@dimen/dp_10">
+            <so.len.duobao.customView.SpeakerView
+                android:id="@+id/sv_speaker_fragment_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp" />
 
-    </so.len.duobao.customView.LotteryListView>
+            <TextView
+                android:id="@+id/tv_speaker_fragment_one"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:layout_toRightOf="@id/sv_speaker_fragment_one"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:padding="5dp"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/darker_gray"
+                android:textSize="13sp" />
+        </RelativeLayout>
 
+        <so.len.duobao.customView.LotteryListView
+            android:id="@+id/llv_lottery_fragment_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:divider="@null"
+            android:scrollbars="none">
 
-    <com.rey.material.widget.Button
-        android:id="@+id/btn1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="register"/>
-    <com.rey.material.widget.Button
-        android:id="@+id/btn2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="login"/>
-    <com.rey.material.widget.Button
-        android:id="@+id/btn3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="forget"/>
-</LinearLayout>
+        </so.len.duobao.customView.LotteryListView>
+    </LinearLayout>
+
+</android.support.v4.widget.SwipeRefreshLayout>
+
