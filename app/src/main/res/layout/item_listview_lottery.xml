@@ -19,7 +19,7 @@
             android:layout_height="@dimen/dp_60"
             android:layout_margin="@dimen/dp_10"
             app:civ_border_width="1dp"
-            app:civ_border_color="@color/theme"/>
+            app:civ_border_color="@color/white"/>
 
         <LinearLayout
             android:layout_width="match_parent"

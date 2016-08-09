@@ -70,8 +70,8 @@ public class TwoFragment extends BaseFragment implements ITwoView {
     public void initImg() {
         VolleyHttp vh = VolleyHttp.getInstance();
         Options opt = new Options();
-        opt.defImage(R.mipmap.ic_launcher)
-                .errImage(R.mipmap.ic_launcher);
+//        opt.defImage(R.mipmap.ic_launcher)
+//                .errImage(R.mipmap.ic_launcher);
         vh.imageLoader("http://pic73.nipic.com/file/20150722/19795594_122255146861_2.jpg", ivTopFragmentTwo, null);
     }
 
