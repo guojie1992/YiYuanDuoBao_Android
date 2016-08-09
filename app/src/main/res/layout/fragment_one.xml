@@ -11,7 +11,7 @@
         <so.len.duobao.customView.LoopViewPager
             android:id="@+id/lvp_fragment_one"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_200">
+            android:layout_height="@dimen/dp_180">
 
         </so.len.duobao.customView.LoopViewPager>
 
@@ -19,10 +19,9 @@
             android:id="@+id/ll_dot_fragment_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right|bottom"
+            android:layout_gravity="center|bottom"
             android:orientation="horizontal"
-            android:paddingBottom="2dp"
-            android:paddingRight="20dp">
+            android:paddingBottom="2dp">
 
         </LinearLayout>
     </FrameLayout>
