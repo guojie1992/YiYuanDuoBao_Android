@@ -43,7 +43,12 @@ public class RegisterActivity extends BaseActivity implements IRegisterView {
 
     private void control() {
         registerPresenter = new RegisterPresenter(this);
-        registerPresenter.setTopMenu();
+        registerPresenter.initView();
+    }
+
+    @Override
+    public void initView() {
+        tmbActivityRegister.setTitleText("注册");
     }
 
     @Override
@@ -68,20 +73,14 @@ public class RegisterActivity extends BaseActivity implements IRegisterView {
         etActivityRegisterPassword.setText("");
     }
 
-    @Override
-    public void setTopMenu() {
-        tmbActivityRegister.setTitleText("注册");
-    }
-
     @OnClick({R.id.btn_activity_register_getcode, R.id.btn_activity_register_submit})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_activity_register_getcode:
-                toast(registerPresenter.getServerCode(registerPresenter.getPhone()));
+                toast(registerPresenter.getServerCode());
                 break;
             case R.id.btn_activity_register_submit:
-                toast(registerPresenter.doRegister(registerPresenter.getPhone(), registerPresenter.getMessageCode(), registerPresenter.getPassword()));
-                registerPresenter.clearEditText();
+                toast(registerPresenter.doRegister());
                 break;
         }
     }

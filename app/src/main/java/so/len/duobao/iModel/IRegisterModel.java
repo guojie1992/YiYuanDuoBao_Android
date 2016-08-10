@@ -6,5 +6,4 @@ package so.len.duobao.iModel;
 public interface IRegisterModel {
     String getServerCode(String phone);
     String doRegister(String phone, String code, String password);
-    boolean saveData(String phone, String password);
 }

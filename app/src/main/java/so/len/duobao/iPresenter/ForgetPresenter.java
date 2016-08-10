@@ -7,7 +7,7 @@ import so.len.duobao.iView.IForgetView;
 /**
  * Created by Chung on 2016/8/5.
  */
-public class ForgetPresenter implements IForgetPresenter {
+public class ForgetPresenter {
     private IForgetModel iForgetModel;
     private IForgetView iForgetView;
 
@@ -16,75 +16,24 @@ public class ForgetPresenter implements IForgetPresenter {
         this.iForgetView = iForgetView;
     }
 
-    /**
-     * View
-     * @return
-     */
-    @Override
-    public String getPhone() {
-        return iForgetView.getPhone();
+    public void initView(){
+        iForgetView.initView();
     }
 
-    @Override
-    public String getMessageCode() {
-        return iForgetView.getMessageCode();
+    public String getServerCode() {
+        return iForgetModel.getServerCode(iForgetView.getPhone());
     }
 
-    @Override
-    public String getPassword() {
-        return iForgetView.getPassword();
-    }
-
-    @Override
-    public String getRepeatPassword() {
-        return iForgetView.getRepeatPassword();
-    }
-
-    @Override
-    public void clearEditText() {
-        iForgetView.clearEditText();
-    }
-
-    @Override
-    public void setTopMenu() {
-        iForgetView.setTopMenu();
-    }
-
-
-    /**
-     * Model
-     * @param phone
-     * @return
-     */
-    @Override
-    public String getServerCode(String phone) {
-        return iForgetModel.getServerCode(phone);
-    }
-
-    @Override
-    public String doForget(String phone, String code, String password, String repeatPassword) {
-        if(checkRepeat(password, repeatPassword)){
-            return iForgetModel.doForget(phone, code, password, repeatPassword);
+    public String doForget() {
+        if(checkRepeat()){
+            return iForgetModel.doForget(iForgetView.getPhone(), iForgetView.getMessageCode(), iForgetView.getPassword(), iForgetView.getRepeatPassword());
         }else {
-            clearEditText();
+            iForgetView.clearEditText();
             return "两次密码输入不一致！";
         }
     }
 
-    @Override
-    public boolean saveData(String phone, String password) {
-        return iForgetModel.saveData(phone, password);
-    }
-
-
-    /**
-     * cope
-     * @param password
-     * @param repeatPassword
-     * @return
-     */
-    @Override
-    public boolean checkRepeat(String password, String repeatPassword) {
+    private boolean checkRepeat() {
         return iForgetView.getPassword().equals(iForgetView.getRepeatPassword())?true:false;
     }
 }

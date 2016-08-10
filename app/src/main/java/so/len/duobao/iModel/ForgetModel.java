@@ -14,8 +14,4 @@ public class ForgetModel implements IForgetModel {
         return phone + code + password + repeatPassword;
     }
 
-    @Override
-    public boolean saveData(String phone, String password) {
-        return false;
-    }
 }

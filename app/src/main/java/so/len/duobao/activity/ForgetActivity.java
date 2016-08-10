@@ -45,22 +45,26 @@ public class ForgetActivity extends BaseActivity implements IForgetView {
 
     private void control() {
         forgetPresenter = new ForgetPresenter(this);
-        forgetPresenter.setTopMenu();
+        forgetPresenter.initView();
     }
 
     @OnClick({R.id.btn_activity_forget_getcode, R.id.btn_activity_forget_submit})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_activity_forget_getcode:
-                toast(forgetPresenter.getServerCode(forgetPresenter.getPhone()));
+                toast(forgetPresenter.getServerCode());
                 break;
             case R.id.btn_activity_forget_submit:
-                toast(forgetPresenter.doForget(forgetPresenter.getPhone(), forgetPresenter.getMessageCode(), forgetPresenter.getPassword(), forgetPresenter.getRepeatPassword()));
-                forgetPresenter.clearEditText();
+                toast(forgetPresenter.doForget());
                 break;
         }
     }
 
+
+    @Override
+    public void initView() {
+        tmbActivityForget.setTitleText("忘记密码");
+    }
 
     @Override
     public String getPhone() {
@@ -88,11 +92,6 @@ public class ForgetActivity extends BaseActivity implements IForgetView {
         etActivityForgetCode.setText("");
         etActivityForgetPassword.setText("");
         etActivityForgetPasswordRepeat.setText("");
-    }
-
-    @Override
-    public void setTopMenu() {
-        tmbActivityForget.setTitleText("忘记密码");
     }
 
 }

@@ -38,13 +38,17 @@ public class LoginActivity extends BaseActivity implements ILoginView{
 
     private void control() {
         loginPresenter = new LoginPresenter(this);
-        loginPresenter.setTopMenu();
+        loginPresenter.initView();
     }
 
     @OnClick(R.id.btn_activity_login_submit)
     public void onClick() {
-        toast(loginPresenter.doLogin(loginPresenter.getPhone(), loginPresenter.getPassword()));
-        loginPresenter.clearEditText();
+        toast(loginPresenter.doLogin());
+    }
+
+    @Override
+    public void initView() {
+        tmbActivityLogin.setTitleText("登陆");
     }
 
     @Override
@@ -63,8 +67,4 @@ public class LoginActivity extends BaseActivity implements ILoginView{
         etActivityLoginPassword.setText("");
     }
 
-    @Override
-    public void setTopMenu() {
-        tmbActivityLogin.setTitleText("登陆");
-    }
 }

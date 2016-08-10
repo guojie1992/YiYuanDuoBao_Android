@@ -1,5 +1,7 @@
 package so.len.duobao.iPresenter;
 
+import com.orhanobut.logger.Logger;
+
 import so.len.duobao.iModel.ILoginModel;
 import so.len.duobao.iModel.LoginModel;
 import so.len.duobao.iView.ILoginView;
@@ -7,7 +9,7 @@ import so.len.duobao.iView.ILoginView;
 /**
  * Created by Chung on 2016/8/5.
  */
-public class LoginPresenter implements ILoginPresenter {
+public class LoginPresenter {
     private ILoginModel iLoginModel;
     private ILoginView iLoginView;
 
@@ -16,39 +18,24 @@ public class LoginPresenter implements ILoginPresenter {
         this.iLoginView = iLoginView;
     }
 
-    /**
-     * Model
-     */
-    @Override
-    public String doLogin(String phone, String password) {
-        return iLoginModel.doLogin(phone, password);
+    public void initView(){
+        iLoginView.initView();
     }
 
-    @Override
-    public boolean saveData(String phone, String password) {
-        return iLoginModel.saveData(phone, password);
-    }
-
-    /**
-     * View
-     */
-    @Override
-    public String getPhone() {
-        return iLoginView.getPhone();
-    }
-
-    @Override
-    public String getPassword() {
-        return iLoginView.getPassword();
-    }
-
-    @Override
-    public void clearEditText() {
+    public String doLogin() {
+        String loginResult = iLoginModel.doLogin(iLoginView.getPhone(), iLoginView.getPassword());
+        if(loginResult.equals("1")){
+            boolean saveDataResult = saveData();
+            if(saveDataResult){
+                Logger.i("saveData succeed");
+            }
+        }
         iLoginView.clearEditText();
+        return loginResult;
     }
 
-    @Override
-    public void setTopMenu() {
-        iLoginView.setTopMenu();
+    private boolean saveData() {
+        return iLoginModel.saveData(iLoginView.getPhone());
     }
+
 }

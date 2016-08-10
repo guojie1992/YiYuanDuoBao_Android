@@ -5,5 +5,5 @@ package so.len.duobao.iModel;
  */
 public interface ILoginModel {
     String doLogin(String phone, String password);
-    boolean saveData(String phone, String password);
+    boolean saveData(String phone);
 }

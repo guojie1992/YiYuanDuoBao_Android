@@ -4,17 +4,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
     <ImageView
         android:id="@+id/iv_title_item_gridview_treasure"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_130"
+        android:layout_height="@dimen/dp_100"
         android:scaleType="fitXY"/>
     <TextView
         android:id="@+id/tv_title_item_gridview_treasure"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""/>
+        android:layout_marginLeft="@dimen/dp_5"
+        android:layout_marginRight="@dimen/dp_5"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="@dimen/dp_13"/>
     <com.rey.material.widget.ProgressView
         android:id="@+id/pv_progress_item_gridview_treasure"
         android:layout_width="match_parent"
@@ -36,12 +41,20 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="left"/>
+            android:layout_marginLeft="@dimen/dp_5"
+            android:layout_marginRight="@dimen/dp_5"
+            android:gravity="left"
+            android:textColor="@color/darker_gray"
+            android:textSize="@dimen/dp_12"/>
         <TextView
             android:id="@+id/tv_need_item_gridview_treasure"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="right"/>
+            android:layout_marginLeft="@dimen/dp_5"
+            android:layout_marginRight="@dimen/dp_5"
+            android:gravity="right"
+            android:textColor="@color/darker_gray"
+            android:textSize="@dimen/dp_12"/>
     </LinearLayout>
 </LinearLayout>

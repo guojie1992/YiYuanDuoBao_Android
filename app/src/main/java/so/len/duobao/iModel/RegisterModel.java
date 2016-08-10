@@ -25,8 +25,4 @@ public class RegisterModel implements IRegisterModel {
         return phone + code + password;
     }
 
-    @Override
-    public boolean saveData(String phone, String password) {
-        return false;
-    }
 }

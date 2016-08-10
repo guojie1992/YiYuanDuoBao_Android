@@ -10,7 +10,7 @@ public class LoginModel implements ILoginModel {
     }
 
     @Override
-    public boolean saveData(String phone, String password) {
+    public boolean saveData(String phone) {
         return false;
     }
 }

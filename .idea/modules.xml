@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/duobao.iml" filepath="$PROJECT_DIR$/duobao.iml" />
       <module fileurl="file://$PROJECT_DIR$/yiyuanduobao.iml" filepath="$PROJECT_DIR$/yiyuanduobao.iml" />
     </modules>
   </component>
