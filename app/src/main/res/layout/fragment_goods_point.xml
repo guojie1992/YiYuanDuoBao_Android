@@ -2,9 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:text="@string/points"/>
+    <GridView
+        android:id="@+id/gv_fragment_goods_point"
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:horizontalSpacing="@dimen/dp_10"
+        android:verticalSpacing="@dimen/dp_10"
+        android:numColumns="2">
+    </GridView>
 </LinearLayout>

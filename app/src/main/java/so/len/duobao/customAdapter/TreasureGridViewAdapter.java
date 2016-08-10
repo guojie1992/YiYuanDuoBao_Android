@@ -59,7 +59,7 @@ public class TreasureGridViewAdapter extends BaseAdapter {
 
         viewHolder.ivTitleItemGridviewTreasure.setImageResource((Integer) data.get(position).get("ivTitleItemGridviewTreasure"));
         viewHolder.tvTitleItemGridviewTreasure.setText((CharSequence) data.get(position).get("tvTitleItemGridviewTreasure"));
-        viewHolder.pvProgressItemGridviewTreasure.setProgress((float) 0.5);//.setProgress((Float) data.get(position).get("pvProgressItemGridviewTreasure"));
+        viewHolder.pvProgressItemGridviewTreasure.setProgress((float) 0.5);//((float) data.get(position).get("pvProgressItemGridviewTreasure"));
         viewHolder.tvAllItemGridviewTreasure.setText((CharSequence) data.get(position).get("tvAllItemGridviewTreasure"));
         viewHolder.tvNeedItemGridviewTreasure.setText((CharSequence) data.get(position).get("tvNeedItemGridviewTreasure"));
 
