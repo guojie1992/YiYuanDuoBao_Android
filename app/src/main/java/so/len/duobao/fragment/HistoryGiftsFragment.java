@@ -26,7 +26,7 @@ public class HistoryGiftsFragment extends BaseFragment implements IHistoryGiftsV
     @BindView(R.id.hlv_historygifts_fragment_gifts_history)
     HistoryGiftsListView hlvHistorygiftsFragmentGiftsHistory;
     private HistoryGiftsListViewAdapter adapter;
-    private Map<String, List<String>> data;
+    private LinkedHashMap<String, List<String>> data;
     private HistoryGiftsPresenter historyGiftsPresenter;
 
     @Nullable
@@ -48,14 +48,27 @@ public class HistoryGiftsFragment extends BaseFragment implements IHistoryGiftsV
         data = new LinkedHashMap<>();
         List<String> texts;
 
-        for(int i=0;i<8;i++){
-            texts = new ArrayList<>();
-            texts.add("不限");
-            texts.add("等额本息");
-            texts.add("一次性还本付息");
-            texts.add("每月还息到期还本");
-            data.put("还款方式", texts);
-        }
+        texts = new ArrayList<>();
+        texts.add("等额本息");
+        texts.add("一次性还本付息");
+        texts.add("每月还息到期还本");
+        data.put("还款方式", texts);
+
+        texts = new ArrayList<>();
+        texts.add("1个月以下");
+        texts.add("1-2个月");
+        texts.add("3-4个月");
+        texts.add("5-6个月");
+        texts.add("6个月以上");
+        data.put("借款期限", texts);
+
+        texts = new ArrayList<>();
+        texts.add("5万以下");
+        texts.add("5-10万");
+        texts.add("10-30万");
+        texts.add("30-50万");
+        texts.add("50万以上");
+        data.put("借款金额", texts);
 
         if(adapter == null){
             adapter = new HistoryGiftsListViewAdapter(getContext(), data);

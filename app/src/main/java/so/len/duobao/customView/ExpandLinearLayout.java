@@ -18,7 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -46,14 +45,10 @@ public class ExpandLinearLayout extends LinearLayout {
     private boolean isUp = true;
     private boolean isAnimatorEnd = true;
     private ObjectAnimator animator;
-    private OnItemListener listener;
     private float animationF;
-    private final List<TextView> itemTexts;
-    private int position;
     private final int itemPaddingL_R;
     private final int itemPaddingT_B;
     private final int itemLayoutMargin;
-    private String t;
 
     public ExpandLinearLayout(Context context) {
         this(context, null);
@@ -62,7 +57,6 @@ public class ExpandLinearLayout extends LinearLayout {
     public ExpandLinearLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         View view = View.inflate(context, R.layout.item_linearlayout_expand, null);
-        itemTexts = new ArrayList<>();
         addView(view);
         ViewGroup.LayoutParams lp = view.getLayoutParams();
         lp.height = ViewGroup.LayoutParams.MATCH_PARENT;
@@ -93,7 +87,7 @@ public class ExpandLinearLayout extends LinearLayout {
 
         }
         if (itemTextColor == null)
-            itemTextColor = getResources().getColorStateList(R.color.theme);
+            itemTextColor = getResources().getColorStateList(R.color.black);
 //        if (itemTextBackground == 0)
 //            itemTextBackground = R.drawable.selector_screen_item_background;
         if (itemTextSize == 0)
@@ -108,6 +102,9 @@ public class ExpandLinearLayout extends LinearLayout {
 
     }
 
+    public void setTitleText(String text) {
+        tvTitleItemLinearlayoutExpand.setText(text);
+    }
 
     public void setTitleSize(float textSize) {
         tvTitleItemLinearlayoutExpand.setTextSize(textSize);
@@ -129,59 +126,33 @@ public class ExpandLinearLayout extends LinearLayout {
         itemTextBackground = resId;
     }
 
-    public void setScreenArrow(int resId) {
+    public void setArrow(int resId) {
         ivArrowItemLinearlayoutExpand.setImageResource(resId);
     }
 
-    public void setTitleText(String text) {
-        tvTitleItemLinearlayoutExpand.setText(text);
-    }
-
-
-    public List<TextView> addItemViews(int position, List<String> texts, String t) {
-        itemTexts.clear();
-        llItemLinearlayoutExpand.removeAllViews();
-        this.t = t;
-        int i = 0;
-        for (String text : texts) {
-            addItemView(text, i++);
-            if (t.equals(text)) {
-                itemTexts.get(itemTexts.size() - 1).setSelected(true);
-            }
-        }
-        this.position = position;
-        return itemTexts;
-    }
-
-    public void setOnScreenItemListener(OnItemListener listener) {
-        this.listener = listener;
-    }
-
-    public void addItem(int position, List<String> texts, String t, boolean isUp) {
+    public void addItem(List<String> texts) {
         ViewGroup.LayoutParams lp = llItemLinearlayoutExpand.getLayoutParams();
-        if (isUp)
-            lp.height = ViewGroup.LayoutParams.WRAP_CONTENT;
-        else
-            lp.height = 0;
+        lp.height = 0;
         llItemLinearlayoutExpand.setLayoutParams(lp);
-        addItemViews(position, texts, t);
-        this.isUp = isUp;
+        addItemViews(texts);
         setArrowRotation(ivArrowItemLinearlayoutExpand, !isUp);
     }
 
-    public interface OnItemListener {
-        void onItem(int position, String text, boolean isUp);
+
+    public void addItemViews(List<String> texts) {
+        llItemLinearlayoutExpand.removeAllViews();
+        for (String text : texts) {
+            addItemView(text);
+        }
     }
 
-    private TextView addItemView(String text, int pos) {
+    private void addItemView(String text) {
         TextView textView = new TextView(getContext());
-        textView.setTag(pos);
         textView.setText(text);
         textView.setTextColor(itemTextColor);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, itemTextSize);
         textView.setBackgroundResource(itemTextBackground);
         textView.setPadding(itemPaddingL_R, itemPaddingT_B, itemPaddingL_R, itemPaddingT_B);
-        itemTexts.add(textView);
         llItemLinearlayoutExpand.addView(textView);
 
         LayoutParams lp = (LayoutParams) textView.getLayoutParams();
@@ -192,16 +163,10 @@ public class ExpandLinearLayout extends LinearLayout {
         lp.leftMargin = itemLayoutMargin;
         lp.rightMargin = itemLayoutMargin;
         textView.setLayoutParams(lp);
-        textView.setGravity(Gravity.CENTER);
+        textView.setGravity(Gravity.LEFT);
 
-        return textView;
     }
 
-    private void unSelected() {
-        for (TextView t : itemTexts) {
-            t.setSelected(false);
-        }
-    }
 
     private void showItem(View v) {
         if (llScreenItemHeight == 0)
