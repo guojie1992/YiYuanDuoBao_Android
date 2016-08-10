@@ -55,17 +55,16 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     private void control() {
         mainPresenter = new MainPresenter(MainActivity.this);
-        mainPresenter.setMenuTopPadding();
-        mainPresenter.initFragmentViewPager();
+        mainPresenter.initView();
     }
 
     @Override
-    public void setMenuTopPadding() {
+    public void initView() {
         topMenuBar.setMenuTopPadding(statusHeight);
+        initFragmentViewPager();
     }
 
-    @Override
-    public void initFragmentViewPager() {
+    private void initFragmentViewPager() {
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new OneFragment());
         fragments.add(new TwoFragment());
@@ -127,8 +126,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         });
     }
 
-    @Override
-    public void select(int index) {
+    private void select(int index) {
         menuItem1.setSelected(false);
         menuItem2.setSelected(false);
         menuItem3.setSelected(false);

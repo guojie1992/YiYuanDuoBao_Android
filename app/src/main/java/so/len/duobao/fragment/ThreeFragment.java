@@ -50,23 +50,25 @@ public class ThreeFragment extends BaseFragment implements IThreeView {
 //        opt.defImage(R.mipmap.ic_launcher)
 //                .errImage(R.mipmap.ic_launcher);
         threePresenter = new ThreePresenter(this);
-        threePresenter.initPoint();
-        threePresenter.initM();
-        threePresenter.initSpeaker();
+        threePresenter.initView();
     }
 
     @Override
-    public void initPoint() {
+    public void initView() {
+        initPoint();
+        initM();
+        initSpeaker();
+    }
+
+    private void initPoint() {
         vh.imageLoader("http://pic73.nipic.com/file/20150722/19795594_122255146861_2.jpg", ivPointFragmentThree, null);
     }
 
-    @Override
-    public void initM() {
+    private void initM() {
         vh.imageLoader("http://pic73.nipic.com/file/20150722/19795594_122255146861_2.jpg", ivMFragmentThree, null);
     }
 
-    @Override
-    public void initSpeaker() {
+    private void initSpeaker() {
         tvSpeakerFragmentThree.setText("恭喜用户chung567115中奖啦！恭喜用户zyq中奖啦！恭喜用户zyx中奖啦！");
         tvSpeakerFragmentThree.setSelected(true);
     }

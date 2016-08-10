@@ -55,19 +55,22 @@ public class FiveFragment extends BaseFragment implements IFiveView {
 
     private void control() {
         fivePresenter = new FivePresenter(this);
-        fivePresenter.initBtn();
-        fivePresenter.initGiftsViewPager();
-        fivePresenter.initMyGifts();
-        fivePresenter.initHistroyGifts();
+        fivePresenter.initView();
     }
 
     @Override
-    public void initBtn() {
+    public void initView() {
+        initBtn();
+        initGiftsViewPager();
+        initMyGifts();
+        initHistroyGifts();
+    }
+
+    private void initBtn() {
 
     }
 
-    @Override
-    public void initGiftsViewPager() {
+    private void initGiftsViewPager() {
         Point outSize = new Point();
         getActivity().getWindowManager().getDefaultDisplay().getSize(outSize);
         width = outSize.x / 2;
@@ -120,13 +123,12 @@ public class FiveFragment extends BaseFragment implements IFiveView {
         });
     }
 
-    @Override
-    public void initMyGifts() {
+    private void initMyGifts() {
 
     }
 
-    @Override
-    public void initHistroyGifts() {
+    private void initHistroyGifts() {
 
     }
+
 }

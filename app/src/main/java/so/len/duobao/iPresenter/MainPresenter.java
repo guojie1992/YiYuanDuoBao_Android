@@ -7,7 +7,7 @@ import so.len.duobao.iView.IMainView;
 /**
  * Created by Chung on 2016/8/5.
  */
-public class MainPresenter implements IMainPresenter {
+public class MainPresenter {
     private IMainModel iMainModel;
     private IMainView iMainView;
 
@@ -16,14 +16,8 @@ public class MainPresenter implements IMainPresenter {
         this.iMainView = iMainView;
     }
 
-
-    @Override
-    public void setMenuTopPadding() {
-        iMainView.setMenuTopPadding();
+    public void initView(){
+        iMainView.initView();
     }
 
-    @Override
-    public void initFragmentViewPager() {
-        iMainView.initFragmentViewPager();
-    }
 }

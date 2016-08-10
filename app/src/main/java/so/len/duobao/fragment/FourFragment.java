@@ -15,7 +15,6 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import so.len.duobao.R;
-import so.len.duobao.customAdapter.LotteryListViewAdapter;
 import so.len.duobao.customAdapter.TreasureGridViewAdapter;
 import so.len.duobao.iPresenter.FourPresenter;
 import so.len.duobao.iView.IFourView;
@@ -44,11 +43,15 @@ public class FourFragment extends BaseFragment implements IFourView {
 
     private void control() {
         fourPresenter = new FourPresenter(this);
-        fourPresenter.initTreasureList();
+        fourPresenter.initView();
     }
 
     @Override
-    public void initTreasureList() {
+    public void initView() {
+        initTreasureList();
+    }
+
+    private void initTreasureList() {
         treasureListData = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
             map = new HashMap<>();
@@ -63,4 +66,5 @@ public class FourFragment extends BaseFragment implements IFourView {
         treasureGridViewAdapter = new TreasureGridViewAdapter(getActivity(), treasureListData);
         gvTreasureFragmentFour.setAdapter(treasureGridViewAdapter);
     }
+
 }

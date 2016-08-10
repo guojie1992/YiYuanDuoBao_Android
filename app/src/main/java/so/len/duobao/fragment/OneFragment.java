@@ -63,13 +63,17 @@ public class OneFragment extends BaseFragment implements IOneView {
 
     private void control() {
         onePresenter = new OnePresenter(this);
-        onePresenter.initLoopViewPager();
-        onePresenter.initLotteryList();
-        onePresenter.initRefresh();
+        onePresenter.initView();
     }
 
     @Override
-    public void initLoopViewPager() {
+    public void initView() {
+        initLoopViewPager();
+        initLotteryList();
+        initRefresh();
+    }
+
+    private void initLoopViewPager() {
         int padding = (int) getResources().getDimension(R.dimen.dp_2);
 
         ArrayList<String> pics = new ArrayList<>();
@@ -115,8 +119,7 @@ public class OneFragment extends BaseFragment implements IOneView {
         dots.get(0).setSelected(true);
     }
 
-    @Override
-    public void initLotteryList() {
+    private void initLotteryList() {
         tvSpeakerFragmentOne.setText("孙中奖啦！柳中奖啦！张中奖啦！江中奖啦！金中奖啦！景中奖啦！谢中奖啦！王中奖啦！！");
         tvSpeakerFragmentOne.setSelected(true);
 
@@ -134,8 +137,7 @@ public class OneFragment extends BaseFragment implements IOneView {
         llvLotteryFragmentOne.setAdapter(lotteryListViewAdapter);
     }
 
-    @Override
-    public void initRefresh() {
+    private void initRefresh() {
         srlFragmentOne.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

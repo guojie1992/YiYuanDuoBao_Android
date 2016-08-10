@@ -60,14 +60,18 @@ public class TwoFragment extends BaseFragment implements ITwoView {
 
     private void control() {
         twoPresenter = new TwoPresenter(this);
-        twoPresenter.initImg();
-        twoPresenter.initGoodsViewPager();
-        twoPresenter.initGoalsGoods();
-        twoPresenter.initMGoods();
+       twoPresenter.initView();
     }
 
     @Override
-    public void initImg() {
+    public void initView() {
+        initImg();
+        initGoodsViewPager();
+        initGoalsGoods();
+        initMGoods();
+    }
+
+    private void initImg() {
         VolleyHttp vh = VolleyHttp.getInstance();
         Options opt = new Options();
 //        opt.defImage(R.mipmap.ic_launcher)
@@ -75,8 +79,7 @@ public class TwoFragment extends BaseFragment implements ITwoView {
         vh.imageLoader("http://pic73.nipic.com/file/20150722/19795594_122255146861_2.jpg", ivTopFragmentTwo, null);
     }
 
-    @Override
-    public void initGoodsViewPager() {
+    private void initGoodsViewPager() {
         Point outSize = new Point();
         getActivity().getWindowManager().getDefaultDisplay().getSize(outSize);
         width = outSize.x / 2;
@@ -129,6 +132,14 @@ public class TwoFragment extends BaseFragment implements ITwoView {
         });
     }
 
+    private void initGoalsGoods() {
+
+    }
+
+    private void initMGoods() {
+
+    }
+
     @OnClick({R.id.tv_points_fragment_two, R.id.tv_m_fragment_two})
     public void onClick(View view) {
         switch (view.getId()) {
@@ -139,16 +150,6 @@ public class TwoFragment extends BaseFragment implements ITwoView {
                 mvpGoodsFragmentTwo.setCurrentItem(1);
                 break;
         }
-    }
-
-    @Override
-    public void initGoalsGoods() {
-
-    }
-
-    @Override
-    public void initMGoods() {
-
     }
 
 }
