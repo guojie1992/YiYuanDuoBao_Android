@@ -10,14 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="@dimen/dp_10"
+
         android:background="@color/white">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_title_item_listview_lottery"
-            android:layout_width="@dimen/dp_60"
-            android:layout_height="@dimen/dp_60"
-            android:layout_margin="@dimen/dp_10"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:layout_margin="@dimen/dp_5"
             app:civ_border_width="1dp"
             app:civ_border_color="@color/white"/>
 
@@ -57,7 +57,7 @@
                 android:gravity="left"
                 android:text=""
                 android:textColor="@color/black"
-                android:textSize="@dimen/dp_13"/>
+                android:textSize="@dimen/dp_12"/>
         </LinearLayout>
     </LinearLayout>
 

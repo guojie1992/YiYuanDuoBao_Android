@@ -12,11 +12,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.rey.material.widget.ProgressView;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import so.len.duobao.R;
 import so.len.duobao.customAdapter.FragmentViewPagerAdapter;
 import so.len.duobao.customView.MyViewPager;
@@ -37,6 +40,18 @@ public class FiveFragment extends BaseFragment implements IFiveView {
     ImageView ivIndicatorFragmentFive;
     @BindView(R.id.mvp_goods_fragment_five)
     MyViewPager mvpGoodsFragmentFive;
+    @BindView(R.id.tv_gifts_fragment_five)
+    TextView tvGiftsFragmentFive;
+    @BindView(R.id.tv_times_fragment_five)
+    TextView tvTimesFragmentFive;
+    @BindView(R.id.pv_progress_fragment_five)
+    ProgressView pvProgressFragmentFive;
+    @BindView(R.id.tv_mygoods_fragment_five)
+    TextView tvMygoodsFragmentFive;
+    @BindView(R.id.tv_mytickets_fragment_five)
+    TextView tvMyticketsFragmentFive;
+    @BindView(R.id.tv_mybeans_fragment_five)
+    TextView tvMybeansFragmentFive;
 
     private FivePresenter fivePresenter;
     private int width;
@@ -67,7 +82,7 @@ public class FiveFragment extends BaseFragment implements IFiveView {
     }
 
     private void initBtn() {
-
+        pvProgressFragmentFive.setProgress((float) 0.5);
     }
 
     private void initGiftsViewPager() {
@@ -131,4 +146,15 @@ public class FiveFragment extends BaseFragment implements IFiveView {
 
     }
 
+    @OnClick({R.id.tv_my_fragment_five, R.id.tv_history_fragment_five})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.tv_my_fragment_five:
+                mvpGoodsFragmentFive.setCurrentItem(0);
+                break;
+            case R.id.tv_history_fragment_five:
+                mvpGoodsFragmentFive.setCurrentItem(1);
+                break;
+        }
+    }
 }

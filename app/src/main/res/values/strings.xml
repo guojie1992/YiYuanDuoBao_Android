@@ -20,4 +20,7 @@
     <string name="M">M币+积分</string>
     <string name="mygifts">我抢到的</string>
     <string name="histroygifts">历史抢钱</string>
+    <string name="mygoods">我的商品</string>
+    <string name="mytickets">我的代金券</string>
+    <string name="mybeans">我的欢乐豆</string>
 </resources>
