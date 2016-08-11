@@ -1,5 +1,6 @@
 package so.len.duobao.activity;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -147,7 +148,9 @@ public class MainActivity extends BaseActivity implements IMainView {
                 topMenuBar.setOnBackClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        toast("mine");
+                        Intent intent = new Intent();
+                        intent.setClass(MainActivity.this, MineActivity.class);
+                        startActivity(intent);
                     }
                 });
                 break;

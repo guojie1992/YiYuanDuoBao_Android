@@ -9,7 +9,8 @@
         android:id="@+id/iv_top_fragment_two"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_130"
-        android:scaleType="fitXY"/>
+        android:scaleType="fitXY"
+        android:src="@mipmap/shop_top"/>
 
     <LinearLayout
         android:layout_width="match_parent"

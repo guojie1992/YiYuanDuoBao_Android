@@ -62,7 +62,7 @@ public class FourFragment extends BaseFragment implements IFourView {
             map.put("tvNeedItemGridviewTreasure", "剩余:1111");
             treasureListData.add(map);
         }
-        logInfo(treasureListData.toString());
+//        logInfo(treasureListData.toString());
         treasureGridViewAdapter = new TreasureGridViewAdapter(getActivity(), treasureListData);
         gvTreasureFragmentFour.setAdapter(treasureGridViewAdapter);
     }

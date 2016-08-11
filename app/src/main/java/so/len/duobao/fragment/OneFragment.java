@@ -132,7 +132,7 @@ public class OneFragment extends BaseFragment implements IOneView {
             map.put("tvContentItemListviewLottery", "中奖啦中奖啦中奖啦中奖啦中奖啦中奖啦中奖啦");
             lotteryListData.add(map);
         }
-        logInfo(lotteryListData.toString());
+//        logInfo(lotteryListData.toString());
         lotteryListViewAdapter = new LotteryListViewAdapter(getActivity(), lotteryListData);
         llvLotteryFragmentOne.setAdapter(lotteryListViewAdapter);
     }

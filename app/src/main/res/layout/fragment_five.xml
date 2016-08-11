@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.SwipeRefreshLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/srl_fragment_five"
+    android:id="@+id/ll_fragment_five"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/light_gray">
@@ -221,4 +221,4 @@
         </LinearLayout>
     <!--</ScrollView>-->
 
-</android.support.v4.widget.SwipeRefreshLayout>
+</LinearLayout>

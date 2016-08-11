@@ -59,7 +59,7 @@ public class MyGiftsFragment extends BaseFragment implements IMyGiftsView {
             map.put("tvTimeItemListviewMygifts", "2016/08/09 15:31");
             myGiftsListData.add(map);
         }
-        logInfo(myGiftsListData.toString());
+//        logInfo(myGiftsListData.toString());
         myGiftsListViewAdapter = new MyGiftsListViewAdapter(getActivity(), myGiftsListData);
         mlvMygiftsFragmentGiftsMy.setAdapter(myGiftsListViewAdapter);
     }

@@ -61,7 +61,7 @@ public class HistoryGiftsFragment extends BaseFragment implements IHistoryGiftsV
             data.put("2016/08/10 19:29 " + String.valueOf(i), list);
         }
 
-        logDebug(data.toString());
+//        logDebug(data.toString());
         if(adapter == null){
             adapter = new HistoryGiftsListViewAdapter(getActivity(), data);
         }

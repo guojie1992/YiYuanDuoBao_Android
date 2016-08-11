@@ -59,7 +59,7 @@ public class MGoodsFragment extends BaseFragment implements IMGoodsView {
             map.put("tvPriceItemGridviewGoods", "6199M币+1000积分");
             goodsListData.add(map);
         }
-        logInfo(goodsListData.toString());
+//        logInfo(goodsListData.toString());
         goodsGridViewAdapter = new GoodsGridViewAdapter(getActivity(), goodsListData);
         gvFragmentGoodsM.setAdapter(goodsGridViewAdapter);
     }

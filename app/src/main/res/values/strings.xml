@@ -23,4 +23,17 @@
     <string name="mygoods">我的商品</string>
     <string name="mytickets">我的代金券</string>
     <string name="mybeans">我的欢乐豆</string>
+    <string name="MB">M币</string>
+    <string name="month_back">当月返还</string>
+    <string name="myorder">我的订单</string>
+    <string name="myrecommend">我的推荐</string>
+    <string name="myM">我的M币</string>
+    <string name="mypoint">我的积分</string>
+    <string name="level">会员等级</string>
+    <string name="bank">我的银行卡</string>
+    <string name="myrecommender">我的推荐人</string>
+    <string name="myback">我的返还</string>
+    <string name="mytreasure">我的夺宝</string>
+    <string name="myaddr">送货地址</string>
+    <string name="sign">签到</string>
 </resources>

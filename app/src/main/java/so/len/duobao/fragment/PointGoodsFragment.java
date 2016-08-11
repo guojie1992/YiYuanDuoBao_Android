@@ -59,7 +59,7 @@ public class PointGoodsFragment extends BaseFragment implements IPointsGoodsView
             map.put("tvPriceItemGridviewGoods", "6199积分");
             goodsListData.add(map);
         }
-        logInfo(goodsListData.toString());
+//        logInfo(goodsListData.toString());
         goodsGridViewAdapter = new GoodsGridViewAdapter(getActivity(), goodsListData);
         gvFragmentGoodsPoint.setAdapter(goodsGridViewAdapter);
     }

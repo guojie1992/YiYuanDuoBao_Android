@@ -133,7 +133,7 @@ public class FiveFragment extends BaseFragment implements IFiveView {
 
             @Override
             public void onPageScrollStateChanged(int state) {
-                logDebug("state:" + String.valueOf(state));
+//                logDebug("state:" + String.valueOf(state));
             }
         });
     }
