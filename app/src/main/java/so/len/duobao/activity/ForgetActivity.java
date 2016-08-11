@@ -1,10 +1,10 @@
 package so.len.duobao.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
-
-import com.rey.material.widget.Button;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,10 +22,10 @@ public class ForgetActivity extends BaseActivity implements IForgetView {
     TopMenuBar tmbActivityForget;
     @BindView(R.id.et_activity_forget_phone)
     EditText etActivityForgetPhone;
-    @BindView(R.id.et_activity_forget_code)
-    EditText etActivityForgetCode;
     @BindView(R.id.btn_activity_forget_getcode)
     Button btnActivityForgetGetcode;
+    @BindView(R.id.et_activity_forget_code)
+    EditText etActivityForgetCode;
     @BindView(R.id.et_activity_forget_password)
     EditText etActivityForgetPassword;
     @BindView(R.id.et_activity_forget_password_repeat)
@@ -55,7 +55,8 @@ public class ForgetActivity extends BaseActivity implements IForgetView {
                 toast(forgetPresenter.getServerCode());
                 break;
             case R.id.btn_activity_forget_submit:
-                toast(forgetPresenter.doForget());
+                Intent intent = new Intent(this, RegisterActivity.class);
+                startActivity(intent);
                 break;
         }
     }

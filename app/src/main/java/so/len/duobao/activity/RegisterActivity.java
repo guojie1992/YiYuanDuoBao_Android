@@ -2,9 +2,8 @@ package so.len.duobao.activity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
-
-import com.rey.material.widget.Button;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,10 +21,10 @@ public class RegisterActivity extends BaseActivity implements IRegisterView {
     TopMenuBar tmbActivityRegister;
     @BindView(R.id.et_activity_register_phone)
     EditText etActivityRegisterPhone;
-    @BindView(R.id.et_activity_register_code)
-    EditText etActivityRegisterCode;
     @BindView(R.id.btn_activity_register_getcode)
     Button btnActivityRegisterGetcode;
+    @BindView(R.id.et_activity_register_code)
+    EditText etActivityRegisterCode;
     @BindView(R.id.et_activity_register_password)
     EditText etActivityRegisterPassword;
     @BindView(R.id.btn_activity_register_submit)

@@ -12,64 +12,171 @@
 
     </so.len.duobao.customView.TopMenuBar>
 
-    <EditText
-        android:id="@+id/et_activity_forget_phone"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dp_10"
-        android:hint="@string/input_phone"
-        android:inputType="phone"
-        android:maxLength="11"
-        android:singleLine="true" />
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:id="@+id/et_activity_forget_code"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dp_10"
-            android:hint="@string/input_code"
-            android:inputType="number"
-            android:maxLength="6"
-            android:singleLine="true" />
-
-        <com.rey.material.widget.Button
-            android:id="@+id/btn_activity_forget_getcode"
+        android:layout_marginTop="@dimen/dp_10"
+        android:orientation="horizontal">
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right|top"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/phone"/>
+        <EditText
+            android:id="@+id/et_activity_forget_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
             android:layout_marginRight="@dimen/dp_10"
-            android:text="@string/get_code"
-            android:textColor="@color/theme" />
-    </FrameLayout>
+            android:paddingTop="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_10"
+            android:background="@null"
+            android:hint="@string/input_phone"
+            android:textSize="@dimen/edittext_size"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:singleLine="true" />
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/et_activity_forget_password"
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:background="@color/darker_gray"/>
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dp_10"
-        android:hint="@string/input_password"
-        android:inputType="textPassword"
-        android:singleLine="true" />
+        android:layout_marginTop="@dimen/dp_10"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/code"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/et_activity_forget_password_repeat"
+            <Button
+                android:id="@+id/btn_activity_forget_getcode"
+                android:layout_width="@dimen/dp_60"
+                android:layout_height="@dimen/dp_30"
+                android:layout_marginRight="@dimen/dp_10"
+                android:layout_alignParentRight="true"
+                android:text="@string/get_code"
+                android:textSize="@dimen/dp_12"
+                android:textColor="@color/theme"
+                android:background="@drawable/shape_btn"/>
+            <EditText
+                android:id="@+id/et_activity_forget_code"
+                android:layout_toLeftOf="@id/btn_activity_forget_getcode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
+                android:paddingTop="@dimen/dp_10"
+                android:paddingBottom="@dimen/dp_10"
+                android:background="@null"
+                android:hint="@string/input_code"
+                android:textSize="@dimen/edittext_size"
+                android:inputType="number"
+                android:maxLength="6"
+                android:singleLine="true" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:background="@color/darker_gray"/>
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dp_10"
-        android:hint="@string/repeat_password"
-        android:inputType="textPassword"
-        android:singleLine="true" />
+        android:layout_marginTop="@dimen/dp_10"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/password"/>
+        <EditText
+            android:id="@+id/et_activity_forget_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_10"
+            android:background="@null"
+            android:hint="@string/input_password"
+            android:textSize="@dimen/edittext_size"
+            android:inputType="textPassword"
+            android:singleLine="true" />
+    </LinearLayout>
 
-    <com.rey.material.widget.Button
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:background="@color/darker_gray"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/password"/>
+        <EditText
+            android:id="@+id/et_activity_forget_password_repeat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_10"
+            android:background="@null"
+            android:hint="@string/repeat_password"
+            android:textSize="@dimen/edittext_size"
+            android:inputType="textPassword"
+            android:singleLine="true" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:background="@color/darker_gray"/>
+
+
+    <Button
         android:id="@+id/btn_activity_forget_submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
         android:text="@string/confirm"
-        android:textColor="@color/white"/>
+        android:textColor="@color/theme"
+        android:textSize="@dimen/dp_18"
+        android:background="@drawable/shape_btn"/>
 
 </LinearLayout>

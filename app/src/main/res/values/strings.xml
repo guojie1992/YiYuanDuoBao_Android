@@ -12,10 +12,10 @@
     <string name="input_code">请输入验证码</string>
     <string name="get_code">获取</string>
     <string name="input_password">请输入密码</string>
-    <string name="register">注册</string>
-    <string name="login">登陆</string>
+    <string name="register">注　　　　册</string>
+    <string name="login">登　　　　陆</string>
     <string name="repeat_password">请确认密码</string>
-    <string name="confirm">确认</string>
+    <string name="confirm">确　　　　认</string>
     <string name="points">积分</string>
     <string name="M">M币+积分</string>
     <string name="mygifts">我抢到的</string>
@@ -36,4 +36,5 @@
     <string name="mytreasure">我的夺宝</string>
     <string name="myaddr">送货地址</string>
     <string name="sign">签到</string>
+    <string name="forget">忘记密码</string>
 </resources>

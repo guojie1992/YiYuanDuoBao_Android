@@ -12,33 +12,95 @@
 
     </so.len.duobao.customView.TopMenuBar>
 
-    <EditText
-        android:id="@+id/et_activity_login_phone"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dp_10"
-        android:hint="@string/input_phone"
-        android:inputType="phone"
-        android:maxLength="11"
-        android:singleLine="true" />
+        android:layout_marginTop="@dimen/dp_10"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/phone"/>
+        <EditText
+            android:id="@+id/et_activity_login_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_10"
+            android:background="@null"
+            android:hint="@string/input_phone"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:singleLine="true"
+            android:textSize="@dimen/edittext_size"/>
+    </LinearLayout>
 
 
-    <EditText
-        android:id="@+id/et_activity_login_password"
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:background="@color/darker_gray"/>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dp_10"
-        android:hint="@string/input_password"
-        android:inputType="textPassword"
-        android:singleLine="true" />
+        android:layout_marginTop="@dimen/dp_10"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/password"/>
+        <EditText
+            android:id="@+id/et_activity_login_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_10"
+            android:background="@null"
+            android:hint="@string/input_password"
+            android:textSize="@dimen/edittext_size"
+            android:inputType="textPassword"
+            android:singleLine="true" />
+    </LinearLayout>
 
 
-    <com.rey.material.widget.Button
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:background="@color/darker_gray"/>
+
+    <TextView
+        android:id="@+id/tv_forget_activity_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_gravity="right"
+        android:textSize="@dimen/dp_13"
+        android:textColor="@color/darker_gray"
+        android:text="@string/forget"/>
+    <Button
         android:id="@+id/btn_activity_login_submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dp_10"
-        android:text="@string/login"
-        android:textColor="@color/white"/>
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:textColor="@color/theme"
+        android:textSize="@dimen/dp_18"
+        android:background="@drawable/shape_btn"
+        android:text="@string/login"/>
 
 </LinearLayout>

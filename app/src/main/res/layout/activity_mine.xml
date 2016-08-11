@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/light_gray">
     <so.len.duobao.customView.TopMenuBar
@@ -158,7 +158,7 @@
                                     android:layout_weight="1"
                                     android:gravity="left"
                                     android:padding="@dimen/dp_10"
-                                    android:text="@string/MB"
+                                    android:text="@string/points"
                                     android:textSize="@dimen/dp_12"
                                     android:textColor="@color/darker_gray"/>
                             </LinearLayout>
@@ -189,11 +189,12 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical">
-                    <de.hdodenhof.circleimageview.CircleImageView
+                    <ImageView
                         android:layout_width="@dimen/dp_50"
                         android:layout_height="@dimen/dp_50"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/title"/>
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/my_order"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -210,11 +211,12 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical">
-                    <de.hdodenhof.circleimageview.CircleImageView
+                    <ImageView
                         android:layout_width="@dimen/dp_50"
                         android:layout_height="@dimen/dp_50"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/title"/>
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/my_recommend"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -231,11 +233,12 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical">
-                    <de.hdodenhof.circleimageview.CircleImageView
+                    <ImageView
                         android:layout_width="@dimen/dp_50"
                         android:layout_height="@dimen/dp_50"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/title"/>
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/my_m"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -252,11 +255,12 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical">
-                    <de.hdodenhof.circleimageview.CircleImageView
+                    <ImageView
                         android:layout_width="@dimen/dp_50"
                         android:layout_height="@dimen/dp_50"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/title"/>
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/my_point"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
