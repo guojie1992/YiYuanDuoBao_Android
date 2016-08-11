@@ -1,70 +1,134 @@
 package so.len.duobao.customAdapter;
 
 import android.content.Context;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-
-import com.orhanobut.logger.Logger;
+import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import so.len.duobao.R;
-import so.len.duobao.customView.ExpandLinearLayout;
 
 /**
  * Created by Chung on 2016/8/10.
  */
-public class HistoryGiftsListViewAdapter extends BaseAdapter {
+public class HistoryGiftsListViewAdapter extends BaseExpandableListAdapter {
     private Context context;
-    private LinkedHashMap<String, List<String>> data;
-    private List<String> keyList;
+    private LayoutInflater layoutInflater;
+    private List<String> parentData;
+    private Map<String, List<String>> data;
 
-    private ExpandLinearLayout expandLinearLayout;
-
-    public HistoryGiftsListViewAdapter(Context context, LinkedHashMap<String, List<String>> data) {
+    public HistoryGiftsListViewAdapter(Context context, Map<String, List<String>> data) {
         this.context = context;
         this.data = data;
-        this.keyList = new ArrayList<>();
+        this.layoutInflater = LayoutInflater.from(context);
+        this.parentData = new ArrayList<>();
         Set<String> keys = data.keySet();
         for (String key : keys) {
-            Logger.i("HistoryGiftsListViewAdapter:"+key);
-            keyList.add(key);
+            parentData.add(key);
         }
     }
 
     @Override
-    public int getCount() {
-        return data.size();
+    public int getGroupCount() {
+        return parentData.size();
     }
 
     @Override
-    public Object getItem(int position) {
-        return data.get(position);
+    public int getChildrenCount(int groupPosition) {
+        return data.get(parentData.get(groupPosition)).size();
     }
 
     @Override
-    public long getItemId(int position) {
-        return position;
+    public Object getGroup(int groupPosition) {
+        return parentData.get(groupPosition);
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        if(convertView == null){
-            expandLinearLayout = new ExpandLinearLayout(context);
-            convertView = expandLinearLayout;
-            convertView.setTag(expandLinearLayout);
-        }else {
-            expandLinearLayout = (ExpandLinearLayout) convertView.getTag();
+    public Object getChild(int groupPosition, int childPosition) {
+        return data.get(parentData.get(groupPosition)).get(childPosition);
+    }
+
+    @Override
+    public long getGroupId(int groupPosition) {
+        return groupPosition;
+    }
+
+    @Override
+    public long getChildId(int groupPosition, int childPosition) {
+        return childPosition;
+    }
+
+    @Override
+    public boolean hasStableIds() {
+        return true;
+    }
+
+    @Override
+    public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+        ParentViewHolder parentViewHolder;
+        if (convertView == null) {
+            convertView = layoutInflater.inflate(R.layout.item_listview_historygifts_parent, null);
+            parentViewHolder = new ParentViewHolder(convertView);
+            convertView.setTag(parentViewHolder);
+        } else {
+            parentViewHolder = (ParentViewHolder) convertView.getTag();
         }
-        expandLinearLayout.setArrow(R.mipmap.top_arrow);
-        expandLinearLayout.setTitleText(keyList.get(position));
-        expandLinearLayout.addItem(data.get(keyList.get(position)));
-
-        return expandLinearLayout;
+        parentViewHolder.tvItemListviewHistorygiftsParent.setText(parentData.get(groupPosition));
+        if (isExpanded) {
+            parentViewHolder.ivItemListviewHistorygiftsParent.setImageResource(R.mipmap.up_arrow);
+        } else {
+            parentViewHolder.ivItemListviewHistorygiftsParent.setImageResource(R.mipmap.down_arrow);
+        }
+        return convertView;
     }
 
+    @Override
+    public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+        ChildViewHolder childViewHolder;
+        if (convertView == null) {
+            convertView = layoutInflater.inflate(R.layout.item_listview_historygifts_child, null);
+            childViewHolder = new ChildViewHolder(convertView);
+            convertView.setTag(childViewHolder);
+        } else {
+            childViewHolder = (ChildViewHolder) convertView.getTag();
+        }
+        childViewHolder.tvItemListviewHistorygiftsChild.setText(data.get(parentData.get(groupPosition)).get(childPosition));
+        return convertView;
+    }
+
+    @Override
+    public boolean isChildSelectable(int groupPosition, int childPosition) {
+        return true;
+    }
+
+
+    static class ParentViewHolder {
+        @BindView(R.id.iv_item_listview_historygifts_parent)
+        ImageView ivItemListviewHistorygiftsParent;
+        @BindView(R.id.tv_item_listview_historygifts_parent)
+        TextView tvItemListviewHistorygiftsParent;
+
+        ParentViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
+    }
+
+    static class ChildViewHolder {
+        @BindView(R.id.tv_item_listview_historygifts_child)
+        TextView tvItemListviewHistorygiftsChild;
+
+        ChildViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
+    }
 }

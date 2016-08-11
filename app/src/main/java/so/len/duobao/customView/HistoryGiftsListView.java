@@ -2,12 +2,12 @@ package so.len.duobao.customView;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.widget.ListView;
+import android.widget.ExpandableListView;
 
 /**
  * Created by Chung on 2016/8/10.
  */
-public class HistoryGiftsListView extends ListView {
+public class HistoryGiftsListView extends ExpandableListView {
     public HistoryGiftsListView(Context context) {
         super(context);
     }

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,9 +26,11 @@ import so.len.duobao.iView.IHistoryGiftsView;
 public class HistoryGiftsFragment extends BaseFragment implements IHistoryGiftsView {
     @BindView(R.id.hlv_historygifts_fragment_gifts_history)
     HistoryGiftsListView hlvHistorygiftsFragmentGiftsHistory;
-    private HistoryGiftsListViewAdapter adapter;
-    private LinkedHashMap<String, List<String>> data;
+
     private HistoryGiftsPresenter historyGiftsPresenter;
+    private HistoryGiftsListViewAdapter adapter;
+    private Map<String, List<String>> data;
+    private List<String> list;
 
     @Nullable
     @Override
@@ -45,33 +48,22 @@ public class HistoryGiftsFragment extends BaseFragment implements IHistoryGiftsV
 
     @Override
     public void initView() {
-        data = new LinkedHashMap<>();
-        List<String> texts;
+        data = new LinkedHashMap<String, List<String>>();
 
-        texts = new ArrayList<>();
-        texts.add("等额本息");
-        texts.add("一次性还本付息");
-        texts.add("每月还息到期还本");
-        data.put("还款方式", texts);
+        for(int i=0;i<8;i++){
+            list = new ArrayList<String>();
+            list.add("chung567115抢到了1000元代金券");
+            list.add("chung567115抢到了1000元代金券");
+            list.add("chung567115抢到了1000元代金券");
+            list.add("chung567115抢到了1000元代金券");
+            list.add("chung567115抢到了1000元代金券");
+            list.add("chung567115抢到了1000元代金券");
+            data.put("2016/08/10 19:29 " + String.valueOf(i), list);
+        }
 
-        texts = new ArrayList<>();
-        texts.add("1个月以下");
-        texts.add("1-2个月");
-        texts.add("3-4个月");
-        texts.add("5-6个月");
-        texts.add("6个月以上");
-        data.put("借款期限", texts);
-
-        texts = new ArrayList<>();
-        texts.add("5万以下");
-        texts.add("5-10万");
-        texts.add("10-30万");
-        texts.add("30-50万");
-        texts.add("50万以上");
-        data.put("借款金额", texts);
-
+        logDebug(data.toString());
         if(adapter == null){
-            adapter = new HistoryGiftsListViewAdapter(getContext(), data);
+            adapter = new HistoryGiftsListViewAdapter(getActivity(), data);
         }
         hlvHistorygiftsFragmentGiftsHistory.setAdapter(adapter);
     }

@@ -6,6 +6,7 @@
     <so.len.duobao.customView.HistoryGiftsListView
         android:id="@+id/hlv_historygifts_fragment_gifts_history"
         android:scrollbars="none"
+        android:groupIndicator="@null"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dp_10"

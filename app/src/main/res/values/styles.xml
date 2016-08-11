@@ -57,16 +57,6 @@
         <item name="android:windowIsTranslucent">true</item>
     </style>
 
-    <declare-styleable name="ExpandLinearLayout">
-        <attr name="ell_title" format="string" />
-        <attr name="ell_arrowSrc" format="reference" />
-        <attr name="ell_titleSize" format="dimension" />
-        <attr name="ell_itemTextSize" format="dimension" />
-        <attr name="ell_titleColor" format="color" />
-        <attr name="ell_itemTextColor" format="reference" />
-        <attr name="ell_itemTextBackground" format="reference" />
-    </declare-styleable>
-
     <style name="TreasureLinearProgress">
         <item name="lpd_maxLineWidth">80%</item>
         <item name="lpd_minLineWidth">10%</item>
