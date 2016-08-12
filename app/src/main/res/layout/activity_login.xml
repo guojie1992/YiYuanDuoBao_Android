@@ -15,7 +15,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_20"
         android:orientation="horizontal">
         <ImageView
             android:layout_width="wrap_content"
@@ -50,7 +50,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_20"
         android:orientation="horizontal">
         <ImageView
             android:layout_width="wrap_content"
@@ -85,7 +85,7 @@
         android:id="@+id/tv_forget_activity_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_20"
         android:layout_marginRight="@dimen/dp_10"
         android:layout_gravity="right"
         android:textSize="@dimen/dp_13"

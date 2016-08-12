@@ -285,7 +285,7 @@
                     android:id="@+id/ll_level_activity_mine"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/dp_5"
+                    android:padding="@dimen/dp_10"
                     android:orientation="horizontal"
                     android:background="@color/white">
                     <ImageView
@@ -333,7 +333,7 @@
                     android:id="@+id/ll_bank_activity_mine"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/dp_5"
+                    android:padding="@dimen/dp_10"
                     android:orientation="horizontal"
                     android:background="@color/white">
                     <ImageView
@@ -381,7 +381,7 @@
                     android:id="@+id/ll_myrecommender_activity_mine"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/dp_5"
+                    android:padding="@dimen/dp_10"
                     android:orientation="horizontal"
                     android:background="@color/white">
                     <ImageView
@@ -429,7 +429,7 @@
                     android:id="@+id/ll_myback_activity_mine"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/dp_5"
+                    android:padding="@dimen/dp_10"
                     android:orientation="horizontal"
                     android:background="@color/white">
                     <ImageView
@@ -477,7 +477,7 @@
                     android:id="@+id/ll_mytreasure_activity_mine"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/dp_5"
+                    android:padding="@dimen/dp_10"
                     android:orientation="horizontal"
                     android:background="@color/white">
                     <ImageView
@@ -525,7 +525,7 @@
                     android:id="@+id/ll_myaddr_activity_mine"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/dp_5"
+                    android:padding="@dimen/dp_10"
                     android:orientation="horizontal"
                     android:background="@color/white">
                     <ImageView
