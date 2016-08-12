@@ -45,6 +45,8 @@ public class MineActivity extends BaseActivity implements IMineView {
     TextView tvMytreasureActivityMine;
     @BindView(R.id.tv_myaddr_activity_mine)
     TextView tvMyaddrActivityMine;
+    @BindView(R.id.iv_sign_activity_mine)
+    ImageView ivSignActivityMine;
 
     private MinePresenter minePresenter;
 
@@ -73,9 +75,11 @@ public class MineActivity extends BaseActivity implements IMineView {
                 finish();
             }
         });
+        ivSignActivityMine.setImageResource(R.mipmap.my_sign);
     }
 
     @OnClick({R.id.civ_head_activity_mine,
+            R.id.ll_sign_activity_mine,
             R.id.ll_myorder_activity_mine,
             R.id.ll_myrecommend_activity_mine,
             R.id.ll_mym_activity_mine,
@@ -92,6 +96,10 @@ public class MineActivity extends BaseActivity implements IMineView {
                 Intent intent = new Intent();
                 intent.setClass(MineActivity.this, PersonalInfoActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.ll_sign_activity_mine:
+                toast("signed");
+                ivSignActivityMine.setImageResource(R.mipmap.my_signed);
                 break;
             case R.id.ll_myorder_activity_mine:
                 toast("ll_myorder_activity_mine");
