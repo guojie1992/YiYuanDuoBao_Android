@@ -45,13 +45,13 @@
                 android:textColor="@color/black"/>
         </LinearLayout>
 
-        <ImageView
+        <View
             android:id="@+id/iv_indicator_fragment_two"
             android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
-            android:src="@color/theme" />
+            android:layout_height="@dimen/dp_2"
+            android:paddingLeft="@dimen/dp_30"
+            android:paddingRight="@dimen/dp_30"
+            android:background="@color/theme"/>
     </LinearLayout>
 
     <so.len.duobao.customView.MyViewPager

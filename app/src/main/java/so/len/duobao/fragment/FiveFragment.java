@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.rey.material.widget.ProgressView;
@@ -37,7 +38,7 @@ public class FiveFragment extends BaseFragment implements IFiveView {
     @BindView(R.id.tv_history_fragment_five)
     TextView tvHistoryFragmentFive;
     @BindView(R.id.iv_indicator_fragment_five)
-    ImageView ivIndicatorFragmentFive;
+    View ivIndicatorFragmentFive;
     @BindView(R.id.mvp_goods_fragment_five)
     MyViewPager mvpGoodsFragmentFive;
     @BindView(R.id.tv_gifts_fragment_five)
@@ -52,6 +53,8 @@ public class FiveFragment extends BaseFragment implements IFiveView {
     TextView tvMyticketsFragmentFive;
     @BindView(R.id.tv_mybeans_fragment_five)
     TextView tvMybeansFragmentFive;
+    @BindView(R.id.sv_fragment_five)
+    ScrollView svFragmentFive;
 
     private FivePresenter fivePresenter;
     private int width;
@@ -86,6 +89,8 @@ public class FiveFragment extends BaseFragment implements IFiveView {
     }
 
     private void initGiftsViewPager() {
+        mvpGoodsFragmentFive.setDisplayMode(MyViewPager.DisplayMode.FRAGMENT_FIVE);
+
         Point outSize = new Point();
         getActivity().getWindowManager().getDefaultDisplay().getSize(outSize);
         width = outSize.x / 2;

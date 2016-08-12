@@ -37,7 +37,7 @@ public class TwoFragment extends BaseFragment implements ITwoView {
     @BindView(R.id.tv_m_fragment_two)
     TextView tvMFragmentTwo;
     @BindView(R.id.iv_indicator_fragment_two)
-    ImageView ivIndicatorFragmentTwo;
+    View ivIndicatorFragmentTwo;
     @BindView(R.id.mvp_goods_fragment_two)
     MyViewPager mvpGoodsFragmentTwo;
 
@@ -127,7 +127,7 @@ public class TwoFragment extends BaseFragment implements ITwoView {
 
             @Override
             public void onPageScrollStateChanged(int state) {
-                logDebug("state:" + String.valueOf(state));
+//                logDebug("state:" + String.valueOf(state));
             }
         });
     }

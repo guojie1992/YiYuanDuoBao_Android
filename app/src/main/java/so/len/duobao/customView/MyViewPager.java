@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.orhanobut.logger.Logger;
+
 
 public class MyViewPager extends ViewPager {
     private boolean isCanScroll = true;
@@ -51,7 +53,7 @@ public class MyViewPager extends ViewPager {
     }
 
     public enum DisplayMode {
-        DISPLAY_BY_FIRST_ONE, DISPLAY_BY_EVERY_ONE, DEFAULT
+        DISPLAY_BY_FIRST_ONE, DISPLAY_BY_EVERY_ONE, FRAGMENT_FIVE, DEFAULT
     }
 
 
@@ -143,9 +145,24 @@ public class MyViewPager extends ViewPager {
 //                getChildAt(0).measure(widthMeasureSpec,heightMeasureSpec);
 //                setMeasuredDimension(measureWidth(widthMeasureSpec), measureHeight(heightMeasureSpec));
 //                break;
+            case FRAGMENT_FIVE:
+                int height = 0;
+                //下面遍历所有child的高度
+                for (int i = 0; i < getChildCount(); i++) {
+                    View child = getChildAt(i);
+                    child.measure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
+                    int h = child.getMeasuredHeight();
+                    if (h > height) //采用最大的view的高度。
+                        height = h;
+                }
+                heightMeasureSpec = MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY);
+
+                super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+                break;
             case DEFAULT:
                 super.onMeasure(widthMeasureSpec, heightMeasureSpec);
                 break;
+
         }
     }
 

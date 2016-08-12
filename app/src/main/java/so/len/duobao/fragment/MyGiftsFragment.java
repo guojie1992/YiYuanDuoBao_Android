@@ -62,5 +62,7 @@ public class MyGiftsFragment extends BaseFragment implements IMyGiftsView {
 //        logInfo(myGiftsListData.toString());
         myGiftsListViewAdapter = new MyGiftsListViewAdapter(getActivity(), myGiftsListData);
         mlvMygiftsFragmentGiftsMy.setAdapter(myGiftsListViewAdapter);
+
+        mlvMygiftsFragmentGiftsMy.setFocusable(false);
     }
 }

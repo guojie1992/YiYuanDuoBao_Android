@@ -66,5 +66,7 @@ public class HistoryGiftsFragment extends BaseFragment implements IHistoryGiftsV
             adapter = new HistoryGiftsListViewAdapter(getActivity(), data);
         }
         hlvHistorygiftsFragmentGiftsHistory.setAdapter(adapter);
+
+        hlvHistorygiftsFragmentGiftsHistory.setFocusable(false);
     }
 }

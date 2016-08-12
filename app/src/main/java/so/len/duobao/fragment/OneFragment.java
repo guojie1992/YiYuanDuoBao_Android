@@ -41,8 +41,8 @@ public class OneFragment extends BaseFragment implements IOneView {
     SpeakerView svSpeakerFragmentOne;
     @BindView(R.id.tv_speaker_fragment_one)
     TextView tvSpeakerFragmentOne;
-    @BindView(R.id.srl_fragment_one)
-    SwipeRefreshLayout srlFragmentOne;
+//    @BindView(R.id.srl_fragment_one)
+//    SwipeRefreshLayout srlFragmentOne;
 
     private OnePresenter onePresenter;
     private List<ImageView> dots;
@@ -70,7 +70,7 @@ public class OneFragment extends BaseFragment implements IOneView {
     public void initView() {
         initLoopViewPager();
         initLotteryList();
-        initRefresh();
+//        initRefresh();
     }
 
     private void initLoopViewPager() {
@@ -137,20 +137,20 @@ public class OneFragment extends BaseFragment implements IOneView {
         llvLotteryFragmentOne.setAdapter(lotteryListViewAdapter);
     }
 
-    private void initRefresh() {
-        srlFragmentOne.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                toast("refresh");
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        srlFragmentOne.setRefreshing(false);
-                    }
-                }, 2000);
-            }
-        });
-    }
+//    private void initRefresh() {
+//        srlFragmentOne.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                toast("refresh");
+//                new Handler().postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        srlFragmentOne.setRefreshing(false);
+//                    }
+//                }, 2000);
+//            }
+//        });
+//    }
 
     @Override
     public void onResume() {
