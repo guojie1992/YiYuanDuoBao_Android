@@ -50,7 +50,7 @@ public class HistoryGiftsFragment extends BaseFragment implements IHistoryGiftsV
     public void initView() {
         data = new LinkedHashMap<String, List<String>>();
 
-        for(int i=0;i<8;i++){
+        for(int i=0;i<12;i++){
             list = new ArrayList<String>();
             list.add("chung567115抢到了1000元代金券");
             list.add("chung567115抢到了1000元代金券");

@@ -65,6 +65,7 @@ public class MineActivity extends BaseActivity implements IMineView {
 
     @Override
     public void initView() {
+        topMenuBarMine.setMenuTopPadding(statusHeight);
         topMenuBarMine.setTitleText("我的");
         topMenuBarMine.setBackVisibility(View.VISIBLE);
         topMenuBarMine.setBackSrc(R.mipmap.top_back);

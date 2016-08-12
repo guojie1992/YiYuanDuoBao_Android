@@ -53,7 +53,7 @@ public class MyGiftsFragment extends BaseFragment implements IMyGiftsView {
 
     private void initmyGiftsList() {
         myGiftsListData = new ArrayList<>();
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 12; i++) {
             map = new HashMap<>();
             map.put("tvMoneyItemListviewMygifts", "100元代金券");
             map.put("tvTimeItemListviewMygifts", "2016/08/09 15:31");

@@ -47,6 +47,7 @@ public class RegisterActivity extends BaseActivity implements IRegisterView {
 
     @Override
     public void initView() {
+        tmbActivityRegister.setMenuTopPadding(statusHeight);
         tmbActivityRegister.setTitleText("注册");
         tmbActivityRegister.setBackVisibility(View.VISIBLE);
         tmbActivityRegister.setBackSrc(R.mipmap.top_back);

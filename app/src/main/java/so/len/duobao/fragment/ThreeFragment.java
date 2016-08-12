@@ -1,5 +1,6 @@
 package so.len.duobao.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -12,6 +13,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import so.len.duobao.R;
+import so.len.duobao.activity.WebViewActivity;
+import so.len.duobao.api.HTML;
+import so.len.duobao.api.JS;
 import so.len.duobao.customView.SpeakerView;
 import so.len.duobao.http.Options;
 import so.len.duobao.http.VolleyHttp;
@@ -77,7 +81,11 @@ public class ThreeFragment extends BaseFragment implements IThreeView {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_point_fragment_three:
-                toast("point");
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), WebViewActivity.class);
+                intent.putExtra(JS.H5_TITLE, "test");
+                intent.putExtra(JS.H5_URL, HTML.test);
+                startActivity(intent);
                 break;
             case R.id.ll_m_fragment_three:
                 toast("M");

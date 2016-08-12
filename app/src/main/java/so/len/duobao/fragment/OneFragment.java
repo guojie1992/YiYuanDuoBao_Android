@@ -124,7 +124,7 @@ public class OneFragment extends BaseFragment implements IOneView {
         tvSpeakerFragmentOne.setSelected(true);
 
         lotteryListData = new ArrayList<>();
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 12; i++) {
             map = new HashMap<>();
             map.put("ivTitleItemListviewLottery", R.drawable.title);
             map.put("tvUsernameItemListviewLottery", "username");

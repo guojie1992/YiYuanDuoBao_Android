@@ -18,14 +18,12 @@ import butterknife.ButterKnife;
 import so.len.duobao.R;
 
 public class TopMenuBar extends LinearLayout {
-
     @BindView(R.id.back)
     ImageView back;
     @BindView(R.id.title)
     TextView title;
     @BindView(R.id.menu)
     ImageView menu;
-
 
     private OnClickListener backClickListener;
     private OnClickListener menuClickListener;

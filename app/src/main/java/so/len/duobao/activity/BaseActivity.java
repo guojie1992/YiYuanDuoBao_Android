@@ -3,9 +3,17 @@ package so.len.duobao.activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewCompat;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.orhanobut.logger.Logger;
+
+import so.len.duobao.R;
+import so.len.duobao.utils.CommonUtils;
 
 
 /**
@@ -19,12 +27,11 @@ public class BaseActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             //透明状态栏
-//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             //透明导航栏
-//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 
-//            statusHeight= CommonUtils.getStatusHeight(this);
+            statusHeight = CommonUtils.getStatusHeight(this);
         }
     }
     protected void toast(String text){

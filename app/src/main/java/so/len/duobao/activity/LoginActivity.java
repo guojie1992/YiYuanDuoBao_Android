@@ -48,6 +48,7 @@ public class LoginActivity extends BaseActivity implements ILoginView {
 
     @Override
     public void initView() {
+        tmbActivityLogin.setMenuTopPadding(statusHeight);
         tmbActivityLogin.setTitleText("登陆");
         tmbActivityLogin.setBackVisibility(View.INVISIBLE);
         tmbActivityLogin.setMenuVisibility(View.VISIBLE);

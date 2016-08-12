@@ -2,5 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <so.len.duobao.customView.TopMenuBar
+        android:id="@+id/tmb_activity_webview"
+        style="@style/topMenuBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </so.len.duobao.customView.TopMenuBar>
+
+    <FrameLayout
+        android:id="@+id/fl_webview_activity_web"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
 
 </LinearLayout>

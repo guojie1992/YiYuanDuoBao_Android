@@ -51,6 +51,7 @@ public class PersonalInfoActivity extends BaseActivity implements IPersonalInfoV
 
     @Override
     public void initView() {
+        topMenuBarPersonalInfo.setMenuTopPadding(statusHeight);
         topMenuBarPersonalInfo.setBackVisibility(View.VISIBLE);
         topMenuBarPersonalInfo.setBackSrc(R.mipmap.top_back);
         topMenuBarPersonalInfo.setMenuVisibility(View.INVISIBLE);

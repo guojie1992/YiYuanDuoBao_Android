@@ -54,7 +54,7 @@ public class FourFragment extends BaseFragment implements IFourView {
 
     private void initTreasureList() {
         treasureListData = new ArrayList<>();
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 12; i++) {
             map = new HashMap<>();
             map.put("ivTitleItemGridviewTreasure", R.drawable.iphone);
             map.put("tvTitleItemGridviewTreasure", "IPhone 6s Plus 128GB");
