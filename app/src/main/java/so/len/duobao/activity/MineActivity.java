@@ -1,5 +1,6 @@
 package so.len.duobao.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -64,7 +65,8 @@ public class MineActivity extends BaseActivity implements IMineView {
     public void initView() {
         topMenuBarMine.setTitleText("我的");
         topMenuBarMine.setBackVisibility(View.VISIBLE);
-        topMenuBarMine.setBackSrc(R.mipmap.left_arrow);
+        topMenuBarMine.setBackSrc(R.mipmap.top_back);
+        topMenuBarMine.setMenuVisibility(View.INVISIBLE);
         topMenuBarMine.setOnBackClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,9 +75,24 @@ public class MineActivity extends BaseActivity implements IMineView {
         });
     }
 
-    @OnClick({R.id.ll_myorder_activity_mine, R.id.ll_myrecommend_activity_mine, R.id.ll_mym_activity_mine, R.id.ll_mypoint_activity_mine, R.id.ll_level_activity_mine, R.id.ll_bank_activity_mine, R.id.ll_myrecommender_activity_mine, R.id.ll_myback_activity_mine, R.id.ll_mytreasure_activity_mine, R.id.ll_myaddr_activity_mine})
+    @OnClick({R.id.civ_head_activity_mine,
+            R.id.ll_myorder_activity_mine,
+            R.id.ll_myrecommend_activity_mine,
+            R.id.ll_mym_activity_mine,
+            R.id.ll_mypoint_activity_mine,
+            R.id.ll_level_activity_mine,
+            R.id.ll_bank_activity_mine,
+            R.id.ll_myrecommender_activity_mine,
+            R.id.ll_myback_activity_mine,
+            R.id.ll_mytreasure_activity_mine,
+            R.id.ll_myaddr_activity_mine})
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.civ_head_activity_mine:
+                Intent intent = new Intent();
+                intent.setClass(MineActivity.this, PersonalInfoActivity.class);
+                startActivity(intent);
+                break;
             case R.id.ll_myorder_activity_mine:
                 toast("ll_myorder_activity_mine");
                 break;

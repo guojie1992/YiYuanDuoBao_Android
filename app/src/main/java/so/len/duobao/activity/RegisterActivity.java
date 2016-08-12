@@ -48,6 +48,15 @@ public class RegisterActivity extends BaseActivity implements IRegisterView {
     @Override
     public void initView() {
         tmbActivityRegister.setTitleText("注册");
+        tmbActivityRegister.setBackVisibility(View.VISIBLE);
+        tmbActivityRegister.setBackSrc(R.mipmap.top_back);
+        tmbActivityRegister.setMenuVisibility(View.INVISIBLE);
+        tmbActivityRegister.setOnBackClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override

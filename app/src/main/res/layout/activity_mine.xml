@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/light_gray">
     <so.len.duobao.customView.TopMenuBar
@@ -61,7 +60,7 @@
                             android:layout_width="@dimen/dp_20"
                             android:layout_height="@dimen/dp_20"
                             android:layout_marginTop="@dimen/dp_50"
-                            android:src="@drawable/title"/>
+                            android:src="@mipmap/my_sign"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -174,11 +173,19 @@
                     android:layout_marginLeft="@dimen/dp_10"
                     android:src="@drawable/title"/>
             </FrameLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/gray"/>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="@dimen/dp_10"
+                android:background="@color/gray"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_10"
                 android:padding="@dimen/dp_10"
                 android:orientation="horizontal"
                 android:background="@color/white">
@@ -271,8 +278,11 @@
                         android:textColor="@color/darker_gray"/>
                 </LinearLayout>
 
-
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/gray"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -280,7 +290,10 @@
                 android:layout_marginTop="@dimen/dp_10"
                 android:orientation="vertical"
                 android:background="@color/white">
-
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/gray"/>
                 <LinearLayout
                     android:id="@+id/ll_level_activity_mine"
                     android:layout_width="match_parent"
@@ -293,7 +306,7 @@
                         android:layout_height="@dimen/dp_30"
                         android:layout_marginLeft="@dimen/dp_10"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/title"/>
+                        android:src="@mipmap/my_level"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -341,7 +354,7 @@
                         android:layout_height="@dimen/dp_30"
                         android:layout_marginLeft="@dimen/dp_10"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/title"/>
+                        android:src="@mipmap/my_bank"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -389,7 +402,7 @@
                         android:layout_height="@dimen/dp_30"
                         android:layout_marginLeft="@dimen/dp_10"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/title"/>
+                        android:src="@mipmap/my_recommender"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -437,7 +450,7 @@
                         android:layout_height="@dimen/dp_30"
                         android:layout_marginLeft="@dimen/dp_10"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/title"/>
+                        android:src="@mipmap/my_back"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -485,7 +498,7 @@
                         android:layout_height="@dimen/dp_30"
                         android:layout_marginLeft="@dimen/dp_10"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/title"/>
+                        android:src="@mipmap/my_treasure"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -533,7 +546,7 @@
                         android:layout_height="@dimen/dp_30"
                         android:layout_marginLeft="@dimen/dp_10"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/title"/>
+                        android:src="@mipmap/my_addr"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -563,7 +576,10 @@
                         android:layout_gravity="center_vertical"
                         android:src="@mipmap/right_arrow"/>
                 </LinearLayout>
-
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/gray"/>
             </LinearLayout>
 
         </LinearLayout>

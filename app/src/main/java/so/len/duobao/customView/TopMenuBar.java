@@ -23,14 +23,11 @@ public class TopMenuBar extends LinearLayout {
     ImageView back;
     @BindView(R.id.title)
     TextView title;
-    @BindView(R.id.add)
-    ImageView add;
     @BindView(R.id.menu)
     ImageView menu;
 
 
     private OnClickListener backClickListener;
-    private OnClickListener addClickListener;
     private OnClickListener menuClickListener;
     private OnClickListener textClickListener;
 
@@ -56,11 +53,9 @@ public class TopMenuBar extends LinearLayout {
             int background = typedArray.getResourceId(R.styleable.TopMenuBar_tmb_backgroundColor, 0);
 
             int backSrc = typedArray.getResourceId(R.styleable.TopMenuBar_tmb_backSrc, 0);
-            int addSrc = typedArray.getResourceId(R.styleable.TopMenuBar_tmb_addSrc, 0);
             int menuSrc = typedArray.getResourceId(R.styleable.TopMenuBar_tmb_menuSrc, 0);
 
             boolean backVisibility = typedArray.getBoolean(R.styleable.TopMenuBar_tmb_backVisibility, true);
-            boolean addVisibility = typedArray.getBoolean(R.styleable.TopMenuBar_tmb_addVisibility, true);
             boolean menuVisibility = typedArray.getBoolean(R.styleable.TopMenuBar_tmb_menuVisibility, true);
             boolean textVisibility = typedArray.getBoolean(R.styleable.TopMenuBar_tmb_textVisibility, true);
 
@@ -72,15 +67,12 @@ public class TopMenuBar extends LinearLayout {
             title.setText(text);
             title.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
             title.setTextColor(textColor);
-            add.setImageResource(addSrc);
             menu.setImageResource(menuSrc);
 
             view.setBackgroundResource(background);
 
             if (!backVisibility)
                 back.setVisibility(View.INVISIBLE);
-            if (!addVisibility)
-                add.setVisibility(View.INVISIBLE);
             if (!menuVisibility)
                 menu.setVisibility(View.INVISIBLE);
             if (!textVisibility)
@@ -91,13 +83,6 @@ public class TopMenuBar extends LinearLayout {
             public void onClick(View v) {
                 if (backClickListener != null)
                     backClickListener.onClick(v);
-            }
-        });
-        add.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (addClickListener != null)
-                    addClickListener.onClick(v);
             }
         });
         menu.setOnClickListener(new OnClickListener() {
@@ -124,10 +109,6 @@ public class TopMenuBar extends LinearLayout {
         menu.setVisibility(visibility);
     }
 
-    public void setAddVisibility(int visibility) {
-        add.setVisibility(visibility);
-    }
-
     public void setTitleVisibility(int visibility) {
         title.setVisibility(visibility);
     }
@@ -145,36 +126,6 @@ public class TopMenuBar extends LinearLayout {
     public void setBackSrc(Bitmap bitmap) {
         if (back != null)
             back.setImageBitmap(bitmap);
-    }
-
-    public void setMenuSrc(int resId) {
-        if (menu != null)
-            menu.setImageResource(resId);
-    }
-
-    public void setMenuSrc(Drawable drawable) {
-        if (menu != null)
-            menu.setImageDrawable(drawable);
-    }
-
-    public void setMenuSrc(Bitmap bitmap) {
-        if (menu != null)
-            menu.setImageBitmap(bitmap);
-    }
-
-    public void setAddSrc(int resId) {
-        if (add != null)
-            add.setImageResource(resId);
-    }
-
-    public void setAddSrc(Drawable drawable) {
-        if (add != null)
-            add.setImageDrawable(drawable);
-    }
-
-    public void setAddSrc(Bitmap bitmap) {
-        if (add != null)
-            add.setImageBitmap(bitmap);
     }
 
     public void setTitleText(String textTitle) {
@@ -196,6 +147,21 @@ public class TopMenuBar extends LinearLayout {
         title.setSelected(flag);
     }
 
+    public void setMenuSrc(int resId) {
+        if (menu != null)
+            menu.setImageResource(resId);
+    }
+
+    public void setMenuSrc(Drawable drawable) {
+        if (menu != null)
+            menu.setImageDrawable(drawable);
+    }
+
+    public void setMenuSrc(Bitmap bitmap) {
+        if (menu != null)
+            menu.setImageBitmap(bitmap);
+    }
+
     public void setOnBackClickListener(OnClickListener backClickListener) {
         this.backClickListener = backClickListener;
     }
@@ -206,10 +172,6 @@ public class TopMenuBar extends LinearLayout {
 
     public void setOnMenuClickListener(OnClickListener menuClickListener) {
         this.menuClickListener = menuClickListener;
-    }
-
-    public void setOnAddClickListener(OnClickListener addClickListener) {
-        this.addClickListener = addClickListener;
     }
 
     public void setMenuTopPadding(int padding) {

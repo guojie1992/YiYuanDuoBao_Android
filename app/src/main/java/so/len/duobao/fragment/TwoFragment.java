@@ -65,19 +65,19 @@ public class TwoFragment extends BaseFragment implements ITwoView {
 
     @Override
     public void initView() {
-        initImg();
+//        initImg();
         initGoodsViewPager();
         initGoalsGoods();
         initMGoods();
     }
 
-    private void initImg() {
+//    private void initImg() {
 //        VolleyHttp vh = VolleyHttp.getInstance();
 //        Options opt = new Options();
 //        opt.defImage(R.mipmap.ic_launcher)
 //                .errImage(R.mipmap.ic_launcher);
 //        vh.imageLoader("http://pic73.nipic.com/file/20150722/19795594_122255146861_2.jpg", ivTopFragmentTwo, null);
-    }
+//    }
 
     private void initGoodsViewPager() {
         Point outSize = new Point();

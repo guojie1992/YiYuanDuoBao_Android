@@ -55,8 +55,7 @@ public class ForgetActivity extends BaseActivity implements IForgetView {
                 toast(forgetPresenter.getServerCode());
                 break;
             case R.id.btn_activity_forget_submit:
-                Intent intent = new Intent(this, RegisterActivity.class);
-                startActivity(intent);
+                toast(forgetPresenter.doForget());
                 break;
         }
     }
@@ -65,6 +64,15 @@ public class ForgetActivity extends BaseActivity implements IForgetView {
     @Override
     public void initView() {
         tmbActivityForget.setTitleText("忘记密码");
+        tmbActivityForget.setBackVisibility(View.VISIBLE);
+        tmbActivityForget.setBackSrc(R.mipmap.top_back);
+        tmbActivityForget.setMenuVisibility(View.INVISIBLE);
+        tmbActivityForget.setOnBackClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override

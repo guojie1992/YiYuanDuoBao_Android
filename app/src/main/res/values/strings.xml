@@ -37,4 +37,7 @@
     <string name="myaddr">送货地址</string>
     <string name="sign">签到</string>
     <string name="forget">忘记密码</string>
+    <string name="head_pic">头像</string>
+    <string name="username">会员名</string>
+    <string name="id">ID号</string>
 </resources>

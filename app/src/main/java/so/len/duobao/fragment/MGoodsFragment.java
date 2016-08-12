@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import java.util.ArrayList;
@@ -54,7 +55,7 @@ public class MGoodsFragment extends BaseFragment implements IMGoodsView {
         goodsListData = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
             map = new HashMap<>();
-            map.put("ivTitleItemGridviewGoods", R.drawable.title);
+            map.put("ivTitleItemGridviewGoods", R.drawable.iphone);
             map.put("tvTitleItemGridviewGoods", "IPhone 6s Plus 128GB");
             map.put("tvPriceItemGridviewGoods", "6199M币+1000积分");
             goodsListData.add(map);
@@ -62,5 +63,11 @@ public class MGoodsFragment extends BaseFragment implements IMGoodsView {
 //        logInfo(goodsListData.toString());
         goodsGridViewAdapter = new GoodsGridViewAdapter(getActivity(), goodsListData);
         gvFragmentGoodsM.setAdapter(goodsGridViewAdapter);
+        gvFragmentGoodsM.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                toast(String.valueOf(position));
+            }
+        });
     }
 }

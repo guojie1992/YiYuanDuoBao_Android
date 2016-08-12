@@ -49,6 +49,17 @@ public class LoginActivity extends BaseActivity implements ILoginView {
     @Override
     public void initView() {
         tmbActivityLogin.setTitleText("登陆");
+        tmbActivityLogin.setBackVisibility(View.INVISIBLE);
+        tmbActivityLogin.setMenuVisibility(View.VISIBLE);
+        tmbActivityLogin.setMenuSrc(R.mipmap.top_register);
+        tmbActivityLogin.setOnMenuClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -72,10 +83,10 @@ public class LoginActivity extends BaseActivity implements ILoginView {
         Intent intent = new Intent();
         switch (view.getId()) {
             case R.id.tv_forget_activity_login:
-                intent.setClass(this, ForgetActivity.class);
+                intent.setClass(LoginActivity.this, ForgetActivity.class);
                 break;
             case R.id.btn_activity_login_submit:
-                intent.setClass(this, MainActivity.class);
+                intent.setClass(LoginActivity.this, MainActivity.class);
                 break;
         }
         startActivity(intent);

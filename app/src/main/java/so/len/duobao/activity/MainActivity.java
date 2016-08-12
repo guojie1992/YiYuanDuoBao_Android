@@ -142,9 +142,8 @@ public class MainActivity extends BaseActivity implements IMainView {
                 topMenuBar.setVisibility(View.VISIBLE);
                 topMenuBar.setTitleVisibility(View.VISIBLE);
                 topMenuBar.setBackVisibility(View.VISIBLE);
-                topMenuBar.setBackSrc(R.mipmap.my);
+                topMenuBar.setBackSrc(R.mipmap.top_mine);
                 topMenuBar.setMenuVisibility(View.INVISIBLE);
-                topMenuBar.setAddVisibility(View.INVISIBLE);
                 topMenuBar.setOnBackClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -161,7 +160,6 @@ public class MainActivity extends BaseActivity implements IMainView {
                 topMenuBar.setTitleVisibility(View.VISIBLE);
                 topMenuBar.setBackVisibility(View.INVISIBLE);
                 topMenuBar.setMenuVisibility(View.INVISIBLE);
-                topMenuBar.setAddVisibility(View.INVISIBLE);
                 break;
             case 2:
                 menuItem3.setSelected(true);
@@ -169,8 +167,14 @@ public class MainActivity extends BaseActivity implements IMainView {
                 topMenuBar.setVisibility(View.VISIBLE);
                 topMenuBar.setTitleVisibility(View.VISIBLE);
                 topMenuBar.setBackVisibility(View.INVISIBLE);
-                topMenuBar.setMenuVisibility(View.INVISIBLE);
-                topMenuBar.setAddVisibility(View.INVISIBLE);
+                topMenuBar.setMenuVisibility(View.VISIBLE);
+                topMenuBar.setMenuSrc(R.mipmap.top_gifts);
+                topMenuBar.setOnMenuClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toast("抽奖记录");
+                    }
+                });
                 break;
             case 3:
                 menuItem4.setSelected(true);
@@ -178,8 +182,14 @@ public class MainActivity extends BaseActivity implements IMainView {
                 topMenuBar.setVisibility(View.VISIBLE);
                 topMenuBar.setTitleVisibility(View.VISIBLE);
                 topMenuBar.setBackVisibility(View.INVISIBLE);
-                topMenuBar.setMenuVisibility(View.INVISIBLE);
-                topMenuBar.setAddVisibility(View.INVISIBLE);
+                topMenuBar.setMenuVisibility(View.VISIBLE);
+                topMenuBar.setMenuSrc(R.mipmap.top_treasure);
+                topMenuBar.setOnMenuClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toast("夺宝记录");
+                    }
+                });
                 break;
             case 4:
                 menuItem5.setSelected(true);
@@ -188,7 +198,6 @@ public class MainActivity extends BaseActivity implements IMainView {
                 topMenuBar.setTitleVisibility(View.VISIBLE);
                 topMenuBar.setBackVisibility(View.INVISIBLE);
                 topMenuBar.setMenuVisibility(View.INVISIBLE);
-                topMenuBar.setAddVisibility(View.INVISIBLE);
                 break;
         }
     }

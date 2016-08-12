@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import java.util.ArrayList;
@@ -55,7 +56,7 @@ public class FourFragment extends BaseFragment implements IFourView {
         treasureListData = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
             map = new HashMap<>();
-            map.put("ivTitleItemGridviewTreasure", R.drawable.title);
+            map.put("ivTitleItemGridviewTreasure", R.drawable.iphone);
             map.put("tvTitleItemGridviewTreasure", "IPhone 6s Plus 128GB");
             map.put("pvProgressItemGridviewTreasure", 0.8);
             map.put("tvAllItemGridviewTreasure", "总需:2222");
@@ -65,6 +66,12 @@ public class FourFragment extends BaseFragment implements IFourView {
 //        logInfo(treasureListData.toString());
         treasureGridViewAdapter = new TreasureGridViewAdapter(getActivity(), treasureListData);
         gvTreasureFragmentFour.setAdapter(treasureGridViewAdapter);
+        gvTreasureFragmentFour.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                toast(String.valueOf(position));
+            }
+        });
     }
 
 }
