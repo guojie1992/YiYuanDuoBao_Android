@@ -47,8 +47,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@drawable/shape_iosactionsheetdialog_choose_unpressed">
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btn_neg"
@@ -56,7 +55,7 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:background="@null"
+            android:background="@drawable/selector_iosalertdialog_left"
             android:textColor="@color/skyblue"
             android:textSize="15sp" />
 
@@ -72,7 +71,7 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:background="@null"
+            android:background="@drawable/selector_iosalertdialog_right"
             android:textColor="@color/skyblue"
             android:textSize="15sp"/>
     </LinearLayout>
