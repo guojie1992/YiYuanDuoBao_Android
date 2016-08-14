@@ -32,6 +32,7 @@
         <activity android:name=".activity.WebViewActivity" />
         <activity android:name=".activity.MineActivity"/>
         <activity android:name=".activity.PersonalInfoActivity"/>
+        <activity android:name=".activity.ChangeUsernameActivity"/>
 
 
     </application>

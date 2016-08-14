@@ -1,5 +1,6 @@
 package so.len.duobao.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -70,7 +71,9 @@ public class PersonalInfoActivity extends BaseActivity implements IPersonalInfoV
                 toast("ll_head_pic_activity_personal_info");
                 break;
             case R.id.ll_username_activity_personal_info:
-                toast("ll_username_activity_personal_info");
+                Intent intent = new Intent();
+                intent.setClass(PersonalInfoActivity.this, ChangeUsernameActivity.class);
+                startActivity(intent);
                 break;
             case R.id.ll_id_activity_personal_info:
                 toast("ll_id_activity_personal_info");
