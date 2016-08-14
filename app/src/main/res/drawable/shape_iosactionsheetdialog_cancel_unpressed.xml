@@ -9,5 +9,5 @@
         android:bottomRightRadius="10dp"/>
     <!-- 填充 -->
     <solid
-        android:color="#FAFAFA"/>
+        android:color="@color/white"/>
 </shape>

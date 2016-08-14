@@ -10,7 +10,7 @@
     android:layout_height="wrap_content"
     android:padding="@dimen/dp_10"
     android:orientation="vertical"
-    android:background="@drawable/shape_iosactionsheetdialog_take">
+    android:background="@drawable/shape_iosactionsheetdialog_take_unpressed">
     <TextView
         android:id="@+id/txt_title"
         android:layout_width="match_parent"
@@ -48,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@drawable/shape_iosactionsheetdialog_choose">
+        android:background="@drawable/shape_iosactionsheetdialog_choose_unpressed">
 
         <Button
             android:id="@+id/btn_neg"
