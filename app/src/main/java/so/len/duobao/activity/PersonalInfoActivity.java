@@ -12,6 +12,7 @@ import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 import so.len.duobao.R;
 import so.len.duobao.customView.TopMenuBar;
+import so.len.duobao.customView.iOSActionSheetDialog;
 import so.len.duobao.iPresenter.PersonalInfoPresenter;
 import so.len.duobao.iView.IPersonalInfoView;
 
@@ -64,19 +65,20 @@ public class PersonalInfoActivity extends BaseActivity implements IPersonalInfoV
         });
     }
 
-    @OnClick({R.id.ll_head_pic_activity_personal_info, R.id.ll_username_activity_personal_info, R.id.ll_id_activity_personal_info})
+    @OnClick({R.id.ll_head_pic_activity_personal_info, R.id.ll_username_activity_personal_info})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_head_pic_activity_personal_info:
-                toast("ll_head_pic_activity_personal_info");
+                iOSActionSheetDialog dialog = new iOSActionSheetDialog(PersonalInfoActivity.this);
+                dialog.builder()
+                        .setCancelable(true)
+                        .setCanceledOnTouchOutside(true)
+                        .show();
                 break;
             case R.id.ll_username_activity_personal_info:
                 Intent intent = new Intent();
                 intent.setClass(PersonalInfoActivity.this, ChangeUsernameActivity.class);
                 startActivity(intent);
-                break;
-            case R.id.ll_id_activity_personal_info:
-                toast("ll_id_activity_personal_info");
                 break;
         }
     }

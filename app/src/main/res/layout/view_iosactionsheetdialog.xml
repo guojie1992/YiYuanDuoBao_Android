@@ -9,10 +9,10 @@
     android:paddingRight="10dp">
 
     <Button
-        android:id="@+id/pop_btn_take_photo"
+        android:id="@+id/btn_take_photo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_popupwindow_take"
+        android:background="@drawable/shape_iosactionsheetdialog_take"
         android:padding="15dp"
         android:text="拍  照"
         android:textColor="@color/skyblue"
@@ -21,24 +21,24 @@
     <View
         android:layout_width="fill_parent"
         android:layout_height="1px"
-        android:background="@color/darker_gray" />
+        android:background="@color/gray" />
 
     <Button
-        android:id="@+id/pop_btn_choose_photo"
+        android:id="@+id/btn_choose_photo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_popupwindow_choose"
+        android:background="@drawable/shape_iosactionsheetdialog_choose"
         android:padding="15dp"
         android:text="从相册选取"
         android:textColor="@color/skyblue"
         android:textSize="15sp" />
 
     <Button
-        android:id="@+id/pop_btn_cancel"
+        android:id="@+id/btn_cancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:background="@drawable/shape_popupwindow"
+        android:background="@drawable/shape_iosactionsheetdialog_cancel"
         android:padding="15dp"
         android:text="取  消"
         android:textColor="@color/skyblue"

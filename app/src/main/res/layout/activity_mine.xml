@@ -331,7 +331,7 @@
                         android:textColor="@color/darker_gray"
                         android:textSize="@dimen/dp_13"/>
                     <ImageView
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/dp_20"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:src="@mipmap/right_arrow"/>
@@ -379,7 +379,7 @@
                         android:textColor="@color/darker_gray"
                         android:textSize="@dimen/dp_13"/>
                     <ImageView
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/dp_20"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:src="@mipmap/right_arrow"/>
@@ -427,7 +427,7 @@
                         android:textColor="@color/darker_gray"
                         android:textSize="@dimen/dp_13"/>
                     <ImageView
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/dp_20"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:src="@mipmap/right_arrow"/>
@@ -475,7 +475,7 @@
                         android:textColor="@color/darker_gray"
                         android:textSize="@dimen/dp_13"/>
                     <ImageView
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/dp_20"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:src="@mipmap/right_arrow"/>
@@ -523,7 +523,7 @@
                         android:textColor="@color/darker_gray"
                         android:textSize="@dimen/dp_13"/>
                     <ImageView
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/dp_20"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:src="@mipmap/right_arrow"/>
@@ -571,7 +571,7 @@
                         android:textColor="@color/darker_gray"
                         android:textSize="@dimen/dp_13"/>
                     <ImageView
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/dp_20"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:src="@mipmap/right_arrow"/>

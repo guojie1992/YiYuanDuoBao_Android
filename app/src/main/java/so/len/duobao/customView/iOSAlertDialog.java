@@ -1,4 +1,4 @@
-package so.len.duobao.utils;
+package so.len.duobao.customView;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -14,7 +14,6 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
 import so.len.duobao.R;
-
 
 public class iOSAlertDialog {
     private Context context;
@@ -160,7 +159,7 @@ public class iOSAlertDialog {
         if (!showPosBtn && !showNegBtn) {
             btn_pos.setText("确定");
             btn_pos.setVisibility(View.VISIBLE);
-//			btn_pos.setBackgroundResource(R.drawable.alertdialog_single_selector);
+//            btn_pos.setBackgroundResource(R.drawable.alertdialog_single_selector);
             btn_pos.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -171,20 +170,20 @@ public class iOSAlertDialog {
 
         if (showPosBtn && showNegBtn) {
             btn_pos.setVisibility(View.VISIBLE);
-//			btn_pos.setBackgroundResource(R.drawable.alertdialog_right_selector);
+//            btn_pos.setBackgroundResource(R.drawable.alertdialog_right_selector);
             btn_neg.setVisibility(View.VISIBLE);
-//			btn_neg.setBackgroundResource(R.drawable.alertdialog_left_selector);
+//            btn_neg.setBackgroundResource(R.drawable.alertdialog_left_selector);
             img_line.setVisibility(View.VISIBLE);
         }
 
         if (showPosBtn && !showNegBtn) {
             btn_pos.setVisibility(View.VISIBLE);
-//			btn_pos.setBackgroundResource(R.drawable.alertdialog_single_selector);
+//            btn_pos.setBackgroundResource(R.drawable.alertdialog_single_selector);
         }
 
         if (!showPosBtn && showNegBtn) {
             btn_neg.setVisibility(View.VISIBLE);
-//			btn_neg.setBackgroundResource(R.drawable.alertdialog_single_selector);
+//            btn_neg.setBackgroundResource(R.drawable.alertdialog_single_selector);
         }
     }
 
