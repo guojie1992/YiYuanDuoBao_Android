@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white">
 
     <so.len.duobao.customView.TopMenuBar
         android:id="@+id/tmb_activity_forget"
@@ -70,8 +71,8 @@
                 android:layout_alignParentRight="true"
                 android:text="@string/get_code"
                 android:textSize="@dimen/dp_12"
-                android:textColor="@color/theme"
-                android:background="@drawable/shape_btn"/>
+                android:textColor="@drawable/selector_btn_text"
+                android:background="@drawable/selector_btn"/>
             <EditText
                 android:id="@+id/et_activity_forget_code"
                 android:layout_toLeftOf="@id/btn_activity_forget_getcode"
@@ -175,8 +176,8 @@
         android:layout_marginLeft="@dimen/dp_10"
         android:layout_marginRight="@dimen/dp_10"
         android:text="@string/confirm"
-        android:textColor="@color/theme"
+        android:textColor="@drawable/selector_btn_text"
         android:textSize="@dimen/dp_18"
-        android:background="@drawable/shape_btn"/>
+        android:background="@drawable/selector_btn"/>
 
 </LinearLayout>

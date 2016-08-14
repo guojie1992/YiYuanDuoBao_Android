@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white">
 
     <so.len.duobao.customView.TopMenuBar
         android:id="@+id/tmb_activity_login"
@@ -98,9 +99,9 @@
         android:layout_marginTop="@dimen/dp_30"
         android:layout_marginLeft="@dimen/dp_10"
         android:layout_marginRight="@dimen/dp_10"
-        android:textColor="@color/theme"
+        android:textColor="@drawable/selector_btn_text"
         android:textSize="@dimen/dp_18"
-        android:background="@drawable/shape_btn"
+        android:background="@drawable/selector_btn"
         android:text="@string/login"/>
 
 </LinearLayout>
