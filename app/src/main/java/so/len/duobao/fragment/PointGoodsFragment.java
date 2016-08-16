@@ -1,5 +1,6 @@
 package so.len.duobao.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -16,6 +17,9 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import so.len.duobao.R;
+import so.len.duobao.activity.WebViewActivity;
+import so.len.duobao.api.HTML;
+import so.len.duobao.api.JS;
 import so.len.duobao.customAdapter.GoodsGridViewAdapter;
 import so.len.duobao.iPresenter.PointsGoodsPresenter;
 import so.len.duobao.iView.IPointsGoodsView;
@@ -66,7 +70,11 @@ public class PointGoodsFragment extends BaseFragment implements IPointsGoodsView
         gvFragmentGoodsPoint.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                toast(String.valueOf(position));
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), WebViewActivity.class);
+                intent.putExtra(JS.H5_TITLE, "商品");
+                intent.putExtra(JS.H5_URL, HTML.SHOP);
+                startActivity(intent);
             }
         });
     }

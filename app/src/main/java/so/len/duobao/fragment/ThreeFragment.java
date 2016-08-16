@@ -87,11 +87,7 @@ public class ThreeFragment extends BaseFragment implements IThreeView {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_point_fragment_three:
-                Intent intent = new Intent();
-                intent.setClass(getActivity(), WebViewActivity.class);
-                intent.putExtra(JS.H5_TITLE, "test");
-                intent.putExtra(JS.H5_URL, HTML.test);
-                startActivity(intent);
+                toast("point");
                 break;
             case R.id.ll_m_fragment_three:
                 new iOSAlertDialog(getActivity()).builder()

@@ -11,6 +11,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 import so.len.duobao.R;
+import so.len.duobao.api.HTML;
+import so.len.duobao.api.JS;
 import so.len.duobao.customView.TopMenuBar;
 import so.len.duobao.iPresenter.MinePresenter;
 import so.len.duobao.iView.IMineView;
@@ -92,46 +94,69 @@ public class MineActivity extends BaseActivity implements IMineView {
             R.id.ll_mytreasure_activity_mine,
             R.id.ll_myaddr_activity_mine})
     public void onClick(View view) {
+        Intent intent = new Intent();
         switch (view.getId()) {
             case R.id.civ_head_activity_mine:
-                Intent intent = new Intent();
                 intent.setClass(MineActivity.this, PersonalInfoActivity.class);
-                startActivity(intent);
+
                 break;
             case R.id.ll_sign_activity_mine:
-                toast("signed");
+                intent.setClass(MineActivity.this, WebViewActivity.class);
+                intent.putExtra(JS.H5_TITLE, "签到");
+                intent.putExtra(JS.H5_URL, HTML.SIGN);
                 ivSignActivityMine.setImageResource(R.mipmap.my_signed);
                 break;
             case R.id.ll_myorder_activity_mine:
-                toast("ll_myorder_activity_mine");
+                intent.setClass(MineActivity.this, WebViewActivity.class);
+                intent.putExtra(JS.H5_TITLE, "我的订单");
+                intent.putExtra(JS.H5_URL, HTML.MY_ORDER);
                 break;
             case R.id.ll_myrecommend_activity_mine:
-                toast("ll_myrecommend_activity_mine");
+                intent.setClass(MineActivity.this, WebViewActivity.class);
+                intent.putExtra(JS.H5_TITLE, "我推荐的人");
+                intent.putExtra(JS.H5_URL, HTML.MY_RECOMMEND);
                 break;
             case R.id.ll_mym_activity_mine:
-                toast("ll_mym_activity_mine");
+                intent.setClass(MineActivity.this, WebViewActivity.class);
+                intent.putExtra(JS.H5_TITLE, "我的M币");
+                intent.putExtra(JS.H5_URL, HTML.MY_M);
                 break;
             case R.id.ll_mypoint_activity_mine:
-                toast("ll_mypoint_activity_mine");
+                intent.setClass(MineActivity.this, WebViewActivity.class);
+                intent.putExtra(JS.H5_TITLE, "我的积分");
+                intent.putExtra(JS.H5_URL, HTML.MY_POINT);
                 break;
             case R.id.ll_level_activity_mine:
-                toast("ll_level_activity_mine");
+                intent.setClass(MineActivity.this, WebViewActivity.class);
+                intent.putExtra(JS.H5_TITLE, "会员等级");
+                intent.putExtra(JS.H5_URL, HTML.MY_LEVEL);
                 break;
             case R.id.ll_bank_activity_mine:
-                toast("ll_bank_activity_mine");
+                intent.setClass(MineActivity.this, WebViewActivity.class);
+                intent.putExtra(JS.H5_TITLE, "我的银行卡");
+                intent.putExtra(JS.H5_URL, HTML.MY_CARD);
                 break;
             case R.id.ll_myrecommender_activity_mine:
-                toast("ll_myrecommender_activity_mine");
+                intent.setClass(MineActivity.this, WebViewActivity.class);
+                intent.putExtra(JS.H5_TITLE, "我的推荐人");
+                intent.putExtra(JS.H5_URL, HTML.MY_RECOMMENDER_CAN_CAHNGE);//可变
                 break;
             case R.id.ll_myback_activity_mine:
-                toast("ll_myback_activity_mine");
+                intent.setClass(MineActivity.this, WebViewActivity.class);
+                intent.putExtra(JS.H5_TITLE, "我的返还");
+                intent.putExtra(JS.H5_URL, HTML.MY_BACK);
                 break;
             case R.id.ll_mytreasure_activity_mine:
-                toast("ll_mytreasure_activity_mine");
+                intent.setClass(MineActivity.this, WebViewActivity.class);
+                intent.putExtra(JS.H5_TITLE, "我的夺宝");
+                intent.putExtra(JS.H5_URL, HTML.MY_TREASURE);
                 break;
             case R.id.ll_myaddr_activity_mine:
-                toast("ll_myaddr_activity_mine");
+                intent.setClass(MineActivity.this, WebViewActivity.class);
+                intent.putExtra(JS.H5_TITLE, "送货地址");
+                intent.putExtra(JS.H5_URL, HTML.MY_ADDR);
                 break;
         }
+        startActivity(intent);
     }
 }
