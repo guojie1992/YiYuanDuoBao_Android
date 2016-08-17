@@ -126,8 +126,9 @@ public class JS {
     public void backToMall(){
         Intent intent = new Intent();
         intent.setClass(context, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         activity.startActivity(intent);
-//        activity.finish();
     }
 
     /**
@@ -137,8 +138,8 @@ public class JS {
     public void backToIndex(){
         Intent intent = new Intent();
         intent.setClass(context, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         activity.startActivity(intent);
-//        activity.finish();
     }
 
 }
