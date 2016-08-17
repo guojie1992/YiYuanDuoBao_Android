@@ -12,6 +12,7 @@ import android.webkit.JavascriptInterface;
 import android.widget.Toast;
 
 import so.len.duobao.R;
+import so.len.duobao.activity.MainActivity;
 import so.len.duobao.activity.WebViewActivity;
 import so.len.duobao.database.Config;
 
@@ -118,5 +119,26 @@ public class JS {
         context.startActivity(intent);
     }
 
+    /**
+     * 返回商城
+     */
+    @JavascriptInterface
+    public void backToMall(){
+        Intent intent = new Intent();
+        intent.setClass(context, MainActivity.class);
+        activity.startActivity(intent);
+//        activity.finish();
+    }
+
+    /**
+     * 返回首页
+     */
+    @JavascriptInterface
+    public void backToIndex(){
+        Intent intent = new Intent();
+        intent.setClass(context, MainActivity.class);
+        activity.startActivity(intent);
+//        activity.finish();
+    }
 
 }

@@ -152,10 +152,7 @@ public class MineActivity extends BaseActivity implements IMineView {
                 intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.add_card);
                 break;
             case R.id.ll_myrecommender_activity_mine:
-                intent.setClass(MineActivity.this, WebViewActivity.class);
-                intent.putExtra(JS.H5_TITLE, "我的推荐人");
-                intent.putExtra(JS.H5_URL, HTML.MY_RECOMMENDER_CAN_CAHNGE);//可变
-                intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.save);
+                intent.setClass(MineActivity.this, ChangeRecommenderActivity.class);
                 break;
             case R.id.ll_myback_activity_mine:
                 intent.setClass(MineActivity.this, WebViewActivity.class);

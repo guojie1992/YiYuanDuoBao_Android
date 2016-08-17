@@ -44,8 +44,6 @@ public class HTML {
     public static final String MY_POINT = BEFORE + "My/score.html";
     public static final String MY_LEVEL = BEFORE + "My/memberRank.html";
     public static final String MY_CARD = BEFORE + "My/bankCard.html";
-    public static final String MY_RECOMMENDER_CANNOT_CHANGE = BEFORE + "My/refereeNoChange.html";
-    public static final String MY_RECOMMENDER_CAN_CAHNGE = BEFORE + "My/referee.html";
     public static final String MY_ADDR = BEFORE + "My/shippingAddress.html";
     public static final String MY_BACK = BEFORE + "My/remission.html";
     public static final String MY_TREASURE = BEFORE + "My/indianaRecords.html";

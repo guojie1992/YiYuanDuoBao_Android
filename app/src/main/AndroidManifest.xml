@@ -34,6 +34,7 @@
         <activity android:name=".activity.PersonalInfoActivity"/>
         <activity android:name=".activity.ChangeUsernameActivity"/>
         <activity android:name=".activity.ChangePasswordActivity"/>
+        <activity android:name=".activity.ChangeRecommenderActivity"/>
         <activity android:name=".activity.SettingsActivity"/>
         <activity android:name=".activity.AddCardActivity"/>
         <activity android:name=".activity.AddAddrActivity"/>

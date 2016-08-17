@@ -61,4 +61,6 @@
     <string name="input_district">请输入所在地区</string>
     <string name="addr_detail">详细地址</string>
     <string name="input_detail">请输入详细地址</string>
+    <string name="input_recommender">请输入推荐人ID</string>
+    <string name="change_recommender_tips">注意:在购买会员后，无法再修改您的推荐人</string>
 </resources>

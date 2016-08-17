@@ -155,28 +155,42 @@ public class FiveFragment extends BaseFragment implements IFiveView {
 
     }
 
-    @OnClick({R.id.ll_goods_fragment_five, R.id.ll_tickets_fragment_five, R.id.ll_beans_fragment_five})
+    @OnClick({
+            R.id.btn_go_fragment_five,
+            R.id.ll_goods_fragment_five,
+            R.id.ll_tickets_fragment_five,
+            R.id.ll_beans_fragment_five
+    })
     public void onClick(View view) {
-        Intent intent = new Intent();
-        intent.setClass(getActivity(), WebViewActivity.class);
         switch (view.getId()) {
+            case R.id.btn_go_fragment_five:
+                toast("go");
+                break;
             case R.id.ll_goods_fragment_five:
-                intent.putExtra(JS.H5_TITLE, "我的商品");
-                intent.putExtra(JS.H5_URL, HTML.GIFT_GOODS);
-                intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
+                Intent intent1 = new Intent();
+                intent1.setClass(getActivity(), WebViewActivity.class);
+                intent1.putExtra(JS.H5_TITLE, "我的商品");
+                intent1.putExtra(JS.H5_URL, HTML.GIFT_GOODS);
+                intent1.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
+                startActivity(intent1);
                 break;
             case R.id.ll_tickets_fragment_five:
-                intent.putExtra(JS.H5_TITLE, "我的代金券");
-                intent.putExtra(JS.H5_URL, HTML.GIFT_TICKETS);
-                intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
+                Intent intent2 = new Intent();
+                intent2.setClass(getActivity(), WebViewActivity.class);
+                intent2.putExtra(JS.H5_TITLE, "我的代金券");
+                intent2.putExtra(JS.H5_URL, HTML.GIFT_TICKETS);
+                intent2.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
+                startActivity(intent2);
                 break;
             case R.id.ll_beans_fragment_five:
-                intent.putExtra(JS.H5_TITLE, "我的欢乐豆");
-                intent.putExtra(JS.H5_URL, HTML.GIFT_BEANS);
-                intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
+                Intent intent3 = new Intent();
+                intent3.setClass(getActivity(), WebViewActivity.class);
+                intent3.putExtra(JS.H5_TITLE, "我的欢乐豆");
+                intent3.putExtra(JS.H5_URL, HTML.GIFT_BEANS);
+                intent3.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
+                startActivity(intent3);
                 break;
         }
-        startActivity(intent);
     }
 
 }
