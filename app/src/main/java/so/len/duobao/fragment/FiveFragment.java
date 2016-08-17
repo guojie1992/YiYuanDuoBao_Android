@@ -31,8 +31,6 @@ import so.len.duobao.iView.IFiveView;
  * Created by Chung on 2016/8/8.
  */
 public class FiveFragment extends BaseFragment implements IFiveView {
-    @BindView(R.id.iv_top_fragment_five)
-    ImageView ivTopFragmentFive;
     @BindView(R.id.tv_my_fragment_five)
     TextView tvMyFragmentFive;
     @BindView(R.id.tv_history_fragment_five)
@@ -55,6 +53,8 @@ public class FiveFragment extends BaseFragment implements IFiveView {
     TextView tvMybeansFragmentFive;
     @BindView(R.id.sv_fragment_five)
     ScrollView svFragmentFive;
+    @BindView(R.id.btn_go_fragment_five)
+    ImageView btnGoFragmentFive;
 
     private FivePresenter fivePresenter;
     private int width;
@@ -151,9 +151,12 @@ public class FiveFragment extends BaseFragment implements IFiveView {
 
     }
 
-    @OnClick({R.id.tv_my_fragment_five, R.id.tv_history_fragment_five})
+    @OnClick({R.id.btn_go_fragment_five, R.id.tv_my_fragment_five, R.id.tv_history_fragment_five})
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.btn_go_fragment_five:
+                toast("go");
+                break;
             case R.id.tv_my_fragment_five:
                 mvpGoodsFragmentFive.setCurrentItem(0);
                 break;

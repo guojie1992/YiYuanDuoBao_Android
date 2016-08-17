@@ -39,6 +39,7 @@ public class JS {
         Intent intent = new Intent(context, WebViewActivity.class);
         intent.putExtra(H5_URL, url);
         intent.putExtra(H5_TITLE, title);
+        intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
         context.startActivity(intent);
     }
 

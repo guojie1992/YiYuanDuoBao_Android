@@ -14,12 +14,18 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/iv_top_fragment_five"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_100"
-            android:scaleType="fitXY"
-            android:src="@drawable/title" />
+            android:background="@mipmap/five_top">
+            <ImageView
+                android:id="@+id/btn_go_fragment_five"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/five_btn_unfinish"/>
+        </RelativeLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -74,6 +74,7 @@ public class MGoodsFragment extends BaseFragment implements IMGoodsView {
                 intent.setClass(getActivity(), WebViewActivity.class);
                 intent.putExtra(JS.H5_TITLE, "商品");
                 intent.putExtra(JS.H5_URL, HTML.SHOP);
+                intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
                 startActivity(intent);
             }
         });
