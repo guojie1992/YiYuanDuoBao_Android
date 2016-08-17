@@ -1,5 +1,6 @@
 package so.len.duobao.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -16,6 +17,9 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import so.len.duobao.R;
+import so.len.duobao.activity.WebViewActivity;
+import so.len.duobao.api.HTML;
+import so.len.duobao.api.JS;
 import so.len.duobao.customAdapter.TreasureGridViewAdapter;
 import so.len.duobao.iPresenter.FourPresenter;
 import so.len.duobao.iView.IFourView;
@@ -69,7 +73,12 @@ public class FourFragment extends BaseFragment implements IFourView {
         gvTreasureFragmentFour.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                toast(String.valueOf(position));
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), WebViewActivity.class);
+                intent.putExtra(JS.H5_TITLE, "一元夺宝");
+                intent.putExtra(JS.H5_URL, HTML.TREASURE);
+                intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
+                startActivity(intent);
             }
         });
     }

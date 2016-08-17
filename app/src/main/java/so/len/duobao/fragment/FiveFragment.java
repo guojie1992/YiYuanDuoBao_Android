@@ -1,5 +1,6 @@
 package so.len.duobao.fragment;
 
+import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -22,6 +23,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import so.len.duobao.R;
+import so.len.duobao.activity.WebViewActivity;
+import so.len.duobao.api.HTML;
+import so.len.duobao.api.JS;
 import so.len.duobao.customAdapter.FragmentViewPagerAdapter;
 import so.len.duobao.customView.MyViewPager;
 import so.len.duobao.iPresenter.FivePresenter;
@@ -151,18 +155,28 @@ public class FiveFragment extends BaseFragment implements IFiveView {
 
     }
 
-    @OnClick({R.id.btn_go_fragment_five, R.id.tv_my_fragment_five, R.id.tv_history_fragment_five})
+    @OnClick({R.id.ll_goods_fragment_five, R.id.ll_tickets_fragment_five, R.id.ll_beans_fragment_five})
     public void onClick(View view) {
+        Intent intent = new Intent();
+        intent.setClass(getActivity(), WebViewActivity.class);
         switch (view.getId()) {
-            case R.id.btn_go_fragment_five:
-                toast("go");
+            case R.id.ll_goods_fragment_five:
+                intent.putExtra(JS.H5_TITLE, "我的商品");
+                intent.putExtra(JS.H5_URL, HTML.GIFT_GOODS);
+                intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
                 break;
-            case R.id.tv_my_fragment_five:
-                mvpGoodsFragmentFive.setCurrentItem(0);
+            case R.id.ll_tickets_fragment_five:
+                intent.putExtra(JS.H5_TITLE, "我的代金券");
+                intent.putExtra(JS.H5_URL, HTML.GIFT_TICKETS);
+                intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
                 break;
-            case R.id.tv_history_fragment_five:
-                mvpGoodsFragmentFive.setCurrentItem(1);
+            case R.id.ll_beans_fragment_five:
+                intent.putExtra(JS.H5_TITLE, "我的欢乐豆");
+                intent.putExtra(JS.H5_URL, HTML.GIFT_BEANS);
+                intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
                 break;
         }
+        startActivity(intent);
     }
+
 }

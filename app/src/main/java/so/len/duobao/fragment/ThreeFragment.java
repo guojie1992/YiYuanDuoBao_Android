@@ -85,28 +85,36 @@ public class ThreeFragment extends BaseFragment implements IThreeView {
 
     @OnClick({R.id.ll_point_fragment_three, R.id.ll_m_fragment_three})
     public void onClick(View view) {
+        Intent intent = new Intent();
+        intent.setClass(getActivity(), WebViewActivity.class);
         switch (view.getId()) {
             case R.id.ll_point_fragment_three:
-                toast("point");
+                intent.putExtra(JS.H5_TITLE, "积分抽奖");
+                intent.putExtra(JS.H5_URL, HTML.LOTTERY_POINT);
+                intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
                 break;
             case R.id.ll_m_fragment_three:
-                new iOSAlertDialog(getActivity()).builder()
-                        .setTitle("温馨提示")
-                        .setMsg("您确定要注销登录吗?")
-                        .setCancelable(false)
-                        .setPositiveButton("确认", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                            }
-                        })
-                        .setNegativeButton("取消", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                            }
-                        }).show();
+                intent.putExtra(JS.H5_TITLE, "M币+积分抽奖");
+                intent.putExtra(JS.H5_URL, HTML.LOTTERY_M);
+                intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
+//                new iOSAlertDialog(getActivity()).builder()
+//                        .setTitle("温馨提示")
+//                        .setMsg("您确定要注销登录吗?")
+//                        .setCancelable(false)
+//                        .setPositiveButton("确认", new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View v) {
+//                            }
+//                        })
+//                        .setNegativeButton("取消", new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View v) {
+//                            }
+//                        }).show();
 
                 break;
         }
+        startActivity(intent);
     }
 
     @Override

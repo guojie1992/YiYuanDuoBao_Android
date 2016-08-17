@@ -93,10 +93,10 @@ public class WebViewActivity extends WebBaseActivity implements IWebView {
                     @Override
                     public void onClick(View v) {
                         Intent intent1 = new Intent();
-                        intent1.setClass(WebViewActivity.this, WebViewActivity.class);
-                        intent1.putExtra(JS.H5_TITLE, "添加银行卡");
-                        intent1.putExtra(JS.H5_URL, HTML.MY_ADD_CARD);
-                        intent1.putExtra("TOP_RIGHT", TOP_RIGHT.save);
+                        intent1.setClass(WebViewActivity.this, AddCardActivity.class);
+//                        intent1.putExtra(JS.H5_TITLE, "添加银行卡");
+//                        intent1.putExtra(JS.H5_URL, HTML.MY_ADD_CARD);
+//                        intent1.putExtra("TOP_RIGHT", TOP_RIGHT.save);
                         startActivity(intent1);
                     }
                 });
@@ -108,10 +108,10 @@ public class WebViewActivity extends WebBaseActivity implements IWebView {
                     @Override
                     public void onClick(View v) {
                         Intent intent2 = new Intent();
-                        intent2.setClass(WebViewActivity.this, WebViewActivity.class);
-                        intent2.putExtra(JS.H5_TITLE, "添加地址");
-                        intent2.putExtra(JS.H5_URL, HTML.MY_ADD_ADDR);
-                        intent2.putExtra("TOP_RIGHT", TOP_RIGHT.save);
+                        intent2.setClass(WebViewActivity.this, AddAddrActivity.class);
+//                        intent2.putExtra(JS.H5_TITLE, "添加地址");
+//                        intent2.putExtra(JS.H5_URL, HTML.MY_ADD_ADDR);
+//                        intent2.putExtra("TOP_RIGHT", TOP_RIGHT.save);
                         startActivity(intent2);
                     }
                 });

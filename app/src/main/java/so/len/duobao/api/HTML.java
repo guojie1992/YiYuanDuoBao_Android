@@ -12,9 +12,26 @@ public class HTML {
      * 商城
      */
     public static final String SHOP = BEFORE + "Mall/productDetail.html";
-    public static final String CART = BEFORE + "Mall/shoppingCart.html";
-    public static final String ORDER = BEFORE + "Mall/comfirmOrder.html";
-    public static final String ORDER_SUCCEED = BEFORE + "Mall/orderSuccess.html";
+
+    /**
+     * 抽奖
+     */
+    public static final String LOTTERY_RECORD = BEFORE + "Lottery/lotRecord.html";
+    public static final String LOTTERY_POINT = BEFORE + "Lottery/dialScore.html";
+    public static final String LOTTERY_M = BEFORE + "Lottery/dialScoreAndM.html";
+
+    /**
+     * 夺宝
+     */
+    public static final String TREASURE_RECORD = BEFORE + "My/indianaRecords.html";
+    public static final String TREASURE = BEFORE + "Treasure/treasureDetail.html";
+
+    /**
+     * 抢钱
+     */
+    public static final String GIFT_GOODS= BEFORE + "Rob/goods.html";
+    public static final String GIFT_TICKETS= BEFORE + "Rob/voucher.html";
+    public static final String GIFT_BEANS= BEFORE + "Rob/happyBean.html";
 
     /**
      * 我的
@@ -27,11 +44,9 @@ public class HTML {
     public static final String MY_POINT = BEFORE + "My/score.html";
     public static final String MY_LEVEL = BEFORE + "My/memberRank.html";
     public static final String MY_CARD = BEFORE + "My/bankCard.html";
-    public static final String MY_ADD_CARD = BEFORE + "My/addBankcard.html";
     public static final String MY_RECOMMENDER_CANNOT_CHANGE = BEFORE + "My/refereeNoChange.html";
     public static final String MY_RECOMMENDER_CAN_CAHNGE = BEFORE + "My/referee.html";
     public static final String MY_ADDR = BEFORE + "My/shippingAddress.html";
-    public static final String MY_ADD_ADDR = BEFORE + "My/addShipAddress.html";
     public static final String MY_BACK = BEFORE + "My/remission.html";
     public static final String MY_TREASURE = BEFORE + "My/indianaRecords.html";
 

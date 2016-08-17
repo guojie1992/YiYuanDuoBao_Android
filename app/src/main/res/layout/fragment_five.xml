@@ -91,6 +91,7 @@
             android:padding="@dimen/dp_10">
 
             <LinearLayout
+                android:id="@+id/ll_goods_fragment_five"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -123,6 +124,7 @@
                 android:background="@color/darker_gray" />
 
             <LinearLayout
+                android:id="@+id/ll_tickets_fragment_five"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -155,6 +157,7 @@
                 android:background="@color/darker_gray" />
 
             <LinearLayout
+                android:id="@+id/ll_beans_fragment_five"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -180,6 +183,7 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/dp_13" />
             </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout

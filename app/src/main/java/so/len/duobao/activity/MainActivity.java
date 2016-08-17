@@ -13,6 +13,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import so.len.duobao.R;
+import so.len.duobao.api.HTML;
+import so.len.duobao.api.JS;
 import so.len.duobao.customAdapter.FragmentViewPagerAdapter;
 import so.len.duobao.customView.BottomMenuItem;
 import so.len.duobao.customView.FragmentViewPager;
@@ -172,7 +174,12 @@ public class MainActivity extends BaseActivity implements IMainView {
                 topMenuBar.setOnMenuClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        toast("抽奖记录");
+                        Intent intent = new Intent();
+                        intent.setClass(MainActivity.this, WebViewActivity.class);
+                        intent.putExtra(JS.H5_TITLE, "我的抽奖");
+                        intent.putExtra(JS.H5_URL, HTML.LOTTERY_RECORD);
+                        intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
+                        startActivity(intent);
                     }
                 });
                 break;
@@ -187,7 +194,12 @@ public class MainActivity extends BaseActivity implements IMainView {
                 topMenuBar.setOnMenuClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        toast("夺宝记录");
+                        Intent intent = new Intent();
+                        intent.setClass(MainActivity.this, WebViewActivity.class);
+                        intent.putExtra(JS.H5_TITLE, "我的夺宝");
+                        intent.putExtra(JS.H5_URL, HTML.TREASURE_RECORD);
+                        intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
+                        startActivity(intent);
                     }
                 });
                 break;

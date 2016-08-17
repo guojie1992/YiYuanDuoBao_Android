@@ -66,7 +66,7 @@ public class PersonalInfoActivity extends BaseActivity implements IPersonalInfoV
         });
     }
 
-    @OnClick({R.id.ll_head_pic_activity_personal_info, R.id.ll_username_activity_personal_info})
+    @OnClick({R.id.ll_head_pic_activity_personal_info, R.id.ll_username_activity_personal_info, R.id.ll_password_activity_personal_info})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_head_pic_activity_personal_info:
@@ -77,9 +77,14 @@ public class PersonalInfoActivity extends BaseActivity implements IPersonalInfoV
                         .show();
                 break;
             case R.id.ll_username_activity_personal_info:
-                Intent intent = new Intent();
-                intent.setClass(PersonalInfoActivity.this, ChangeUsernameActivity.class);
-                startActivity(intent);
+                Intent intent1 = new Intent();
+                intent1.setClass(PersonalInfoActivity.this, ChangeUsernameActivity.class);
+                startActivity(intent1);
+                break;
+            case R.id.ll_password_activity_personal_info:
+                Intent intent2 = new Intent();
+                intent2.setClass(PersonalInfoActivity.this, ChangePasswordActivity.class);
+                startActivity(intent2);
                 break;
         }
     }

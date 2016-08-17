@@ -44,4 +44,21 @@
     <string name="version">当前版本</string>
     <string name="update">在线升级</string>
     <string name="logout">退出当前账号</string>
+    <string name="password">密码</string>
+    <string name="change_password">修改密码</string>
+    <string name="input_old">请输入原密码</string>
+    <string name="input_new">请输入新密码</string>
+    <string name="input_repeat">请重复新密码</string>
+    <string name="card_owner">持卡人</string>
+    <string name="input_name">请输入姓名</string>
+    <string name="bank_type">银行</string>
+    <string name="card_num">卡号</string>
+    <string name="input_bank">请输入银行</string>
+    <string name="input_num">请输入卡号</string>
+    <string name="addr_name">收货人</string>
+    <string name="addr_phone">联系电话</string>
+    <string name="addr_district">所在地区</string>
+    <string name="input_district">请输入所在地区</string>
+    <string name="addr_detail">详细地址</string>
+    <string name="input_detail">请输入详细地址</string>
 </resources>
