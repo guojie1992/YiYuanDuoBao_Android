@@ -33,6 +33,7 @@
         <activity android:name=".activity.MineActivity"/>
         <activity android:name=".activity.PersonalInfoActivity"/>
         <activity android:name=".activity.ChangeUsernameActivity"/>
+        <activity android:name=".activity.SettingsActivity"/>
 
 
     </application>

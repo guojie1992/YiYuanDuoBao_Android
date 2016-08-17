@@ -42,7 +42,7 @@ public class ChangeUsernameActivity extends BaseActivity implements IChangeUsern
         tmbActivityChangeUsername.setBackSrc(R.mipmap.top_back);
         tmbActivityChangeUsername.setTitleText("设置会员名");
         tmbActivityChangeUsername.setMenuVisibility(View.VISIBLE);
-        tmbActivityChangeUsername.setMenuSrc(R.mipmap.top_back);
+        tmbActivityChangeUsername.setMenuSrc(R.mipmap.save);
         tmbActivityChangeUsername.setOnBackClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

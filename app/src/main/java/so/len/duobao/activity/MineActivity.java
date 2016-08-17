@@ -71,11 +71,20 @@ public class MineActivity extends BaseActivity implements IMineView {
         topMenuBarMine.setTitleText("我的");
         topMenuBarMine.setBackVisibility(View.VISIBLE);
         topMenuBarMine.setBackSrc(R.mipmap.top_back);
-        topMenuBarMine.setMenuVisibility(View.INVISIBLE);
+        topMenuBarMine.setMenuVisibility(View.VISIBLE);
+        topMenuBarMine.setMenuSrc(R.mipmap.settings);
         topMenuBarMine.setOnBackClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+        topMenuBarMine.setOnMenuClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(MineActivity.this, SettingsActivity.class);
+                startActivity(intent);
             }
         });
         ivSignActivityMine.setImageResource(R.mipmap.my_sign);

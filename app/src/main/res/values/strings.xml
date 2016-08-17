@@ -41,4 +41,7 @@
     <string name="username">会员名</string>
     <string name="id">ID号</string>
     <string name="input_username">请输入会员名</string>
+    <string name="version">当前版本</string>
+    <string name="update">在线升级</string>
+    <string name="logout">退出当前账号</string>
 </resources>
