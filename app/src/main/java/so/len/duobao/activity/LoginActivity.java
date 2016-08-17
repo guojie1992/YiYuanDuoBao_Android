@@ -1,5 +1,6 @@
 package so.len.duobao.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -31,12 +32,14 @@ public class LoginActivity extends BaseActivity implements ILoginView {
     Button btnActivityLoginSubmit;
 
     private LoginPresenter loginPresenter;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+        context = LoginActivity.this;
         control();
     }
 
@@ -81,15 +84,15 @@ public class LoginActivity extends BaseActivity implements ILoginView {
 
     @OnClick({R.id.tv_forget_activity_login, R.id.btn_activity_login_submit})
     public void onClick(View view) {
-        Intent intent = new Intent();
         switch (view.getId()) {
             case R.id.tv_forget_activity_login:
-                intent.setClass(LoginActivity.this, ForgetActivity.class);
+                Intent intent1 = new Intent();
+                intent1.setClass(LoginActivity.this, ForgetActivity.class);
+                startActivity(intent1);
                 break;
             case R.id.btn_activity_login_submit:
-                intent.setClass(LoginActivity.this, MainActivity.class);
+                loginPresenter.doLogin(context);
                 break;
         }
-        startActivity(intent);
     }
 }
