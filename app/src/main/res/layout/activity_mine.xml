@@ -580,6 +580,13 @@
                     android:background="@color/gray"/>
             </LinearLayout>
 
+
+            <include
+                android:id="@+id/root_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/root_view"/>
+
         </LinearLayout>
 
     </ScrollView>

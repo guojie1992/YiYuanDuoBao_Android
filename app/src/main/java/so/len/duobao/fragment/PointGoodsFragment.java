@@ -60,7 +60,7 @@ public class PointGoodsFragment extends BaseFragment implements IPointsGoodsView
         for (int i = 0; i < 12; i++) {
             map = new HashMap<>();
             map.put("ivTitleItemGridviewGoods", R.drawable.iphone);
-            map.put("tvTitleItemGridviewGoods", "IPhone 6s Plus 128GB");
+            map.put("tvTitleItemGridviewGoods", "iPhone 6s Plus 128GB");
             map.put("tvPriceItemGridviewGoods", "6199积分");
             goodsListData.add(map);
         }

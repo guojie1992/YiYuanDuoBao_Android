@@ -31,7 +31,7 @@
             android:scrollHorizontally="true"
             android:singleLine="true"
             android:text=""
-            android:textColor="@color/darker_gray"
+            android:textColor="@color/black"
             android:textSize="13sp" />
     </RelativeLayout>
 
@@ -50,8 +50,6 @@
             android:id="@+id/ll_point_fragment_three"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginLeft="@dimen/dp_10"
-            android:layout_marginRight="@dimen/dp_10"
             android:layout_weight="1"
             android:background="@color/white"
             android:orientation="vertical">
@@ -103,8 +101,6 @@
             android:id="@+id/ll_m_fragment_three"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginLeft="@dimen/dp_10"
-            android:layout_marginRight="@dimen/dp_10"
             android:layout_weight="1"
             android:background="@color/white"
             android:orientation="vertical">

@@ -6,7 +6,7 @@
 
     <color name="theme">#FF5722</color>
 
-    <color name="dark_gray">#E0E0E0</color>
+    <!--<color name="dark_gray">#E0E0E0</color>-->
     <color name="blue">#03A9F4</color>
 
     <color name="text">#555555</color> <!-- 暗灰色 -->
@@ -17,7 +17,7 @@
 
     <color name="light_gray">#F0F0F0</color> <!-- 亮灰色 -->
 
-    <color name="lighter_gray">#F3F3F3</color> <!-- 亮灰色 -->
+    <!--<color name="lighter_gray">#F3F3F3</color> &lt;!&ndash; 亮灰色 &ndash;&gt;-->
 
     <color name="white">#ffffffff</color> <!-- 白色 -->
 

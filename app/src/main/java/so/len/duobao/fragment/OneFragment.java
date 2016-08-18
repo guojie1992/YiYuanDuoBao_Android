@@ -119,8 +119,8 @@ public class OneFragment extends BaseFragment implements IOneView {
     }
 
     private void initLotteryList(OneBean oneBean) {
-        tvSpeakerFragmentOne.setText("孙中奖啦！柳中奖啦！张中奖啦！江中奖啦！金中奖啦！景中奖啦！谢中奖啦！王中奖啦！！");
-        tvSpeakerFragmentOne.setSelected(true);
+        tvSpeakerFragmentOne.setText("中奖名单");
+//        tvSpeakerFragmentOne.setSelected(true);
 
         lotteryListData = new ArrayList<>();
         for (int i = 0; i < oneBean.getData().getList().size(); i++) {

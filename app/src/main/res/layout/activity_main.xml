@@ -78,7 +78,7 @@
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:layout_above="@id/ll_mian"
-        android:background="@color/dark_gray" />
+        android:background="@color/darker_gray" />
 
     <so.len.duobao.customView.FragmentViewPager
         android:id="@+id/vp_home"

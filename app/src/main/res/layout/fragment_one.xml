@@ -62,20 +62,22 @@
                 android:scrollHorizontally="true"
                 android:singleLine="true"
                 android:text=""
-                android:textColor="@color/darker_gray"
+                android:textColor="@color/black"
                 android:textSize="13sp" />
         </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/darker_gray"/>
 
         <so.len.duobao.customView.LotteryListView
             android:id="@+id/llv_lottery_fragment_one"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_10"
-            android:layout_marginLeft="@dimen/dp_10"
-            android:layout_marginRight="@dimen/dp_10"
             android:scrollbars="none">
 
         </so.len.duobao.customView.LotteryListView>
+
     </LinearLayout>
 
 <!--</android.support.v4.widget.SwipeRefreshLayout>-->

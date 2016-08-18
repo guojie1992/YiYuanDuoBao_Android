@@ -11,11 +11,8 @@
         android:scrollbars="none"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_10"
-        android:layout_marginLeft="@dimen/dp_10"
-        android:layout_marginRight="@dimen/dp_10"
-        android:horizontalSpacing="@dimen/dp_10"
-        android:verticalSpacing="@dimen/dp_10"
+        android:horizontalSpacing="@dimen/dp_2"
+        android:verticalSpacing="@dimen/dp_2"
         android:numColumns="2">
     </GridView>
 

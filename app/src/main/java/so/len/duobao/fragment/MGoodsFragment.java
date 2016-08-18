@@ -59,7 +59,7 @@ public class MGoodsFragment extends BaseFragment implements IMGoodsView {
         for (int i = 0; i < 12; i++) {
             map = new HashMap<>();
             map.put("ivTitleItemGridviewGoods", R.drawable.iphone);
-            map.put("tvTitleItemGridviewGoods", "IPhone 6s Plus 128GB");
+            map.put("tvTitleItemGridviewGoods", "iPhone 6s Plus 128GB");
             map.put("tvPriceItemGridviewGoods", "6199M币+1000积分");
             goodsListData.add(map);
         }
