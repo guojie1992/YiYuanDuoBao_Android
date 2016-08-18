@@ -21,10 +21,8 @@ import butterknife.OnClick;
 import so.len.duobao.R;
 import so.len.duobao.customAdapter.FragmentViewPagerAdapter;
 import so.len.duobao.customView.MyViewPager;
-import so.len.duobao.http.Options;
-import so.len.duobao.http.VolleyHttp;
-import so.len.duobao.iPresenter.TwoPresenter;
-import so.len.duobao.iView.ITwoView;
+import so.len.duobao.mPresenter.TwoPresenter;
+import so.len.duobao.mView.ITwoView;
 
 /**
  * Created by Chung on 2016/8/3.

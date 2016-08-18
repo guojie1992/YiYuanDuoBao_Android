@@ -8,8 +8,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import so.len.duobao.R;
 import so.len.duobao.customView.TopMenuBar;
-import so.len.duobao.iPresenter.ChangeRecommenderPresenter;
-import so.len.duobao.iView.IChangeRecommenderView;
+import so.len.duobao.mPresenter.ChangeRecommenderPresenter;
+import so.len.duobao.mView.IChangeRecommenderView;
 
 /**
  * Created by Chung on 2016/8/17.

@@ -21,8 +21,8 @@ import so.len.duobao.activity.WebViewActivity;
 import so.len.duobao.api.HTML;
 import so.len.duobao.api.JS;
 import so.len.duobao.customAdapter.TreasureGridViewAdapter;
-import so.len.duobao.iPresenter.FourPresenter;
-import so.len.duobao.iView.IFourView;
+import so.len.duobao.mPresenter.FourPresenter;
+import so.len.duobao.mView.IFourView;
 
 /**
  * Created by Chung on 2016/8/3.

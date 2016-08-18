@@ -34,7 +34,7 @@ public class Config {
      * @param key    key
      * @param config config
      */
-    public synchronized void putConfig(String key, String config) {
+    public synchronized void setConfig(String key, String config) {
         SQLiteDatabase db = openHelp.getReadableDatabase();
         ContentValues values = new ContentValues();
         values.put("key", key);

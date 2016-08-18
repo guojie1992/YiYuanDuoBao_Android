@@ -21,8 +21,8 @@ import so.len.duobao.activity.WebViewActivity;
 import so.len.duobao.api.HTML;
 import so.len.duobao.api.JS;
 import so.len.duobao.customAdapter.GoodsGridViewAdapter;
-import so.len.duobao.iPresenter.PointsGoodsPresenter;
-import so.len.duobao.iView.IPointsGoodsView;
+import so.len.duobao.mPresenter.PointsGoodsPresenter;
+import so.len.duobao.mView.IPointsGoodsView;
 
 /**
  * Created by Chung on 2016/8/9.

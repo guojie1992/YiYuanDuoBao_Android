@@ -1,6 +1,6 @@
 package so.len.duobao.activity;
 
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,8 +11,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import so.len.duobao.R;
 import so.len.duobao.customView.TopMenuBar;
-import so.len.duobao.iPresenter.ForgetPresenter;
-import so.len.duobao.iView.IForgetView;
+import so.len.duobao.mPresenter.ForgetPresenter;
+import so.len.duobao.mView.IForgetView;
 
 /**
  * Created by Chung on 2016/8/5.
@@ -34,12 +34,14 @@ public class ForgetActivity extends BaseActivity implements IForgetView {
     Button btnActivityForgetSubmit;
 
     private ForgetPresenter forgetPresenter;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget);
         ButterKnife.bind(this);
+        context = ForgetActivity.this;
         control();
     }
 
@@ -52,10 +54,10 @@ public class ForgetActivity extends BaseActivity implements IForgetView {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_activity_forget_getcode:
-                toast(forgetPresenter.getServerCode());
+                forgetPresenter.getServerCode();
                 break;
             case R.id.btn_activity_forget_submit:
-                toast(forgetPresenter.doForget());
+                forgetPresenter.doForget(context);
                 break;
         }
     }

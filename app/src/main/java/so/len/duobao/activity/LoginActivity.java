@@ -13,8 +13,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import so.len.duobao.R;
 import so.len.duobao.customView.TopMenuBar;
-import so.len.duobao.iPresenter.LoginPresenter;
-import so.len.duobao.iView.ILoginView;
+import so.len.duobao.mPresenter.LoginPresenter;
+import so.len.duobao.mView.ILoginView;
 
 /**
  * Created by Chung on 2016/8/5.

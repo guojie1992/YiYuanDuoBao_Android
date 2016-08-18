@@ -13,8 +13,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import so.len.duobao.R;
 import so.len.duobao.customView.TopMenuBar;
 import so.len.duobao.customView.iOSActionSheetDialog;
-import so.len.duobao.iPresenter.PersonalInfoPresenter;
-import so.len.duobao.iView.IPersonalInfoView;
+import so.len.duobao.mPresenter.PersonalInfoPresenter;
+import so.len.duobao.mView.IPersonalInfoView;
 
 /**
  * Created by Chung on 2016/8/12.

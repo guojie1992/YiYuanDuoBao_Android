@@ -1,10 +1,8 @@
 package so.len.duobao.fragment;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +22,8 @@ import so.len.duobao.customAdapter.LotteryListViewAdapter;
 import so.len.duobao.customView.LoopViewPager;
 import so.len.duobao.customView.LotteryListView;
 import so.len.duobao.customView.SpeakerView;
-import so.len.duobao.iPresenter.OnePresenter;
-import so.len.duobao.iView.IOneView;
+import so.len.duobao.mPresenter.OnePresenter;
+import so.len.duobao.mView.IOneView;
 
 /**
  * Created by Chung on 2016/8/3.

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.lang.reflect.Field;
 import java.security.MessageDigest;
@@ -70,4 +71,7 @@ public class CommonUtils {
         }
     }
 
+    public static void toast(Context context, String text){
+        Toast.makeText(context,text,Toast.LENGTH_SHORT).show();
+    }
 }

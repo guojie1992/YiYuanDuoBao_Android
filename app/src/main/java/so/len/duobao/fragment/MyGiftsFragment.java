@@ -14,11 +14,10 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import so.len.duobao.R;
-import so.len.duobao.customAdapter.LotteryListViewAdapter;
 import so.len.duobao.customAdapter.MyGiftsListViewAdapter;
 import so.len.duobao.customView.MyGiftsListView;
-import so.len.duobao.iPresenter.MyGiftsPresenter;
-import so.len.duobao.iView.IMyGiftsView;
+import so.len.duobao.mPresenter.MyGiftsPresenter;
+import so.len.duobao.mView.IMyGiftsView;
 
 /**
  * Created by Chung on 2016/8/9.

@@ -28,8 +28,8 @@ import so.len.duobao.api.HTML;
 import so.len.duobao.api.JS;
 import so.len.duobao.customAdapter.FragmentViewPagerAdapter;
 import so.len.duobao.customView.MyViewPager;
-import so.len.duobao.iPresenter.FivePresenter;
-import so.len.duobao.iView.IFiveView;
+import so.len.duobao.mPresenter.FivePresenter;
+import so.len.duobao.mView.IFiveView;
 
 /**
  * Created by Chung on 2016/8/8.

@@ -8,8 +8,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import so.len.duobao.R;
 import so.len.duobao.customView.TopMenuBar;
-import so.len.duobao.iPresenter.AddCardPresenter;
-import so.len.duobao.iView.IAddCardView;
+import so.len.duobao.mPresenter.AddCardPresenter;
+import so.len.duobao.mView.IAddCardView;
 
 /**
  * Created by Chung on 2016/8/17.

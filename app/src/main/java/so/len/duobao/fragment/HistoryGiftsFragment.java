@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,8 +16,8 @@ import butterknife.ButterKnife;
 import so.len.duobao.R;
 import so.len.duobao.customAdapter.HistoryGiftsListViewAdapter;
 import so.len.duobao.customView.HistoryGiftsListView;
-import so.len.duobao.iPresenter.HistoryGiftsPresenter;
-import so.len.duobao.iView.IHistoryGiftsView;
+import so.len.duobao.mPresenter.HistoryGiftsPresenter;
+import so.len.duobao.mView.IHistoryGiftsView;
 
 /**
  * Created by Chung on 2016/8/9.

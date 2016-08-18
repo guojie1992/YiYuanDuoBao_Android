@@ -1,5 +1,6 @@
 package so.len.duobao.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,8 +11,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import so.len.duobao.R;
 import so.len.duobao.customView.TopMenuBar;
-import so.len.duobao.iPresenter.RegisterPresenter;
-import so.len.duobao.iView.IRegisterView;
+import so.len.duobao.mPresenter.RegisterPresenter;
+import so.len.duobao.mView.IRegisterView;
 
 /**
  * Created by Chung on 2016/8/5.
@@ -31,12 +32,14 @@ public class RegisterActivity extends BaseActivity implements IRegisterView {
     Button btnActivityRegisterSubmit;
 
     private RegisterPresenter registerPresenter;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
+        context = RegisterActivity.this;
         control();
     }
 
@@ -86,10 +89,10 @@ public class RegisterActivity extends BaseActivity implements IRegisterView {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_activity_register_getcode:
-                toast(registerPresenter.getServerCode());
+                registerPresenter.getServerCode();
                 break;
             case R.id.btn_activity_register_submit:
-                toast(registerPresenter.doRegister());
+                registerPresenter.doRegister(context);
                 break;
         }
     }

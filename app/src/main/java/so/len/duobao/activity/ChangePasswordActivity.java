@@ -8,8 +8,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import so.len.duobao.R;
 import so.len.duobao.customView.TopMenuBar;
-import so.len.duobao.iPresenter.ChangePasswordPresenter;
-import so.len.duobao.iView.IChangePasswordView;
+import so.len.duobao.mPresenter.ChangePasswordPresenter;
+import so.len.duobao.mView.IChangePasswordView;
 
 /**
  * Created by Chung on 2016/8/17.

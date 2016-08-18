@@ -14,8 +14,8 @@ import so.len.duobao.R;
 import so.len.duobao.api.HTML;
 import so.len.duobao.api.JS;
 import so.len.duobao.customView.TopMenuBar;
-import so.len.duobao.iPresenter.MinePresenter;
-import so.len.duobao.iView.IMineView;
+import so.len.duobao.mPresenter.MinePresenter;
+import so.len.duobao.mView.IMineView;
 
 /**
  * Created by Chung on 2016/8/11.

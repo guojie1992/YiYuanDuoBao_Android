@@ -9,11 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -22,11 +17,10 @@ import so.len.duobao.activity.WebViewActivity;
 import so.len.duobao.api.HTML;
 import so.len.duobao.api.JS;
 import so.len.duobao.customView.SpeakerView;
-import so.len.duobao.customView.iOSAlertDialog;
 import so.len.duobao.http.Options;
 import so.len.duobao.http.VolleyHttp;
-import so.len.duobao.iPresenter.ThreePresenter;
-import so.len.duobao.iView.IThreeView;
+import so.len.duobao.mPresenter.ThreePresenter;
+import so.len.duobao.mView.IThreeView;
 
 /**
  * Created by Chung on 2016/8/3.

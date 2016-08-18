@@ -71,8 +71,8 @@ public class JS {
      * @param value 值
      */
     @JavascriptInterface
-    public void putConfig(String key, String value) {
-        Config.getInstance(context).putConfig(key, value);
+    public void setConfig(String key, String value) {
+        Config.getInstance(context).setConfig(key, value);
     }
 
     /**

@@ -5,7 +5,6 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.view.KeyEvent;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -25,8 +24,8 @@ import so.len.duobao.fragment.FiveFragment;
 import so.len.duobao.fragment.OneFragment;
 import so.len.duobao.fragment.ThreeFragment;
 import so.len.duobao.fragment.TwoFragment;
-import so.len.duobao.iPresenter.MainPresenter;
-import so.len.duobao.iView.IMainView;
+import so.len.duobao.mPresenter.MainPresenter;
+import so.len.duobao.mView.IMainView;
 
 /**
  * Created by Chung on 2016/8/3.
