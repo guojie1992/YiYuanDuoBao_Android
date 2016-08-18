@@ -26,7 +26,7 @@ public class MinePresenter {
         iMineModel.getData(new IHttpComplete() {
             @Override
             public void loadComplete() {
-                iMineView.initView();
+                iMineView.initView(iMineModel.getMineBean());
             }
 
             @Override

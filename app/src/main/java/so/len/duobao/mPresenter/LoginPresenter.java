@@ -27,30 +27,35 @@ public class LoginPresenter {
         this.iLoginView = iLoginView;
     }
 
-    public void initView(){
+    public void initView() {
         iLoginView.initView();
     }
 
     public void doLogin() {
-        iLoginModel.doLogin(iLoginView.getPhone(), iLoginView.getPassword(), new IHttpComplete() {
-            @Override
-            public void loadComplete() {
-                boolean saveDataResult = saveData();
-                if(saveDataResult){
-                    Logger.i("saveData succeed");
+        if (iLoginView.getPhone().isEmpty() || iLoginView.getPassword().isEmpty()) {
+            CommonUtils.toast(context, "请认真填写");
+        } else {
+            iLoginModel.doLogin(iLoginView.getPhone(), iLoginView.getPassword(), new IHttpComplete() {
+                @Override
+                public void loadComplete() {
+                    boolean saveDataResult = saveData();
+                    if (saveDataResult) {
+                        Logger.i("saveData succeed");
+                    }
+                    Intent intent = new Intent();
+                    intent.setClass(context, MainActivity.class);
+                    context.startActivity(intent);
+                    ((Activity) context).finish();
+                    CommonUtils.toast(context, "登陆成功");
                 }
-                Intent intent = new Intent();
-                intent.setClass(context, MainActivity.class);
-                context.startActivity(intent);
-                ((Activity) context).finish();
-                CommonUtils.toast(context, "登陆成功");
-            }
 
-            @Override
-            public void loadError(String msg) {
-                Logger.i(msg);
-            }
-        });
+                @Override
+                public void loadError(String msg) {
+                    Logger.i(msg);
+                    CommonUtils.toast(context, msg);
+                }
+            });
+        }
     }
 
     private boolean saveData() {

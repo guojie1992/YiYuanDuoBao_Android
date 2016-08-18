@@ -5,35 +5,35 @@ package so.len.duobao.api;
  */
 public class SERVER {
     //服务器地址
-    public static final String DOMAIN = "http://yydb.314s.com/";
+    public static final String DOMAIN = "http://yydb.314s.com";
 
     //前缀
-    public static final String BEFORE = DOMAIN + "index.php?s=/Home/User/";
+    public static final String BEFORE = DOMAIN + "/index.php?s=/Home/User";
 
     //注册接口
-    public static final String REGISTER = BEFORE + "register";
+    public static final String REGISTER = BEFORE + "/register";
     //登陆接口
-    public static final String LOGIN = BEFORE + "login";
+    public static final String LOGIN = BEFORE + "/login";
     //忘记密码接口
-    public static final String FORGET_PASSWORD = BEFORE + "forgetpwd";
+    public static final String FORGET_PASSWORD = BEFORE + "/forgetpwd";
 
     //个人资料接口
-    public static final String USER_INFO = BEFORE + "show_my_info";
+    public static final String USER_INFO = BEFORE + "/show_my_info";
 
     //主页接口
-    public static final String HOME_PAGE = BEFORE + "show_index";
+    public static final String HOME_PAGE = BEFORE + "/show_index";
 
     //商城接口
 
 
     //抽奖接口
-    public static final String LOTTREY = BEFORE + "show_draw";
+    public static final String LOTTREY = BEFORE + "/show_draw";
 
     //夺宝接口
 
 
     //抢钱上部分接口
-    public static final String GIFT_TOP = BEFORE + "show_rob_head";
+    public static final String GIFT_TOP = BEFORE + "/show_rob_head";
     //抢钱列表接口
-    public static final String GIFT_BOTTOM = BEFORE + "show_rob_list";
+    public static final String GIFT_BOTTOM = BEFORE + "/show_rob_list";
 }

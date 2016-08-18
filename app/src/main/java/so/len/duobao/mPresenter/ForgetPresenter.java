@@ -38,22 +38,25 @@ public class ForgetPresenter {
 
     public void doForget() {
         if (checkRepeat()) {
-            iForgetModel.doForget(iForgetView.getPhone(), iForgetView.getMessageCode(), iForgetView.getPassword(), iForgetView.getRepeatPassword(), new IHttpComplete() {
-                @Override
-                public void loadComplete() {
-                    Intent intent = new Intent();
-                    intent.setClass(context, LoginActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                    context.startActivity(intent);
-                    CommonUtils.toast(context, "重置成功");
-                }
-
-                @Override
-                public void loadError(String msg) {
-                    Logger.i(msg);
-                }
-            });
+            if (iForgetView.getPhone().isEmpty() || iForgetView.getPassword().isEmpty() || iForgetView.getMessageCode().isEmpty()) {
+                CommonUtils.toast(context, "请认真填写");
+            } else {
+                iForgetModel.doForget(iForgetView.getPhone(), iForgetView.getMessageCode(), iForgetView.getPassword(), iForgetView.getRepeatPassword(), new IHttpComplete() {
+                    @Override
+                    public void loadComplete() {
+                        Intent intent = new Intent();
+                        intent.setClass(context, LoginActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        context.startActivity(intent);
+                        CommonUtils.toast(context, "重置成功");
+                    }
+                    @Override
+                    public void loadError(String msg) {
+                        Logger.i(msg);
+                    }
+                });
+            }
         } else {
             iForgetView.clearEditText();
         }

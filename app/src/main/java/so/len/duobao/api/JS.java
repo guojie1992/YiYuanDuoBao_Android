@@ -7,9 +7,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
-import android.util.Log;
 import android.webkit.JavascriptInterface;
 import android.widget.Toast;
+
+import com.orhanobut.logger.Logger;
 
 import so.len.duobao.R;
 import so.len.duobao.activity.MainActivity;
@@ -46,27 +47,24 @@ public class JS {
 
     /**
      * 显示吐司
-     *
      * @param msg 要显示的消息
      */
     @JavascriptInterface
-    public void toast(String msg) {
+    public void showToast(String msg) {
         Toast.makeText(context.getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
     /**
      * 打印日志
-     *
      * @param log 日志
      */
     @JavascriptInterface
     public void log(String log) {
-        Log.i("h5", log);
+        Logger.i("h5", log);
     }
 
     /**
      * 存储数据
-     *
      * @param key   键
      * @param value 值
      */
@@ -77,7 +75,6 @@ public class JS {
 
     /**
      * 获取数据
-     *
      * @param key 键
      */
     @JavascriptInterface
@@ -104,7 +101,7 @@ public class JS {
             if (context.checkSelfPermission(Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
                 callPhone(phoneNumber);
             } else {
-                toast("没有权限：请为" + context.getResources().getString(R.string.app_name) + "开启拨打电话权限");
+                showToast("没有权限：请为" + context.getResources().getString(R.string.app_name) + "开启拨打电话权限");
             }
         } else {
             callPhone(phoneNumber);
@@ -124,6 +121,19 @@ public class JS {
      */
     @JavascriptInterface
     public void backToMall(){
+        Intent intent = new Intent();
+        intent.setClass(context, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        activity.startActivity(intent);
+    }
+
+
+    /**
+     * 返回夺宝
+     */
+    @JavascriptInterface
+    public void backToTreasure(){
         Intent intent = new Intent();
         intent.setClass(context, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

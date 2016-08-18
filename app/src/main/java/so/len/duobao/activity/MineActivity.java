@@ -14,7 +14,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import so.len.duobao.R;
 import so.len.duobao.api.HTML;
 import so.len.duobao.api.JS;
+import so.len.duobao.api.SERVER;
+import so.len.duobao.bean.MineBean;
 import so.len.duobao.customView.TopMenuBar;
+import so.len.duobao.http.Options;
+import so.len.duobao.http.VolleyHttp;
 import so.len.duobao.mPresenter.MinePresenter;
 import so.len.duobao.mView.IMineView;
 
@@ -69,7 +73,7 @@ public class MineActivity extends BaseActivity implements IMineView {
     }
 
     @Override
-    public void initView() {
+    public void initView(MineBean mineBean) {
         topMenuBarMine.setMenuTopPadding(statusHeight);
         topMenuBarMine.setTitleText("我的");
         topMenuBarMine.setBackVisibility(View.VISIBLE);
@@ -91,6 +95,46 @@ public class MineActivity extends BaseActivity implements IMineView {
             }
         });
         ivSignActivityMine.setImageResource(R.mipmap.my_sign);
+
+        initViewFromData(mineBean);
+    }
+
+    private void initViewFromData(MineBean mineBean) {
+        Options opt = new Options();
+        VolleyHttp.getInstance().imageLoader(SERVER.DOMAIN + mineBean.getData().getPic(), ivTopActivityMine, opt);
+        VolleyHttp.getInstance().imageLoader(SERVER.DOMAIN + mineBean.getData().getFacePic(), civHeadActivityMine, opt);
+        String vip = "0";
+        switch (mineBean.getData().getVip()){
+            case 0:
+                vip = "普通会员";
+                break;
+            case 1:
+                vip = "一级会员";
+                break;
+            case 2:
+                vip = "二级会员";
+                break;
+            case 3:
+                vip = "三级会员";
+                break;
+            case 4:
+                vip = "四级会员";
+                break;
+            case 5:
+                vip = "五级会员";
+                break;
+            case 6:
+                vip = "黄金会员";
+                break;
+            default:
+                vip = "null";
+                break;
+        }
+        tvUsernameActivityMine.setText(mineBean.getData().getNickname() + "(" + vip + ")");
+        tvSigndayActivityMine.setText(mineBean.getData().getSignIn() + "天");
+        tvMActivityMine.setText(mineBean.getData().getMoneyBack());
+        tvPointActivityMine.setText(mineBean.getData().getIntegralBack());
+        tvMyrecommenderActivityMine.setText("ID:" + mineBean.getData().getPid());
     }
 
     @OnClick({R.id.civ_head_activity_mine,

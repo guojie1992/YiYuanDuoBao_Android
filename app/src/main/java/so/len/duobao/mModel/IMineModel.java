@@ -1,5 +1,6 @@
 package so.len.duobao.mModel;
 
+import so.len.duobao.bean.MineBean;
 import so.len.duobao.mListener.IHttpComplete;
 
 /**
@@ -8,4 +9,5 @@ import so.len.duobao.mListener.IHttpComplete;
 public interface IMineModel {
     void getData(IHttpComplete iHttpComplete);
     void sign();
+    MineBean getMineBean();
 }

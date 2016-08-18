@@ -37,22 +37,26 @@ public class RegisterPresenter {
     }
 
     public void doRegister() {
-        iRegisterModel.doRegister(iRegisterView.getPhone(), iRegisterView.getMessageCode(), iRegisterView.getPassword(), new IHttpComplete() {
-            @Override
-            public void loadComplete() {
-                Intent intent = new Intent();
-                intent.setClass(context, LoginActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                context.startActivity(intent);
-                CommonUtils.toast(context, "注册成功");
-            }
+        if (iRegisterView.getPhone().isEmpty() || iRegisterView.getPassword().isEmpty() || iRegisterView.getMessageCode().isEmpty()) {
+            CommonUtils.toast(context, "请认真填写");
+        } else {
+            iRegisterModel.doRegister(iRegisterView.getPhone(), iRegisterView.getMessageCode(), iRegisterView.getPassword(), new IHttpComplete() {
+                @Override
+                public void loadComplete() {
+                    Intent intent = new Intent();
+                    intent.setClass(context, LoginActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    context.startActivity(intent);
+                    CommonUtils.toast(context, "注册成功");
+                }
 
-            @Override
-            public void loadError(String msg) {
-                Logger.i(msg);
-            }
-        });
+                @Override
+                public void loadError(String msg) {
+                    Logger.i(msg);
+                }
+            });
+        }
     }
 
 }

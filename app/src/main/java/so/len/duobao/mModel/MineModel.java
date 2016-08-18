@@ -2,15 +2,15 @@ package so.len.duobao.mModel;
 
 import android.content.Context;
 
+import com.google.gson.Gson;
 import com.orhanobut.logger.Logger;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import so.len.duobao.api.SERVER;
+import so.len.duobao.bean.MineBean;
 import so.len.duobao.database.Config;
 import so.len.duobao.http.VolleyHttp;
 import so.len.duobao.mListener.IHttpComplete;
@@ -20,9 +20,11 @@ import so.len.duobao.mListener.IHttpComplete;
  */
 public class MineModel implements IMineModel {
     private Context context;
+    private MineBean mineBean;
 
     public MineModel(Context context) {
         this.context = context;
+        this.mineBean = new MineBean();
     }
 
     @Override
@@ -33,15 +35,12 @@ public class MineModel implements IMineModel {
             @Override
             public void getJson(String json, boolean isConnectSuccess) {
                 if (isConnectSuccess && json != null) {
-                    try {
-                        JSONObject jsonObject = new JSONObject(json);
-                        if (jsonObject.getString("status").equals("1")) {
-                            iHttpComplete.loadComplete();
-                        } else {
-                            iHttpComplete.loadError(jsonObject.getString("msg"));
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                    Gson gson = new Gson();
+                    mineBean = gson.fromJson(json, MineBean.class);
+                    if (mineBean.getStatus().equals("1")) {
+                        iHttpComplete.loadComplete();
+                    } else {
+                        iHttpComplete.loadError(mineBean.getMsg());
                     }
                 } else {
                     Logger.e("MineModel http error");
@@ -54,4 +53,10 @@ public class MineModel implements IMineModel {
     public void sign() {
 
     }
+
+    @Override
+    public MineBean getMineBean() {
+        return mineBean;
+    }
+
 }
