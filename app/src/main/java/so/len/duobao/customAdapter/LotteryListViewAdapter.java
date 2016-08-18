@@ -14,6 +14,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import so.len.duobao.R;
+import so.len.duobao.api.SERVER;
+import so.len.duobao.http.Options;
+import so.len.duobao.http.VolleyHttp;
 
 /**
  * Created by Chung on 2016/8/9.
@@ -55,7 +58,8 @@ public class LotteryListViewAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.ivTitleItemListviewLottery.setImageResource((Integer) data.get(position).get("ivTitleItemListviewLottery"));
+        Options opt = new Options();
+        VolleyHttp.getInstance().imageLoader((String) data.get(position).get("ivTitleItemListviewLottery"), viewHolder.ivTitleItemListviewLottery, opt);
         viewHolder.tvUsernameItemListviewLottery.setText((CharSequence) data.get(position).get("tvUsernameItemListviewLottery"));
         viewHolder.tvTimeItemListviewLottery.setText((CharSequence) data.get(position).get("tvTimeItemListviewLottery"));
         viewHolder.tvContentItemListviewLottery.setText((CharSequence) data.get(position).get("tvContentItemListviewLottery"));

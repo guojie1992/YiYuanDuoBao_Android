@@ -13,7 +13,7 @@ import so.len.duobao.api.SERVER;
 import so.len.duobao.bean.MineBean;
 import so.len.duobao.database.Config;
 import so.len.duobao.http.VolleyHttp;
-import so.len.duobao.mListener.IHttpComplete;
+import so.len.duobao.mListener.IHttpCompleteListener;
 
 /**
  * Created by Chung on 2016/8/18.
@@ -28,19 +28,19 @@ public class MineModel implements IMineModel {
     }
 
     @Override
-    public void getData(final IHttpComplete iHttpComplete) {
+    public void getServerData(final IHttpCompleteListener iHttpCompleteListener) {
         Map<String, String> args = new HashMap<>();
         args.put("uid", Config.getInstance(context).getConfig("uid"));
         VolleyHttp.getInstance().postParamsJson(SERVER.USER_INFO, new VolleyHttp.JsonResponseListener() {
             @Override
             public void getJson(String json, boolean isConnectSuccess) {
-                if (isConnectSuccess && json != null) {
+                if (isConnectSuccess && (!json.isEmpty())) {
                     Gson gson = new Gson();
                     mineBean = gson.fromJson(json, MineBean.class);
                     if (mineBean.getStatus().equals("1")) {
-                        iHttpComplete.loadComplete();
+                        iHttpCompleteListener.loadComplete();
                     } else {
-                        iHttpComplete.loadError(mineBean.getMsg());
+                        iHttpCompleteListener.loadError(mineBean.getMsg());
                     }
                 } else {
                     Logger.e("MineModel http error");

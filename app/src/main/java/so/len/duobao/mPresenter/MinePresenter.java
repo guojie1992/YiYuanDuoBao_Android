@@ -2,7 +2,7 @@ package so.len.duobao.mPresenter;
 
 import android.content.Context;
 
-import so.len.duobao.mListener.IHttpComplete;
+import so.len.duobao.mListener.IHttpCompleteListener;
 import so.len.duobao.mModel.IMineModel;
 import so.len.duobao.mModel.MineModel;
 import so.len.duobao.mView.IMineView;
@@ -23,7 +23,7 @@ public class MinePresenter {
     }
 
     public void initView(){
-        iMineModel.getData(new IHttpComplete() {
+        iMineModel.getServerData(new IHttpCompleteListener() {
             @Override
             public void loadComplete() {
                 iMineView.initView(iMineModel.getMineBean());

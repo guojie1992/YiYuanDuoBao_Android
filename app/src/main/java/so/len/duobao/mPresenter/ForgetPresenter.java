@@ -1,14 +1,12 @@
 package so.len.duobao.mPresenter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
 import com.orhanobut.logger.Logger;
 
 import so.len.duobao.activity.LoginActivity;
-import so.len.duobao.activity.MainActivity;
-import so.len.duobao.mListener.IHttpComplete;
+import so.len.duobao.mListener.IHttpCompleteListener;
 import so.len.duobao.mModel.ForgetModel;
 import so.len.duobao.mModel.IForgetModel;
 import so.len.duobao.mView.IForgetView;
@@ -41,7 +39,7 @@ public class ForgetPresenter {
             if (iForgetView.getPhone().isEmpty() || iForgetView.getPassword().isEmpty() || iForgetView.getMessageCode().isEmpty()) {
                 CommonUtils.toast(context, "请认真填写");
             } else {
-                iForgetModel.doForget(iForgetView.getPhone(), iForgetView.getMessageCode(), iForgetView.getPassword(), iForgetView.getRepeatPassword(), new IHttpComplete() {
+                iForgetModel.doForget(iForgetView.getPhone(), iForgetView.getMessageCode(), iForgetView.getPassword(), iForgetView.getRepeatPassword(), new IHttpCompleteListener() {
                     @Override
                     public void loadComplete() {
                         Intent intent = new Intent();

@@ -7,7 +7,7 @@ import android.content.Intent;
 import com.orhanobut.logger.Logger;
 
 import so.len.duobao.activity.MainActivity;
-import so.len.duobao.mListener.IHttpComplete;
+import so.len.duobao.mListener.IHttpCompleteListener;
 import so.len.duobao.mModel.ILoginModel;
 import so.len.duobao.mModel.LoginModel;
 import so.len.duobao.mView.ILoginView;
@@ -35,7 +35,7 @@ public class LoginPresenter {
         if (iLoginView.getPhone().isEmpty() || iLoginView.getPassword().isEmpty()) {
             CommonUtils.toast(context, "请认真填写");
         } else {
-            iLoginModel.doLogin(iLoginView.getPhone(), iLoginView.getPassword(), new IHttpComplete() {
+            iLoginModel.doLogin(iLoginView.getPhone(), iLoginView.getPassword(), new IHttpCompleteListener() {
                 @Override
                 public void loadComplete() {
                     boolean saveDataResult = saveData();

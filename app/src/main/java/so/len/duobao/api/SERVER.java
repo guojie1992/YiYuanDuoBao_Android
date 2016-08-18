@@ -17,14 +17,14 @@ public class SERVER {
     //忘记密码接口
     public static final String FORGET_PASSWORD = BEFORE + "/forgetpwd";
 
-    //个人资料接口
+    //我的接口
     public static final String USER_INFO = BEFORE + "/show_my_info";
 
     //主页接口
     public static final String HOME_PAGE = BEFORE + "/show_index";
 
     //商城接口
-
+    public static final String SHOP = DOMAIN + "/index.php?s=Home/Mall/index";
 
     //抽奖接口
     public static final String LOTTREY = BEFORE + "/show_draw";
