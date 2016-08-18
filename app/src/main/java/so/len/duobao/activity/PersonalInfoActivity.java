@@ -1,5 +1,6 @@
 package so.len.duobao.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -37,17 +38,19 @@ public class PersonalInfoActivity extends BaseActivity implements IPersonalInfoV
     TopMenuBar topMenuBarPersonalInfo;
 
     private PersonalInfoPresenter personalInfoPresenter;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_info);
         ButterKnife.bind(this);
+        context = PersonalInfoActivity.this;
         control();
     }
 
     private void control() {
-        personalInfoPresenter = new PersonalInfoPresenter(this);
+        personalInfoPresenter = new PersonalInfoPresenter(this, context);
         personalInfoPresenter.initView();
     }
 

@@ -18,7 +18,7 @@ public class SERVER {
     public static final String FORGET_PASSWORD = BEFORE + "forgetpwd";
 
     //个人资料接口
-    public static final String PERSONAL_INFO = BEFORE + "show_my_info";
+    public static final String USER_INFO = BEFORE + "show_my_info";
 
     //主页接口
     public static final String HOME_PAGE = BEFORE + "show_index";

@@ -46,7 +46,7 @@ public class ForgetActivity extends BaseActivity implements IForgetView {
     }
 
     private void control() {
-        forgetPresenter = new ForgetPresenter(this);
+        forgetPresenter = new ForgetPresenter(this, context);
         forgetPresenter.initView();
     }
 
@@ -57,7 +57,7 @@ public class ForgetActivity extends BaseActivity implements IForgetView {
                 forgetPresenter.getServerCode();
                 break;
             case R.id.btn_activity_forget_submit:
-                forgetPresenter.doForget(context);
+                forgetPresenter.doForget();
                 break;
         }
     }

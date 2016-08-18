@@ -11,29 +11,25 @@ import java.util.HashMap;
 import java.util.Map;
 
 import so.len.duobao.api.SERVER;
+import so.len.duobao.database.Config;
 import so.len.duobao.http.VolleyHttp;
 import so.len.duobao.mListener.IHttpComplete;
 
 /**
- * Created by Chung on 2016/8/5.
+ * Created by Chung on 2016/8/18.
  */
-public class ForgetModel implements IForgetModel {
+public class MineModel implements IMineModel {
     private Context context;
 
-    public ForgetModel(Context context) {
+    public MineModel(Context context) {
         this.context = context;
     }
 
     @Override
-    public void getServerCode(String phone) {
-    }
-
-    @Override
-    public void doForget(String phone, String code, String password, String repeatPassword, final IHttpComplete iHttpComplete) {
+    public void getData(final IHttpComplete iHttpComplete) {
         Map<String, String> args = new HashMap<>();
-        args.put("mobile", phone);
-        args.put("password", password);
-        VolleyHttp.getInstance().postParamsJson(SERVER.FORGET_PASSWORD, new VolleyHttp.JsonResponseListener() {
+        args.put("uid", Config.getInstance(context).getConfig("uid"));
+        VolleyHttp.getInstance().postParamsJson(SERVER.USER_INFO, new VolleyHttp.JsonResponseListener() {
             @Override
             public void getJson(String json, boolean isConnectSuccess) {
                 if (isConnectSuccess && json != null) {
@@ -48,10 +44,14 @@ public class ForgetModel implements IForgetModel {
                         e.printStackTrace();
                     }
                 } else {
-                    Logger.e("ForgetModel http error");
+                    Logger.e("MineModel http error");
                 }
             }
         }, args);
     }
 
+    @Override
+    public void sign() {
+
+    }
 }

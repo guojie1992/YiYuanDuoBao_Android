@@ -1,5 +1,7 @@
 package so.len.duobao.mPresenter;
 
+import android.content.Context;
+
 import so.len.duobao.mModel.IPersonalInfoModel;
 import so.len.duobao.mModel.PersonalInfoModel;
 import so.len.duobao.mView.IPersonalInfoView;
@@ -10,10 +12,12 @@ import so.len.duobao.mView.IPersonalInfoView;
 public class PersonalInfoPresenter {
     private IPersonalInfoModel iPersonalInfoModel;
     private IPersonalInfoView iPersonalInfoView;
+    private Context context;
 
-    public PersonalInfoPresenter(IPersonalInfoView iPersonalInfoView) {
+    public PersonalInfoPresenter(IPersonalInfoView iPersonalInfoView, Context context) {
+        this.context = context;
         this.iPersonalInfoView = iPersonalInfoView;
-        this.iPersonalInfoModel = new PersonalInfoModel();
+        this.iPersonalInfoModel = new PersonalInfoModel(context);
     }
 
     public void initView(){

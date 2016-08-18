@@ -5,7 +5,6 @@ package so.len.duobao.mModel;
  */
 public class ChangeUsernameModel implements IChangeUsernameModel {
     @Override
-    public String setUsername(String uid, String username) {
-        return uid + username;
+    public void setUsername(String uid, String username) {
     }
 }

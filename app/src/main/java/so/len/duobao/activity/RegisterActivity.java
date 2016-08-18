@@ -44,7 +44,7 @@ public class RegisterActivity extends BaseActivity implements IRegisterView {
     }
 
     private void control() {
-        registerPresenter = new RegisterPresenter(this);
+        registerPresenter = new RegisterPresenter(this, context);
         registerPresenter.initView();
     }
 
@@ -92,7 +92,7 @@ public class RegisterActivity extends BaseActivity implements IRegisterView {
                 registerPresenter.getServerCode();
                 break;
             case R.id.btn_activity_register_submit:
-                registerPresenter.doRegister(context);
+                registerPresenter.doRegister();
                 break;
         }
     }

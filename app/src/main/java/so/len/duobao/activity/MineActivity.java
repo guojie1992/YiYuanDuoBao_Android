@@ -1,5 +1,6 @@
 package so.len.duobao.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -51,17 +52,19 @@ public class MineActivity extends BaseActivity implements IMineView {
     ImageView ivSignActivityMine;
 
     private MinePresenter minePresenter;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mine);
         ButterKnife.bind(this);
+        context = MineActivity.this;
         control();
     }
 
     private void control() {
-        minePresenter = new MinePresenter(this);
+        minePresenter = new MinePresenter(this, context);
         minePresenter.initView();
     }
 

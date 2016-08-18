@@ -44,7 +44,7 @@ public class LoginActivity extends BaseActivity implements ILoginView {
     }
 
     private void control() {
-        loginPresenter = new LoginPresenter(this);
+        loginPresenter = new LoginPresenter(this, context);
         loginPresenter.initView();
     }
 
@@ -91,7 +91,7 @@ public class LoginActivity extends BaseActivity implements ILoginView {
                 startActivity(intent1);
                 break;
             case R.id.btn_activity_login_submit:
-                loginPresenter.doLogin(context);
+                loginPresenter.doLogin();
                 break;
         }
     }

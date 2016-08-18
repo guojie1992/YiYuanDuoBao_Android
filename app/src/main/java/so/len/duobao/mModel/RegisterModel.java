@@ -1,5 +1,9 @@
 package so.len.duobao.mModel;
 
+import android.content.Context;
+
+import com.orhanobut.logger.Logger;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -14,7 +18,12 @@ import so.len.duobao.mListener.IHttpComplete;
  * Created by Chung on 2016/8/5.
  */
 public class RegisterModel implements IRegisterModel {
-    private String msg;
+    private Context context;
+
+    public RegisterModel(Context context) {
+        this.context = context;
+    }
+
     /**
      * 获取验证码
      *
@@ -52,6 +61,8 @@ public class RegisterModel implements IRegisterModel {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+                } else {
+                    Logger.e("RegisterModel http error");
                 }
             }
         }, args);

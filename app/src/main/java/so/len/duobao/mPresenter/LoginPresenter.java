@@ -19,9 +19,11 @@ import so.len.duobao.utils.CommonUtils;
 public class LoginPresenter {
     private ILoginModel iLoginModel;
     private ILoginView iLoginView;
+    private Context context;
 
-    public LoginPresenter(ILoginView iLoginView) {
-        this.iLoginModel = new LoginModel();
+    public LoginPresenter(ILoginView iLoginView, Context context) {
+        this.context = context;
+        this.iLoginModel = new LoginModel(context);
         this.iLoginView = iLoginView;
     }
 
@@ -29,7 +31,7 @@ public class LoginPresenter {
         iLoginView.initView();
     }
 
-    public void doLogin(final Context context) {
+    public void doLogin() {
         iLoginModel.doLogin(iLoginView.getPhone(), iLoginView.getPassword(), new IHttpComplete() {
             @Override
             public void loadComplete() {
@@ -49,7 +51,6 @@ public class LoginPresenter {
                 Logger.i(msg);
             }
         });
-        iLoginView.clearEditText();
     }
 
     private boolean saveData() {

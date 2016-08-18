@@ -6,6 +6,7 @@ import android.content.Intent;
 
 import com.orhanobut.logger.Logger;
 
+import so.len.duobao.activity.LoginActivity;
 import so.len.duobao.activity.MainActivity;
 import so.len.duobao.mListener.IHttpComplete;
 import so.len.duobao.mModel.IRegisterModel;
@@ -19,9 +20,11 @@ import so.len.duobao.utils.CommonUtils;
 public class RegisterPresenter {
     private IRegisterModel iRegisterModel;
     private IRegisterView iRegisterView;
+    private Context context;
 
-    public RegisterPresenter(IRegisterView iRegisterView) {
-        this.iRegisterModel = new RegisterModel();
+    public RegisterPresenter(IRegisterView iRegisterView, Context context) {
+        this.context = context;
+        this.iRegisterModel = new RegisterModel(context);
         this.iRegisterView = iRegisterView;
     }
 
@@ -33,14 +36,15 @@ public class RegisterPresenter {
         iRegisterModel.getServerCode(iRegisterView.getPhone());
     }
 
-    public void doRegister(final Context context) {
+    public void doRegister() {
         iRegisterModel.doRegister(iRegisterView.getPhone(), iRegisterView.getMessageCode(), iRegisterView.getPassword(), new IHttpComplete() {
             @Override
             public void loadComplete() {
                 Intent intent = new Intent();
-                intent.setClass(context, MainActivity.class);
+                intent.setClass(context, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 context.startActivity(intent);
-                ((Activity) context).finish();
                 CommonUtils.toast(context, "注册成功");
             }
 
@@ -49,7 +53,6 @@ public class RegisterPresenter {
                 Logger.i(msg);
             }
         });
-        iRegisterView.clearEditText();
     }
 
 }

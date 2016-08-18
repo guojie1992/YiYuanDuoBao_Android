@@ -6,6 +6,7 @@ import android.content.Intent;
 
 import com.orhanobut.logger.Logger;
 
+import so.len.duobao.activity.LoginActivity;
 import so.len.duobao.activity.MainActivity;
 import so.len.duobao.mListener.IHttpComplete;
 import so.len.duobao.mModel.ForgetModel;
@@ -19,13 +20,15 @@ import so.len.duobao.utils.CommonUtils;
 public class ForgetPresenter {
     private IForgetModel iForgetModel;
     private IForgetView iForgetView;
+    private Context context;
 
-    public ForgetPresenter(IForgetView iForgetView) {
-        this.iForgetModel = new ForgetModel();
+    public ForgetPresenter(IForgetView iForgetView, Context context) {
+        this.context = context;
+        this.iForgetModel = new ForgetModel(context);
         this.iForgetView = iForgetView;
     }
 
-    public void initView(){
+    public void initView() {
         iForgetView.initView();
     }
 
@@ -33,15 +36,16 @@ public class ForgetPresenter {
         iForgetModel.getServerCode(iForgetView.getPhone());
     }
 
-    public void doForget(final Context context) {
-        if(checkRepeat()){
+    public void doForget() {
+        if (checkRepeat()) {
             iForgetModel.doForget(iForgetView.getPhone(), iForgetView.getMessageCode(), iForgetView.getPassword(), iForgetView.getRepeatPassword(), new IHttpComplete() {
                 @Override
                 public void loadComplete() {
                     Intent intent = new Intent();
-                    intent.setClass(context, MainActivity.class);
+                    intent.setClass(context, LoginActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     context.startActivity(intent);
-                    ((Activity) context).finish();
                     CommonUtils.toast(context, "重置成功");
                 }
 
@@ -50,12 +54,12 @@ public class ForgetPresenter {
                     Logger.i(msg);
                 }
             });
-        }else {
+        } else {
             iForgetView.clearEditText();
         }
     }
 
     private boolean checkRepeat() {
-        return iForgetView.getPassword().equals(iForgetView.getRepeatPassword())?true:false;
+        return iForgetView.getPassword().equals(iForgetView.getRepeatPassword()) ? true : false;
     }
 }
