@@ -41,17 +41,6 @@ public class SettingsActivity extends BaseActivity implements ISettingsView {
         settingsPresenter.initView();
     }
 
-    @OnClick({R.id.ll_update_activity_settings, R.id.ll_logout_activity_settings})
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.ll_update_activity_settings:
-                toast("ll_update_activity_settings");
-                break;
-            case R.id.ll_logout_activity_settings:
-                toast("ll_logout_activity_settings");
-                break;
-        }
-    }
 
     @Override
     public void initView() {
@@ -66,5 +55,17 @@ public class SettingsActivity extends BaseActivity implements ISettingsView {
                 finish();
             }
         });
+    }
+
+    @OnClick({R.id.ll_update_activity_settings, R.id.ll_logout_activity_settings})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.ll_update_activity_settings:
+                toast("ll_update_activity_settings");
+                break;
+            case R.id.ll_logout_activity_settings:
+                toast("ll_logout_activity_settings");
+                break;
+        }
     }
 }

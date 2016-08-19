@@ -21,6 +21,7 @@ import butterknife.ButterKnife;
 import so.len.duobao.R;
 import so.len.duobao.api.SERVER;
 import so.len.duobao.bean.OneBean;
+import so.len.duobao.bean.OneDataList;
 import so.len.duobao.bean.OneDataPic;
 import so.len.duobao.customAdapter.LotteryListViewAdapter;
 import so.len.duobao.customView.LoopViewPager;
@@ -70,16 +71,15 @@ public class OneFragment extends BaseFragment implements IOneView {
 
     @Override
     public void initView(OneBean oneBean) {
-        initLoopViewPager(oneBean);
-        initLotteryList(oneBean);
-//        initRefresh();
+        initLoopViewPager(oneBean.getData().getPic());
+        initLotteryList(oneBean.getData().getList());
     }
 
-    private void initLoopViewPager(OneBean oneBean) {
+    private void initLoopViewPager(List<OneDataPic> oneDataPic) {
         int padding = (int) getResources().getDimension(R.dimen.dp_2);
 
         ArrayList<String> pics = new ArrayList<>();
-        for (OneDataPic pic : oneBean.getData().getPic()) {
+        for (OneDataPic pic : oneDataPic) {
             pics.add(SERVER.DOMAIN + pic.getPic());
         }
         lvpFragmentOne.addLoopImageUrl(pics);
@@ -118,38 +118,22 @@ public class OneFragment extends BaseFragment implements IOneView {
         dots.get(0).setSelected(true);
     }
 
-    private void initLotteryList(OneBean oneBean) {
+    private void initLotteryList(List<OneDataList> oneDataList) {
         tvSpeakerFragmentOne.setText("中奖名单");
 //        tvSpeakerFragmentOne.setSelected(true);
 
         lotteryListData = new ArrayList<>();
-        for (int i = 0; i < oneBean.getData().getList().size(); i++) {
+        for (int i = 0; i < oneDataList.size(); i++) {
             map = new HashMap<>();
-            map.put("ivTitleItemListviewLottery", SERVER.DOMAIN + oneBean.getData().getList().get(i).getPic());
-            map.put("tvUsernameItemListviewLottery", oneBean.getData().getList().get(i).getNickname());
-            map.put("tvTimeItemListviewLottery", oneBean.getData().getList().get(i).getCreate_time());
-            map.put("tvContentItemListviewLottery", oneBean.getData().getList().get(i).getContent());
+            map.put("ivTitleItemListviewLottery", SERVER.DOMAIN + oneDataList.get(i).getPic());
+            map.put("tvUsernameItemListviewLottery", oneDataList.get(i).getNickname());
+            map.put("tvTimeItemListviewLottery", oneDataList.get(i).getCreate_time());
+            map.put("tvContentItemListviewLottery", oneDataList.get(i).getContent());
             lotteryListData.add(map);
         }
-//        logInfo(lotteryListData.toString());
         lotteryListViewAdapter = new LotteryListViewAdapter(getActivity(), lotteryListData);
         llvLotteryFragmentOne.setAdapter(lotteryListViewAdapter);
     }
-
-//    private void initRefresh() {
-//        srlFragmentOne.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                toast("refresh");
-//                new Handler().postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        srlFragmentOne.setRefreshing(false);
-//                    }
-//                }, 2000);
-//            }
-//        });
-//    }
 
     @Override
     public void onResume() {

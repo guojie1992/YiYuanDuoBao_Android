@@ -53,10 +53,6 @@ public class FourFragment extends BaseFragment implements IFourView {
 
     @Override
     public void initView() {
-        initTreasureList();
-    }
-
-    private void initTreasureList() {
         treasureListData = new ArrayList<>();
         for (int i = 0; i < 12; i++) {
             map = new HashMap<>();

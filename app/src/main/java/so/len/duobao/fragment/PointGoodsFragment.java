@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
-import com.orhanobut.logger.Logger;
 import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;

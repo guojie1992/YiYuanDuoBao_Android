@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.KeyEvent;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -65,10 +66,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     @Override
     public void initView() {
         topMenuBar.setMenuTopPadding(statusHeight);
-        initFragmentViewPager();
-    }
 
-    private void initFragmentViewPager() {
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new OneFragment());
         fragments.add(new TwoFragment());
@@ -215,20 +213,20 @@ public class MainActivity extends BaseActivity implements IMainView {
         }
     }
 
-//    @Override
-//    public boolean onKeyUp(int keyCode, KeyEvent event) {
-//        if (keyCode == KeyEvent.KEYCODE_BACK) {
-//            long exitTime = System.currentTimeMillis();
-//            if (exitTime - backTime > 800) {//如果两次按键时间间隔大于800毫秒，则不退出
-//                toast("再按一次退出程序");
-//                backTime = exitTime;//更新firstTime
-//                return true;
-//            } else {//否则退出程序
-//                backTime = 0;
-//                System.exit(0);
-//            }
-//        }
-//        return super.onKeyUp(keyCode, event);
-//    }
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            long exitTime = System.currentTimeMillis();
+            if (exitTime - backTime > 800) {//如果两次按键时间间隔大于800毫秒，则不退出
+                toast("再按一次退出程序");
+                backTime = exitTime;//更新firstTime
+                return true;
+            } else {//否则退出程序
+                backTime = 0;
+                System.exit(0);
+            }
+        }
+        return super.onKeyUp(keyCode, event);
+    }
 
 }

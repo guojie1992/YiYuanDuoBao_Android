@@ -47,10 +47,6 @@ public class MyGiftsFragment extends BaseFragment implements IMyGiftsView {
 
     @Override
     public void initView() {
-        initmyGiftsList();
-    }
-
-    private void initmyGiftsList() {
         myGiftsListData = new ArrayList<>();
         for (int i = 0; i < 12; i++) {
             map = new HashMap<>();
@@ -64,4 +60,5 @@ public class MyGiftsFragment extends BaseFragment implements IMyGiftsView {
 
         mlvMygiftsFragmentGiftsMy.setFocusable(false);
     }
+
 }
