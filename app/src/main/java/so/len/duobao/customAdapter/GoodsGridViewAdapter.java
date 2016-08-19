@@ -14,6 +14,8 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import so.len.duobao.R;
+import so.len.duobao.http.Options;
+import so.len.duobao.http.VolleyHttp;
 
 /**
  * Created by Chung on 2016/8/10.
@@ -54,8 +56,8 @@ public class GoodsGridViewAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-
-        viewHolder.ivTitleItemGridviewGoods.setImageResource((Integer) data.get(position).get("ivTitleItemGridviewGoods"));
+        Options opt = new Options();
+        VolleyHttp.getInstance().imageLoader((String) data.get(position).get("ivTitleItemGridviewGoods"), viewHolder.ivTitleItemGridviewGoods, opt);
         viewHolder.tvTitleItemGridviewGoods.setText((CharSequence) data.get(position).get("tvTitleItemGridviewGoods"));
         viewHolder.tvPriceItemGridviewGoods.setText((CharSequence) data.get(position).get("tvPriceItemGridviewGoods"));
 

@@ -1,5 +1,6 @@
 package so.len.duobao.fragment;
 
+import android.content.Context;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.squareup.otto.Produce;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,10 +22,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import so.len.duobao.R;
+import so.len.duobao.bean.TwoBean;
 import so.len.duobao.customAdapter.FragmentViewPagerAdapter;
 import so.len.duobao.customView.MyViewPager;
 import so.len.duobao.mPresenter.TwoPresenter;
 import so.len.duobao.mView.ITwoView;
+import so.len.duobao.otto.AppBus;
 
 /**
  * Created by Chung on 2016/8/3.
@@ -40,6 +45,8 @@ public class TwoFragment extends BaseFragment implements ITwoView {
     MyViewPager mvpGoodsFragmentTwo;
 
     private TwoPresenter twoPresenter;
+    private Context context;
+    private TwoBean twoBean;
     private int width;
     private PointGoodsFragment pointGoodsFragment;
     private MGoodsFragment mGoodsFragment;
@@ -50,34 +57,20 @@ public class TwoFragment extends BaseFragment implements ITwoView {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_two, null);
         ButterKnife.bind(this, view);
-
+        context = getActivity();
         control();
-
         return view;
     }
 
     private void control() {
-        twoPresenter = new TwoPresenter(this);
-       twoPresenter.initView();
+        twoPresenter = new TwoPresenter(this, context);
+        twoPresenter.initView();
     }
 
     @Override
-    public void initView() {
-//        initImg();
-        initGoodsViewPager();
-        initGoalsGoods();
-        initMGoods();
-    }
+    public void initView(TwoBean twoBean) {
+        this.twoBean = twoBean;
 
-//    private void initImg() {
-//        VolleyHttp vh = VolleyHttp.getInstance();
-//        Options opt = new Options();
-//        opt.defImage(R.mipmap.ic_launcher)
-//                .errImage(R.mipmap.ic_launcher);
-//        vh.imageLoader("http://pic73.nipic.com/file/20150722/19795594_122255146861_2.jpg", ivTopFragmentTwo, null);
-//    }
-
-    private void initGoodsViewPager() {
         Point outSize = new Point();
         getActivity().getWindowManager().getDefaultDisplay().getSize(outSize);
         width = outSize.x / 2;
@@ -87,6 +80,8 @@ public class TwoFragment extends BaseFragment implements ITwoView {
 
         pointGoodsFragment = new PointGoodsFragment();
         mGoodsFragment = new MGoodsFragment();
+
+        AppBus.getInstance().post(produceTwoBean());
 
         if (adapter == null) {
             List<Fragment> fragmentList = new ArrayList<>();
@@ -130,13 +125,6 @@ public class TwoFragment extends BaseFragment implements ITwoView {
         });
     }
 
-    private void initGoalsGoods() {
-
-    }
-
-    private void initMGoods() {
-
-    }
 
     @OnClick({R.id.tv_points_fragment_two, R.id.tv_m_fragment_two})
     public void onClick(View view) {
@@ -150,4 +138,20 @@ public class TwoFragment extends BaseFragment implements ITwoView {
         }
     }
 
+    @Override
+    public void onResume() {
+        AppBus.getInstance().register(this);
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        AppBus.getInstance().unregister(this);
+        super.onPause();
+    }
+
+    @Produce
+    public TwoBean produceTwoBean(){
+        return twoBean;
+    }
 }

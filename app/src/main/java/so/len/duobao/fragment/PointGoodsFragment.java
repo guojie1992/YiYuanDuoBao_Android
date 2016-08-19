@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
+import com.orhanobut.logger.Logger;
+import com.squareup.otto.Subscribe;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,9 +23,12 @@ import so.len.duobao.R;
 import so.len.duobao.activity.WebViewActivity;
 import so.len.duobao.api.HTML;
 import so.len.duobao.api.JS;
+import so.len.duobao.api.SERVER;
+import so.len.duobao.bean.TwoBean;
 import so.len.duobao.customAdapter.GoodsGridViewAdapter;
 import so.len.duobao.mPresenter.PointsGoodsPresenter;
 import so.len.duobao.mView.IPointsGoodsView;
+import so.len.duobao.otto.AppBus;
 
 /**
  * Created by Chung on 2016/8/9.
@@ -31,6 +37,7 @@ public class PointGoodsFragment extends BaseFragment implements IPointsGoodsView
     @BindView(R.id.gv_fragment_goods_point)
     GridView gvFragmentGoodsPoint;
 
+    private TwoBean twoBean;
     private PointsGoodsPresenter pointsGoodsPresenter;
     private List<Map<String, Object>> goodsListData;
     private HashMap<String, Object> map;
@@ -41,7 +48,7 @@ public class PointGoodsFragment extends BaseFragment implements IPointsGoodsView
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_goods_point, null);
         ButterKnife.bind(this, view);
-        control();
+//        control();
         return view;
     }
 
@@ -52,16 +59,12 @@ public class PointGoodsFragment extends BaseFragment implements IPointsGoodsView
 
     @Override
     public void initView() {
-        initPointsGoodsList();
-    }
-
-    private void initPointsGoodsList() {
         goodsListData = new ArrayList<>();
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < twoBean.getData().getIntegral_goods_list().size(); i++) {
             map = new HashMap<>();
-            map.put("ivTitleItemGridviewGoods", R.drawable.iphone);
-            map.put("tvTitleItemGridviewGoods", "iPhone 6s Plus 128GB");
-            map.put("tvPriceItemGridviewGoods", "6199积分");
+            map.put("ivTitleItemGridviewGoods", SERVER.DOMAIN + twoBean.getData().getIntegral_goods_list().get(i).getPath());
+            map.put("tvTitleItemGridviewGoods", twoBean.getData().getIntegral_goods_list().get(i).getTitle());
+            map.put("tvPriceItemGridviewGoods", twoBean.getData().getMoney_goods_list().get(i).getIntegral() + "积分");
             goodsListData.add(map);
         }
 //        logInfo(goodsListData.toString());
@@ -80,4 +83,22 @@ public class PointGoodsFragment extends BaseFragment implements IPointsGoodsView
         });
     }
 
+
+    @Override
+    public void onResume() {
+        AppBus.getInstance().register(this);
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        AppBus.getInstance().unregister(this);
+        super.onPause();
+    }
+
+    @Subscribe
+    public void onTwoBean(TwoBean twoBean){
+        this.twoBean = twoBean;
+        control();
+    }
 }
