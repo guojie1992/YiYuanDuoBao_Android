@@ -75,7 +75,7 @@
                 app:rcProgress="0"
                 app:rcSecondaryProgress="1"
                 app:rcMax="1"
-                app:rcRadius="@dimen/dp_5"
+                app:rcRadius="@dimen/dp_6"
                 app:rcBackgroundPadding="@dimen/dp_1"
                 app:rcReverse="false"
                 app:rcProgressColor="@color/theme"

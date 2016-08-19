@@ -1,5 +1,6 @@
 package so.len.duobao.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,6 +21,8 @@ import so.len.duobao.R;
 import so.len.duobao.activity.WebViewActivity;
 import so.len.duobao.api.HTML;
 import so.len.duobao.api.JS;
+import so.len.duobao.api.SERVER;
+import so.len.duobao.bean.FourBean;
 import so.len.duobao.customAdapter.TreasureGridViewAdapter;
 import so.len.duobao.mPresenter.FourPresenter;
 import so.len.duobao.mView.IFourView;
@@ -31,6 +34,7 @@ public class FourFragment extends BaseFragment implements IFourView {
     @BindView(R.id.gv_treasure_fragment_four)
     GridView gvTreasureFragmentFour;
 
+    private Context context;
     private FourPresenter fourPresenter;
     private List<Map<String, Object>> treasureListData;
     private HashMap<String, Object> map;
@@ -41,26 +45,26 @@ public class FourFragment extends BaseFragment implements IFourView {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_four, null);
         ButterKnife.bind(this, view);
-
+        context = getActivity();
         control();
         return view;
     }
 
     private void control() {
-        fourPresenter = new FourPresenter(this);
+        fourPresenter = new FourPresenter(this, context);
         fourPresenter.initView();
     }
 
     @Override
-    public void initView() {
+    public void initView(FourBean fourBean) {
         treasureListData = new ArrayList<>();
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < fourBean.getData().size(); i++) {
             map = new HashMap<>();
-            map.put("ivTitleItemGridviewTreasure", R.drawable.iphone);
-            map.put("tvTitleItemGridviewTreasure", "iPhone 6s Plus 128GB");
-            map.put("pvProgressItemGridviewTreasure", 0.8);
-            map.put("tvAllItemGridviewTreasure", "总需:2222");
-            map.put("tvNeedItemGridviewTreasure", "剩余:1111");
+            map.put("ivTitleItemGridviewTreasure", SERVER.DOMAIN + fourBean.getData().get(i).getPath());
+            map.put("tvTitleItemGridviewTreasure", fourBean.getData().get(i).getTitle());
+            map.put("pvProgressItemGridviewTreasure", fourBean.getData().get(i).getProgess());
+            map.put("tvAllItemGridviewTreasure", "总需:" + fourBean.getData().get(i).getPrice());
+            map.put("tvNeedItemGridviewTreasure", "剩余:" + fourBean.getData().get(i).getNumber());
             treasureListData.add(map);
         }
 //        logInfo(treasureListData.toString());

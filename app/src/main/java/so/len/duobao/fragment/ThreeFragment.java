@@ -1,5 +1,6 @@
 package so.len.duobao.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,9 +17,8 @@ import so.len.duobao.R;
 import so.len.duobao.activity.WebViewActivity;
 import so.len.duobao.api.HTML;
 import so.len.duobao.api.JS;
+import so.len.duobao.bean.ThreeBean;
 import so.len.duobao.customView.SpeakerView;
-import so.len.duobao.http.Options;
-import so.len.duobao.http.VolleyHttp;
 import so.len.duobao.mPresenter.ThreePresenter;
 import so.len.duobao.mView.IThreeView;
 
@@ -35,31 +35,27 @@ public class ThreeFragment extends BaseFragment implements IThreeView {
     @BindView(R.id.sv_speaker_fragment_three)
     SpeakerView svSpeakerFragmentThree;
 
+    private Context context;
     private ThreePresenter threePresenter;
-    private VolleyHttp vh;
-    private Options opt;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_three, null);
         ButterKnife.bind(this, view);
+        this.context = getActivity();
         control();
         return view;
     }
 
     private void control() {
-        vh = VolleyHttp.getInstance();
-        opt = new Options();
-//        opt.defImage(R.mipmap.ic_launcher)
-//                .errImage(R.mipmap.ic_launcher);
-        threePresenter = new ThreePresenter(this);
+        threePresenter = new ThreePresenter(this, context);
         threePresenter.initView();
     }
 
     @Override
-    public void initView() {
-        tvSpeakerFragmentThree.setText("恭喜用户chung567115中奖啦！恭喜用户zyq中奖啦！恭喜用户zyx中奖啦！");
+    public void initView(ThreeBean threeBean) {
+        tvSpeakerFragmentThree.setText(threeBean.getData());
         tvSpeakerFragmentThree.setSelected(true);
     }
 

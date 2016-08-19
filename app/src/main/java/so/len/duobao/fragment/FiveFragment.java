@@ -89,7 +89,8 @@ public class FiveFragment extends BaseFragment implements IFiveView {
     }
 
     private void initBtn() {
-        pvProgressFragmentFive.setProgress((float) 0.5);
+
+        pvProgressFragmentFive.setProgress(Float.parseFloat("0.8"));
     }
 
     private void initGiftsViewPager() {

@@ -16,6 +16,8 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import so.len.duobao.R;
+import so.len.duobao.http.Options;
+import so.len.duobao.http.VolleyHttp;
 
 /**
  * Created by Chung on 2016/8/9.
@@ -57,9 +59,11 @@ public class TreasureGridViewAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.ivTitleItemGridviewTreasure.setImageResource((Integer) data.get(position).get("ivTitleItemGridviewTreasure"));
+        Options op = new Options();
+        VolleyHttp.getInstance().imageLoader((String) data.get(position).get("ivTitleItemGridviewTreasure"), viewHolder.ivTitleItemGridviewTreasure, op);
         viewHolder.tvTitleItemGridviewTreasure.setText((CharSequence) data.get(position).get("tvTitleItemGridviewTreasure"));
-        viewHolder.pvProgressItemGridviewTreasure.setProgress((float) 0.5);//((float) data.get(position).get("pvProgressItemGridviewTreasure"));
+//        viewHolder.tvTitleItemGridviewTreasure.setSelected(true);
+        viewHolder.pvProgressItemGridviewTreasure.setProgress(Float.parseFloat((String) data.get(position).get("pvProgressItemGridviewTreasure")));
         viewHolder.tvAllItemGridviewTreasure.setText((CharSequence) data.get(position).get("tvAllItemGridviewTreasure"));
         viewHolder.tvNeedItemGridviewTreasure.setText((CharSequence) data.get(position).get("tvNeedItemGridviewTreasure"));
 

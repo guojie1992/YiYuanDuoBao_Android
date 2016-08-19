@@ -59,6 +59,7 @@ public class GoodsGridViewAdapter extends BaseAdapter {
         Options opt = new Options();
         VolleyHttp.getInstance().imageLoader((String) data.get(position).get("ivTitleItemGridviewGoods"), viewHolder.ivTitleItemGridviewGoods, opt);
         viewHolder.tvTitleItemGridviewGoods.setText((CharSequence) data.get(position).get("tvTitleItemGridviewGoods"));
+//        viewHolder.tvTitleItemGridviewGoods.setSelected(true);
         viewHolder.tvPriceItemGridviewGoods.setText((CharSequence) data.get(position).get("tvPriceItemGridviewGoods"));
 
         return convertView;

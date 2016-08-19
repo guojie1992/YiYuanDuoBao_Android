@@ -27,9 +27,10 @@ public class SERVER {
     public static final String SHOP = DOMAIN + "/index.php?s=Home/Mall/index";
 
     //抽奖接口
-    public static final String LOTTREY = BEFORE + "/show_draw";
+    public static final String LOTTREY = BEFORE + "/show_prize";
 
     //夺宝接口
+    public static final String TREASURE = BEFORE + "/show_grab";
 
 
     //抢钱上部分接口
