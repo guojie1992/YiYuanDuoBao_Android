@@ -89,9 +89,9 @@ public class FiveFragment extends BaseFragment implements IFiveView {
     public void initView(FiveBean fiveBean) {
         this.fiveBean = fiveBean;
 
-        tvGiftsFragmentFive.setText(fiveBean.getRob_list().getRob_copies() + "份商品/代金券");
-        tvTimesFragmentFive.setText("今日还可抢" + fiveBean.getRob_list().getRob_number() + "次");
-        pvProgressFragmentFive.setProgress(Float.parseFloat("0.8"));
+        tvGiftsFragmentFive.setText(fiveBean.getRob_list().getRob_copies());
+        tvTimesFragmentFive.setText(fiveBean.getRob_list().getRob_number());
+        pvProgressFragmentFive.setProgress(Float.parseFloat(fiveBean.getRob_list().getProgress_bar()));
 
         tvMygoodsFragmentFive.setText(fiveBean.getHtml_list().getGoods_count());
         tvMyticketsFragmentFive.setText(fiveBean.getHtml_list().getVouchers_count());
