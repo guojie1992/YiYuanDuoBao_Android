@@ -1,5 +1,6 @@
 package so.len.duobao.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
@@ -13,12 +14,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
-
+import com.squareup.otto.Produce;
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -26,10 +25,12 @@ import so.len.duobao.R;
 import so.len.duobao.activity.WebViewActivity;
 import so.len.duobao.api.HTML;
 import so.len.duobao.api.JS;
+import so.len.duobao.bean.FiveBean;
 import so.len.duobao.customAdapter.FragmentViewPagerAdapter;
 import so.len.duobao.customView.MyViewPager;
 import so.len.duobao.mPresenter.FivePresenter;
 import so.len.duobao.mView.IFiveView;
+import so.len.duobao.otto.AppBus;
 import so.len.duobao.utils.CommonUtils;
 
 /**
@@ -61,7 +62,9 @@ public class FiveFragment extends BaseFragment implements IFiveView {
     @BindView(R.id.btn_go_fragment_five)
     ImageView btnGoFragmentFive;
 
+    private Context context;
     private FivePresenter fivePresenter;
+    private FiveBean fiveBean;
     private int width;
     private MyGiftsFragment myGiftsFragment;
     private HistoryGiftsFragment historyGiftsFragment;
@@ -72,29 +75,28 @@ public class FiveFragment extends BaseFragment implements IFiveView {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_five, null);
         ButterKnife.bind(this, view);
+        context = getActivity();
         control();
         return view;
     }
 
     private void control() {
-        fivePresenter = new FivePresenter(this);
+        fivePresenter = new FivePresenter(this, context);
         fivePresenter.initView();
     }
 
     @Override
-    public void initView() {
-        initBtn();
-        initGiftsViewPager();
-        initMyGifts();
-        initHistroyGifts();
-    }
+    public void initView(FiveBean fiveBean) {
+        this.fiveBean = fiveBean;
 
-    private void initBtn() {
-
+        tvGiftsFragmentFive.setText(fiveBean.getRob_list().getRob_copies() + "份商品/代金券");
+        tvTimesFragmentFive.setText("今日还可抢" + fiveBean.getRob_list().getRob_number() + "次");
         pvProgressFragmentFive.setProgress(Float.parseFloat("0.8"));
-    }
 
-    private void initGiftsViewPager() {
+        tvMygoodsFragmentFive.setText(fiveBean.getHtml_list().getGoods_count());
+        tvMyticketsFragmentFive.setText(fiveBean.getHtml_list().getVouchers_count());
+        tvMybeansFragmentFive.setText(fiveBean.getHtml_list().getBeans());
+
         mvpGoodsFragmentFive.setDisplayMode(MyViewPager.DisplayMode.FRAGMENT_FIVE);
 
         Point outSize = new Point();
@@ -106,6 +108,8 @@ public class FiveFragment extends BaseFragment implements IFiveView {
 
         myGiftsFragment = new MyGiftsFragment();
         historyGiftsFragment = new HistoryGiftsFragment();
+
+        AppBus.getInstance().post(produceFiveBean());
 
         if (adapter == null) {
             List<Fragment> fragmentList = new ArrayList<>();
@@ -123,7 +127,6 @@ public class FiveFragment extends BaseFragment implements IFiveView {
                 lp.leftMargin = (int) (position * width + positionOffset * width);
                 ivIndicatorFragmentFive.setLayoutParams(lp);
             }
-
             @Override
             public void onPageSelected(int position) {
                 tvMyFragmentFive.setSelected(false);
@@ -141,21 +144,14 @@ public class FiveFragment extends BaseFragment implements IFiveView {
                         break;
                 }
             }
-
             @Override
             public void onPageScrollStateChanged(int state) {
 //                logDebug("state:" + String.valueOf(state));
             }
         });
-    }
-
-    private void initMyGifts() {
 
     }
 
-    private void initHistroyGifts() {
-
-    }
 
     @OnClick({
             R.id.tv_my_fragment_five,
@@ -204,6 +200,23 @@ public class FiveFragment extends BaseFragment implements IFiveView {
                 startActivity(intent3);
                 break;
         }
+    }
+
+    @Override
+    public void onResume() {
+        AppBus.getInstance().register(this);
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        AppBus.getInstance().unregister(this);
+        super.onPause();
+    }
+
+    @Produce
+    public FiveBean produceFiveBean(){
+        return fiveBean;
     }
 
 }

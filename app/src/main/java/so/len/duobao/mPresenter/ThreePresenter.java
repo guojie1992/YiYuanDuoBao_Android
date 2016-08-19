@@ -6,6 +6,7 @@ import so.len.duobao.mListener.IHttpCompleteListener;
 import so.len.duobao.mModel.IThreeModel;
 import so.len.duobao.mModel.ThreeModel;
 import so.len.duobao.mView.IThreeView;
+import so.len.duobao.utils.CommonUtils;
 
 /**
  * Created by Chung on 2016/8/9.
@@ -30,7 +31,7 @@ public class ThreePresenter {
 
             @Override
             public void loadError(String msg) {
-
+                CommonUtils.toast(context, msg);
             }
         });
     }

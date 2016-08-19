@@ -7,6 +7,7 @@ import so.len.duobao.mListener.IHttpCompleteListener;
 import so.len.duobao.mModel.IOneModel;
 import so.len.duobao.mModel.OneModel;
 import so.len.duobao.mView.IOneView;
+import so.len.duobao.utils.CommonUtils;
 
 /**
  * Created by Chung on 2016/8/8.
@@ -31,7 +32,7 @@ public class OnePresenter {
 
             @Override
             public void loadError(String msg) {
-
+                CommonUtils.toast(context, msg);
             }
         });
     }

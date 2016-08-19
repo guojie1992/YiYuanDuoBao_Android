@@ -5,19 +5,20 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import com.squareup.otto.Subscribe;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import so.len.duobao.R;
+import so.len.duobao.bean.FiveBean;
 import so.len.duobao.customAdapter.HistoryGiftsListViewAdapter;
 import so.len.duobao.customView.HistoryGiftsListView;
 import so.len.duobao.mPresenter.HistoryGiftsPresenter;
 import so.len.duobao.mView.IHistoryGiftsView;
+import so.len.duobao.otto.AppBus;
 
 /**
  * Created by Chung on 2016/8/9.
@@ -26,6 +27,7 @@ public class HistoryGiftsFragment extends BaseFragment implements IHistoryGiftsV
     @BindView(R.id.hlv_historygifts_fragment_gifts_history)
     HistoryGiftsListView hlvHistorygiftsFragmentGiftsHistory;
 
+    private FiveBean fiveBean;
     private HistoryGiftsPresenter historyGiftsPresenter;
     private HistoryGiftsListViewAdapter adapter;
     private Map<String, List<String>> data;
@@ -36,7 +38,7 @@ public class HistoryGiftsFragment extends BaseFragment implements IHistoryGiftsV
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_gifts_history, null);
         ButterKnife.bind(this, view);
-        control();
+//        control();
         return view;
     }
 
@@ -49,15 +51,12 @@ public class HistoryGiftsFragment extends BaseFragment implements IHistoryGiftsV
     public void initView() {
         data = new LinkedHashMap<String, List<String>>();
 
-        for(int i=0;i<12;i++){
+        for(int i=0;i<fiveBean.getHistory_list().size();i++){
             list = new ArrayList<String>();
-            list.add("chung567115抢到了1000元代金券");
-            list.add("chung567115抢到了1000元代金券");
-            list.add("chung567115抢到了1000元代金券");
-            list.add("chung567115抢到了1000元代金券");
-            list.add("chung567115抢到了1000元代金券");
-            list.add("chung567115抢到了1000元代金券");
-            data.put("2016/08/10 19:29 " + String.valueOf(i), list);
+            for(int j=0;j<fiveBean.getHistory_list().get(i).getData_list().size();j++){
+                list.add(fiveBean.getHistory_list().get(i).getData_list().get(j).getContent());
+            }
+            data.put(fiveBean.getHistory_list().get(i).getData_time(), list);
         }
 
 //        logDebug(data.toString());
@@ -68,4 +67,23 @@ public class HistoryGiftsFragment extends BaseFragment implements IHistoryGiftsV
 
         hlvHistorygiftsFragmentGiftsHistory.setFocusable(false);
     }
+
+    @Override
+    public void onResume() {
+        AppBus.getInstance().register(this);
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        AppBus.getInstance().unregister(this);
+        super.onPause();
+    }
+
+    @Subscribe
+    public void onFiveBean(FiveBean fiveBean){
+        this.fiveBean = fiveBean;
+        control();
+    }
+
 }

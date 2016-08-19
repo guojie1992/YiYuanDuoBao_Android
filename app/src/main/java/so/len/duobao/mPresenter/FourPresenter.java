@@ -6,6 +6,7 @@ import so.len.duobao.mListener.IHttpCompleteListener;
 import so.len.duobao.mModel.FourModel;
 import so.len.duobao.mModel.IFourModel;
 import so.len.duobao.mView.IFourView;
+import so.len.duobao.utils.CommonUtils;
 
 /**
  * Created by Chung on 2016/8/9.
@@ -30,7 +31,7 @@ public class FourPresenter  {
 
             @Override
             public void loadError(String msg) {
-
+                CommonUtils.toast(context, msg);
             }
         });
     }
