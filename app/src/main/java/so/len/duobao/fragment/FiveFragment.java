@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.rey.material.widget.ProgressView;
+import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +48,7 @@ public class FiveFragment extends BaseFragment implements IFiveView {
     @BindView(R.id.tv_times_fragment_five)
     TextView tvTimesFragmentFive;
     @BindView(R.id.pv_progress_fragment_five)
-    ProgressView pvProgressFragmentFive;
+    RoundCornerProgressBar pvProgressFragmentFive;
     @BindView(R.id.tv_mygoods_fragment_five)
     TextView tvMygoodsFragmentFive;
     @BindView(R.id.tv_mytickets_fragment_five)

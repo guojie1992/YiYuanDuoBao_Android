@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.rey.material.widget.ProgressView;
+import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 
 import java.util.List;
 import java.util.Map;
@@ -72,7 +72,7 @@ public class TreasureGridViewAdapter extends BaseAdapter {
         @BindView(R.id.tv_title_item_gridview_treasure)
         TextView tvTitleItemGridviewTreasure;
         @BindView(R.id.pv_progress_item_gridview_treasure)
-        ProgressView pvProgressItemGridviewTreasure;
+        RoundCornerProgressBar pvProgressItemGridviewTreasure;
         @BindView(R.id.tv_all_item_gridview_treasure)
         TextView tvAllItemGridviewTreasure;
         @BindView(R.id.tv_need_item_gridview_treasure)
