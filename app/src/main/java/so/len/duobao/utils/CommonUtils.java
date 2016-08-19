@@ -71,6 +71,16 @@ public class CommonUtils {
         }
     }
 
+    private static long lastClickTime;
+    public synchronized static boolean isFastClick() {
+        long time = System.currentTimeMillis();
+        if ( time - lastClickTime < 1000) {
+            return true;
+        }
+        lastClickTime = time;
+        return false;
+    }
+
     public static void toast(Context context, String text){
         Toast.makeText(context,text,Toast.LENGTH_SHORT).show();
     }

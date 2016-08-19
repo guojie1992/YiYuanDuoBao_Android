@@ -40,8 +40,8 @@ public class OneFragment extends BaseFragment implements IOneView {
     LinearLayout llDotFragmentOne;
     @BindView(R.id.llv_lottery_fragment_one)
     LotteryListView llvLotteryFragmentOne;
-    @BindView(R.id.sv_speaker_fragment_one)
-    SpeakerView svSpeakerFragmentOne;
+    @BindView(R.id.iv_head_fragment_one)
+    ImageView ivHeadFragmentOne;
     @BindView(R.id.tv_speaker_fragment_one)
     TextView tvSpeakerFragmentOne;
 //    @BindView(R.id.srl_fragment_one)
@@ -137,17 +137,17 @@ public class OneFragment extends BaseFragment implements IOneView {
 
     @Override
     public void onResume() {
-        svSpeakerFragmentOne.startSpeaker(300);
-        if (lvpFragmentOne != null)
+        if (lvpFragmentOne != null){
             lvpFragmentOne.openLoopTimer();
+        }
         super.onResume();
     }
 
     @Override
     public void onPause() {
-        svSpeakerFragmentOne.stopSpeaker();
-        if (lvpFragmentOne != null)
+        if (lvpFragmentOne != null){
             lvpFragmentOne.cancelLoopTimer();
+        }
         super.onPause();
     }
 

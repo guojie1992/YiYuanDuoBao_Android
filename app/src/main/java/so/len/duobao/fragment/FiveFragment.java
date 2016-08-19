@@ -30,6 +30,7 @@ import so.len.duobao.customAdapter.FragmentViewPagerAdapter;
 import so.len.duobao.customView.MyViewPager;
 import so.len.duobao.mPresenter.FivePresenter;
 import so.len.duobao.mView.IFiveView;
+import so.len.duobao.utils.CommonUtils;
 
 /**
  * Created by Chung on 2016/8/8.
@@ -165,6 +166,9 @@ public class FiveFragment extends BaseFragment implements IFiveView {
             R.id.ll_beans_fragment_five
     })
     public void onClick(View view) {
+        if (CommonUtils.isFastClick()) {
+            return ;
+        }
         switch (view.getId()) {
             case R.id.tv_my_fragment_five:
                 mvpGoodsFragmentFive.setCurrentItem(0);

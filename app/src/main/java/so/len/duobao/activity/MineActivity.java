@@ -21,6 +21,7 @@ import so.len.duobao.http.Options;
 import so.len.duobao.http.VolleyHttp;
 import so.len.duobao.mPresenter.MinePresenter;
 import so.len.duobao.mView.IMineView;
+import so.len.duobao.utils.CommonUtils;
 
 /**
  * Created by Chung on 2016/8/11.
@@ -150,6 +151,9 @@ public class MineActivity extends BaseActivity implements IMineView {
             R.id.ll_mytreasure_activity_mine,
             R.id.ll_myaddr_activity_mine})
     public void onClick(View view) {
+        if (CommonUtils.isFastClick()) {
+            return ;
+        }
         Intent intent = new Intent();
         switch (view.getId()) {
             case R.id.civ_head_activity_mine:

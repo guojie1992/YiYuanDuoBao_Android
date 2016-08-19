@@ -15,6 +15,7 @@ import so.len.duobao.R;
 import so.len.duobao.customView.TopMenuBar;
 import so.len.duobao.mPresenter.LoginPresenter;
 import so.len.duobao.mView.ILoginView;
+import so.len.duobao.utils.CommonUtils;
 
 /**
  * Created by Chung on 2016/8/5.
@@ -84,6 +85,9 @@ public class LoginActivity extends BaseActivity implements ILoginView {
 
     @OnClick({R.id.tv_forget_activity_login, R.id.btn_activity_login_submit})
     public void onClick(View view) {
+        if (CommonUtils.isFastClick()) {
+            return ;
+        }
         switch (view.getId()) {
             case R.id.tv_forget_activity_login:
                 Intent intent1 = new Intent();

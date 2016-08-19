@@ -13,6 +13,7 @@ import so.len.duobao.R;
 import so.len.duobao.customView.TopMenuBar;
 import so.len.duobao.mPresenter.ForgetPresenter;
 import so.len.duobao.mView.IForgetView;
+import so.len.duobao.utils.CommonUtils;
 
 /**
  * Created by Chung on 2016/8/5.
@@ -52,6 +53,9 @@ public class ForgetActivity extends BaseActivity implements IForgetView {
 
     @OnClick({R.id.btn_activity_forget_getcode, R.id.btn_activity_forget_submit})
     public void onClick(View view) {
+        if (CommonUtils.isFastClick()) {
+            return ;
+        }
         switch (view.getId()) {
             case R.id.btn_activity_forget_getcode:
                 forgetPresenter.getServerCode();

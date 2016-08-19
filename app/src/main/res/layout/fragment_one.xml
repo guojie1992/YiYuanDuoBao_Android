@@ -42,20 +42,20 @@
             android:layout_height="wrap_content"
             android:background="@color/white">
 
-            <so.len.duobao.customView.SpeakerView
-                android:id="@+id/sv_speaker_fragment_one"
+            <ImageView
+                android:id="@+id/iv_head_fragment_one"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp" />
+                android:layout_marginLeft="10dp"
+                android:src="@mipmap/lottery_head"/>
 
             <TextView
                 android:id="@+id/tv_speaker_fragment_one"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="@dimen/dp_5"
-                android:layout_toRightOf="@id/sv_speaker_fragment_one"
+                android:layout_toRightOf="@id/iv_head_fragment_one"
                 android:ellipsize="marquee"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:padding="5dp"

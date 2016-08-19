@@ -13,6 +13,7 @@ import so.len.duobao.R;
 import so.len.duobao.customView.TopMenuBar;
 import so.len.duobao.mPresenter.RegisterPresenter;
 import so.len.duobao.mView.IRegisterView;
+import so.len.duobao.utils.CommonUtils;
 
 /**
  * Created by Chung on 2016/8/5.
@@ -87,6 +88,9 @@ public class RegisterActivity extends BaseActivity implements IRegisterView {
 
     @OnClick({R.id.btn_activity_register_getcode, R.id.btn_activity_register_submit})
     public void onClick(View view) {
+        if (CommonUtils.isFastClick()) {
+            return ;
+        }
         switch (view.getId()) {
             case R.id.btn_activity_register_getcode:
                 registerPresenter.getServerCode();
