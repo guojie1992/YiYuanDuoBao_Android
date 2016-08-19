@@ -156,6 +156,8 @@ public class FiveFragment extends BaseFragment implements IFiveView {
     }
 
     @OnClick({
+            R.id.tv_my_fragment_five,
+            R.id.tv_history_fragment_five,
             R.id.btn_go_fragment_five,
             R.id.ll_goods_fragment_five,
             R.id.ll_tickets_fragment_five,
@@ -163,6 +165,12 @@ public class FiveFragment extends BaseFragment implements IFiveView {
     })
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.tv_my_fragment_five:
+                mvpGoodsFragmentFive.setCurrentItem(0);
+                break;
+            case R.id.tv_history_fragment_five:
+                mvpGoodsFragmentFive.setCurrentItem(1);
+                break;
             case R.id.btn_go_fragment_five:
                 toast("go");
                 break;
