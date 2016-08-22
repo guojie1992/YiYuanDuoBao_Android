@@ -47,6 +47,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     @BindView(R.id.vp_home)
     FragmentViewPager vpHome;
 
+    public static boolean isForeground = false;
     private MainPresenter mainPresenter;
     private long backTime = 0;
 
@@ -227,6 +228,19 @@ public class MainActivity extends BaseActivity implements IMainView {
             }
         }
         return super.onKeyUp(keyCode, event);
+    }
+
+    @Override
+    protected void onResume() {
+        isForeground = true;
+        super.onResume();
+    }
+
+
+    @Override
+    protected void onPause() {
+        isForeground = false;
+        super.onPause();
     }
 
 }
