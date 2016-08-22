@@ -20,7 +20,7 @@
             <so.len.duobao.customView.LoopViewPager
                 android:id="@+id/lvp_fragment_one"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_130">
+                android:layout_height="@dimen/dp_150">
 
             </so.len.duobao.customView.LoopViewPager>
 

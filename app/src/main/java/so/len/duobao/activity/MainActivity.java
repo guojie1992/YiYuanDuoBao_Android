@@ -56,6 +56,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        topMenuBar.setMenuTopPadding(statusHeight);
         control();
     }
 
@@ -66,7 +67,6 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     @Override
     public void initView() {
-        topMenuBar.setMenuTopPadding(statusHeight);
 
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new OneFragment());

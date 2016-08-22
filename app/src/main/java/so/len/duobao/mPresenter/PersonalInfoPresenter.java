@@ -2,6 +2,7 @@ package so.len.duobao.mPresenter;
 
 import android.content.Context;
 
+import so.len.duobao.mListener.IHttpCompleteListener;
 import so.len.duobao.mModel.IPersonalInfoModel;
 import so.len.duobao.mModel.PersonalInfoModel;
 import so.len.duobao.mView.IPersonalInfoView;
@@ -21,6 +22,17 @@ public class PersonalInfoPresenter {
     }
 
     public void initView(){
-        iPersonalInfoView.initView();
+        iPersonalInfoModel.getServerData(new IHttpCompleteListener() {
+            @Override
+            public void loadComplete() {
+                iPersonalInfoView.initView(iPersonalInfoModel.getPersonalBean());
+            }
+
+            @Override
+            public void loadError(String msg) {
+
+            }
+        });
+
     }
 }

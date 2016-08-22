@@ -29,7 +29,8 @@
                     android:id="@+id/iv_top_activity_mine"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_100"
-                    android:scaleType="fitXY"/>
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/my_top"/>
 
                 <TextView
                     android:id="@+id/tv_username_activity_mine"

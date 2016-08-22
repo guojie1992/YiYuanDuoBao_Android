@@ -33,7 +33,6 @@ public class MineBean {
     }
 
     public class MineData{
-        private String facePic;
         private String pic;
         private String nickname;
         private int vip;
@@ -42,13 +41,6 @@ public class MineBean {
         private String signIn;
         private String pid;
 
-        public String getFacePic() {
-            return facePic;
-        }
-
-        public void setFacePic(String facePic) {
-            this.facePic = facePic;
-        }
 
         public String getPic() {
             return pic;

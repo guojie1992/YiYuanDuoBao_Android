@@ -33,6 +33,7 @@ public class SettingsActivity extends BaseActivity implements ISettingsView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         ButterKnife.bind(this);
+        topMenuBarSettings.setMenuTopPadding(statusHeight);
         control();
     }
 
@@ -44,7 +45,7 @@ public class SettingsActivity extends BaseActivity implements ISettingsView {
 
     @Override
     public void initView() {
-        topMenuBarSettings.setMenuTopPadding(statusHeight);
+
         topMenuBarSettings.setBackVisibility(View.VISIBLE);
         topMenuBarSettings.setBackSrc(R.mipmap.top_back);
         topMenuBarSettings.setTitleText("设置");

@@ -39,4 +39,5 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.akexorcist:RoundCornerProgressBar:2.0.3'
     compile files('libs/jpush-android-2.1.7.jar')
+    compile 'org.apache.httpcomponents:httpcore:4.4.5'
 }

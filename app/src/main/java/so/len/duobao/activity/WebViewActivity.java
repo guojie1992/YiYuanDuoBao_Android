@@ -10,12 +10,15 @@ import android.webkit.WebView;
 import android.widget.FrameLayout;
 
 
+import org.apache.http.util.EncodingUtils;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import so.len.duobao.R;
 import so.len.duobao.api.HTML;
 import so.len.duobao.api.JS;
 import so.len.duobao.customView.TopMenuBar;
+import so.len.duobao.database.Config;
 import so.len.duobao.mPresenter.WebViewPresenter;
 import so.len.duobao.mView.IWebView;
 import so.len.duobao.utils.CommonUtils;
@@ -35,6 +38,8 @@ public class WebViewActivity extends WebBaseActivity implements IWebView {
     private WebView webView;
     private String url;
     private String title;
+    private boolean needPost;
+    private String postData;
     private TOP_RIGHT top_right;
 
     public enum TOP_RIGHT {
@@ -56,6 +61,8 @@ public class WebViewActivity extends WebBaseActivity implements IWebView {
             statusHeight = CommonUtils.getStatusHeight(this);
         }
 
+        tmbActivityWebview.setMenuTopPadding(statusHeight);
+
         control();
     }
 
@@ -69,9 +76,13 @@ public class WebViewActivity extends WebBaseActivity implements IWebView {
         Intent intent = getIntent();
         url = intent.getStringExtra(JS.H5_URL);
         title = intent.getStringExtra(JS.H5_TITLE);
+        needPost = intent.getBooleanExtra("needPost", false);
+        if(needPost){
+            postData = intent.getStringExtra("postData");
+        }
         top_right = (TOP_RIGHT) intent.getSerializableExtra("TOP_RIGHT");
 
-        tmbActivityWebview.setMenuTopPadding(statusHeight);
+
         tmbActivityWebview.setBackSrc(View.VISIBLE);
         tmbActivityWebview.setBackSrc(R.mipmap.top_back);
         tmbActivityWebview.setTitleText(title);
@@ -82,7 +93,7 @@ public class WebViewActivity extends WebBaseActivity implements IWebView {
                 finish();
             }
         });
-        switch (top_right){
+        switch (top_right) {
             case no_right_top:
                 tmbActivityWebview.setMenuVisibility(View.INVISIBLE);
                 break;
@@ -137,7 +148,7 @@ public class WebViewActivity extends WebBaseActivity implements IWebView {
                 tmbActivityWebview.setOnMenuClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                       toast("save");
+                        toast("save");
                         finish();
                     }
                 });
@@ -151,7 +162,17 @@ public class WebViewActivity extends WebBaseActivity implements IWebView {
         webSettings.setJavaScriptEnabled(true);
         setWebZoom(webSettings);
         setNetworkCache(webSettings);
-        webView.loadUrl(url);
+
+        if(needPost){
+            //由于webView.postUrl(url, postData)中 postData类型为byte[]
+            //通过EncodingUtils.getBytes(data, charset)方法进行转换
+            webView.postUrl(url, EncodingUtils.getBytes(postData, "BASE64"));
+        } else {
+            webView.loadUrl(url);
+        }
+
+
+
     }
 
     public void reload() {

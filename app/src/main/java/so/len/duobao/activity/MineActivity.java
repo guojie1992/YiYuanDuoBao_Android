@@ -65,6 +65,7 @@ public class MineActivity extends BaseActivity implements IMineView {
         setContentView(R.layout.activity_mine);
         ButterKnife.bind(this);
         context = MineActivity.this;
+        topMenuBarMine.setMenuTopPadding(statusHeight);
         control();
     }
 
@@ -75,7 +76,6 @@ public class MineActivity extends BaseActivity implements IMineView {
 
     @Override
     public void initView(MineBean mineBean) {
-        topMenuBarMine.setMenuTopPadding(statusHeight);
         topMenuBarMine.setTitleText("我的");
         topMenuBarMine.setBackVisibility(View.VISIBLE);
         topMenuBarMine.setBackSrc(R.mipmap.top_back);
@@ -102,8 +102,7 @@ public class MineActivity extends BaseActivity implements IMineView {
 
     private void initViewFromData(MineBean mineBean) {
         Options opt = new Options();
-        VolleyHttp.getInstance().imageLoader(SERVER.DOMAIN + mineBean.getData().getPic(), ivTopActivityMine, opt);
-        VolleyHttp.getInstance().imageLoader(SERVER.DOMAIN + mineBean.getData().getFacePic(), civHeadActivityMine, opt);
+        VolleyHttp.getInstance().imageLoader(SERVER.DOMAIN + mineBean.getData().getPic(), civHeadActivityMine, opt);
         String vip = "0";
         switch (mineBean.getData().getVip()){
             case 0:

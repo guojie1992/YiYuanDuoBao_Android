@@ -33,6 +33,7 @@ public class AddAddrActivity extends BaseActivity implements IAddAddrView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_addr);
         ButterKnife.bind(this);
+        tmbActivityAddAddr.setMenuTopPadding(statusHeight);
         contorl();
     }
 
@@ -43,7 +44,7 @@ public class AddAddrActivity extends BaseActivity implements IAddAddrView {
 
     @Override
     public void initView() {
-        tmbActivityAddAddr.setMenuTopPadding(statusHeight);
+
         tmbActivityAddAddr.setBackVisibility(View.VISIBLE);
         tmbActivityAddAddr.setTitleVisibility(View.VISIBLE);
         tmbActivityAddAddr.setMenuVisibility(View.VISIBLE);

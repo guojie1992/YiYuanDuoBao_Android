@@ -31,6 +31,7 @@ public class AddCardActivity extends BaseActivity implements IAddCardView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_card);
         ButterKnife.bind(this);
+        tmbActivityAddCard.setMenuTopPadding(statusHeight);
         control();
     }
 
@@ -41,7 +42,7 @@ public class AddCardActivity extends BaseActivity implements IAddCardView {
 
     @Override
     public void initView() {
-        tmbActivityAddCard.setMenuTopPadding(statusHeight);
+
         tmbActivityAddCard.setBackVisibility(View.VISIBLE);
         tmbActivityAddCard.setTitleVisibility(View.VISIBLE);
         tmbActivityAddCard.setMenuVisibility(View.VISIBLE);

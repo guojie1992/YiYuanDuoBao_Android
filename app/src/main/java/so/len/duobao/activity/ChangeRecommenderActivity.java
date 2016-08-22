@@ -27,6 +27,7 @@ public class ChangeRecommenderActivity extends BaseActivity implements IChangeRe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_recommender);
         ButterKnife.bind(this);
+        tmbActivityChangeRecommender.setMenuTopPadding(statusHeight);
         control();
     }
 
@@ -37,7 +38,7 @@ public class ChangeRecommenderActivity extends BaseActivity implements IChangeRe
 
     @Override
     public void initView() {
-        tmbActivityChangeRecommender.setMenuTopPadding(statusHeight);
+
         tmbActivityChangeRecommender.setBackVisibility(View.VISIBLE);
         tmbActivityChangeRecommender.setBackSrc(R.mipmap.top_back);
         tmbActivityChangeRecommender.setTitleText("我的推荐人");

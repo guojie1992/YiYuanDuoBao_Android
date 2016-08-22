@@ -41,6 +41,7 @@ public class LoginActivity extends BaseActivity implements ILoginView {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         context = LoginActivity.this;
+        tmbActivityLogin.setMenuTopPadding(statusHeight);
         control();
     }
 
@@ -52,7 +53,7 @@ public class LoginActivity extends BaseActivity implements ILoginView {
 
     @Override
     public void initView() {
-        tmbActivityLogin.setMenuTopPadding(statusHeight);
+
         tmbActivityLogin.setTitleText("登陆");
         tmbActivityLogin.setBackVisibility(View.INVISIBLE);
         tmbActivityLogin.setMenuVisibility(View.VISIBLE);

@@ -30,8 +30,8 @@ public class MineModel implements IMineModel {
     @Override
     public void getServerData(final IHttpCompleteListener iHttpCompleteListener) {
         Map<String, String> args = new HashMap<>();
-        args.put("uid", "109");
-//        args.put("uid", Config.getInstance(context).getConfig("uid"));
+//        args.put("uid", "109");
+        args.put("uid", Config.getInstance(context).getConfig("uid"));
         VolleyHttp.getInstance().postParamsJson(SERVER.USER_INFO, new VolleyHttp.JsonResponseListener() {
             @Override
             public void getJson(String json, boolean isConnectSuccess) {
@@ -39,6 +39,7 @@ public class MineModel implements IMineModel {
                     Gson gson = new Gson();
                     mineBean = gson.fromJson(json, MineBean.class);
                     if (mineBean.getStatus().equals("1")) {
+                        Logger.i(mineBean.toString());
                         iHttpCompleteListener.loadComplete();
                     } else {
                         iHttpCompleteListener.loadError(mineBean.getMsg());

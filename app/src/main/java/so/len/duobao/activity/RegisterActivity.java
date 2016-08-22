@@ -41,6 +41,7 @@ public class RegisterActivity extends BaseActivity implements IRegisterView {
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
         context = RegisterActivity.this;
+        tmbActivityRegister.setMenuTopPadding(statusHeight);
         control();
     }
 
@@ -51,7 +52,7 @@ public class RegisterActivity extends BaseActivity implements IRegisterView {
 
     @Override
     public void initView() {
-        tmbActivityRegister.setMenuTopPadding(statusHeight);
+
         tmbActivityRegister.setTitleText("注册");
         tmbActivityRegister.setBackVisibility(View.VISIBLE);
         tmbActivityRegister.setBackSrc(R.mipmap.top_back);

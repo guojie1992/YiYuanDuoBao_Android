@@ -1,5 +1,6 @@
 package so.len.duobao.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -24,6 +25,7 @@ public class ChangePasswordActivity extends BaseActivity implements IChangePassw
     @BindView(R.id.et_repeat_activity_change_password)
     EditText etRepeatActivityChangePassword;
 
+    private Context context;
     private ChangePasswordPresenter changePasswordPresenter;
 
     @Override
@@ -31,17 +33,19 @@ public class ChangePasswordActivity extends BaseActivity implements IChangePassw
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
         ButterKnife.bind(this);
+        this.context = ChangePasswordActivity.this;
+        tmbActivityChangePassword.setMenuTopPadding(statusHeight);
         control();
     }
 
     private void control() {
-        changePasswordPresenter = new ChangePasswordPresenter(this);
+        changePasswordPresenter = new ChangePasswordPresenter(this, context);
         changePasswordPresenter.initView();
     }
 
     @Override
     public void initView() {
-        tmbActivityChangePassword.setMenuTopPadding(statusHeight);
+
         tmbActivityChangePassword.setBackVisibility(View.VISIBLE);
         tmbActivityChangePassword.setTitleVisibility(View.VISIBLE);
         tmbActivityChangePassword.setMenuVisibility(View.VISIBLE);
@@ -57,7 +61,11 @@ public class ChangePasswordActivity extends BaseActivity implements IChangePassw
         tmbActivityChangePassword.setOnMenuClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toast("save");
+                changePasswordPresenter.changePassword(
+                        etOldActivityChangePassword.getText().toString().trim(),
+                        etNewActivityChangePassword.getText().toString().trim(),
+                        etRepeatActivityChangePassword.getText().toString().trim()
+                        );
                 finish();
             }
         });

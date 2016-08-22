@@ -43,6 +43,7 @@ public class ForgetActivity extends BaseActivity implements IForgetView {
         setContentView(R.layout.activity_forget);
         ButterKnife.bind(this);
         context = ForgetActivity.this;
+        tmbActivityForget.setMenuTopPadding(statusHeight);
         control();
     }
 
@@ -69,7 +70,7 @@ public class ForgetActivity extends BaseActivity implements IForgetView {
 
     @Override
     public void initView() {
-        tmbActivityForget.setMenuTopPadding(statusHeight);
+
         tmbActivityForget.setTitleText("忘记密码");
         tmbActivityForget.setBackVisibility(View.VISIBLE);
         tmbActivityForget.setBackSrc(R.mipmap.top_back);

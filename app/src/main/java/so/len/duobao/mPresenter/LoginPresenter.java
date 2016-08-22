@@ -46,7 +46,7 @@ public class LoginPresenter {
                     intent.setClass(context, MainActivity.class);
                     context.startActivity(intent);
                     ((Activity) context).finish();
-                    CommonUtils.toast(context, "登陆成功");
+//                    CommonUtils.toast(context, "登陆成功");
                 }
 
                 @Override

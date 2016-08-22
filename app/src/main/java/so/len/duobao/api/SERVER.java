@@ -27,6 +27,11 @@ public class SERVER {
 
     //我的接口
     public static final String USER_INFO = USER + "/show_my_info";
+    //用户信息
+    public static final String PERSONAL_INFO = USER + "/show_my_info_sec";
+    public static final String CHANGE_HEAD_PIC = USER + "/my_head_change";
+    public static final String CHANGE_USERNAME = USER + "/change_nickname";
+    public static final String CHANGE_PASSWORD = USER + "/change_pwd";
 
     //主页接口
     public static final String HOME_PAGE = USER + "/show_index";

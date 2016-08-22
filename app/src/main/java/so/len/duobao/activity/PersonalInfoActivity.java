@@ -12,8 +12,12 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 import so.len.duobao.R;
+import so.len.duobao.api.SERVER;
+import so.len.duobao.bean.PersonalBean;
 import so.len.duobao.customView.TopMenuBar;
 import so.len.duobao.customView.iOSActionSheetDialog;
+import so.len.duobao.http.Options;
+import so.len.duobao.http.VolleyHttp;
 import so.len.duobao.mPresenter.PersonalInfoPresenter;
 import so.len.duobao.mView.IPersonalInfoView;
 
@@ -46,6 +50,7 @@ public class PersonalInfoActivity extends BaseActivity implements IPersonalInfoV
         setContentView(R.layout.activity_personal_info);
         ButterKnife.bind(this);
         context = PersonalInfoActivity.this;
+        topMenuBarPersonalInfo.setMenuTopPadding(statusHeight);
         control();
     }
 
@@ -55,8 +60,7 @@ public class PersonalInfoActivity extends BaseActivity implements IPersonalInfoV
     }
 
     @Override
-    public void initView() {
-        topMenuBarPersonalInfo.setMenuTopPadding(statusHeight);
+    public void initView(PersonalBean personalBean) {
         topMenuBarPersonalInfo.setBackVisibility(View.VISIBLE);
         topMenuBarPersonalInfo.setBackSrc(R.mipmap.top_back);
         topMenuBarPersonalInfo.setTitleText("个人资料");
@@ -67,6 +71,14 @@ public class PersonalInfoActivity extends BaseActivity implements IPersonalInfoV
                 finish();
             }
         });
+
+        Options opt = new Options();
+        VolleyHttp.getInstance().imageLoader(SERVER.DOMAIN + personalBean.getData().getPath(), tvLevelActivityPersonalInfo, opt);
+
+        tvUsernameActivityPersonalInfo.setText(personalBean.getData().getNickname());
+
+        tvIdActivityPersonalInfo.setText(personalBean.getData().getUid());
+
     }
 
     @OnClick({R.id.ll_head_pic_activity_personal_info, R.id.ll_username_activity_personal_info, R.id.ll_password_activity_personal_info})
@@ -90,5 +102,11 @@ public class PersonalInfoActivity extends BaseActivity implements IPersonalInfoV
                 startActivity(intent2);
                 break;
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        personalInfoPresenter.initView();
     }
 }
