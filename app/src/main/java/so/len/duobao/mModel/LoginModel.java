@@ -14,6 +14,7 @@ import so.len.duobao.api.SERVER;
 import so.len.duobao.database.Config;
 import so.len.duobao.http.VolleyHttp;
 import so.len.duobao.mListener.IHttpCompleteListener;
+import so.len.duobao.utils.CommonUtils;
 
 /**
  * Created by Chung on 2016/8/5.
@@ -47,6 +48,7 @@ public class LoginModel implements ILoginModel {
                         e.printStackTrace();
                     }
                 } else {
+                    CommonUtils.toast(context, "请检查网络设置");
                     Logger.e("LoginModel http error");
                 }
             }

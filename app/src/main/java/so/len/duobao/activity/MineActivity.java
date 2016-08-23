@@ -225,4 +225,11 @@ public class MineActivity extends BaseActivity implements IMineView {
         }
         startActivity(intent);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        minePresenter.initView();
+    }
+
 }

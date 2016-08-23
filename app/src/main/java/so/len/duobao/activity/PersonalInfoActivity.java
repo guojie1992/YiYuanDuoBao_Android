@@ -2,10 +2,18 @@ package so.len.duobao.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.Message;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.File;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,6 +28,7 @@ import so.len.duobao.http.Options;
 import so.len.duobao.http.VolleyHttp;
 import so.len.duobao.mPresenter.PersonalInfoPresenter;
 import so.len.duobao.mView.IPersonalInfoView;
+import so.len.duobao.utils.CommonUtils;
 
 /**
  * Created by Chung on 2016/8/12.
@@ -108,5 +117,31 @@ public class PersonalInfoActivity extends BaseActivity implements IPersonalInfoV
     protected void onResume() {
         super.onResume();
         personalInfoPresenter.initView();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode != RESULT_CANCELED) {
+            switch (requestCode) {
+                case iOSActionSheetDialog.TAKE:
+                    if (CommonUtils.hasSDCard()) {
+                        File tempFile = new File(Environment.getExternalStorageDirectory(), "head.png");
+                        personalInfoPresenter.startPhotoZoom(Uri.fromFile(tempFile));
+                    } else {
+                        toast("未找到存储卡，无法存储照片！");
+                    }
+                    break;
+                case iOSActionSheetDialog.CHOOSE:
+                    personalInfoPresenter.startPhotoZoom(data.getData());
+                    break;
+                case iOSActionSheetDialog.CROP:
+                    if (data != null) {
+                        personalInfoPresenter.saveImage(data);
+                    }
+                    break;
+            }
+
+        }
     }
 }

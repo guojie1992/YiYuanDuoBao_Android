@@ -39,7 +39,6 @@ public class MineModel implements IMineModel {
                     Gson gson = new Gson();
                     mineBean = gson.fromJson(json, MineBean.class);
                     if (mineBean.getStatus().equals("1")) {
-                        Logger.i(mineBean.toString());
                         iHttpCompleteListener.loadComplete();
                     } else {
                         iHttpCompleteListener.loadError(mineBean.getMsg());

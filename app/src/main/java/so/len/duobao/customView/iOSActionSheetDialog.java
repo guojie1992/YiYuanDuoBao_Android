@@ -27,6 +27,10 @@ public class iOSActionSheetDialog {
     private Button btn_cancel;
     private Display display;
 
+    public final static int TAKE = 1;
+    public final static int CHOOSE = 2;
+    public final static int CROP = 0;
+
     public iOSActionSheetDialog(Context context) {
         this.context = context;
         WindowManager windowManager = (WindowManager) context
@@ -49,7 +53,7 @@ public class iOSActionSheetDialog {
                 dialog.dismiss();
                 Intent intentFromCapture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 intentFromCapture.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "head.png")));
-                ((Activity) context).startActivityForResult(intentFromCapture, 1);
+                ((Activity) context).startActivityForResult(intentFromCapture, TAKE);
             }
         });
         btn_choose_photo = (Button) view.findViewById(R.id.btn_choose_photo);
@@ -60,7 +64,7 @@ public class iOSActionSheetDialog {
                 Intent intentFromGallery = new Intent();
                 intentFromGallery.setType("image/*"); // 设置文件类型
                 intentFromGallery.setAction(Intent.ACTION_GET_CONTENT);
-                ((Activity) context).startActivityForResult(intentFromGallery, 2);
+                ((Activity) context).startActivityForResult(intentFromGallery, CHOOSE);
             }
         });
         btn_cancel = (Button) view.findViewById(R.id.btn_cancel);
