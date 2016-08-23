@@ -10,6 +10,8 @@ import android.webkit.WebView;
 import android.widget.FrameLayout;
 
 
+import com.orhanobut.logger.Logger;
+
 import org.apache.http.util.EncodingUtils;
 
 import butterknife.BindView;
@@ -163,13 +165,13 @@ public class WebViewActivity extends WebBaseActivity implements IWebView {
         setWebZoom(webSettings);
         setNetworkCache(webSettings);
 
-        if(needPost){
-            //由于webView.postUrl(url, postData)中 postData类型为byte[]
-            //通过EncodingUtils.getBytes(data, charset)方法进行转换
-            webView.postUrl(url, EncodingUtils.getBytes(postData, "BASE64"));
-        } else {
-            webView.loadUrl(url);
-        }
+//        if(needPost){
+//            //由于webView.postUrl(url, postData)中 postData类型为byte[]
+//            //通过EncodingUtils.getBytes(data, charset)方法进行转换
+//            webView.postUrl(url, EncodingUtils.getBytes(postData, "BASE64"));
+//        } else {
+            webView.loadUrl(url + "&" + postData);
+//        }
 
 
 

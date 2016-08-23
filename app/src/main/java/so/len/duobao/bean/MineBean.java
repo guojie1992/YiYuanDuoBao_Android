@@ -38,9 +38,18 @@ public class MineBean {
         private int vip;
         private String moneyBack;
         private String integralBack;
+        private String freezeMoney;
         private String signIn;
         private String pid;
 
+
+        public String getFreezeMoney() {
+            return freezeMoney;
+        }
+
+        public void setFreezeMoney(String freezeMoney) {
+            this.freezeMoney = freezeMoney;
+        }
 
         public String getPic() {
             return pic;

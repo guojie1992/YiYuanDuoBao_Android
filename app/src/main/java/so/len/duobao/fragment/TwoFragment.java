@@ -1,33 +1,32 @@
 package so.len.duobao.fragment;
 
 import android.content.Context;
-import android.graphics.Point;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-import com.squareup.otto.Produce;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import so.len.duobao.R;
+import so.len.duobao.activity.WebViewActivity;
+import so.len.duobao.api.HTML;
+import so.len.duobao.api.JS;
+import so.len.duobao.api.SERVER;
 import so.len.duobao.bean.TwoBean;
-import so.len.duobao.customAdapter.FragmentViewPagerAdapter;
-import so.len.duobao.customView.MyViewPager;
+import so.len.duobao.customAdapter.GoodsGridViewAdapter;
 import so.len.duobao.mPresenter.TwoPresenter;
 import so.len.duobao.mView.ITwoView;
-import so.len.duobao.otto.AppBus;
 
 /**
  * Created by Chung on 2016/8/3.
@@ -35,22 +34,16 @@ import so.len.duobao.otto.AppBus;
 public class TwoFragment extends BaseFragment implements ITwoView {
     @BindView(R.id.iv_top_fragment_two)
     ImageView ivTopFragmentTwo;
-    @BindView(R.id.tv_points_fragment_two)
-    TextView tvPointsFragmentTwo;
-    @BindView(R.id.tv_m_fragment_two)
-    TextView tvMFragmentTwo;
-    @BindView(R.id.iv_indicator_fragment_two)
-    View ivIndicatorFragmentTwo;
-    @BindView(R.id.mvp_goods_fragment_two)
-    MyViewPager mvpGoodsFragmentTwo;
+    @BindView(R.id.gv_fragment_two)
+    GridView gvFragmentTwo;
 
     private TwoPresenter twoPresenter;
     private Context context;
     private TwoBean twoBean;
-    private int width;
-    private PointGoodsFragment pointGoodsFragment;
-    private MGoodsFragment mGoodsFragment;
-    private FragmentViewPagerAdapter adapter;
+
+    private List<Map<String, Object>> goodsListData;
+    private HashMap<String, Object> map;
+    private GoodsGridViewAdapter goodsGridViewAdapter;
 
     @Nullable
     @Override
@@ -71,87 +64,27 @@ public class TwoFragment extends BaseFragment implements ITwoView {
     public void initView(TwoBean twoBean) {
         this.twoBean = twoBean;
 
-        Point outSize = new Point();
-        getActivity().getWindowManager().getDefaultDisplay().getSize(outSize);
-        width = outSize.x / 2;
-        ViewGroup.LayoutParams lp = ivIndicatorFragmentTwo.getLayoutParams();
-        lp.width = width;
-        ivIndicatorFragmentTwo.setLayoutParams(lp);
-
-        pointGoodsFragment = new PointGoodsFragment();
-        mGoodsFragment = new MGoodsFragment();
-
-        AppBus.getInstance().post(produceTwoBean());
-
-        if (adapter == null) {
-            List<Fragment> fragmentList = new ArrayList<>();
-            fragmentList.add(pointGoodsFragment);
-            fragmentList.add(mGoodsFragment);
-            adapter = new FragmentViewPagerAdapter(getActivity().getSupportFragmentManager(), fragmentList);
+        goodsListData = new ArrayList<>();
+        for (int i = 0; i < twoBean.getData().getGoods_list().size(); i++) {
+            map = new HashMap<>();
+            map.put("ivTitleItemGridviewGoods", SERVER.DOMAIN + twoBean.getData().getGoods_list().get(i).getPath());
+            map.put("tvTitleItemGridviewGoods", twoBean.getData().getGoods_list().get(i).getTitle());
+            map.put("tvPriceItemGridviewGoods", twoBean.getData().getGoods_list().get(i).getPrice());
+            goodsListData.add(map);
         }
-        mvpGoodsFragmentTwo.setAdapter(adapter);
-        tvPointsFragmentTwo.setSelected(true);
-        tvPointsFragmentTwo.setTextColor(getActivity().getResources().getColor(R.color.theme));
-        mvpGoodsFragmentTwo.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        goodsGridViewAdapter = new GoodsGridViewAdapter(getActivity(), goodsListData);
+        gvFragmentTwo.setAdapter(goodsGridViewAdapter);
+        gvFragmentTwo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) ivIndicatorFragmentTwo.getLayoutParams();
-                lp.leftMargin = (int) (position * width + positionOffset * width);
-                ivIndicatorFragmentTwo.setLayoutParams(lp);
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                tvPointsFragmentTwo.setSelected(false);
-                tvMFragmentTwo.setSelected(false);
-                switch (position) {
-                    case 0:
-                        tvPointsFragmentTwo.setSelected(true);
-                        tvPointsFragmentTwo.setTextColor(getActivity().getResources().getColor(R.color.theme));
-                        tvMFragmentTwo.setTextColor(getActivity().getResources().getColor(R.color.black));
-                        break;
-                    case 1:
-                        tvMFragmentTwo.setSelected(true);
-                        tvMFragmentTwo.setTextColor(getActivity().getResources().getColor(R.color.theme));
-                        tvPointsFragmentTwo.setTextColor(getActivity().getResources().getColor(R.color.black));
-                        break;
-                }
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-//                logDebug("state:" + String.valueOf(state));
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), WebViewActivity.class);
+                intent.putExtra(JS.H5_TITLE, "商品");
+                intent.putExtra(JS.H5_URL, HTML.SHOP);
+                intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
+                startActivity(intent);
             }
         });
     }
 
-
-    @OnClick({R.id.tv_points_fragment_two, R.id.tv_m_fragment_two})
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.tv_points_fragment_two:
-                mvpGoodsFragmentTwo.setCurrentItem(0);
-                break;
-            case R.id.tv_m_fragment_two:
-                mvpGoodsFragmentTwo.setCurrentItem(1);
-                break;
-        }
-    }
-
-    @Override
-    public void onResume() {
-        AppBus.getInstance().register(this);
-        super.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        AppBus.getInstance().unregister(this);
-        super.onPause();
-    }
-
-    @Produce
-    public TwoBean produceTwoBean(){
-        return twoBean;
-    }
 }

@@ -35,23 +35,14 @@ public class TwoBean {
     }
 
     public class TwoData{
-        private List<TwoDataPoint> integral_goods_list;
-        private List<TwoDataM> money_goods_list;
+        private List<TwoDataGoods> goods_list;
 
-        public List<TwoDataPoint> getIntegral_goods_list() {
-            return integral_goods_list;
+        public List<TwoDataGoods> getGoods_list() {
+            return goods_list;
         }
 
-        public void setIntegral_goods_list(List<TwoDataPoint> integral_goods_list) {
-            this.integral_goods_list = integral_goods_list;
-        }
-
-        public List<TwoDataM> getMoney_goods_list() {
-            return money_goods_list;
-        }
-
-        public void setMoney_goods_list(List<TwoDataM> money_goods_list) {
-            this.money_goods_list = money_goods_list;
+        public void setGoods_list(List<TwoDataGoods> goods_list) {
+            this.goods_list = goods_list;
         }
     }
 }

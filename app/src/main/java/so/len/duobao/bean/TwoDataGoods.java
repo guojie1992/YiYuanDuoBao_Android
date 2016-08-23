@@ -3,10 +3,9 @@ package so.len.duobao.bean;
 /**
  * Created by Chung on 2016/8/19.
  */
-public class TwoDataM {
+public class TwoDataGoods {
     private String id;
     private String title;
-    private String integral;
     private String price;
     private String path;
 
@@ -24,14 +23,6 @@ public class TwoDataM {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getIntegral() {
-        return integral;
-    }
-
-    public void setIntegral(String integral) {
-        this.integral = integral;
     }
 
     public String getPrice() {

@@ -20,6 +20,7 @@ import so.len.duobao.customAdapter.FragmentViewPagerAdapter;
 import so.len.duobao.customView.BottomMenuItem;
 import so.len.duobao.customView.FragmentViewPager;
 import so.len.duobao.customView.TopMenuBar;
+import so.len.duobao.database.Config;
 import so.len.duobao.fragment.FourFragment;
 import so.len.duobao.fragment.FiveFragment;
 import so.len.duobao.fragment.OneFragment;
@@ -178,6 +179,8 @@ public class MainActivity extends BaseActivity implements IMainView {
                         intent.setClass(MainActivity.this, WebViewActivity.class);
                         intent.putExtra(JS.H5_TITLE, "我的抽奖");
                         intent.putExtra(JS.H5_URL, HTML.LOTTERY_RECORD);
+                        intent.putExtra("needPost", true);
+                        intent.putExtra("postData", "uid=" + Config.getInstance(MainActivity.this).getConfig("uid"));
                         intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
                         startActivity(intent);
                     }

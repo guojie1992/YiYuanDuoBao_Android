@@ -79,21 +79,6 @@ public class ThreeFragment extends BaseFragment implements IThreeView {
                 intent.putExtra("needPost", true);
                 intent.putExtra("postData", "uid=" + Config.getInstance(getActivity()).getConfig("uid"));
                 intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
-//                new iOSAlertDialog(getActivity()).builder()
-//                        .setTitle("温馨提示")
-//                        .setMsg("您确定要注销登录吗?")
-//                        .setCancelable(false)
-//                        .setPositiveButton("确认", new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View v) {
-//                            }
-//                        })
-//                        .setNegativeButton("取消", new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View v) {
-//                            }
-//                        }).show();
-
                 break;
         }
         startActivity(intent);

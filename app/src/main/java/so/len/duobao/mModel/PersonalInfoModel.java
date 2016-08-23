@@ -28,7 +28,6 @@ public class PersonalInfoModel implements IPersonalInfoModel {
     @Override
     public void getServerData(final IHttpCompleteListener iHttpCompleteListener) {
         Map<String,String> args = new HashMap<>();
-//        args.put("uid", "109");
         args.put("uid", Config.getInstance(context).getConfig("uid"));
         VolleyHttp.getInstance().postParamsJson(SERVER.PERSONAL_INFO, new VolleyHttp.JsonResponseListener() {
             @Override

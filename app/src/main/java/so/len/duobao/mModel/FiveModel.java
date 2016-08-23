@@ -29,8 +29,7 @@ public class FiveModel implements IFiveModel {
     @Override
     public void getServerData(final IHttpCompleteListener iHttpCompleteListener) {
         Map<String, String> args = new HashMap<>();
-        args.put("uid", "109");
-//        args.put("uid", Config.getInstance(context).getConfig("uid"));
+        args.put("uid", Config.getInstance(context).getConfig("uid"));
         args.put("is_ios", "0");
         VolleyHttp.getInstance().postParamsJson(SERVER.GIFT, new VolleyHttp.JsonResponseListener() {
             @Override

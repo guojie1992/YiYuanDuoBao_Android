@@ -17,6 +17,7 @@ import so.len.duobao.api.JS;
 import so.len.duobao.api.SERVER;
 import so.len.duobao.bean.MineBean;
 import so.len.duobao.customView.TopMenuBar;
+import so.len.duobao.database.Config;
 import so.len.duobao.http.Options;
 import so.len.duobao.http.VolleyHttp;
 import so.len.duobao.mPresenter.MinePresenter;
@@ -55,6 +56,8 @@ public class MineActivity extends BaseActivity implements IMineView {
     TextView tvMyaddrActivityMine;
     @BindView(R.id.iv_sign_activity_mine)
     ImageView ivSignActivityMine;
+    @BindView(R.id.tv_m_freeze_activity_mine)
+    TextView tvMFreezeActivityMine;
 
     private MinePresenter minePresenter;
     private Context context;
@@ -104,7 +107,7 @@ public class MineActivity extends BaseActivity implements IMineView {
         Options opt = new Options();
         VolleyHttp.getInstance().imageLoader(SERVER.DOMAIN + mineBean.getData().getPic(), civHeadActivityMine, opt);
         String vip = "0";
-        switch (mineBean.getData().getVip()){
+        switch (mineBean.getData().getVip()) {
             case 0:
                 vip = "普通会员";
                 break;
@@ -134,6 +137,7 @@ public class MineActivity extends BaseActivity implements IMineView {
         tvSigndayActivityMine.setText(mineBean.getData().getSignIn() + "天");
         tvMActivityMine.setText(mineBean.getData().getMoneyBack());
         tvPointActivityMine.setText(mineBean.getData().getIntegralBack());
+        tvMFreezeActivityMine.setText(mineBean.getData().getFreezeMoney());
         tvMyrecommenderActivityMine.setText("ID:" + mineBean.getData().getPid());
     }
 
@@ -151,7 +155,7 @@ public class MineActivity extends BaseActivity implements IMineView {
             R.id.ll_myaddr_activity_mine})
     public void onClick(View view) {
         if (CommonUtils.isFastClick()) {
-            return ;
+            return;
         }
         Intent intent = new Intent();
         switch (view.getId()) {
@@ -163,6 +167,8 @@ public class MineActivity extends BaseActivity implements IMineView {
                 intent.putExtra(JS.H5_TITLE, "签到");
                 intent.putExtra(JS.H5_URL, HTML.SIGN);
                 ivSignActivityMine.setImageResource(R.mipmap.my_signed);
+                intent.putExtra("needPost", true);
+                intent.putExtra("postData", "uid=" + Config.getInstance(MineActivity.this).getConfig("uid"));
                 intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
                 break;
             case R.id.ll_myorder_activity_mine:
@@ -193,6 +199,8 @@ public class MineActivity extends BaseActivity implements IMineView {
                 intent.setClass(MineActivity.this, WebViewActivity.class);
                 intent.putExtra(JS.H5_TITLE, "会员等级");
                 intent.putExtra(JS.H5_URL, HTML.MY_LEVEL);
+                intent.putExtra("needPost", true);
+                intent.putExtra("postData", "uid=" + Config.getInstance(MineActivity.this).getConfig("uid"));
                 intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
                 break;
             case R.id.ll_bank_activity_mine:

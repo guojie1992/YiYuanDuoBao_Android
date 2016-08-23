@@ -10,6 +10,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import so.len.duobao.R;
 import so.len.duobao.customView.TopMenuBar;
+import so.len.duobao.customView.iOSAlertDialog;
 import so.len.duobao.mPresenter.SettingsPresenter;
 import so.len.duobao.mView.ISettingsView;
 
@@ -62,10 +63,36 @@ public class SettingsActivity extends BaseActivity implements ISettingsView {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_update_activity_settings:
-                toast("ll_update_activity_settings");
+                new iOSAlertDialog(SettingsActivity.this).builder()
+                        .setTitle("温馨提示")
+                        .setMsg("即将在后台下载最新版安装包")
+                        .setCancelable(false)
+                        .setPositiveButton("确认", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                            }
+                        })
+                        .setNegativeButton("取消", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                            }
+                        }).show();
                 break;
             case R.id.ll_logout_activity_settings:
-                toast("ll_logout_activity_settings");
+                new iOSAlertDialog(SettingsActivity.this).builder()
+                        .setTitle("温馨提示")
+                        .setMsg("您确定要注销登录吗?")
+                        .setCancelable(false)
+                        .setPositiveButton("确认", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                            }
+                        })
+                        .setNegativeButton("取消", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                            }
+                        }).show();
                 break;
         }
     }
