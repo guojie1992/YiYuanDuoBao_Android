@@ -29,7 +29,7 @@ public class HistoryGiftsFragment extends BaseFragment implements IHistoryGiftsV
 
     private FiveBean fiveBean;
     private HistoryGiftsPresenter historyGiftsPresenter;
-    private HistoryGiftsListViewAdapter adapter;
+    private HistoryGiftsListViewAdapter historyGiftsListViewAdapter;
     private Map<String, List<String>> data;
     private List<String> list;
 
@@ -60,10 +60,10 @@ public class HistoryGiftsFragment extends BaseFragment implements IHistoryGiftsV
         }
 
 //        logDebug(data.toString());
-        if(adapter == null){
-            adapter = new HistoryGiftsListViewAdapter(getActivity(), data);
+        if(historyGiftsListViewAdapter == null){
+            historyGiftsListViewAdapter = new HistoryGiftsListViewAdapter(getActivity(), data);
         }
-        hlvHistorygiftsFragmentGiftsHistory.setAdapter(adapter);
+        hlvHistorygiftsFragmentGiftsHistory.setAdapter(historyGiftsListViewAdapter);
 
         hlvHistorygiftsFragmentGiftsHistory.setFocusable(false);
     }
@@ -83,7 +83,9 @@ public class HistoryGiftsFragment extends BaseFragment implements IHistoryGiftsV
     @Subscribe
     public void onFiveBean(FiveBean fiveBean){
         this.fiveBean = fiveBean;
-        control();
+        if(fiveBean.getHistory_list() != null){
+            control();
+        }
     }
 
 }

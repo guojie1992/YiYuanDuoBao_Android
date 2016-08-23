@@ -66,8 +66,8 @@ public class FiveBean {
         private String rob_list_id;
         private String rob_copies;
         private String progress_bar;
-        private String next_time_status;
-        private String next_time;
+        private int next_time_status;
+        private long next_time;
 
         public String getRob_number() {
             return rob_number;
@@ -101,19 +101,19 @@ public class FiveBean {
             this.progress_bar = progress_bar;
         }
 
-        public String getNext_time_status() {
+        public int getNext_time_status() {
             return next_time_status;
         }
 
-        public void setNext_time_status(String next_time_status) {
+        public void setNext_time_status(int next_time_status) {
             this.next_time_status = next_time_status;
         }
 
-        public String getNext_time() {
+        public long getNext_time() {
             return next_time;
         }
 
-        public void setNext_time(String next_time) {
+        public void setNext_time(long next_time) {
             this.next_time = next_time;
         }
     }

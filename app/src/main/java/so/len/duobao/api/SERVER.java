@@ -48,4 +48,5 @@ public class SERVER {
 
     //抢钱接口
     public static final String GIFT = ROB + "/index";
+    public static final String GO = ROB + "/start";
 }

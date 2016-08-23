@@ -2,6 +2,12 @@ package so.len.duobao.mPresenter;
 
 import android.content.Context;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import so.len.duobao.api.SERVER;
+import so.len.duobao.database.Config;
+import so.len.duobao.http.VolleyHttp;
 import so.len.duobao.mListener.IHttpCompleteListener;
 import so.len.duobao.mModel.FiveModel;
 import so.len.duobao.mModel.IFiveModel;
@@ -35,4 +41,18 @@ public class FivePresenter {
             }
         });
     }
+
+    public void go() {
+        iFiveModel.go(new IHttpCompleteListener() {
+            @Override
+            public void loadComplete() {
+            }
+
+            @Override
+            public void loadError(String msg) {
+                CommonUtils.toast(context, msg);
+            }
+        });
+    }
+
 }

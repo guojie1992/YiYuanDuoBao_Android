@@ -22,12 +22,12 @@
                 android:id="@+id/btn_go_fragment_five"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@mipmap/five_btn_unfinish"/>
+                android:layout_centerInParent="true"/>
         </RelativeLayout>
 
 
         <LinearLayout
+            android:id="@+id/go_fragment_five"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/dp_5"
@@ -53,12 +53,13 @@
                     android:textColor="@color/theme"
                     android:textSize="@dimen/dp_13" />
                 <TextView
+                    android:id="@+id/tv_go_fragment_five"
                     android:layout_toRightOf="@id/tv_gifts_fragment_five"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="@dimen/dp_5"
                     android:layout_gravity="left"
-                    android:text="份商品/代金券"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="@dimen/dp_13" />
 
@@ -105,7 +106,32 @@
                 app:rcSecondaryProgressColor="@color/white"
                 app:rcBackgroundColor="@color/theme" />
 
+            <LinearLayout
+                android:id="@+id/ll_count_down_fragment_five"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_5"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_next_fragment_five"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/theme"
+                    android:textSize="@dimen/dp_13"/>
+
+                <TextView
+                    android:id="@+id/tv_count_down_fragment_five"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:text=""
+                    android:textColor="@color/theme"
+                    android:textSize="@dimen/dp_13"/>
+            </LinearLayout>
+
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -9,4 +9,5 @@ import so.len.duobao.mListener.IHttpCompleteListener;
 public interface IFiveModel {
     void getServerData(IHttpCompleteListener iHttpCompleteListener);
     FiveBean getFiveBean();
+    void go(IHttpCompleteListener iHttpCompleteListener);
 }

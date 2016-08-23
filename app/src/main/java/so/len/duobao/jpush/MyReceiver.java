@@ -14,6 +14,7 @@ import org.json.JSONObject;
 import java.util.Iterator;
 import cn.jpush.android.api.JPushInterface;
 import so.len.duobao.activity.MainActivity;
+import so.len.duobao.fragment.FiveFragment;
 
 /**
  * Created by Chung on 2016/8/22.
@@ -112,6 +113,10 @@ public class MyReceiver extends BroadcastReceiver {
             String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
             Logger.i(message);
             Logger.i(extras);
+
+            FiveFragment.fivePresenter.initView();
+//            FiveFragment.fivePresenter.refreshList();
+
 //            Intent msgIntent = new Intent(MainActivity.MESSAGE_RECEIVED_ACTION);
 //            msgIntent.putExtra(MainActivity.KEY_MESSAGE, message);
             if (!TextUtils.isEmpty(extras)) {

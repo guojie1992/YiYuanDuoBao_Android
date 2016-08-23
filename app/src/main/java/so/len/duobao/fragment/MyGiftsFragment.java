@@ -78,7 +78,9 @@ public class MyGiftsFragment extends BaseFragment implements IMyGiftsView {
     @Subscribe
     public void onFiveBean(FiveBean fiveBean){
         this.fiveBean = fiveBean;
-        control();
+        if(fiveBean.getMy_list() != null){
+            control();
+        }
     }
 
 }

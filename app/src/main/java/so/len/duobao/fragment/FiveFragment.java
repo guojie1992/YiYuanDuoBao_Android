@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -16,6 +17,8 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.squareup.otto.Produce;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import butterknife.BindView;
@@ -61,14 +64,23 @@ public class FiveFragment extends BaseFragment implements IFiveView {
     ScrollView svFragmentFive;
     @BindView(R.id.btn_go_fragment_five)
     ImageView btnGoFragmentFive;
+    @BindView(R.id.tv_count_down_fragment_five)
+    TextView tvCountDownFragmentFive;
+    @BindView(R.id.ll_count_down_fragment_five)
+    LinearLayout llCountDownFragmentFive;
+    @BindView(R.id.tv_next_fragment_five)
+    TextView tvNextFragmentFive;
+    @BindView(R.id.tv_go_fragment_five)
+    TextView tvGoFragmentFive;
 
     private Context context;
-    private FivePresenter fivePresenter;
+    public static FivePresenter fivePresenter;
     private FiveBean fiveBean;
     private int width;
     private MyGiftsFragment myGiftsFragment;
     private HistoryGiftsFragment historyGiftsFragment;
     private FragmentViewPagerAdapter adapter;
+    private SimpleDateFormat sdf;
 
     @Nullable
     @Override
@@ -89,9 +101,59 @@ public class FiveFragment extends BaseFragment implements IFiveView {
     public void initView(FiveBean fiveBean) {
         this.fiveBean = fiveBean;
 
-        tvGiftsFragmentFive.setText(fiveBean.getRob_list().getRob_copies());
-        tvTimesFragmentFive.setText(fiveBean.getRob_list().getRob_number());
-        pvProgressFragmentFive.setProgress(Float.parseFloat(fiveBean.getRob_list().getProgress_bar()));
+        switch (fiveBean.getRob_list().getNext_time_status()) {
+            case -1:
+                pvProgressFragmentFive.setVisibility(View.GONE);
+                llCountDownFragmentFive.setVisibility(View.VISIBLE);
+                btnGoFragmentFive.setImageResource(R.mipmap.five_btn_finished);
+
+                tvGiftsFragmentFive.setText("");
+                tvGoFragmentFive.setText("没有新的抢钱任务");
+                tvTimesFragmentFive.setText("0");
+                tvNextFragmentFive.setText("");
+                tvCountDownFragmentFive.setText("");
+                break;
+            case 0:
+                pvProgressFragmentFive.setVisibility(View.GONE);
+                llCountDownFragmentFive.setVisibility(View.VISIBLE);
+                btnGoFragmentFive.setImageResource(R.mipmap.five_btn_finished);
+
+                tvGiftsFragmentFive.setText("");
+                tvGoFragmentFive.setText("该轮已结束");
+                tvTimesFragmentFive.setText(fiveBean.getRob_list().getRob_number());
+                tvNextFragmentFive.setText("离下一轮开始:");
+                tvCountDownFragmentFive.setText("");
+
+                sdf = new SimpleDateFormat("HH:mm:ss");
+                long time = 57600000;// 1970-01-01 08:00:00 加16小时，从1970-01-02 00:00:00开始计时
+
+                new CountDownTimer(time + 1000 * fiveBean.getRob_list().getNext_time(), 1000) {//总时间， 间隔时间
+                    public void onTick(long millisUntilFinished) {
+                        tvCountDownFragmentFive.setText(sdf.format(millisUntilFinished));
+                    }
+
+                    public void onFinish() {
+                        tvCountDownFragmentFive.setText("计时结束");
+                    }
+                }.start();
+                break;
+            case 1:
+                pvProgressFragmentFive.setVisibility(View.VISIBLE);
+                llCountDownFragmentFive.setVisibility(View.GONE);
+                btnGoFragmentFive.setImageResource(R.mipmap.five_btn_unfinish);
+
+                tvGiftsFragmentFive.setText(fiveBean.getRob_list().getRob_copies());
+                tvGoFragmentFive.setText("份商品/代金券");
+                tvTimesFragmentFive.setText(fiveBean.getRob_list().getRob_number());
+                tvNextFragmentFive.setText("");
+                tvCountDownFragmentFive.setText("");
+
+                pvProgressFragmentFive.setProgress(Float.parseFloat(fiveBean.getRob_list().getProgress_bar()));
+                break;
+            default:
+                break;
+        }
+
 
         tvMygoodsFragmentFive.setText(fiveBean.getHtml_list().getGoods_count());
         tvMyticketsFragmentFive.setText(fiveBean.getHtml_list().getVouchers_count());
@@ -163,7 +225,7 @@ public class FiveFragment extends BaseFragment implements IFiveView {
     })
     public void onClick(View view) {
         if (CommonUtils.isFastClick()) {
-            return ;
+            return;
         }
         switch (view.getId()) {
             case R.id.tv_my_fragment_five:
@@ -173,7 +235,9 @@ public class FiveFragment extends BaseFragment implements IFiveView {
                 mvpGoodsFragmentFive.setCurrentItem(1);
                 break;
             case R.id.btn_go_fragment_five:
-                toast("go");
+                if(fiveBean.getRob_list().getNext_time_status() == 1){
+                    fivePresenter.go();
+                }
                 break;
             case R.id.ll_goods_fragment_five:
                 Intent intent1 = new Intent();
@@ -215,7 +279,7 @@ public class FiveFragment extends BaseFragment implements IFiveView {
     }
 
     @Produce
-    public FiveBean produceFiveBean(){
+    public FiveBean produceFiveBean() {
         return fiveBean;
     }
 
