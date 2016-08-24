@@ -1,5 +1,7 @@
 package so.len.duobao.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -11,6 +13,8 @@ import butterknife.OnClick;
 import so.len.duobao.R;
 import so.len.duobao.customView.TopMenuBar;
 import so.len.duobao.customView.iOSAlertDialog;
+import so.len.duobao.database.Config;
+import so.len.duobao.http.VolleyHttp;
 import so.len.duobao.mPresenter.SettingsPresenter;
 import so.len.duobao.mView.ISettingsView;
 
@@ -28,6 +32,7 @@ public class SettingsActivity extends BaseActivity implements ISettingsView {
     LinearLayout llLogoutActivitySettings;
 
     private SettingsPresenter settingsPresenter;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +91,13 @@ public class SettingsActivity extends BaseActivity implements ISettingsView {
                         .setPositiveButton("确认", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                toast("退出");
+//                                Config.getInstance(context).setConfig("uid", "");
+//                                Intent intent = new Intent();
+//                                intent.setClass(SettingsActivity.this, LoginActivity.class);
+//                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//                                startActivity(intent);
                             }
                         })
                         .setNegativeButton("取消", new View.OnClickListener() {

@@ -114,8 +114,7 @@ public class MyReceiver extends BroadcastReceiver {
             Logger.i(message);
             Logger.i(extras);
 
-            FiveFragment.fivePresenter.initView();
-//            FiveFragment.fivePresenter.refreshList();
+            FiveFragment.fivePresenter.refreshView();
 
 //            Intent msgIntent = new Intent(MainActivity.MESSAGE_RECEIVED_ACTION);
 //            msgIntent.putExtra(MainActivity.KEY_MESSAGE, message);

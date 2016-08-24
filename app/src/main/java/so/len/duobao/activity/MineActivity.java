@@ -73,12 +73,6 @@ public class MineActivity extends BaseActivity implements IMineView {
     }
 
     private void control() {
-        minePresenter = new MinePresenter(this, context);
-        minePresenter.initView();
-    }
-
-    @Override
-    public void initView(MineBean mineBean) {
         topMenuBarMine.setTitleText("我的");
         topMenuBarMine.setBackVisibility(View.VISIBLE);
         topMenuBarMine.setBackSrc(R.mipmap.top_back);
@@ -99,11 +93,12 @@ public class MineActivity extends BaseActivity implements IMineView {
             }
         });
         ivSignActivityMine.setImageResource(R.mipmap.my_sign);
-
-        initViewFromData(mineBean);
+        minePresenter = new MinePresenter(this, context);
+        minePresenter.initView();
     }
 
-    private void initViewFromData(MineBean mineBean) {
+    @Override
+    public void initView(MineBean mineBean) {
         Options opt = new Options();
         VolleyHttp.getInstance().imageLoader(SERVER.DOMAIN + mineBean.getData().getPic(), civHeadActivityMine, opt);
         String vip = "0";
@@ -167,8 +162,6 @@ public class MineActivity extends BaseActivity implements IMineView {
                 intent.putExtra(JS.H5_TITLE, "签到");
                 intent.putExtra(JS.H5_URL, HTML.SIGN);
                 ivSignActivityMine.setImageResource(R.mipmap.my_signed);
-                intent.putExtra("needPost", true);
-                intent.putExtra("postData", "uid=" + Config.getInstance(MineActivity.this).getConfig("uid"));
                 intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
                 break;
             case R.id.ll_myorder_activity_mine:
@@ -199,8 +192,6 @@ public class MineActivity extends BaseActivity implements IMineView {
                 intent.setClass(MineActivity.this, WebViewActivity.class);
                 intent.putExtra(JS.H5_TITLE, "会员等级");
                 intent.putExtra(JS.H5_URL, HTML.MY_LEVEL);
-                intent.putExtra("needPost", true);
-                intent.putExtra("postData", "uid=" + Config.getInstance(MineActivity.this).getConfig("uid"));
                 intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
                 break;
             case R.id.ll_bank_activity_mine:

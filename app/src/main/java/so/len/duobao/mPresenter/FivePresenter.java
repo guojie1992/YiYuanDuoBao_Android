@@ -55,4 +55,8 @@ public class FivePresenter {
         });
     }
 
+    public void refreshView(){
+        initView();
+        iFiveView.refreshView();
+    }
 }

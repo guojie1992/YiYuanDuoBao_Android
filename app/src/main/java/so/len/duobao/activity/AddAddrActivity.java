@@ -1,5 +1,6 @@
 package so.len.duobao.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -26,6 +27,7 @@ public class AddAddrActivity extends BaseActivity implements IAddAddrView {
     @BindView(R.id.et_detail_activity_add_addr)
     EditText etDetailActivityAddAddr;
 
+    private Context context;
     private AddAddrPresenter addAddrPresenter;
 
     @Override
@@ -33,12 +35,13 @@ public class AddAddrActivity extends BaseActivity implements IAddAddrView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_addr);
         ButterKnife.bind(this);
+        context = AddAddrActivity.this;
         tmbActivityAddAddr.setMenuTopPadding(statusHeight);
         contorl();
     }
 
     private void contorl() {
-        addAddrPresenter = new AddAddrPresenter(this);
+        addAddrPresenter = new AddAddrPresenter(this, context);
         addAddrPresenter.initView();
     }
 
@@ -60,9 +63,29 @@ public class AddAddrActivity extends BaseActivity implements IAddAddrView {
         tmbActivityAddAddr.setOnMenuClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toast("save");
+                addAddrPresenter.addAddr();
                 finish();
             }
         });
+    }
+
+    @Override
+    public String getName() {
+        return etNameActivityAddAddr.getText().toString().trim();
+    }
+
+    @Override
+    public String getPhone() {
+        return etPhoneActivityAddAddr.getText().toString().trim();
+    }
+
+    @Override
+    public String getDistrict() {
+        return etDistrictActivityAddAddr.getText().toString().trim();
+    }
+
+    @Override
+    public String getDetail() {
+        return etDetailActivityAddAddr.getText().toString().trim();
     }
 }

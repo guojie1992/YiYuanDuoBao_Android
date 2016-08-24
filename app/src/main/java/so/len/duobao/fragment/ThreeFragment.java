@@ -69,15 +69,11 @@ public class ThreeFragment extends BaseFragment implements IThreeView {
             case R.id.ll_point_fragment_three:
                 intent.putExtra(JS.H5_TITLE, "积分抽奖");
                 intent.putExtra(JS.H5_URL, HTML.LOTTERY_POINT);
-                intent.putExtra("needPost", true);
-                intent.putExtra("postData", "uid=" + Config.getInstance(getActivity()).getConfig("uid"));
                 intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
                 break;
             case R.id.ll_m_fragment_three:
                 intent.putExtra(JS.H5_TITLE, "M币+积分抽奖");
                 intent.putExtra(JS.H5_URL, HTML.LOTTERY_M);
-                intent.putExtra("needPost", true);
-                intent.putExtra("postData", "uid=" + Config.getInstance(getActivity()).getConfig("uid"));
                 intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
                 break;
         }

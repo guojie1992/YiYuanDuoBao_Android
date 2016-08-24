@@ -5,4 +5,8 @@ package so.len.duobao.mView;
  */
 public interface IAddAddrView {
     void initView();
+    String getName();
+    String getPhone();
+    String getDistrict();
+    String getDetail();
 }

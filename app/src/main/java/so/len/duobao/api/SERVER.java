@@ -16,12 +16,15 @@ public class SERVER {
     public static final String MALL = BEFORE + "/Mall";
     //抢钱模块
     public static final String ROB = BEFORE + "/Rob";
+    //我的
+    public static final String MY = BEFORE + "/My";
 
 
     //注册接口
     public static final String REGISTER = USER + "/register";
     //登陆接口
     public static final String LOGIN = USER + "/login";
+    public static final String LOGOUT = USER + "/logout";
     //忘记密码接口
     public static final String FORGET_PASSWORD = USER + "/forgetpwd";
 
@@ -49,4 +52,11 @@ public class SERVER {
     //抢钱接口
     public static final String GIFT = ROB + "/index";
     public static final String GO = ROB + "/start";
+
+    //获取银行列表
+    public static final String GET_BANK_LIST = MY + "/bank_support";
+    public static final String ADD_BANK_CARD = MY + "/addBankcard";
+    public static final String ADD_ADDR = MY + "/addShipAddress";
+    public static final String MY_RECOMMENDER = MY + "/referee";
+    public static final String CHANGE_MY_RECOMMENDER = MY + "/change_referee";
 }

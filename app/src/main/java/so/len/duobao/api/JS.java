@@ -88,7 +88,7 @@ public class JS {
     @JavascriptInterface
     public void back() {
         activity.finish();
-        ((WebViewActivity) activity).reload();
+//        ((WebViewActivity) activity).reload();
     }
 
     /**
