@@ -8,4 +8,5 @@ import so.len.duobao.bean.FiveBean;
 public interface IFiveView {
     void initView(FiveBean fiveBean);
     void refreshView();
+    void initErrorView();
 }

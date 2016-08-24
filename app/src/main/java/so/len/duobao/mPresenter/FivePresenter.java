@@ -37,7 +37,8 @@ public class FivePresenter {
 
             @Override
             public void loadError(String msg) {
-                CommonUtils.toast(context, msg);
+                iFiveView.initErrorView();
+//                CommonUtils.toast(context, msg);
             }
         });
     }

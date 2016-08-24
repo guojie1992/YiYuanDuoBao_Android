@@ -88,6 +88,8 @@ public class FiveFragment extends BaseFragment implements IFiveView {
     private FragmentViewPagerAdapter adapter;
     private SimpleDateFormat sdf;
 
+    private static boolean isError = false;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -235,6 +237,12 @@ public class FiveFragment extends BaseFragment implements IFiveView {
 //        mvpGoodsFragmentFive.removeAllViews();
     }
 
+    @Override
+    public void initErrorView() {
+        fivePresenter.initView();
+        isError = true;
+    }
+
     @OnClick({
             R.id.tv_my_fragment_five,
             R.id.tv_history_fragment_five,
@@ -255,8 +263,12 @@ public class FiveFragment extends BaseFragment implements IFiveView {
                 mvpGoodsFragmentFive.setCurrentItem(1);
                 break;
             case R.id.btn_go_fragment_five:
-                if(fiveBean.getRob_list().getNext_time_status() == 1){
+
+//                if(fiveBean.getStatus().equals("1") && (fiveBean.getRob_list().getNext_time_status() == 1)){
+                if(!isError){
                     fivePresenter.go();
+                } else {
+                    toast("没有门票或不在抢钱时间");
                 }
                 break;
             case R.id.ll_goods_fragment_five:

@@ -30,7 +30,7 @@ public class ChangeRecommenderModel implements IChangeRecommenderModel {
         Map<String,String> args = new HashMap<>();
         args.put("uid", Config.getInstance(context).getConfig("uid"));
         args.put("target", target);
-        VolleyHttp.getInstance().postParamsJson(SERVER.MY_RECOMMENDER, new VolleyHttp.JsonResponseListener() {
+        VolleyHttp.getInstance().postParamsJson(SERVER.CHANGE_MY_RECOMMENDER, new VolleyHttp.JsonResponseListener() {
             @Override
             public void getJson(String json, boolean isConnectSuccess) {
                 if(isConnectSuccess && (!json.isEmpty())){
@@ -59,6 +59,7 @@ public class ChangeRecommenderModel implements IChangeRecommenderModel {
             @Override
             public void getJson(String json, boolean isConnectSuccess) {
                 if(isConnectSuccess && (!json.isEmpty())){
+                    Logger.json(json);
                     try {
                         JSONObject jsonObject = new JSONObject(json);
                         if (jsonObject.getString("status").equals("1")){
