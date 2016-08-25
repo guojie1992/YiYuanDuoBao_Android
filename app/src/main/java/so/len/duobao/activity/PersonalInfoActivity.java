@@ -20,6 +20,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 import so.len.duobao.R;
+import so.len.duobao.api.HTML;
+import so.len.duobao.api.JS;
 import so.len.duobao.api.SERVER;
 import so.len.duobao.bean.PersonalBean;
 import so.len.duobao.customView.TopMenuBar;
@@ -37,16 +39,10 @@ public class PersonalInfoActivity extends BaseActivity implements IPersonalInfoV
 
     @BindView(R.id.tv_level_activity_personal_info)
     CircleImageView tvLevelActivityPersonalInfo;
-    @BindView(R.id.ll_head_pic_activity_personal_info)
-    LinearLayout llHeadPicActivityPersonalInfo;
     @BindView(R.id.tv_username_activity_personal_info)
     TextView tvUsernameActivityPersonalInfo;
-    @BindView(R.id.ll_username_activity_personal_info)
-    LinearLayout llUsernameActivityPersonalInfo;
     @BindView(R.id.tv_id_activity_personal_info)
     TextView tvIdActivityPersonalInfo;
-    @BindView(R.id.ll_id_activity_personal_info)
-    LinearLayout llIdActivityPersonalInfo;
     @BindView(R.id.top_menu_bar_personal_info)
     TopMenuBar topMenuBarPersonalInfo;
 
@@ -90,7 +86,12 @@ public class PersonalInfoActivity extends BaseActivity implements IPersonalInfoV
 
     }
 
-    @OnClick({R.id.ll_head_pic_activity_personal_info, R.id.ll_username_activity_personal_info, R.id.ll_password_activity_personal_info})
+    @OnClick({
+            R.id.ll_head_pic_activity_personal_info,
+            R.id.ll_username_activity_personal_info,
+            R.id.ll_password_activity_personal_info,
+            R.id.ll_share_activity_personal_info,
+    })
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_head_pic_activity_personal_info:
@@ -109,6 +110,14 @@ public class PersonalInfoActivity extends BaseActivity implements IPersonalInfoV
                 Intent intent2 = new Intent();
                 intent2.setClass(PersonalInfoActivity.this, ChangePasswordActivity.class);
                 startActivity(intent2);
+                break;
+            case R.id.ll_share_activity_personal_info:
+                Intent intent3 = new Intent();
+                intent3.setClass(PersonalInfoActivity.this, WebViewActivity.class);
+                intent3.putExtra(JS.H5_TITLE, "推广二维码");
+                intent3.putExtra(JS.H5_URL, "");
+                intent3.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
+                startActivity(intent3);
                 break;
         }
     }

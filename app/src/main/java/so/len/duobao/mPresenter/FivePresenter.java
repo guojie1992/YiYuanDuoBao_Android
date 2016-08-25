@@ -57,7 +57,7 @@ public class FivePresenter {
     }
 
     public void refreshView(){
+        iFiveView.destroyViewPager();
         initView();
-        iFiveView.refreshView();
     }
 }

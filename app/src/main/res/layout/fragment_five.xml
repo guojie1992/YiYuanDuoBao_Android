@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fillViewport="true"
-    android:scrollbars="none"
+    android:scrollbars="vertical"
     android:background="@color/light_gray">
 
     <LinearLayout
@@ -282,12 +282,12 @@
                 android:paddingRight="@dimen/dp_30" />
         </LinearLayout>
 
-        <so.len.duobao.customView.MyViewPager
+        <so.len.duobao.customView.FragmentViewPager
             android:id="@+id/mvp_goods_fragment_five"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-        </so.len.duobao.customView.MyViewPager>
+        </so.len.duobao.customView.FragmentViewPager>
 
     </LinearLayout>
 </ScrollView>

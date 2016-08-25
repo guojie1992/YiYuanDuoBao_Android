@@ -35,6 +35,7 @@ import so.len.duobao.api.HTML;
 import so.len.duobao.api.JS;
 import so.len.duobao.bean.FiveBean;
 import so.len.duobao.customAdapter.FragmentViewPagerAdapter;
+import so.len.duobao.customView.FragmentViewPager;
 import so.len.duobao.customView.MyViewPager;
 import so.len.duobao.mPresenter.FivePresenter;
 import so.len.duobao.mView.IFiveView;
@@ -52,7 +53,7 @@ public class FiveFragment extends BaseFragment implements IFiveView {
     @BindView(R.id.iv_indicator_fragment_five)
     View ivIndicatorFragmentFive;
     @BindView(R.id.mvp_goods_fragment_five)
-    MyViewPager mvpGoodsFragmentFive;
+    FragmentViewPager mvpGoodsFragmentFive;
     @BindView(R.id.tv_gifts_fragment_five)
     TextView tvGiftsFragmentFive;
     @BindView(R.id.tv_times_fragment_five)
@@ -169,7 +170,7 @@ public class FiveFragment extends BaseFragment implements IFiveView {
         tvMyticketsFragmentFive.setText(fiveBean.getHtml_list().getVouchers_count());
         tvMybeansFragmentFive.setText(fiveBean.getHtml_list().getBeans());
 
-        mvpGoodsFragmentFive.setDisplayMode(MyViewPager.DisplayMode.FRAGMENT_FIVE);
+        mvpGoodsFragmentFive.setDisplayMode(FragmentViewPager.DisplayMode.DISPLAY_BY_EVERY_ONE);
 
         Point outSize = new Point();
         getActivity().getWindowManager().getDefaultDisplay().getSize(outSize);
@@ -203,6 +204,7 @@ public class FiveFragment extends BaseFragment implements IFiveView {
             }
             @Override
             public void onPageSelected(int position) {
+                mvpGoodsFragmentFive.requestLayout();
                 tvMyFragmentFive.setSelected(false);
                 tvHistoryFragmentFive.setSelected(false);
                 switch (position) {
@@ -227,7 +229,9 @@ public class FiveFragment extends BaseFragment implements IFiveView {
     }
 
     @Override
-    public void refreshView(){
+    public void destroyViewPager(){
+        getActivity().getSupportFragmentManager().beginTransaction().detach(myGiftsFragment).commit();
+        getActivity().getSupportFragmentManager().beginTransaction().detach(historyGiftsFragment).commit();
 //        historyGiftsFragment.refresh();
 //        getActivity().recreate();
 
@@ -239,8 +243,8 @@ public class FiveFragment extends BaseFragment implements IFiveView {
 
     @Override
     public void initErrorView() {
-        fivePresenter.initView();
         isError = true;
+        fivePresenter.initView();
     }
 
     @OnClick({
