@@ -56,7 +56,6 @@ public class MyGiftsFragment extends BaseFragment implements IMyGiftsView {
             map.put("tvTimeItemListviewMygifts", fiveBean.getMy_list().get(i).getRob_time());
             myGiftsListData.add(map);
         }
-//        logInfo(myGiftsListData.toString());
         myGiftsListViewAdapter = new MyGiftsListViewAdapter(getActivity(), myGiftsListData);
         mlvMygiftsFragmentGiftsMy.setAdapter(myGiftsListViewAdapter);
 

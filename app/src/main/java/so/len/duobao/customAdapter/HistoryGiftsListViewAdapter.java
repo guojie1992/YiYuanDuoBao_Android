@@ -19,6 +19,7 @@ import java.util.Set;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import so.len.duobao.R;
+import so.len.duobao.customView.HistoryGiftsListView;
 
 /**
  * Created by Chung on 2016/8/10.
@@ -28,16 +29,7 @@ public class HistoryGiftsListViewAdapter extends BaseExpandableListAdapter {
     private LayoutInflater layoutInflater;
     private List<String> parentData;
     private Map<String, List<String>> data;
-//    private Handler handler = new Handler(){
-//        @Override
-//        public void handleMessage(Message msg) {
-//            notifyDataSetChanged();
-//            super.handleMessage(msg);
-//        }
-//    };
-//    public void refresh() {
-//        handler.sendMessage(new Message());
-//    }
+
     public HistoryGiftsListViewAdapter(Context context, Map<String, List<String>> data) {
         this.context = context;
         this.data = data;

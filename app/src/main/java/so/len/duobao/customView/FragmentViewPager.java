@@ -182,7 +182,7 @@ public class FragmentViewPager extends ViewPager {
             result = v.getMeasuredWidth();
         if (measureMode == MeasureSpec.AT_MOST)
             result = Math.min(result, measureSize);
-        Log.d("jgm","w"+result);
+        Log.d("FragmentViewPager","w"+result);
         return result;
     }
 
@@ -211,7 +211,7 @@ public class FragmentViewPager extends ViewPager {
 
         if (view != null) {
             int i=getChildCount();
-            Log.d("jgm",i+"--");
+            Log.d("FragmentViewPager",i+"--");
             for(int ii=0;ii<i;ii++){
                 View v = getChildAt(ii);
                 if(v!=null)

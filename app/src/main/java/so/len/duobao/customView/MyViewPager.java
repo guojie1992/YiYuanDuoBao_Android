@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.orhanobut.logger.Logger;
 
 
 public class MyViewPager extends ViewPager {
@@ -190,7 +189,7 @@ public class MyViewPager extends ViewPager {
             view = (View) object;
         if (view != null) {
             int i=getChildCount();
-            Log.d("jgm",i+"--");
+            Log.d("FragmentViewPager",i+"--");
             for(int ii=0;ii<i;ii++){
                 View v = getChildAt(ii);
                 if(v!=null)

@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.orhanobut.logger.Logger;
 import com.squareup.otto.Subscribe;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -58,11 +59,7 @@ public class HistoryGiftsFragment extends BaseFragment implements IHistoryGiftsV
             }
             data.put(fiveBean.getHistory_list().get(i).getData_time(), list);
         }
-
-//        logDebug(data.toString());
-        if(historyGiftsListViewAdapter == null){
-            historyGiftsListViewAdapter = new HistoryGiftsListViewAdapter(getActivity(), data);
-        }
+        historyGiftsListViewAdapter = new HistoryGiftsListViewAdapter(getActivity(), data);
         hlvHistorygiftsFragmentGiftsHistory.setAdapter(historyGiftsListViewAdapter);
 
         hlvHistorygiftsFragmentGiftsHistory.setFocusable(false);
@@ -87,13 +84,5 @@ public class HistoryGiftsFragment extends BaseFragment implements IHistoryGiftsV
             control();
         }
     }
-
-//    public void refresh(){
-//        historyGiftsListViewAdapter.refresh();
-//        for(int k=0;k<fiveBean.getHistory_list().size();k++){
-//            hlvHistorygiftsFragmentGiftsHistory.expandGroup(k);
-//            hlvHistorygiftsFragmentGiftsHistory.collapseGroup(k);
-//        }
-//    }
 
 }

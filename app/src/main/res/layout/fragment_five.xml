@@ -16,7 +16,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_120"
+            android:layout_height="@dimen/dp_140"
             android:background="@mipmap/five_top">
             <Button
                 android:id="@+id/btn_go_fragment_five"

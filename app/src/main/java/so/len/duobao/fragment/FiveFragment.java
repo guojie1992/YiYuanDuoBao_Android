@@ -36,7 +36,6 @@ import so.len.duobao.api.JS;
 import so.len.duobao.bean.FiveBean;
 import so.len.duobao.customAdapter.FragmentViewPagerAdapter;
 import so.len.duobao.customView.FragmentViewPager;
-import so.len.duobao.customView.MyViewPager;
 import so.len.duobao.mPresenter.FivePresenter;
 import so.len.duobao.mView.IFiveView;
 import so.len.duobao.otto.AppBus;
@@ -89,7 +88,7 @@ public class FiveFragment extends BaseFragment implements IFiveView {
     private FragmentViewPagerAdapter adapter;
     private SimpleDateFormat sdf;
 
-    private static boolean isError = false;
+    private boolean isError = false;
 
     @Nullable
     @Override
@@ -144,7 +143,7 @@ public class FiveFragment extends BaseFragment implements IFiveView {
 
                     public void onFinish() {
                         tvCountDownFragmentFive.setText("计时结束");
-                        fivePresenter.refreshView();
+                        fivePresenter.initView();
                     }
                 }.start();
                 break;
@@ -170,7 +169,7 @@ public class FiveFragment extends BaseFragment implements IFiveView {
         tvMyticketsFragmentFive.setText(fiveBean.getHtml_list().getVouchers_count());
         tvMybeansFragmentFive.setText(fiveBean.getHtml_list().getBeans());
 
-        mvpGoodsFragmentFive.setDisplayMode(FragmentViewPager.DisplayMode.DISPLAY_BY_EVERY_ONE);
+        mvpGoodsFragmentFive.setDisplayMode(FragmentViewPager.DisplayMode.DISPLAY_BY_EVERY_ONE);//每个页面高度自适应
 
         Point outSize = new Point();
         getActivity().getWindowManager().getDefaultDisplay().getSize(outSize);
@@ -191,10 +190,14 @@ public class FiveFragment extends BaseFragment implements IFiveView {
             fragmentList.add(myGiftsFragment);
             fragmentList.add(historyGiftsFragment);
             adapter = new FragmentViewPagerAdapter(getActivity().getSupportFragmentManager(), fragmentList);
+        } else {
+            myGiftsFragment.onFiveBean(fiveBean);
+            historyGiftsFragment.onFiveBean(fiveBean);
         }
         mvpGoodsFragmentFive.setAdapter(adapter);
         tvMyFragmentFive.setSelected(true);
         tvMyFragmentFive.setTextColor(getActivity().getResources().getColor(R.color.theme));
+        mvpGoodsFragmentFive.setScrollable(false);
         mvpGoodsFragmentFive.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -204,7 +207,7 @@ public class FiveFragment extends BaseFragment implements IFiveView {
             }
             @Override
             public void onPageSelected(int position) {
-                mvpGoodsFragmentFive.requestLayout();
+                mvpGoodsFragmentFive.requestLayout();//重新适应布局
                 tvMyFragmentFive.setSelected(false);
                 tvHistoryFragmentFive.setSelected(false);
                 switch (position) {
@@ -228,18 +231,6 @@ public class FiveFragment extends BaseFragment implements IFiveView {
 
     }
 
-    @Override
-    public void destroyViewPager(){
-        getActivity().getSupportFragmentManager().beginTransaction().detach(myGiftsFragment).commit();
-        getActivity().getSupportFragmentManager().beginTransaction().detach(historyGiftsFragment).commit();
-//        historyGiftsFragment.refresh();
-//        getActivity().recreate();
-
-//        fragmentList.remove(myGiftsFragment);
-//        fragmentList.remove(historyGiftsFragment);
-//        adapter.notifyDataSetChanged();
-//        mvpGoodsFragmentFive.removeAllViews();
-    }
 
     @Override
     public void initErrorView() {
@@ -267,7 +258,6 @@ public class FiveFragment extends BaseFragment implements IFiveView {
                 mvpGoodsFragmentFive.setCurrentItem(1);
                 break;
             case R.id.btn_go_fragment_five:
-
 //                if(fiveBean.getStatus().equals("1") && (fiveBean.getRob_list().getNext_time_status() == 1)){
                 if(!isError){
                     fivePresenter.go();
@@ -305,6 +295,7 @@ public class FiveFragment extends BaseFragment implements IFiveView {
     @Override
     public void onResume() {
         AppBus.getInstance().register(this);
+        fivePresenter.initView();
         super.onResume();
     }
 
