@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<title></title>
+	<style type="text/css">
+		body{
+			background: #fff;
+		}
+		p{
+			margin-top:10rem;
+			font-size:1.2rem;
+			color:#cccccc;
+			text-align: center;
+		}
+		img{
+			display: block;
+			margin:2rem auto 0;
+			width:20%;
+		}
+	</style>
+</head>
+<body id="bodyClick" onclick="bodyclick();">
+	<p>点击此处重新加载</p>
+	<img src="fault.png" />
+
+	<script type="text/javascript">
+		var bodyC = document.getElementById("bodyClick");
+
+		function bodyclick(){
+
+		alert(111);
+			api.reloadWebView();
+		}
+	</script>
+</body>
+</html>

@@ -56,7 +56,7 @@ public class FourFragment extends BaseFragment implements IFourView {
     }
 
     @Override
-    public void initView(FourBean fourBean) {
+    public void initView(final FourBean fourBean) {
         treasureListData = new ArrayList<>();
         for (int i = 0; i < fourBean.getData().size(); i++) {
             map = new HashMap<>();
@@ -78,6 +78,8 @@ public class FourFragment extends BaseFragment implements IFourView {
                 intent.putExtra(JS.H5_TITLE, "一元夺宝");
                 intent.putExtra(JS.H5_URL, HTML.TREASURE);
                 intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
+                intent.putExtra("isGoods", true);
+                intent.putExtra("goodsID", fourBean.getData().get(position).getId());
                 startActivity(intent);
             }
         });

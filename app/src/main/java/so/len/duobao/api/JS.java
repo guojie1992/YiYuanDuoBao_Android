@@ -152,4 +152,11 @@ public class JS {
         activity.startActivity(intent);
     }
 
+    /**
+     * 重新加载webview
+     */
+    @JavascriptInterface
+    public void reloadWebView(){
+        ((WebViewActivity) activity).reloadWebView();
+    }
 }

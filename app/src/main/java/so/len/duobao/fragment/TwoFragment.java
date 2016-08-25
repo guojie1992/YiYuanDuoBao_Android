@@ -11,6 +11,8 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import com.orhanobut.logger.Logger;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -61,7 +63,7 @@ public class TwoFragment extends BaseFragment implements ITwoView {
     }
 
     @Override
-    public void initView(TwoBean twoBean) {
+    public void initView(final TwoBean twoBean) {
         this.twoBean = twoBean;
 
         goodsListData = new ArrayList<>();
@@ -82,6 +84,9 @@ public class TwoFragment extends BaseFragment implements ITwoView {
                 intent.putExtra(JS.H5_TITLE, "商品");
                 intent.putExtra(JS.H5_URL, HTML.SHOP);
                 intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
+                intent.putExtra("isGoods", true);
+                intent.putExtra("goodsID", twoBean.getData().getGoods_list().get(position).getId());
+                Logger.d(twoBean.getData().getGoods_list().get(position).getId());
                 startActivity(intent);
             }
         });

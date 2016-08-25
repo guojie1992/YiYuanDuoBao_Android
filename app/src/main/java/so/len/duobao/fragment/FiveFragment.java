@@ -228,7 +228,7 @@ public class FiveFragment extends BaseFragment implements IFiveView {
 
     @Override
     public void refreshView(){
-        historyGiftsFragment.refresh();
+//        historyGiftsFragment.refresh();
 //        getActivity().recreate();
 
 //        fragmentList.remove(myGiftsFragment);

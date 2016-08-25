@@ -88,12 +88,12 @@ public class HistoryGiftsFragment extends BaseFragment implements IHistoryGiftsV
         }
     }
 
-    public void refresh(){
-        historyGiftsListViewAdapter.refresh();
-        for(int k=0;k<fiveBean.getHistory_list().size();k++){
-            hlvHistorygiftsFragmentGiftsHistory.expandGroup(k);
-            hlvHistorygiftsFragmentGiftsHistory.collapseGroup(k);
-        }
-    }
+//    public void refresh(){
+//        historyGiftsListViewAdapter.refresh();
+//        for(int k=0;k<fiveBean.getHistory_list().size();k++){
+//            hlvHistorygiftsFragmentGiftsHistory.expandGroup(k);
+//            hlvHistorygiftsFragmentGiftsHistory.collapseGroup(k);
+//        }
+//    }
 
 }

@@ -35,14 +35,17 @@ public class WebViewActivity extends WebBaseActivity implements IWebView {
     FrameLayout flWebviewActivityWeb;
 
     private WebViewPresenter webViewPresenter;
-    private int statusHeight = 0;
 
+    private int statusHeight = 0;
     private WebView webView;
     private String url;
     private String title;
-//    private boolean needPost;
+    private boolean isGoods;
+    private String goodsID;
+    //    private boolean needPost;
 //    private String postData;
     private TOP_RIGHT top_right;
+    private static final String errorUrl = "file:///android_asset/noInternet.html";
 
     public enum TOP_RIGHT {
         no_right_top, add_card, add_addr, my_recommend, save;
@@ -76,14 +79,22 @@ public class WebViewActivity extends WebBaseActivity implements IWebView {
     @Override
     public void initView() {
         Intent intent = getIntent();
-        url = intent.getStringExtra(JS.H5_URL);
+        url = intent.getStringExtra(JS.H5_URL) + "&uid=" + Config.getInstance(WebViewActivity.this).getConfig("uid") ;
         title = intent.getStringExtra(JS.H5_TITLE);
+        top_right = (TOP_RIGHT) intent.getSerializableExtra("TOP_RIGHT");
+
+        isGoods = intent.getBooleanExtra("isGoods", false);
+        if(isGoods){
+            goodsID = intent.getStringExtra("goodsID");
+            url = url + "&id=" + goodsID;
+        }
+
+        Logger.d(url);
+
 //        needPost = intent.getBooleanExtra("needPost", false);
 //        if(needPost){
 //            postData = intent.getStringExtra("postData");
 //        }
-        top_right = (TOP_RIGHT) intent.getSerializableExtra("TOP_RIGHT");
-
 
         tmbActivityWebview.setBackSrc(View.VISIBLE);
         tmbActivityWebview.setBackSrc(R.mipmap.top_back);
@@ -157,7 +168,12 @@ public class WebViewActivity extends WebBaseActivity implements IWebView {
                 break;
         }
 
-        webView = getWebView(url);
+        if(CommonUtils.isNetworkConnected(WebViewActivity.this)){
+            webView = getWebView(url);
+        } else {
+            webView = getWebView(errorUrl);
+        }
+
         flWebviewActivityWeb.addView(webView);
         webView.addJavascriptInterface(new JS(this), "api");
         WebSettings webSettings = webView.getSettings();
@@ -173,12 +189,29 @@ public class WebViewActivity extends WebBaseActivity implements IWebView {
 //            webView.loadUrl(url + "&" + postData);
 //        }
 
-        webView.loadUrl(url + "&uid=" + Config.getInstance(WebViewActivity.this).getConfig("uid"));
+        if(CommonUtils.isNetworkConnected(WebViewActivity.this)){
+            webView.loadUrl(url);
+        } else {
+            webView.loadUrl(errorUrl);
+        }
 
     }
 
     public void reload() {
         webView.reload();
+    }
+
+    public void reloadWebView(){
+        if(CommonUtils.isNetworkConnected(WebViewActivity.this)){
+            webView.post(new Runnable() {
+                @Override
+                public void run() {
+                    webView.loadUrl(url);
+                }
+            });
+        } else {
+            toast("请检查网络后重试");
+        }
     }
 
     @Override
