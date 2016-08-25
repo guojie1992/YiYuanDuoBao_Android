@@ -48,4 +48,7 @@ public class HTML {
     public static final String MY_BACK = BEFORE + "/My/remission.html";
     public static final String MY_TREASURE = BEFORE + "/My/indianaRecords.html";
 
+    //二维码
+    public static final String CODE = BEFORE + "/User/qrcode.html";
+
 }

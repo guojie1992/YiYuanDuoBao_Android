@@ -115,7 +115,7 @@ public class PersonalInfoActivity extends BaseActivity implements IPersonalInfoV
                 Intent intent3 = new Intent();
                 intent3.setClass(PersonalInfoActivity.this, WebViewActivity.class);
                 intent3.putExtra(JS.H5_TITLE, "推广二维码");
-                intent3.putExtra(JS.H5_URL, "");
+                intent3.putExtra(JS.H5_URL, HTML.CODE);
                 intent3.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
                 startActivity(intent3);
                 break;

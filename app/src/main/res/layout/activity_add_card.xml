@@ -71,20 +71,39 @@
             android:text="@string/bank_type"
             android:textSize="@dimen/edittext_size"
             android:textColor="@color/black"/>
-        <Spinner
-            android:id="@+id/sp_bank_activity_add_card"
+
+        <TextView
+            android:id="@+id/op_bank_activity_add_card"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="8"
             android:layout_gravity="center_vertical"
             android:background="@null"
-            android:hint=""
+            android:text="@string/choose_bank"
+            android:gravity="center_vertical"
             android:inputType="number"
             android:maxLength="6"
+            android:paddingLeft="@dimen/dp_10"
             android:paddingTop="@dimen/dp_10"
             android:paddingBottom="@dimen/dp_10"
             android:singleLine="true"
-            android:textSize="@dimen/edittext_size" />
+            android:textSize="@dimen/edittext_size"
+            android:textColor="@color/black"/>
+
+        <!--<Spinner-->
+            <!--android:id="@+id/sp_bank_activity_add_card"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="8"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:background="@null"-->
+            <!--android:hint=""-->
+            <!--android:inputType="number"-->
+            <!--android:maxLength="6"-->
+            <!--android:paddingTop="@dimen/dp_10"-->
+            <!--android:paddingBottom="@dimen/dp_10"-->
+            <!--android:singleLine="true"-->
+            <!--android:textSize="@dimen/edittext_size" />-->
 
     </LinearLayout>
     <View

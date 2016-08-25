@@ -65,4 +65,5 @@
     <string name="change_recommender_tips">注意:在购买会员后，无法再修改您的推荐人</string>
     <string name="MB_FREEZE">冻结M币</string>
     <string name="share">推广二维码</string>
+    <string name="choose_bank">选择银行</string>
 </resources>
