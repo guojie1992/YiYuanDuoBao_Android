@@ -61,6 +61,7 @@ public class MineActivity extends BaseActivity implements IMineView {
 
     private MinePresenter minePresenter;
     private Context context;
+    private MineBean mineBean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,13 +93,22 @@ public class MineActivity extends BaseActivity implements IMineView {
                 startActivity(intent);
             }
         });
-        ivSignActivityMine.setImageResource(R.mipmap.my_sign);
+
         minePresenter = new MinePresenter(this, context);
         minePresenter.initView();
     }
 
     @Override
     public void initView(MineBean mineBean) {
+        this.mineBean = mineBean;
+
+        if(mineBean.getSign_status().equals("1")){
+            ivSignActivityMine.setImageResource(R.mipmap.my_sign);
+        }
+        if(mineBean.getSign_status().equals("0")){
+            ivSignActivityMine.setImageResource(R.mipmap.my_signed);
+        }
+
         Options opt = new Options();
         VolleyHttp.getInstance().imageLoader(SERVER.DOMAIN + mineBean.getData().getPic(), civHeadActivityMine, opt);
         String vip = "0";
@@ -158,10 +168,12 @@ public class MineActivity extends BaseActivity implements IMineView {
                 intent.setClass(MineActivity.this, PersonalInfoActivity.class);
                 break;
             case R.id.ll_sign_activity_mine:
+                if(mineBean.getSign_status().equals("1")){
+                    ivSignActivityMine.setImageResource(R.mipmap.my_signed);
+                }
                 intent.setClass(MineActivity.this, WebViewActivity.class);
                 intent.putExtra(JS.H5_TITLE, "签到");
                 intent.putExtra(JS.H5_URL, HTML.SIGN);
-                ivSignActivityMine.setImageResource(R.mipmap.my_signed);
                 intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
                 break;
             case R.id.ll_myorder_activity_mine:

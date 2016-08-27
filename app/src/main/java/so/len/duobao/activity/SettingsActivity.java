@@ -17,6 +17,7 @@ import so.len.duobao.database.Config;
 import so.len.duobao.http.VolleyHttp;
 import so.len.duobao.mPresenter.SettingsPresenter;
 import so.len.duobao.mView.ISettingsView;
+import so.len.duobao.utils.CommonUtils;
 
 /**
  * Created by Chung on 2016/8/17.
@@ -33,25 +34,26 @@ public class SettingsActivity extends BaseActivity implements ISettingsView {
 
     private SettingsPresenter settingsPresenter;
     private Context context;
+    private String version = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         ButterKnife.bind(this);
+        this.context = SettingsActivity.this;
         topMenuBarSettings.setMenuTopPadding(statusHeight);
         control();
     }
 
     private void control() {
-        settingsPresenter = new SettingsPresenter(this);
+        settingsPresenter = new SettingsPresenter(this, context);
         settingsPresenter.initView();
     }
 
 
     @Override
     public void initView() {
-
         topMenuBarSettings.setBackVisibility(View.VISIBLE);
         topMenuBarSettings.setBackSrc(R.mipmap.top_back);
         topMenuBarSettings.setTitleText("设置");
@@ -62,6 +64,12 @@ public class SettingsActivity extends BaseActivity implements ISettingsView {
                 finish();
             }
         });
+        try {
+            version = CommonUtils.getVersionName(context);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        tvVersionActivitySettings.setText(version);
     }
 
     @OnClick({R.id.ll_update_activity_settings, R.id.ll_logout_activity_settings})
@@ -70,14 +78,14 @@ public class SettingsActivity extends BaseActivity implements ISettingsView {
             case R.id.ll_update_activity_settings:
                 new iOSAlertDialog(SettingsActivity.this).builder()
                         .setTitle("温馨提示")
-                        .setMsg("即将在后台下载最新版安装包")
+                        .setMsg("当前版本:" + version + ",发现新版本" + version + ",是否更新?")
                         .setCancelable(false)
-                        .setPositiveButton("确认", new View.OnClickListener() {
+                        .setPositiveButton("更新", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                             }
                         })
-                        .setNegativeButton("取消", new View.OnClickListener() {
+                        .setNegativeButton("暂不更新", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                             }
@@ -91,8 +99,9 @@ public class SettingsActivity extends BaseActivity implements ISettingsView {
                         .setPositiveButton("确认", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                toast("退出");
-//                                Config.getInstance(context).setConfig("uid", "");
+//                                settingsPresenter.logout();
+                                Config.getInstance(context).setConfig("uid", "");
+                                finish();
 //                                Intent intent = new Intent();
 //                                intent.setClass(SettingsActivity.this, LoginActivity.class);
 //                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

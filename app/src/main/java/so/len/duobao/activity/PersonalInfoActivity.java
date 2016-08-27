@@ -60,12 +60,6 @@ public class PersonalInfoActivity extends BaseActivity implements IPersonalInfoV
     }
 
     private void control() {
-        personalInfoPresenter = new PersonalInfoPresenter(this, context);
-        personalInfoPresenter.initView();
-    }
-
-    @Override
-    public void initView(PersonalBean personalBean) {
         topMenuBarPersonalInfo.setBackVisibility(View.VISIBLE);
         topMenuBarPersonalInfo.setBackSrc(R.mipmap.top_back);
         topMenuBarPersonalInfo.setTitleText("个人资料");
@@ -76,6 +70,13 @@ public class PersonalInfoActivity extends BaseActivity implements IPersonalInfoV
                 finish();
             }
         });
+
+        personalInfoPresenter = new PersonalInfoPresenter(this, context);
+        personalInfoPresenter.initView();
+    }
+
+    @Override
+    public void initView(PersonalBean personalBean) {
 
         Options opt = new Options();
         VolleyHttp.getInstance().imageLoader(SERVER.DOMAIN + personalBean.getData().getPath(), tvLevelActivityPersonalInfo, opt);

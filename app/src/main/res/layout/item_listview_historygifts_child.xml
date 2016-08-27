@@ -9,7 +9,7 @@
         android:id="@+id/tv_item_listview_historygifts_child"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginLeft="@dimen/dp_50"
         android:gravity="left"
         android:padding="@dimen/dp_10"
         android:textColor="@color/black"

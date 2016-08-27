@@ -7,6 +7,15 @@ public class MineBean {
     private MineData data;
     private String status;
     private String msg;
+    private String sign_status;
+
+    public String getSign_status() {
+        return sign_status;
+    }
+
+    public void setSign_status(String sign_status) {
+        this.sign_status = sign_status;
+    }
 
     public MineData getData() {
         return data;

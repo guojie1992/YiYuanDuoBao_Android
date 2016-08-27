@@ -31,6 +31,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/dp_10"
         android:gravity="center"
-        android:text="© 2016 一元夺宝"
+        android:text=""
         android:textColor="@color/theme"/>
+    <!--© 2016 一元夺宝-->
 </LinearLayout>

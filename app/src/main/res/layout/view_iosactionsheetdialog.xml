@@ -11,9 +11,8 @@
     <Button
         android:id="@+id/btn_take_photo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:background="@drawable/selector_iosactionsheetdialog_take"
-        android:padding="15dp"
         android:text="拍  照"
         android:textColor="@color/skyblue"
         android:textSize="15sp" />
@@ -26,9 +25,8 @@
     <Button
         android:id="@+id/btn_choose_photo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:background="@drawable/selector_iosactionsheetdialog_choose"
-        android:padding="15dp"
         android:text="从相册选取"
         android:textColor="@color/skyblue"
         android:textSize="15sp" />
@@ -36,10 +34,9 @@
     <Button
         android:id="@+id/btn_cancel"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/selector_iosactionsheetdialog_cancel"
-        android:padding="15dp"
         android:text="取  消"
         android:textColor="@color/skyblue"
         android:textSize="15sp"

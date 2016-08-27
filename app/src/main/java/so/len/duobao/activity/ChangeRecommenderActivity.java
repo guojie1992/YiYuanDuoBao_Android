@@ -40,23 +40,25 @@ public class ChangeRecommenderActivity extends BaseActivity implements IChangeRe
     }
 
     private void control() {
-        changeRecommenderPresenter = new ChangeRecommenderPresenter(this, context);
-        changeRecommenderPresenter.initView();
-    }
-
-    @Override
-    public void initChangeableView() {
         tmbActivityChangeRecommender.setBackVisibility(View.VISIBLE);
         tmbActivityChangeRecommender.setBackSrc(R.mipmap.top_back);
         tmbActivityChangeRecommender.setTitleText("我的推荐人");
-        tmbActivityChangeRecommender.setMenuVisibility(View.VISIBLE);
-        tmbActivityChangeRecommender.setMenuSrc(R.mipmap.save);
         tmbActivityChangeRecommender.setOnBackClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
+
+        changeRecommenderPresenter = new ChangeRecommenderPresenter(this, context);
+        changeRecommenderPresenter.initView();
+    }
+
+    @Override
+    public void initChangeableView() {
+
+        tmbActivityChangeRecommender.setMenuVisibility(View.VISIBLE);
+        tmbActivityChangeRecommender.setMenuSrc(R.mipmap.save);
         tmbActivityChangeRecommender.setOnMenuClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,16 +74,7 @@ public class ChangeRecommenderActivity extends BaseActivity implements IChangeRe
 
     @Override
     public void initNoChangeView(String pid) {
-        tmbActivityChangeRecommender.setBackVisibility(View.VISIBLE);
-        tmbActivityChangeRecommender.setBackSrc(R.mipmap.top_back);
-        tmbActivityChangeRecommender.setTitleText("我的推荐人");
         tmbActivityChangeRecommender.setMenuVisibility(View.INVISIBLE);
-        tmbActivityChangeRecommender.setOnBackClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
 
         etActivityChangeRecommender.setVisibility(View.GONE);
         v.setVisibility(View.GONE);

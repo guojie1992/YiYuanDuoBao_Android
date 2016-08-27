@@ -2,11 +2,15 @@ package so.len.duobao.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.orhanobut.logger.Logger;
 
 import java.lang.reflect.Field;
 import java.security.MessageDigest;
@@ -93,4 +97,15 @@ public class CommonUtils {
     public static void toast(Context context, String text){
         Toast.makeText(context,text,Toast.LENGTH_SHORT).show();
     }
+
+    public static String getVersionName(Context context) throws Exception {
+        // 获取packagemanager的实例
+        PackageManager packageManager = context.getPackageManager();
+        // getPackageName()是你当前类的包名，0代表是获取版本信息
+        PackageInfo packInfo = packageManager.getPackageInfo(context.getPackageName(),0);
+        String versionName = packInfo.versionName;
+        Logger.d(versionName);
+        return versionName;
+    }
+
 }

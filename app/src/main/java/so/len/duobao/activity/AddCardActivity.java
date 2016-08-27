@@ -52,12 +52,6 @@ public class AddCardActivity extends BaseActivity implements IAddCardView {
     }
 
     private void control() {
-        addCardPresenter = new AddCardPresenter(this, context);
-        addCardPresenter.initView();
-    }
-
-    @Override
-    public void initView(final BankListBean bankListBean) {
         tmbActivityAddCard.setBackVisibility(View.VISIBLE);
         tmbActivityAddCard.setTitleVisibility(View.VISIBLE);
         tmbActivityAddCard.setMenuVisibility(View.VISIBLE);
@@ -82,6 +76,12 @@ public class AddCardActivity extends BaseActivity implements IAddCardView {
             }
         });
 
+        addCardPresenter = new AddCardPresenter(this, context);
+        addCardPresenter.initView();
+    }
+
+    @Override
+    public void initView(final BankListBean bankListBean) {
 
         //选择器
         dataList = new ArrayList<String>();
