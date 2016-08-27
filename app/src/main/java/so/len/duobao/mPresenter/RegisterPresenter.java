@@ -40,7 +40,7 @@ public class RegisterPresenter {
         } else {
             iRegisterModel.doRegister(iRegisterView.getPhone(), iRegisterView.getMessageCode(), iRegisterView.getPassword(), new IHttpCompleteListener() {
                 @Override
-                public void loadComplete() {
+                public void loadComplete(String msg) {
                     Intent intent = new Intent();
                     intent.setClass(context, LoginActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

@@ -43,7 +43,7 @@ public class PersonalInfoPresenter {
     public void initView(){
         iPersonalInfoModel.getServerData(new IHttpCompleteListener() {
             @Override
-            public void loadComplete() {
+            public void loadComplete(String msg) {
                 iPersonalInfoView.initView(iPersonalInfoModel.getPersonalBean());
             }
 

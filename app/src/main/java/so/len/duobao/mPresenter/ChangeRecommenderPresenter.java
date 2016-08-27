@@ -25,7 +25,7 @@ public class ChangeRecommenderPresenter {
     public void initView(){
         iChangeRecommenderModel.getRecommender(new IHttpCompleteListener(){
             @Override
-            public void loadComplete() {
+            public void loadComplete(String msg) {
                 iChangeRecommenderView.initChangeableView();
             }
             @Override
@@ -39,7 +39,7 @@ public class ChangeRecommenderPresenter {
     public void setRecommender(){
         iChangeRecommenderModel.setRecommender(new IHttpCompleteListener() {
             @Override
-            public void loadComplete() {
+            public void loadComplete(String msg) {
                 CommonUtils.toast(context, "保存成功");
             }
             @Override

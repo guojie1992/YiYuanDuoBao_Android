@@ -26,7 +26,7 @@ public class OnePresenter {
     public void initView(){
         iOneModel.getServerData(new IHttpCompleteListener() {
             @Override
-            public void loadComplete() {
+            public void loadComplete(String msg) {
                 iOneView.initView(iOneModel.getOneBean());
             }
 

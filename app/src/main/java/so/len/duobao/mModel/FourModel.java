@@ -32,7 +32,7 @@ public class FourModel implements IFourModel {
                     Gson gson = new Gson();
                     fourBean = gson.fromJson(json, FourBean.class);
                     if (fourBean.getStatus().equals("1")) {
-                        iHttpCompleteListener.loadComplete();
+                        iHttpCompleteListener.loadComplete(fourBean.getMsg());
                     } else {
                         iHttpCompleteListener.loadError(fourBean.getMsg());
                     }

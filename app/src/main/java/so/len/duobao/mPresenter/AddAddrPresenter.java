@@ -29,7 +29,7 @@ public class AddAddrPresenter {
     public void addAddr(){
         iAddAddrModel.addAddr(new IHttpCompleteListener() {
             @Override
-            public void loadComplete() {
+            public void loadComplete(String msg) {
                 CommonUtils.toast(context, "添加成功");
             }
 

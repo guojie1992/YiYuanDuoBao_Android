@@ -25,7 +25,7 @@ public class TwoPresenter {
     public void initView(){
         iTwoModel.getServerData(new IHttpCompleteListener() {
             @Override
-            public void loadComplete() {
+            public void loadComplete(String msg) {
                 iTwoView.initView(iTwoModel.getTwoBean());
             }
 

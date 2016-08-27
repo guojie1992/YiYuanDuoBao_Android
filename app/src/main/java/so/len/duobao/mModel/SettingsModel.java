@@ -7,6 +7,9 @@ import com.orhanobut.logger.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import so.len.duobao.api.SERVER;
 import so.len.duobao.http.VolleyHttp;
 import so.len.duobao.mListener.IHttpCompleteListener;
@@ -16,19 +19,38 @@ import so.len.duobao.mListener.IHttpCompleteListener;
  */
 public class SettingsModel implements ISettingsModel {
     private Context context;
+    private String path = "";
 
     public SettingsModel(Context context) {
         this.context = context;
     }
 
     @Override
-    public void getVersion() {
-
-    }
-
-    @Override
-    public void update() {
-
+    public void update(final IHttpCompleteListener iHttpCompleteListener, String currentVersion) {
+        Map<String,String> args = new HashMap<>();
+        args.put("is_ios", "0");
+        args.put("version", currentVersion);
+        VolleyHttp.getInstance().postParamsJson(SERVER.UPDATE_VERSION, new VolleyHttp.JsonResponseListener() {
+            @Override
+            public void getJson(String json, boolean isConnectSuccess) {
+                if(isConnectSuccess && (!json.isEmpty())){
+                    try {
+                        Logger.json(json);
+                        JSONObject jsonObject = new JSONObject(json);
+                        if(jsonObject.getString("status").equals("1")){
+                            iHttpCompleteListener.loadComplete(jsonObject.getString("msg"));
+                            path = jsonObject.getString("path");
+                        } else {
+                            iHttpCompleteListener.loadError(jsonObject.getString("msg"));
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    Logger.i("SettingModel http error!");
+                }
+            }
+        }, args);
     }
 
     @Override
@@ -41,7 +63,7 @@ public class SettingsModel implements ISettingsModel {
                         Logger.json(json);
                         JSONObject jsonObject = new JSONObject(json);
                         if(jsonObject.getString("status").equals("1")){
-                            iHttpCompleteListener.loadComplete();
+                            iHttpCompleteListener.loadComplete(jsonObject.getString("msg"));
                         } else {
                             iHttpCompleteListener.loadError(jsonObject.getString("msg"));
                         }
@@ -51,6 +73,16 @@ public class SettingsModel implements ISettingsModel {
                 } else {
                     Logger.i("SettingModel http error!");
                 }
+            }
+        });
+    }
+
+    @Override
+    public void download() {
+        VolleyHttp.getInstance().getJson(SERVER.DOMAIN + path, new VolleyHttp.JsonResponseListener() {
+            @Override
+            public void getJson(String json, boolean isConnectSuccess) {
+
             }
         });
     }

@@ -41,7 +41,7 @@ public class ForgetPresenter {
             } else {
                 iForgetModel.doForget(iForgetView.getPhone(), iForgetView.getMessageCode(), iForgetView.getPassword(), iForgetView.getRepeatPassword(), new IHttpCompleteListener() {
                     @Override
-                    public void loadComplete() {
+                    public void loadComplete(String msg) {
                         Intent intent = new Intent();
                         intent.setClass(context, LoginActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

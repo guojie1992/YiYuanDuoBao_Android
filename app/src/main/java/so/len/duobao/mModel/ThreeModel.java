@@ -32,7 +32,7 @@ public class ThreeModel implements IThreeModel {
                     Gson gson = new Gson();
                     threeBean = gson.fromJson(json, ThreeBean.class);
                     if (threeBean.getStatus().equals("1")) {
-                        iHttpCompleteListener.loadComplete();
+                        iHttpCompleteListener.loadComplete(threeBean.getMsg());
                     } else {
                         iHttpCompleteListener.loadError(threeBean.getMsg());
                     }

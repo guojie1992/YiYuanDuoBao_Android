@@ -31,7 +31,7 @@ public class FivePresenter {
     public void initView(){
         iFiveModel.getServerData(new IHttpCompleteListener() {
             @Override
-            public void loadComplete() {
+            public void loadComplete(String msg) {
                 iFiveView.initView(iFiveModel.getFiveBean());
             }
 
@@ -46,7 +46,8 @@ public class FivePresenter {
     public void go() {
         iFiveModel.go(new IHttpCompleteListener() {
             @Override
-            public void loadComplete() {
+            public void loadComplete(String msg) {
+                CommonUtils.toast(context, msg);
             }
 
             @Override

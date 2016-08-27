@@ -42,7 +42,7 @@ public class FiveModel implements IFiveModel {
                     Gson gson = new Gson();
                     fiveBean = gson.fromJson(json, FiveBean.class);
                     if (fiveBean.getStatus().equals("1")) {
-                        iHttpCompleteListener.loadComplete();
+                        iHttpCompleteListener.loadComplete(fiveBean.getMsg());
                     } else {
                         iHttpCompleteListener.loadError(fiveBean.getMsg());
                     }
@@ -69,11 +69,11 @@ public class FiveModel implements IFiveModel {
                 if (isConnectSuccess && (!json.isEmpty())) {
                     try {
                         JSONObject jsonObject = new JSONObject(json);
-//                        if (jsonObject.getString("status").equals("1")) {
-//                            iHttpCompleteListener.loadComplete();
-//                        } else {
+                        if (jsonObject.getString("status").equals("1")) {
+                            iHttpCompleteListener.loadComplete(jsonObject.getString("msg"));
+                        } else {
                             iHttpCompleteListener.loadError(jsonObject.getString("msg"));
-//                        }
+                        }
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

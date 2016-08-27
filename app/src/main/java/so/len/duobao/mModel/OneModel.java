@@ -31,7 +31,7 @@ public class OneModel implements IOneModel {
                     Gson gson = new Gson();
                     oneBean = gson.fromJson(json, OneBean.class);
                     if (oneBean.getStatus().equals("1")) {
-                        iHttpCompleteListener.loadComplete();
+                        iHttpCompleteListener.loadComplete(oneBean.getMsg());
                     } else {
                         iHttpCompleteListener.loadError(oneBean.getMsg());
                     }

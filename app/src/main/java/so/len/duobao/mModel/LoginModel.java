@@ -38,7 +38,7 @@ public class LoginModel implements ILoginModel {
                     try {
                         JSONObject jsonObject = new JSONObject(json);
                         if (jsonObject.getString("status").equals("1")) {
-                            iHttpCompleteListener.loadComplete();
+                            iHttpCompleteListener.loadComplete(jsonObject.getString("msg"));
                             Config.getInstance(context).setConfig("uid", jsonObject.getString("uid"));
                             Config.getInstance(context).setConfig("phone", phone);
                         } else {

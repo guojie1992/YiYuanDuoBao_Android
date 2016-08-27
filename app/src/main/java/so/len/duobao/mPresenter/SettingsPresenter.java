@@ -1,7 +1,9 @@
 package so.len.duobao.mPresenter;
 
 import android.content.Context;
+import android.view.View;
 
+import so.len.duobao.customView.iOSAlertDialog;
 import so.len.duobao.mListener.IHttpCompleteListener;
 import so.len.duobao.mModel.ISettingsModel;
 import so.len.duobao.mModel.SettingsModel;
@@ -29,7 +31,7 @@ public class SettingsPresenter {
     public void logout() {
         iSettingsModel.logout(new IHttpCompleteListener() {
             @Override
-            public void loadComplete() {
+            public void loadComplete(String msg) {
                 CommonUtils.toast(context, "退出成功");
             }
             @Override
@@ -37,5 +39,39 @@ public class SettingsPresenter {
                 CommonUtils.toast(context, msg);
             }
         });
+    }
+
+    public void update(final String currentVersion) {
+        iSettingsModel.update(new IHttpCompleteListener() {
+            @Override
+            public void loadComplete(String newVersion) {
+                String content = "当前版本：" + currentVersion + "，发现新版本" + newVersion + "，是否更新？";
+                new iOSAlertDialog(context).builder()
+                        .setTitle("温馨提示")
+                        .setMsg(content)
+                        .setCancelable(false)
+                        .setPositiveButton("更新", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                iSettingsModel.download();
+                            }
+                        })
+                        .setNegativeButton("暂不更新", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                            }
+                        }).show();
+            }
+            @Override
+            public void loadError(String msg) {
+                String content = "当前已是最新版本";
+                new iOSAlertDialog(context).builder()
+                        .setTitle("温馨提示")
+                        .setMsg(content)
+                        .setShowOne(true)
+                        .setCancelable(false)
+                        .show();
+            }
+        }, currentVersion);
     }
 }

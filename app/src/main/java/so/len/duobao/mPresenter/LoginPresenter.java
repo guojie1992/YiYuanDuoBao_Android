@@ -37,7 +37,7 @@ public class LoginPresenter {
         } else {
             iLoginModel.doLogin(iLoginView.getPhone(), iLoginView.getPassword(), new IHttpCompleteListener() {
                 @Override
-                public void loadComplete() {
+                public void loadComplete(String msg) {
                     boolean saveDataResult = saveData();
                     if (saveDataResult) {
                         Logger.i("saveData succeed");

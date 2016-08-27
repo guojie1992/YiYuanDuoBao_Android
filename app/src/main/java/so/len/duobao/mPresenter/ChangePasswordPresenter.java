@@ -32,7 +32,7 @@ public class ChangePasswordPresenter {
         if(newPassword.equals(repeatPassword)){
             iChangePasswordModel.setPassword(oldPassword, newPassword, new IHttpCompleteListener() {
                 @Override
-                public void loadComplete() {
+                public void loadComplete(String msg) {
                     Logger.i("change username succeed");
                 }
 

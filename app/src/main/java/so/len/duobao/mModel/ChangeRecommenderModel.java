@@ -37,7 +37,7 @@ public class ChangeRecommenderModel implements IChangeRecommenderModel {
                     try {
                         JSONObject jsonObject = new JSONObject(json);
                         if (jsonObject.getString("status").equals("1")){
-                            iHttpCompleteListener.loadComplete();
+                            iHttpCompleteListener.loadComplete(jsonObject.getString("msg"));
                         } else {
                             iHttpCompleteListener.loadError(jsonObject.getString("msg"));
                         }
@@ -63,7 +63,7 @@ public class ChangeRecommenderModel implements IChangeRecommenderModel {
                     try {
                         JSONObject jsonObject = new JSONObject(json);
                         if (jsonObject.getString("status").equals("1")){
-                            iHttpCompleteListener.loadComplete();
+                            iHttpCompleteListener.loadComplete(jsonObject.getString("msg"));
                         }
                         if (jsonObject.getString("status").equals("0")) {
                             iHttpCompleteListener.loadError(jsonObject.getString("pid"));

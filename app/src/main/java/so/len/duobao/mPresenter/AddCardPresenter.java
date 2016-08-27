@@ -25,7 +25,7 @@ public class AddCardPresenter {
     public void initView(){
         iAddCardModel.getBankList(new IHttpCompleteListener() {
             @Override
-            public void loadComplete() {
+            public void loadComplete(String msg) {
                 iAddCardView.initView(iAddCardModel.getBankListBean());
             }
             @Override
@@ -37,7 +37,7 @@ public class AddCardPresenter {
     public void addCard(){
         iAddCardModel.addCard(new IHttpCompleteListener() {
             @Override
-            public void loadComplete() {
+            public void loadComplete(String msg) {
                 CommonUtils.toast(context, "添加成功");
             }
 

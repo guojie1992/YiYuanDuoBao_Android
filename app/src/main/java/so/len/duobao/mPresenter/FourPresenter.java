@@ -25,7 +25,7 @@ public class FourPresenter  {
     public void initView(){
         iFourModel.getServerData(new IHttpCompleteListener() {
             @Override
-            public void loadComplete() {
+            public void loadComplete(String msg) {
                 iFourView.initView(iFourModel.getFourBean());
             }
 

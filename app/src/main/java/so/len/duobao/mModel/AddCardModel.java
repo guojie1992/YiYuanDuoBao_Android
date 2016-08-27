@@ -43,7 +43,7 @@ public class AddCardModel implements IAddCardModel {
                     try {
                         JSONObject jsonObject = new JSONObject(json);
                         if(jsonObject.getString("status").equals("1")){
-                            iHttpCompleteListener.loadComplete();
+                            iHttpCompleteListener.loadComplete("");
                         }else {
                             iHttpCompleteListener.loadError(jsonObject.getString("msg"));
                         }
@@ -66,7 +66,7 @@ public class AddCardModel implements IAddCardModel {
                     Gson gson = new Gson();
                     bankListBean = gson.fromJson(json, BankListBean.class);
                     if(bankListBean.getStatus().equals("1")){
-                        iHttpCompleteListener.loadComplete();
+                        iHttpCompleteListener.loadComplete(bankListBean.getMsg());
                     } else {
                         iHttpCompleteListener.loadError(bankListBean.getMsg());
                     }

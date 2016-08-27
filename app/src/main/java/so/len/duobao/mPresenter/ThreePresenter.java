@@ -25,7 +25,7 @@ public class ThreePresenter {
     public void initView(){
         iThreeModel.getServerData(new IHttpCompleteListener() {
             @Override
-            public void loadComplete() {
+            public void loadComplete(String msg) {
                 iThreeView.initView(iThreeModel.getThreeBean());
             }
 

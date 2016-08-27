@@ -36,7 +36,7 @@ public class PersonalInfoModel implements IPersonalInfoModel {
                     Gson gson = new Gson();
                     personalBean = gson.fromJson(json, PersonalBean.class);
                     if (personalBean.getStatus().equals("1")) {
-                        iHttpCompleteListener.loadComplete();
+                        iHttpCompleteListener.loadComplete(personalBean.getMsg());
                     } else {
                         iHttpCompleteListener.loadError(personalBean.getMsg());
                     }

@@ -21,14 +21,15 @@ public class iOSAlertDialog {
     private LinearLayout lLayout_bg;
     private TextView txt_title;
     private TextView txt_msg;
+    private LinearLayout ll_two;
     private Button btn_neg;
     private Button btn_pos;
+    private Button btn_one;
     private View img_line;
     private Display display;
     private boolean showTitle = true;
     private boolean showMsg = true;
-    private boolean showPosBtn = true;
-    private boolean showNegBtn = true;
+    private boolean showOne = false;
 
     public iOSAlertDialog(Context context) {
         this.context = context;
@@ -42,14 +43,23 @@ public class iOSAlertDialog {
 
         // 获取自定义Dialog布局中的控件
         lLayout_bg = (LinearLayout) view.findViewById(R.id.lLayout_bg);
+
         txt_title = (TextView) view.findViewById(R.id.txt_title);
         txt_title.setVisibility(View.GONE);
+
         txt_msg = (TextView) view.findViewById(R.id.txt_msg);
         txt_msg.setVisibility(View.GONE);
+
+        ll_two = (LinearLayout) view.findViewById(R.id.ll_two);
+        ll_two.setVisibility(View.GONE);
         btn_neg = (Button) view.findViewById(R.id.btn_neg);
         btn_neg.setVisibility(View.GONE);
         btn_pos = (Button) view.findViewById(R.id.btn_pos);
         btn_pos.setVisibility(View.GONE);
+
+        btn_one = (Button) view.findViewById(R.id.btn_one);
+        btn_one.setVisibility(View.GONE);
+
         img_line = (View) view.findViewById(R.id.img_line);
         img_line.setVisibility(View.GONE);
 
@@ -64,7 +74,6 @@ public class iOSAlertDialog {
     }
 
     public iOSAlertDialog setTitle(String title) {
-//        showTitle = true;
         if ("".equals(title)) {
             txt_title.setText("标题");
         } else {
@@ -74,7 +83,6 @@ public class iOSAlertDialog {
     }
 
     public iOSAlertDialog setMsg(String msg) {
-//        showMsg = true;
         if ("".equals(msg)) {
             txt_msg.setText("内容");
         } else {
@@ -89,7 +97,6 @@ public class iOSAlertDialog {
     }
 
     public iOSAlertDialog setPositiveButton(String text, final OnClickListener listener) {
-//        showPosBtn = true;
         if ("".equals(text)) {
             btn_pos.setText("确定");
         } else {
@@ -106,7 +113,6 @@ public class iOSAlertDialog {
     }
 
     public iOSAlertDialog setNegativeButton(String text, final OnClickListener listener) {
-//        showNegBtn = true;
         if ("".equals(text)) {
             btn_neg.setText("取消");
         } else {
@@ -132,13 +138,8 @@ public class iOSAlertDialog {
         return this;
     }
 
-    public iOSAlertDialog setShowPosBtn(boolean showPosBtn) {
-        this.showPosBtn = showPosBtn;
-        return this;
-    }
-
-    public iOSAlertDialog setShowNegBtn(boolean showNegBtn) {
-        this.showNegBtn = showNegBtn;
+    public iOSAlertDialog setShowOne(boolean showOne) {
+        this.showOne = showOne;
         return this;
     }
 
@@ -156,34 +157,25 @@ public class iOSAlertDialog {
             txt_msg.setVisibility(View.VISIBLE);
         }
 
-        if (!showPosBtn && !showNegBtn) {
-            btn_pos.setText("确定");
-            btn_pos.setVisibility(View.VISIBLE);
-//            btn_pos.setBackgroundResource(R.drawable.alertdialog_single_selector);
-            btn_pos.setOnClickListener(new OnClickListener() {
+        if(showOne){
+            ll_two.setVisibility(View.GONE);
+            btn_neg.setVisibility(View.GONE);
+            btn_pos.setVisibility(View.GONE);
+            img_line.setVisibility(View.GONE);
+            btn_one.setVisibility(View.VISIBLE);
+            btn_one.setText("确定");
+            btn_one.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     dialog.dismiss();
                 }
             });
-        }
-
-        if (showPosBtn && showNegBtn) {
-            btn_pos.setVisibility(View.VISIBLE);
-//            btn_pos.setBackgroundResource(R.drawable.alertdialog_right_selector);
+        } else {
+            ll_two.setVisibility(View.VISIBLE);
             btn_neg.setVisibility(View.VISIBLE);
-//            btn_neg.setBackgroundResource(R.drawable.alertdialog_left_selector);
+            btn_pos.setVisibility(View.VISIBLE);
             img_line.setVisibility(View.VISIBLE);
-        }
-
-        if (showPosBtn && !showNegBtn) {
-            btn_pos.setVisibility(View.VISIBLE);
-//            btn_pos.setBackgroundResource(R.drawable.alertdialog_single_selector);
-        }
-
-        if (!showPosBtn && showNegBtn) {
-            btn_neg.setVisibility(View.VISIBLE);
-//            btn_neg.setBackgroundResource(R.drawable.alertdialog_single_selector);
+            btn_one.setVisibility(View.GONE);
         }
     }
 

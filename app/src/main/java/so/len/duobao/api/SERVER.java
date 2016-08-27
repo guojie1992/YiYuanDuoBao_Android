@@ -59,4 +59,7 @@ public class SERVER {
     public static final String ADD_ADDR = MY + "/addShipAddress";
     public static final String MY_RECOMMENDER = MY + "/referee";
     public static final String CHANGE_MY_RECOMMENDER = MY + "/change_referee";
+
+    //在线更新
+    public static final String UPDATE_VERSION = MY + "/version_judge";
 }

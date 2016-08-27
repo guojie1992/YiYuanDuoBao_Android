@@ -30,7 +30,7 @@ public class ChangeUsernamePresenter {
     public void changeUsername(String username){
         iChangeUsernameModel.setUsername(username, new IHttpCompleteListener() {
             @Override
-            public void loadComplete() {
+            public void loadComplete(String msg) {
                 Logger.i("change username succeed");
             }
 

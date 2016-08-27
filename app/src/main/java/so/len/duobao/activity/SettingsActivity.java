@@ -76,25 +76,12 @@ public class SettingsActivity extends BaseActivity implements ISettingsView {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_update_activity_settings:
-                new iOSAlertDialog(SettingsActivity.this).builder()
-                        .setTitle("温馨提示")
-                        .setMsg("当前版本:" + version + ",发现新版本" + version + ",是否更新?")
-                        .setCancelable(false)
-                        .setPositiveButton("更新", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                            }
-                        })
-                        .setNegativeButton("暂不更新", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                            }
-                        }).show();
+                settingsPresenter.update(version);
                 break;
             case R.id.ll_logout_activity_settings:
                 new iOSAlertDialog(SettingsActivity.this).builder()
                         .setTitle("温馨提示")
-                        .setMsg("您确定要注销登录吗?")
+                        .setMsg("您确定要退出吗？")
                         .setCancelable(false)
                         .setPositiveButton("确认", new View.OnClickListener() {
                             @Override

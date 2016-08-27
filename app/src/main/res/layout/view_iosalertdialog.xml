@@ -4,39 +4,41 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/transparent"
-    android:orientation="vertical" >
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="@dimen/dp_10"
-    android:orientation="vertical"
-    android:background="@drawable/shape_iosactionsheetdialog_take_unpressed">
-    <TextView
-        android:id="@+id/txt_title"
+    android:orientation="vertical">
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="15dp"
-        android:gravity="center"
-        android:singleLine="true"
-        android:ellipsize="marquee"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:background="@drawable/shape_iosactionsheetdialog_take_unpressed"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_10">
 
-    <TextView
-        android:id="@+id/txt_msg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="15dp"
-        android:paddingBottom="20dp"
-        android:textColor="@color/black"
-        android:textSize="15sp" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/txt_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:ellipsize="marquee"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:paddingBottom="20dp"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+    </LinearLayout>
 
 
     <View
@@ -45,6 +47,7 @@
         android:background="@color/darker_gray" />
 
     <LinearLayout
+        android:id="@+id/ll_two"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -54,8 +57,8 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:gravity="center"
             android:background="@drawable/selector_iosalertdialog_left"
+            android:gravity="center"
             android:textColor="@color/skyblue"
             android:textSize="15sp" />
 
@@ -70,10 +73,18 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:gravity="center"
             android:background="@drawable/selector_iosalertdialog_right"
+            android:gravity="center"
             android:textColor="@color/skyblue"
-            android:textSize="15sp"/>
+            android:textSize="15sp" />
     </LinearLayout>
 
+    <Button
+        android:id="@+id/btn_one"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/selector_iosalertdialog_one"
+        android:gravity="center"
+        android:textColor="@color/skyblue"
+        android:textSize="15sp"/>
 </LinearLayout>

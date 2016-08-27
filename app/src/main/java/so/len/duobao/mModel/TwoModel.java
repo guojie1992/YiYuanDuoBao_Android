@@ -31,7 +31,7 @@ public class TwoModel implements ITwoModel {
                     Gson gson = new Gson();
                     twoBean = gson.fromJson(json, TwoBean.class);
                     if (twoBean.getStatus().equals("1")) {
-                        iHttpCompleteListener.loadComplete();
+                        iHttpCompleteListener.loadComplete(twoBean.getMsg());
                     } else {
                         iHttpCompleteListener.loadError(twoBean.getMsg());
                     }
