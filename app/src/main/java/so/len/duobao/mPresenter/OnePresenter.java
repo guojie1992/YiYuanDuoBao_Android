@@ -23,11 +23,11 @@ public class OnePresenter {
         this.iOneModel = new OneModel(context);
     }
 
-    public void initView(){
+    public void initView(final boolean isRefresh){
         iOneModel.getServerData(new IHttpCompleteListener() {
             @Override
             public void loadComplete(String msg) {
-                iOneView.initView(iOneModel.getOneBean());
+                iOneView.initView(iOneModel.getOneBean(), isRefresh);
             }
 
             @Override

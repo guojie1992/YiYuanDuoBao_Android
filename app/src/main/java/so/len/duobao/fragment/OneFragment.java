@@ -44,8 +44,6 @@ public class OneFragment extends BaseFragment implements IOneView {
     ImageView ivHeadFragmentOne;
     @BindView(R.id.tv_speaker_fragment_one)
     TextView tvSpeakerFragmentOne;
-//    @BindView(R.id.srl_fragment_one)
-//    SwipeRefreshLayout srlFragmentOne;
 
     private OnePresenter onePresenter;
     private Context context;
@@ -66,12 +64,14 @@ public class OneFragment extends BaseFragment implements IOneView {
 
     private void control() {
         onePresenter = new OnePresenter(this, context);
-        onePresenter.initView();
+        onePresenter.initView(false);
     }
 
     @Override
-    public void initView(OneBean oneBean) {
-        initLoopViewPager(oneBean.getData().getPic());
+    public void initView(OneBean oneBean, boolean isRefresh) {
+        if(!isRefresh){
+            initLoopViewPager(oneBean.getData().getPic());
+        }
         initLotteryList(oneBean.getData().getList());
     }
 
@@ -137,6 +137,7 @@ public class OneFragment extends BaseFragment implements IOneView {
 
     @Override
     public void onResume() {
+        onePresenter.initView(true);
         if (lvpFragmentOne != null){
             lvpFragmentOne.openLoopTimer();
         }
