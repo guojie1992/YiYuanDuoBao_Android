@@ -9,6 +9,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -121,8 +123,8 @@ public class CommonUtils {
         return versionName;
     }
 
-    public static File downFile(String httpUrl, Context context) {
-        String fileName = httpUrl.substring(httpUrl.lastIndexOf("/") + 1);//"updata.apk";
+    public static File downFile(String httpUrl, Context context, Handler handler) {
+        String fileName = httpUrl.substring(httpUrl.lastIndexOf("/") + 1);
         File tmpFile = new File("/sdcard/update");
         if (!tmpFile.exists()) {
             tmpFile.mkdir();
@@ -136,8 +138,12 @@ public class CommonUtils {
             try {
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 InputStream is = conn.getInputStream();
+
+                int contentLength = conn.getContentLength();
+                int currentLength = 0;
+
                 FileOutputStream fos = new FileOutputStream(file);
-                byte[] buf = new byte[256];
+                byte[] buf = new byte[5120];
                 conn.connect();
                 double count = 0;
                 if (conn.getResponseCode() >= 400) {
@@ -150,8 +156,12 @@ public class CommonUtils {
                                 break;
                             } else {
                                 fos.write(buf, 0, numRead);
+                                currentLength += numRead;
+                                int progress = (int) Math.floor((100 * currentLength)/contentLength);
+                                Message msg = new Message();
+                                msg.obj = progress;
+                                handler.sendMessage(msg);
                             }
-
                         } else {
                             break;
                         }
@@ -169,55 +179,6 @@ public class CommonUtils {
             e.printStackTrace();
         }
         return file;
-
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                // 获得存储卡路径，构成 保存文件的目标路径
-//                String dirName  = Environment.getExternalStorageDirectory() + "/MyDownload/";
-//                File f = new File(dirName);
-//                if (!f.exists()) {
-//                    f.mkdir();
-//                }
-//
-//                //准备拼接新的文件名（保存在存储卡后的文件名）
-//                String newFilename = urlDownload.substring(urlDownload.lastIndexOf("/") + 1);
-//                newFilename = dirName + newFilename;
-//
-//                File file = new File(newFilename);
-//                //如果目标文件已经存在，则删除。产生覆盖旧文件的效果
-//                if (file.exists()) {
-//                    file.delete();
-//                }
-//                try {
-//                    // 构造URL
-//                    URL url = new URL(urlDownload);
-//                    // 打开连接
-//                    URLConnection con = url.openConnection();
-////            //获得文件的长度
-////            int contentLength = con.getContentLength();
-////            System.out.println("长度 :" + contentLength);
-//                    // 输入流
-//                    InputStream is = con.getInputStream();
-//                    // 1K的数据缓冲
-//                    byte[] bs = new byte[10240];
-//                    // 读取到的数据长度
-//                    int len;
-//                    // 输出的文件流
-//                    OutputStream os = new FileOutputStream(newFilename);
-//                    // 开始读取
-//                    while ((len = is.read(bs)) != -1) {
-//                        os.write(bs, 0, len);
-//                    }
-//                    // 完毕，关闭所有链接
-//                    os.close();
-//                    is.close();
-//
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }).start();
     }
 
     public static void openFile(File file, Context context) {

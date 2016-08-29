@@ -41,4 +41,5 @@ dependencies {
     compile files('libs/jpush-android-2.1.7.jar')
     compile 'org.apache.httpcomponents:httpcore:4.4.5'
     compile 'cn.qqtheme.framework:WheelPicker:latest.release'
+    compile 'com.kaopiz:kprogresshud:1.0.5'
 }

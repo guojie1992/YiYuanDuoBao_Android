@@ -1,7 +1,11 @@
 package so.len.duobao.mModel;
 
 import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Message;
 
+import com.kaopiz.kprogresshud.KProgressHUD;
 import com.orhanobut.logger.Logger;
 
 import org.json.JSONException;
@@ -21,6 +25,7 @@ import so.len.duobao.utils.CommonUtils;
 public class SettingsModel implements ISettingsModel {
     private Context context;
     private String path = "";
+    private DownloadAsyncTask downloadAsyncTask;
 
     public SettingsModel(Context context) {
         this.context = context;
@@ -79,18 +84,48 @@ public class SettingsModel implements ISettingsModel {
 
     @Override
     public void download() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                CommonUtils.openFile(CommonUtils.downFile(SERVER.DOMAIN + path, context), context);
-            }
-        }).start();
-
-//        VolleyHttp.getInstance().postJson(SERVER.DOMAIN + path, new VolleyHttp.JsonResponseListener() {
-//            @Override
-//            public void getJson(String json, boolean isConnectSuccess) {
-//                Logger.d(SERVER.DOMAIN + path);
-//            }
-//        });
+        this.downloadAsyncTask = new DownloadAsyncTask();
+        if(CommonUtils.isNetworkConnected(context)){
+            downloadAsyncTask.execute();
+        } else {
+            CommonUtils.toast(context, "请检查网络设置");
+        }
     }
+
+    public class DownloadAsyncTask extends AsyncTask<Integer, Integer, String> {
+        KProgressHUD kProgressHUD;
+        public DownloadAsyncTask() {
+            super();
+            this.kProgressHUD = KProgressHUD.create(context)
+                    .setStyle(KProgressHUD.Style.PIE_DETERMINATE)
+                    .setLabel("downloading...")
+                    .setMaxProgress(100);
+        }
+
+        @Override
+        protected String doInBackground(Integer... params) {
+            CommonUtils.openFile(CommonUtils.downFile(SERVER.DOMAIN + path, context, new Handler(context.getMainLooper()){
+                @Override
+                public void handleMessage(Message msg) {
+                    int progress = (int) msg.obj;
+                    kProgressHUD.setProgress(progress);
+                    super.handleMessage(msg);
+                }
+            }), context);
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            kProgressHUD.show();
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            kProgressHUD.dismiss();
+            super.onPostExecute(s);
+        }
+    }
+
 }
