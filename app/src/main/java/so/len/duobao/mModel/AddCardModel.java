@@ -59,7 +59,7 @@ public class AddCardModel implements IAddCardModel {
 
     @Override
     public void getBankList(final IHttpCompleteListener iHttpCompleteListener) {
-        VolleyHttp.getInstance().getJson(SERVER.GET_BANK_LIST, new VolleyHttp.JsonResponseListener() {
+        VolleyHttp.getInstance().postJson(SERVER.GET_BANK_LIST, new VolleyHttp.JsonResponseListener() {
             @Override
             public void getJson(String json, boolean isConnectSuccess) {
                 if(isConnectSuccess && (!json.isEmpty())){

@@ -25,7 +25,7 @@ public class FourModel implements IFourModel {
 
     @Override
     public void getServerData(final IHttpCompleteListener iHttpCompleteListener) {
-        VolleyHttp.getInstance().getJson(SERVER.TREASURE, new VolleyHttp.JsonResponseListener() {
+        VolleyHttp.getInstance().postJson(SERVER.TREASURE, new VolleyHttp.JsonResponseListener() {
             @Override
             public void getJson(String json, boolean isConnectSuccess) {
                 if (isConnectSuccess && (!json.isEmpty())) {

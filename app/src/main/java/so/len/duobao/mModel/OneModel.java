@@ -24,7 +24,7 @@ public class OneModel implements IOneModel {
 
     @Override
     public void getServerData(final IHttpCompleteListener iHttpCompleteListener) {
-        VolleyHttp.getInstance().getJson(SERVER.HOME_PAGE, new VolleyHttp.JsonResponseListener() {
+        VolleyHttp.getInstance().postJson(SERVER.HOME_PAGE, new VolleyHttp.JsonResponseListener() {
             @Override
             public void getJson(String json, boolean isConnectSuccess) {
                 if (isConnectSuccess && (!json.isEmpty())) {

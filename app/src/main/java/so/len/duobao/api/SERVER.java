@@ -48,6 +48,9 @@ public class SERVER {
     //夺宝接口
     public static final String TREASURE = USER + "/show_grab";
 
+    //判断当前账户vip
+    public static final String CHECK_VIP = USER + "/show_vip";
+
 
     //抢钱接口
     public static final String GIFT = ROB + "/index";

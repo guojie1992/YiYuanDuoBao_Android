@@ -45,7 +45,7 @@ public class SettingsPresenter {
         iSettingsModel.update(new IHttpCompleteListener() {
             @Override
             public void loadComplete(String newVersion) {
-                String content = "当前版本：" + currentVersion + "，发现新版本" + newVersion + "，是否更新？";
+                String content = "　　当前版本：" + currentVersion + "，发现新版本" + newVersion + "，是否下载最新版本安装包？";
                 new iOSAlertDialog(context).builder()
                         .setTitle("温馨提示")
                         .setMsg(content)

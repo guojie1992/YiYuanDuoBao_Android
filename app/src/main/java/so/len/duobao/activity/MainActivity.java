@@ -1,5 +1,6 @@
 package so.len.duobao.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import so.len.duobao.customAdapter.FragmentViewPagerAdapter;
 import so.len.duobao.customView.BottomMenuItem;
 import so.len.duobao.customView.FragmentViewPager;
 import so.len.duobao.customView.TopMenuBar;
+import so.len.duobao.customView.iOSAlertDialog;
 import so.len.duobao.database.Config;
 import so.len.duobao.fragment.FourFragment;
 import so.len.duobao.fragment.FiveFragment;
@@ -48,6 +50,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     @BindView(R.id.vp_home)
     FragmentViewPager vpHome;
 
+    private Context context;
     public static boolean isForeground = false;
     private MainPresenter mainPresenter;
     private long backTime = 0;
@@ -57,18 +60,18 @@ public class MainActivity extends BaseActivity implements IMainView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        context = MainActivity.this;
         topMenuBar.setMenuTopPadding(statusHeight);
         control();
     }
 
     private void control() {
-        mainPresenter = new MainPresenter(MainActivity.this);
+        mainPresenter = new MainPresenter(this, context);
         mainPresenter.initView();
     }
 
     @Override
     public void initView() {
-
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new OneFragment());
         fragments.add(new TwoFragment());
@@ -83,20 +86,18 @@ public class MainActivity extends BaseActivity implements IMainView {
         vpHome.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int i, float v, int i1) {
-
             }
-
             @Override
             public void onPageSelected(int i) {
                 select(i);
             }
-
             @Override
             public void onPageScrollStateChanged(int i) {
-
             }
         });
         select(0);
+
+//        final String vip = Config.getInstance(context).getConfig("vip");
 
         menuItem1.setMenuItemClickListener(new View.OnClickListener() {
             @Override
@@ -113,19 +114,31 @@ public class MainActivity extends BaseActivity implements IMainView {
         menuItem3.setMenuItemClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                vpHome.setCurrentItem(2);
+                if(Config.getInstance(context).getConfig("vip").equals("0") || Config.getInstance(context).getConfig("vip").isEmpty()){
+                    alert();
+                } else {
+                    vpHome.setCurrentItem(2);
+                }
             }
         });
         menuItem4.setMenuItemClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                vpHome.setCurrentItem(3);
+                if(Config.getInstance(context).getConfig("vip").equals("0") || Config.getInstance(context).getConfig("vip").isEmpty()){
+                    alert();
+                } else {
+                    vpHome.setCurrentItem(3);
+                }
             }
         });
         menuItem5.setMenuItemClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                vpHome.setCurrentItem(4);
+                if(Config.getInstance(context).getConfig("vip").equals("0") || Config.getInstance(context).getConfig("vip").isEmpty()){
+                    alert();
+                } else {
+                    vpHome.setCurrentItem(4);
+                }
             }
         });
     }
@@ -213,6 +226,30 @@ public class MainActivity extends BaseActivity implements IMainView {
                 topMenuBar.setMenuVisibility(View.INVISIBLE);
                 break;
         }
+    }
+
+    private void alert() {
+        String content = "　　该页面需要VIP权限，检测到当前账户不是VIP会员，是否开通会员？";
+        new iOSAlertDialog(context).builder()
+                .setTitle("温馨提示")
+                .setMsg(content)
+                .setCancelable(false)
+                .setPositiveButton("前往开通", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent();
+                        intent.setClass(MainActivity.this, WebViewActivity.class);
+                        intent.putExtra(JS.H5_TITLE, "会员等级");
+                        intent.putExtra(JS.H5_URL, HTML.MY_LEVEL);
+                        intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
+                        startActivity(intent);
+                    }
+                })
+                .setNegativeButton("取消", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                    }
+                }).show();
     }
 
     @Override

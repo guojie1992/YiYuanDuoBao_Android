@@ -13,6 +13,7 @@ import java.util.Map;
 import so.len.duobao.api.SERVER;
 import so.len.duobao.http.VolleyHttp;
 import so.len.duobao.mListener.IHttpCompleteListener;
+import so.len.duobao.utils.CommonUtils;
 
 /**
  * Created by Chung on 2016/8/17.
@@ -35,7 +36,6 @@ public class SettingsModel implements ISettingsModel {
             public void getJson(String json, boolean isConnectSuccess) {
                 if(isConnectSuccess && (!json.isEmpty())){
                     try {
-                        Logger.json(json);
                         JSONObject jsonObject = new JSONObject(json);
                         if(jsonObject.getString("status").equals("1")){
                             iHttpCompleteListener.loadComplete(jsonObject.getString("msg"));
@@ -55,12 +55,12 @@ public class SettingsModel implements ISettingsModel {
 
     @Override
     public void logout(final IHttpCompleteListener iHttpCompleteListener) {
-        VolleyHttp.getInstance().getJson(SERVER.LOGOUT, new VolleyHttp.JsonResponseListener() {
+        VolleyHttp.getInstance().postJson(SERVER.LOGOUT, new VolleyHttp.JsonResponseListener() {
             @Override
             public void getJson(String json, boolean isConnectSuccess) {
                 if(isConnectSuccess && (!json.isEmpty())){
                     try {
-                        Logger.json(json);
+//                        Logger.json(json);
                         JSONObject jsonObject = new JSONObject(json);
                         if(jsonObject.getString("status").equals("1")){
                             iHttpCompleteListener.loadComplete(jsonObject.getString("msg"));
@@ -79,11 +79,18 @@ public class SettingsModel implements ISettingsModel {
 
     @Override
     public void download() {
-        VolleyHttp.getInstance().getJson(SERVER.DOMAIN + path, new VolleyHttp.JsonResponseListener() {
+        new Thread(new Runnable() {
             @Override
-            public void getJson(String json, boolean isConnectSuccess) {
-
+            public void run() {
+                CommonUtils.openFile(CommonUtils.downFile(SERVER.DOMAIN + path, context), context);
             }
-        });
+        }).start();
+
+//        VolleyHttp.getInstance().postJson(SERVER.DOMAIN + path, new VolleyHttp.JsonResponseListener() {
+//            @Override
+//            public void getJson(String json, boolean isConnectSuccess) {
+//                Logger.d(SERVER.DOMAIN + path);
+//            }
+//        });
     }
 }

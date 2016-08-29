@@ -115,6 +115,7 @@ public class MineActivity extends BaseActivity implements IMineView {
         switch (mineBean.getData().getVip()) {
             case 0:
                 vip = "普通会员";
+                Config.getInstance(context).setConfig("vip", "");
                 break;
             case 1:
                 vip = "一级会员";

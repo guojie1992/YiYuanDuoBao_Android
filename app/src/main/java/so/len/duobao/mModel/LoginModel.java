@@ -40,6 +40,7 @@ public class LoginModel implements ILoginModel {
                         if (jsonObject.getString("status").equals("1")) {
                             iHttpCompleteListener.loadComplete(jsonObject.getString("msg"));
                             Config.getInstance(context).setConfig("uid", jsonObject.getString("uid"));
+                            Config.getInstance(context).setConfig("vip", jsonObject.getString("vip"));
                             Config.getInstance(context).setConfig("phone", phone);
                         } else {
                             iHttpCompleteListener.loadError(jsonObject.getString("msg"));

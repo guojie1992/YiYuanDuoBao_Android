@@ -25,7 +25,7 @@ public class ThreeModel implements IThreeModel {
 
     @Override
     public void getServerData(final IHttpCompleteListener iHttpCompleteListener) {
-        VolleyHttp.getInstance().getJson(SERVER.LOTTREY, new VolleyHttp.JsonResponseListener() {
+        VolleyHttp.getInstance().postJson(SERVER.LOTTREY, new VolleyHttp.JsonResponseListener() {
             @Override
             public void getJson(String json, boolean isConnectSuccess) {
                 if (isConnectSuccess && (!json.isEmpty())) {

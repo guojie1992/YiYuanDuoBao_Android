@@ -24,7 +24,7 @@ public class TwoModel implements ITwoModel {
 
     @Override
     public void getServerData(final IHttpCompleteListener iHttpCompleteListener) {
-        VolleyHttp.getInstance().getJson(SERVER.SHOP, new VolleyHttp.JsonResponseListener() {
+        VolleyHttp.getInstance().postJson(SERVER.SHOP, new VolleyHttp.JsonResponseListener() {
             @Override
             public void getJson(String json, boolean isConnectSuccess) {
                 if (isConnectSuccess && (!json.isEmpty())) {

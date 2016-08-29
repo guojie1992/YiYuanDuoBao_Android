@@ -181,6 +181,20 @@ public class WebViewActivity extends WebBaseActivity implements IWebView {
         setWebZoom(webSettings);
         setNetworkCache(webSettings);
 
+        /***打开本地缓存提供JS调用**/
+        webView.getSettings().setDomStorageEnabled(true);
+// Set cache size to 8 mb by default. should be more than enough
+        webView.getSettings().setAppCacheMaxSize(1024*1024*8);
+
+// This next one is crazy. It's the DEFAULT location for your app's cache
+// But it didn't work for me without this line.
+// UPDATE: no hardcoded path. Thanks to Kevin Hawkins
+        String appCachePath = getApplicationContext().getCacheDir().getAbsolutePath();
+        webView.getSettings().setAppCachePath(appCachePath);
+        webView.getSettings().setAllowFileAccess(true);
+        webView.getSettings().setAppCacheEnabled(true);
+
+
 //        if(needPost){
 //            //由于webView.postUrl(url, postData)中 postData类型为byte[]
 //            //通过EncodingUtils.getBytes(data, charset)方法进行转换
