@@ -13,7 +13,7 @@
     </style>
 
     <style name="topMenuBar">
-        <item name="tmb_padding">5dp</item>
+        <item name="tmb_padding">3dp</item>
         <item name="tmb_textSize">18sp</item>
         <item name="tmb_textColor">@android:color/white</item>
         <item name="tmb_backgroundColor">@color/theme</item>

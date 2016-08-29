@@ -48,11 +48,12 @@ public class FivePresenter {
             @Override
             public void loadComplete(String msg) {
                 CommonUtils.toast(context, msg);
+                initView();
             }
-
             @Override
             public void loadError(String msg) {
                 CommonUtils.toast(context, msg);
+                initView();
             }
         });
     }

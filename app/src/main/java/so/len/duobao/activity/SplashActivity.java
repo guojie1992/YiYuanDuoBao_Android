@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.jpush.android.api.JPushInterface;
 import so.len.duobao.R;
 import so.len.duobao.database.Config;
 
@@ -50,5 +51,16 @@ public class SplashActivity extends BaseActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        JPushInterface.onResume(SplashActivity.this);
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        JPushInterface.onPause(SplashActivity.this);
+        super.onPause();
+    }
 }
 

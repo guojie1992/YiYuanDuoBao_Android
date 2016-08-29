@@ -2,8 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="@dimen/dp_5"
-    android:paddingBottom="@dimen/dp_5"
     android:gravity="center_vertical"
     android:orientation="horizontal">
 
@@ -20,7 +18,10 @@
             android:id="@+id/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/dp_2" />
+            android:paddingLeft="@dimen/dp_5"
+            android:paddingRight="@dimen/dp_5"
+            android:paddingTop="@dimen/dp_8"
+            android:paddingBottom="@dimen/dp_8"/>
     </LinearLayout>
 
     <TextView
@@ -29,6 +30,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="6"
+        android:paddingLeft="@dimen/dp_5"
+        android:paddingRight="@dimen/dp_5"
+        android:paddingTop="@dimen/dp_8"
+        android:paddingBottom="@dimen/dp_8"
         android:singleLine="true"
         android:scrollHorizontally="true"
         android:ellipsize="marquee"
@@ -48,6 +53,10 @@
             android:id="@+id/menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/dp_2"/>
+            android:paddingLeft="@dimen/dp_5"
+            android:paddingRight="@dimen/dp_5"
+            android:paddingTop="@dimen/dp_8"
+            android:paddingBottom="@dimen/dp_8"/>
     </LinearLayout>
+
 </LinearLayout>

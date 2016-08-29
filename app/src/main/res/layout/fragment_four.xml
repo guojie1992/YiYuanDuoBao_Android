@@ -8,7 +8,6 @@
 
     <GridView
         android:id="@+id/gv_treasure_fragment_four"
-        android:scrollbars="none"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:horizontalSpacing="@dimen/dp_2"

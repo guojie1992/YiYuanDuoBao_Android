@@ -48,9 +48,9 @@ public class RegisterPresenter {
                     context.startActivity(intent);
                     CommonUtils.toast(context, "注册成功");
                 }
-
                 @Override
                 public void loadError(String msg) {
+                    CommonUtils.toast(context, msg);
                     Logger.i(msg);
                 }
             });
