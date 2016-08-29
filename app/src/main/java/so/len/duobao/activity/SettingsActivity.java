@@ -89,12 +89,10 @@ public class SettingsActivity extends BaseActivity implements ISettingsView {
                             public void onClick(View v) {
 //                                settingsPresenter.logout();
                                 Config.getInstance(context).setConfig("uid", "");
-                                finish();
-//                                Intent intent = new Intent();
-//                                intent.setClass(SettingsActivity.this, LoginActivity.class);
-//                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-//                                startActivity(intent);
+                                Intent intent = new Intent();
+                                intent.setClass(SettingsActivity.this, LoginActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent);
                             }
                         })
                         .setNegativeButton("取消", new View.OnClickListener() {

@@ -4,19 +4,29 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.KeyEvent;
 import android.view.View;
 
+import com.orhanobut.logger.Logger;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import so.len.duobao.R;
 import so.len.duobao.api.HTML;
 import so.len.duobao.api.JS;
+import so.len.duobao.api.SERVER;
 import so.len.duobao.customAdapter.FragmentViewPagerAdapter;
 import so.len.duobao.customView.BottomMenuItem;
 import so.len.duobao.customView.FragmentViewPager;
@@ -28,6 +38,7 @@ import so.len.duobao.fragment.FiveFragment;
 import so.len.duobao.fragment.OneFragment;
 import so.len.duobao.fragment.ThreeFragment;
 import so.len.duobao.fragment.TwoFragment;
+import so.len.duobao.http.VolleyHttp;
 import so.len.duobao.mPresenter.MainPresenter;
 import so.len.duobao.mView.IMainView;
 
@@ -97,8 +108,6 @@ public class MainActivity extends BaseActivity implements IMainView {
         });
         select(0);
 
-//        final String vip = Config.getInstance(context).getConfig("vip");
-
         menuItem1.setMenuItemClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -115,7 +124,7 @@ public class MainActivity extends BaseActivity implements IMainView {
             @Override
             public void onClick(View view) {
                 if(Config.getInstance(context).getConfig("vip").equals("0") || Config.getInstance(context).getConfig("vip").isEmpty()){
-                    alert();
+                    alertUnVIP();
                 } else {
                     vpHome.setCurrentItem(2);
                 }
@@ -125,7 +134,7 @@ public class MainActivity extends BaseActivity implements IMainView {
             @Override
             public void onClick(View view) {
                 if(Config.getInstance(context).getConfig("vip").equals("0") || Config.getInstance(context).getConfig("vip").isEmpty()){
-                    alert();
+                    alertUnVIP();
                 } else {
                     vpHome.setCurrentItem(3);
                 }
@@ -134,11 +143,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         menuItem5.setMenuItemClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Config.getInstance(context).getConfig("vip").equals("0") || Config.getInstance(context).getConfig("vip").isEmpty()){
-                    alert();
-                } else {
-                    vpHome.setCurrentItem(4);
-                }
+                clickFive();
             }
         });
     }
@@ -228,8 +233,41 @@ public class MainActivity extends BaseActivity implements IMainView {
         }
     }
 
-    private void alert() {
-        String content = "　　该页面需要VIP权限，检测到当前账户不是VIP会员，是否开通会员？";
+    private void clickFive(){
+        final Handler handler = new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                if(Config.getInstance(context).getConfig("vip").equals("0") || Config.getInstance(context).getConfig("vip").isEmpty()){
+                    alertUnVIP();
+                } else if (msg.what == 0){
+                    alertUnAvailable();
+                } else {
+                    vpHome.setCurrentItem(4);
+                }
+                super.handleMessage(msg);
+            }
+        };
+        Map<String,String> args = new HashMap<String, String>();
+        args.put("uid", Config.getInstance(context).getConfig("uid"));
+        VolleyHttp.getInstance().postParamsJson(SERVER.GIFT, new VolleyHttp.JsonResponseListener() {
+            @Override
+            public void getJson(String json, boolean isConnectSuccess) {
+                if (isConnectSuccess && (!json.isEmpty())) {
+                    try {
+                        JSONObject jsonObject = new JSONObject(json);
+                        handler.sendEmptyMessage(Integer.parseInt(jsonObject.getString("status")));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    Logger.e("MainActivity http load error");
+                }
+            }
+        }, args);
+    }
+
+    private void alertUnVIP() {
+        String content = "　　检测到当前账户不是VIP会员，无法参与此页面的活动，是否开通会员？";
         new iOSAlertDialog(context).builder()
                 .setTitle("温馨提示")
                 .setMsg(content)
@@ -252,11 +290,30 @@ public class MainActivity extends BaseActivity implements IMainView {
                 }).show();
     }
 
+    private void alertUnAvailable() {
+        String content = "　　检测到当前账户尚未购买门票或门票已失效，是否购买门票？";
+        new iOSAlertDialog(context).builder()
+                .setTitle("温馨提示")
+                .setMsg(content)
+                .setCancelable(false)
+                .setPositiveButton("前往购买", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        vpHome.setCurrentItem(1);
+                    }
+                })
+                .setNegativeButton("取消", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                    }
+                }).show();
+    }
+
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             long exitTime = System.currentTimeMillis();
-            if (exitTime - backTime > 800) {//如果两次按键时间间隔大于800毫秒，则不退出
+            if (exitTime - backTime > 1000) {//如果两次按键时间间隔大于1秒，则不退出
                 toast("再按一次退出程序");
                 backTime = exitTime;//更新firstTime
                 return true;

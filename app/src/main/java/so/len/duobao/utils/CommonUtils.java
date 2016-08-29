@@ -32,7 +32,6 @@ import java.security.NoSuchAlgorithmException;
 public class CommonUtils {
     /**
      * 检测网络是否可用
-     *
      * @return
      */
     public static boolean isNetworkConnected(Context context) {
@@ -50,7 +49,6 @@ public class CommonUtils {
 
     /**
      * MD5加密
-     *
      * @param msg
      * @return
      */
