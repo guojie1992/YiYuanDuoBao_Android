@@ -99,7 +99,8 @@ public class SettingsModel implements ISettingsModel {
             this.kProgressHUD = KProgressHUD.create(context)
                     .setStyle(KProgressHUD.Style.PIE_DETERMINATE)
                     .setLabel("downloading...")
-                    .setMaxProgress(100);
+                    .setMaxProgress(100)
+                    .setCancellable(false);
         }
 
         @Override

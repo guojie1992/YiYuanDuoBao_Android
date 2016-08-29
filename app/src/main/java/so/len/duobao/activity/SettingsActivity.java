@@ -106,12 +106,4 @@ public class SettingsActivity extends BaseActivity implements ISettingsView {
         }
     }
 
-    @Override
-    public boolean onKeyUp(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            return true;
-        } else {
-            return super.onKeyUp(keyCode, event);
-        }
-    }
 }
