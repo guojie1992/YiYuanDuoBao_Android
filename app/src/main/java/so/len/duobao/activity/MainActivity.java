@@ -326,6 +326,7 @@ public class MainActivity extends BaseActivity implements IMainView {
                 startActivity(intent);
                 finish();
             }
+            return true;//吃掉事件
         }
         return super.onKeyUp(keyCode, event);
     }
