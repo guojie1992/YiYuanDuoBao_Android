@@ -319,7 +319,12 @@ public class MainActivity extends BaseActivity implements IMainView {
                 return true;
             } else {//否则退出程序
                 backTime = 0;
-                System.exit(0);
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, SplashActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("isExit", true);
+                startActivity(intent);
+                finish();
             }
         }
         return super.onKeyUp(keyCode, event);

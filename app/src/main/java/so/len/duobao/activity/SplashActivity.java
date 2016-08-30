@@ -40,7 +40,7 @@ public class SplashActivity extends BaseActivity {
             intent.setClass(this, MainActivity.class);
         }
         startActivity(intent);
-        finish();
+//        finish();
     }
 
     @Override
