@@ -92,4 +92,10 @@ public class TwoFragment extends BaseFragment implements ITwoView {
         });
     }
 
+    @Override
+    public void onResume() {
+        twoPresenter.initView();
+        super.onResume();
+    }
+
 }

@@ -10,6 +10,9 @@ public class SERVER {
     //前缀
     public static final String BEFORE = DOMAIN + "/index.php?s=/Home";
 
+    //验证码
+    public static final String CODE = BEFORE + "/Index/verificationCode";
+
     //用户模块
     public static final String USER = BEFORE + "/User";
     //商城模块

@@ -1,5 +1,6 @@
 package so.len.duobao.mPresenter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
@@ -19,6 +20,7 @@ public class RegisterPresenter {
     private IRegisterModel iRegisterModel;
     private IRegisterView iRegisterView;
     private Context context;
+    private static String CODE;
 
     public RegisterPresenter(IRegisterView iRegisterView, Context context) {
         this.context = context;
@@ -31,12 +33,22 @@ public class RegisterPresenter {
     }
 
     public void getServerCode() {
-        iRegisterModel.getServerCode(iRegisterView.getPhone());
+        iRegisterModel.getServerCode(iRegisterView.getPhone(), new IHttpCompleteListener() {
+            @Override
+            public void loadComplete(String code) {
+                CODE = code;
+            }
+            @Override
+            public void loadError(String msg) {
+            }
+        });
     }
 
     public void doRegister() {
-        if (iRegisterView.getPhone().isEmpty() || iRegisterView.getPassword().isEmpty() || iRegisterView.getMessageCode().isEmpty()) {
+        if (iRegisterView.getPhone().isEmpty() || iRegisterView.getPhone().length()<11 || iRegisterView.getPassword().isEmpty() || iRegisterView.getMessageCode().isEmpty()) {
             CommonUtils.toast(context, "请认真填写");
+        } if(!iRegisterView.getMessageCode().equals(CODE)) {
+            CommonUtils.toast(context, "验证码错误");
         } else {
             iRegisterModel.doRegister(iRegisterView.getPhone(), iRegisterView.getMessageCode(), iRegisterView.getPassword(), new IHttpCompleteListener() {
                 @Override
@@ -46,6 +58,7 @@ public class RegisterPresenter {
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     context.startActivity(intent);
+                    ((Activity) context).finish();
                     CommonUtils.toast(context, "注册成功");
                 }
                 @Override

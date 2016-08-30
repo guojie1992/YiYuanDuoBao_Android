@@ -98,7 +98,7 @@ public class SettingsModel implements ISettingsModel {
             super();
             this.kProgressHUD = KProgressHUD.create(context)
                     .setStyle(KProgressHUD.Style.PIE_DETERMINATE)
-                    .setLabel("downloading...")
+                    .setLabel("正在下载中...")
                     .setMaxProgress(100)
                     .setCancellable(false);
         }

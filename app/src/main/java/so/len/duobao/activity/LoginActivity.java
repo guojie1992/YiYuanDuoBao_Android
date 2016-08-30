@@ -3,6 +3,7 @@ package so.len.duobao.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +14,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import so.len.duobao.R;
 import so.len.duobao.customView.TopMenuBar;
+import so.len.duobao.database.Config;
 import so.len.duobao.mPresenter.LoginPresenter;
 import so.len.duobao.mView.ILoginView;
 import so.len.duobao.utils.CommonUtils;
@@ -100,4 +102,20 @@ public class LoginActivity extends BaseActivity implements ILoginView {
                 break;
         }
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK) { //监控/拦截/屏蔽返回键
+            if (Config.getInstance(context).getConfig("uid") == null || Config.getInstance(context).getConfig("uid").isEmpty()){
+                Intent intent = new Intent();
+                intent.setClass(LoginActivity.this, SplashActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("isExit", true);
+                startActivity(intent);
+                return true;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
 }

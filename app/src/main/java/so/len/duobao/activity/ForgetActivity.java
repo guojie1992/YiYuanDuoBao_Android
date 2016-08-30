@@ -2,6 +2,7 @@ package so.len.duobao.activity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -60,6 +61,16 @@ public class ForgetActivity extends BaseActivity implements IForgetView {
         switch (view.getId()) {
             case R.id.btn_activity_forget_getcode:
                 forgetPresenter.getServerCode();
+                new CountDownTimer(60000, 1000) {//总时间， 间隔时间
+                    public void onTick(long millisUntilFinished) {
+                        btnActivityForgetGetcode.setClickable(false);
+                        btnActivityForgetGetcode.setText(millisUntilFinished / 1000 + "秒");
+                    }
+                    public void onFinish() {
+                        btnActivityForgetGetcode.setClickable(true);
+                        btnActivityForgetGetcode.setText("获取");
+                    }
+                }.start();
                 break;
             case R.id.btn_activity_forget_submit:
                 forgetPresenter.doForget();
@@ -70,7 +81,6 @@ public class ForgetActivity extends BaseActivity implements IForgetView {
 
     @Override
     public void initView() {
-
         tmbActivityForget.setTitleText("忘记密码");
         tmbActivityForget.setBackVisibility(View.VISIBLE);
         tmbActivityForget.setBackSrc(R.mipmap.top_back);

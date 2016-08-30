@@ -46,6 +46,10 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
+        if (intent.getBooleanExtra("isExit", false)){
+            finish();
+            return;
+        }
         if ((Intent.FLAG_ACTIVITY_CLEAR_TOP & intent.getFlags()) != 0) {
             init();
         }

@@ -82,6 +82,7 @@ public class ThreeFragment extends BaseFragment implements IThreeView {
 
     @Override
     public void onResume() {
+        threePresenter.initView();
         svSpeakerFragmentThree.startSpeaker(300);
         super.onResume();
     }

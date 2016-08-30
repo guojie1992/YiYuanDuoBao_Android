@@ -85,4 +85,10 @@ public class FourFragment extends BaseFragment implements IFourView {
         });
     }
 
+    @Override
+    public void onResume() {
+        fourPresenter.initView();
+        super.onResume();
+    }
+
 }

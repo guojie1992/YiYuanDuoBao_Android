@@ -2,6 +2,7 @@ package so.len.duobao.activity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -95,6 +96,16 @@ public class RegisterActivity extends BaseActivity implements IRegisterView {
         switch (view.getId()) {
             case R.id.btn_activity_register_getcode:
                 registerPresenter.getServerCode();
+                new CountDownTimer(60000, 1000) {//总时间， 间隔时间
+                    public void onTick(long millisUntilFinished) {
+                        btnActivityRegisterGetcode.setClickable(false);
+                        btnActivityRegisterGetcode.setText(millisUntilFinished / 1000 + "秒");
+                    }
+                    public void onFinish() {
+                        btnActivityRegisterGetcode.setClickable(true);
+                        btnActivityRegisterGetcode.setText("获取");
+                    }
+                }.start();
                 break;
             case R.id.btn_activity_register_submit:
                 registerPresenter.doRegister();

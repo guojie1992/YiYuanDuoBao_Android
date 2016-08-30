@@ -32,7 +32,7 @@ public class LoginPresenter {
     }
 
     public void doLogin() {
-        if (iLoginView.getPhone().isEmpty() || iLoginView.getPassword().isEmpty()) {
+        if (iLoginView.getPhone().isEmpty() || iLoginView.getPhone().length()<11 || iLoginView.getPassword().isEmpty()) {
             CommonUtils.toast(context, "请认真填写");
         } else {
             iLoginModel.doLogin(iLoginView.getPhone(), iLoginView.getPassword(), new IHttpCompleteListener() {

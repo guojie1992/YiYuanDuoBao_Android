@@ -1,5 +1,6 @@
 package so.len.duobao.mPresenter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
@@ -19,6 +20,7 @@ public class ForgetPresenter {
     private IForgetModel iForgetModel;
     private IForgetView iForgetView;
     private Context context;
+    private static String CODE;
 
     public ForgetPresenter(IForgetView iForgetView, Context context) {
         this.context = context;
@@ -31,13 +33,23 @@ public class ForgetPresenter {
     }
 
     public void getServerCode() {
-        iForgetModel.getServerCode(iForgetView.getPhone());
+        iForgetModel.getServerCode(iForgetView.getPhone(), new IHttpCompleteListener(){
+            @Override
+            public void loadComplete(String code) {
+                CODE = code;
+            }
+            @Override
+            public void loadError(String msg) {
+            }
+        });
     }
 
     public void doForget() {
         if (checkRepeat()) {
-            if (iForgetView.getPhone().isEmpty() || iForgetView.getPassword().isEmpty() || iForgetView.getMessageCode().isEmpty()) {
+            if (iForgetView.getPhone().isEmpty() || iForgetView.getPhone().length()<11 || iForgetView.getPassword().isEmpty() || iForgetView.getMessageCode().isEmpty()) {
                 CommonUtils.toast(context, "请认真填写");
+            } if(!iForgetView.getMessageCode().equals(CODE)) {
+                CommonUtils.toast(context, "验证码错误");
             } else {
                 iForgetModel.doForget(iForgetView.getPhone(), iForgetView.getMessageCode(), iForgetView.getPassword(), iForgetView.getRepeatPassword(), new IHttpCompleteListener() {
                     @Override
@@ -47,6 +59,7 @@ public class ForgetPresenter {
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         context.startActivity(intent);
+                        ((Activity) context).finish();
                         CommonUtils.toast(context, "重置成功");
                     }
                     @Override
