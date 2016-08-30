@@ -63,6 +63,7 @@ public class FiveModel implements IFiveModel {
         Map<String,String> args = new HashMap<>();
         args.put("uid", Config.getInstance(context).getConfig("uid"));
         args.put("rob_list_id", fiveBean.getRob_list().getRob_list_id());
+        Logger.d(fiveBean.getRob_list().getRob_list_id());
         VolleyHttp.getInstance().postParamsJson(SERVER.GO, new VolleyHttp.JsonResponseListener() {
             @Override
             public void getJson(String json, boolean isConnectSuccess) {
