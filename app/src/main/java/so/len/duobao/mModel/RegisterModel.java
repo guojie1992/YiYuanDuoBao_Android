@@ -42,8 +42,9 @@ public class RegisterModel implements IRegisterModel {
                         JSONObject jsonObject = new JSONObject(json);
                         if(jsonObject.getString("status").equals("1")){
                             iHttpCompleteListener.loadComplete(jsonObject.getString("code"));
-                        } else {
-                            iHttpCompleteListener.loadError("error");
+                        }
+                        if(jsonObject.getString("status").equals("0")){
+                            iHttpCompleteListener.loadError(jsonObject.getString("code"));
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

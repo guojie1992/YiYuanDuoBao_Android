@@ -13,6 +13,8 @@ import android.widget.Toast;
 import com.orhanobut.logger.Logger;
 
 import so.len.duobao.R;
+import so.len.duobao.activity.AddAddrActivity;
+import so.len.duobao.activity.AddCardActivity;
 import so.len.duobao.activity.MainActivity;
 import so.len.duobao.activity.WebViewActivity;
 import so.len.duobao.database.Config;
@@ -158,5 +160,25 @@ public class JS {
     @JavascriptInterface
     public void reloadWebView(){
         ((WebViewActivity) activity).reloadWebView();
+    }
+
+    /**
+     * 跳转到添加银行卡页面
+     */
+    @JavascriptInterface
+    public void toaddBank(){
+        Intent intent = new Intent();
+        intent.setClass(context, AddCardActivity.class);
+        activity.startActivity(intent);
+    }
+
+    /**
+     * 跳转到添加地址页面
+     */
+    @JavascriptInterface
+    public void toAddAddress(){
+        Intent intent = new Intent();
+        intent.setClass(context, AddAddrActivity.class);
+        activity.startActivity(intent);
     }
 }

@@ -40,6 +40,7 @@ public class RegisterPresenter {
             }
             @Override
             public void loadError(String msg) {
+                CommonUtils.toast(context, msg);
             }
         });
     }

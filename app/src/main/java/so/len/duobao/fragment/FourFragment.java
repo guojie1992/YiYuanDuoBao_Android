@@ -58,14 +58,16 @@ public class FourFragment extends BaseFragment implements IFourView {
     @Override
     public void initView(final FourBean fourBean) {
         treasureListData = new ArrayList<>();
-        for (int i = 0; i < fourBean.getData().size(); i++) {
-            map = new HashMap<>();
-            map.put("ivTitleItemGridviewTreasure", SERVER.DOMAIN + fourBean.getData().get(i).getPath());
-            map.put("tvTitleItemGridviewTreasure", fourBean.getData().get(i).getTitle());
-            map.put("pvProgressItemGridviewTreasure", fourBean.getData().get(i).getProgess());
-            map.put("tvAllItemGridviewTreasure", "总需:" + fourBean.getData().get(i).getPrice());
-            map.put("tvNeedItemGridviewTreasure", "剩余:" + fourBean.getData().get(i).getNumber());
-            treasureListData.add(map);
+        if (fourBean != null && fourBean.getData() != null){
+            for (int i = 0; i < fourBean.getData().size(); i++) {
+                map = new HashMap<>();
+                map.put("ivTitleItemGridviewTreasure", SERVER.DOMAIN + fourBean.getData().get(i).getPath());
+                map.put("tvTitleItemGridviewTreasure", fourBean.getData().get(i).getTitle());
+                map.put("pvProgressItemGridviewTreasure", fourBean.getData().get(i).getProgess());
+                map.put("tvAllItemGridviewTreasure", "总需:" + fourBean.getData().get(i).getPrice());
+                map.put("tvNeedItemGridviewTreasure", "剩余:" + fourBean.getData().get(i).getNumber());
+                treasureListData.add(map);
+            }
         }
 //        logInfo(treasureListData.toString());
         treasureGridViewAdapter = new TreasureGridViewAdapter(getActivity(), treasureListData);

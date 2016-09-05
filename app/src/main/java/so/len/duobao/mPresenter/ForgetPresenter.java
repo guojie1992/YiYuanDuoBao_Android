@@ -40,6 +40,7 @@ public class ForgetPresenter {
             }
             @Override
             public void loadError(String msg) {
+                CommonUtils.toast(context, msg);
             }
         });
     }
