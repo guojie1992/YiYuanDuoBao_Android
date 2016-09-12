@@ -27,7 +27,7 @@ public class LoginModel implements ILoginModel {
     }
 
     @Override
-    public void doLogin(final String phone, String password, final IHttpCompleteListener iHttpCompleteListener) {
+    public void doLogin(final String phone, final String password, final IHttpCompleteListener iHttpCompleteListener) {
         Map<String, String> args = new HashMap<>();
         args.put("mobile", phone);
         args.put("password", password);
@@ -42,6 +42,7 @@ public class LoginModel implements ILoginModel {
                             Config.getInstance(context).setConfig("uid", jsonObject.getString("uid"));
                             Config.getInstance(context).setConfig("vip", jsonObject.getString("vip"));
                             Config.getInstance(context).setConfig("phone", phone);
+                            Config.getInstance(context).setConfig("password", password);
                         } else {
                             iHttpCompleteListener.loadError(jsonObject.getString("msg"));
                         }

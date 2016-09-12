@@ -109,6 +109,9 @@ public class FiveFragment extends BaseFragment implements IFiveView {
     public void initView(FiveBean fiveBean) {
         this.fiveBean = fiveBean;
 
+        if(fiveBean == null){
+            return;
+        }
         switch (fiveBean.getRob_list().getNext_time_status()) {
             case -1:
                 pvProgressFragmentFive.setVisibility(View.GONE);
@@ -258,9 +261,12 @@ public class FiveFragment extends BaseFragment implements IFiveView {
                 mvpGoodsFragmentFive.setCurrentItem(1);
                 break;
             case R.id.btn_go_fragment_five:
-//                if(fiveBean.getStatus().equals("1") && (fiveBean.getRob_list().getNext_time_status() == 1)){
                 if(!isError){
-                    fivePresenter.go();
+                    if(fiveBean.getRob_list().getNext_time_status() == 1){
+                        fivePresenter.go();
+                    } else {
+                        toast("不在抢钱时间");
+                    }
                 } else {
                     toast("没有门票或不在抢钱时间");
                 }

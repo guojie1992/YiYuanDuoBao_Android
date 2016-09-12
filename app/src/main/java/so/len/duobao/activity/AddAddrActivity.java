@@ -11,6 +11,7 @@ import so.len.duobao.R;
 import so.len.duobao.customView.TopMenuBar;
 import so.len.duobao.mPresenter.AddAddrPresenter;
 import so.len.duobao.mView.IAddAddrView;
+import so.len.duobao.utils.CommonUtils;
 
 /**
  * Created by Chung on 2016/8/17.
@@ -63,6 +64,10 @@ public class AddAddrActivity extends BaseActivity implements IAddAddrView {
         tmbActivityAddAddr.setOnMenuClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (getName().isEmpty() || getPhone().isEmpty() || getDistrict().isEmpty() || getDetail().isEmpty()){
+                    CommonUtils.toast(context, "请认真填写");
+                    return;
+                }
                 addAddrPresenter.addAddr();
                 finish();
             }

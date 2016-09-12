@@ -212,7 +212,15 @@ public class WebViewActivity extends WebBaseActivity implements IWebView {
     }
 
     public void reload() {
-        webView.reload();
+        logInfo("reload");
+//        webView.reload();
+//        webView.loadUrl("javascript:refreshList()");
+        webView.post(new Runnable() {
+            @Override
+            public void run() {
+                webView.reload();
+            }
+        });
     }
 
     public void reloadWebView(){

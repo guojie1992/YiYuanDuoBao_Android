@@ -66,30 +66,32 @@ public class TwoFragment extends BaseFragment implements ITwoView {
     public void initView(final TwoBean twoBean) {
         this.twoBean = twoBean;
 
-        goodsListData = new ArrayList<>();
-        for (int i = 0; i < twoBean.getData().getGoods_list().size(); i++) {
-            map = new HashMap<>();
-            map.put("ivTitleItemGridviewGoods", SERVER.DOMAIN + twoBean.getData().getGoods_list().get(i).getPath());
-            map.put("tvTitleItemGridviewGoods", twoBean.getData().getGoods_list().get(i).getTitle());
-            map.put("tvPriceItemGridviewGoods", twoBean.getData().getGoods_list().get(i).getPrice());
-            goodsListData.add(map);
-        }
-        goodsGridViewAdapter = new GoodsGridViewAdapter(getActivity(), goodsListData);
-        gvFragmentTwo.setAdapter(goodsGridViewAdapter);
-        gvFragmentTwo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent();
-                intent.setClass(getActivity(), WebViewActivity.class);
-                intent.putExtra(JS.H5_TITLE, "商品");
-                intent.putExtra(JS.H5_URL, HTML.SHOP);
-                intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
-                intent.putExtra("isGoods", true);
-                intent.putExtra("goodsID", twoBean.getData().getGoods_list().get(position).getId());
-                Logger.d(twoBean.getData().getGoods_list().get(position).getId());
-                startActivity(intent);
+        if(twoBean != null && twoBean.getData() != null){
+            goodsListData = new ArrayList<>();
+            for (int i = 0; i < twoBean.getData().getGoods_list().size(); i++) {
+                map = new HashMap<>();
+                map.put("ivTitleItemGridviewGoods", SERVER.DOMAIN + twoBean.getData().getGoods_list().get(i).getPath());
+                map.put("tvTitleItemGridviewGoods", twoBean.getData().getGoods_list().get(i).getTitle());
+                map.put("tvPriceItemGridviewGoods", twoBean.getData().getGoods_list().get(i).getPrice());
+                goodsListData.add(map);
             }
-        });
+            goodsGridViewAdapter = new GoodsGridViewAdapter(getActivity(), goodsListData);
+            gvFragmentTwo.setAdapter(goodsGridViewAdapter);
+            gvFragmentTwo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent intent = new Intent();
+                    intent.setClass(getActivity(), WebViewActivity.class);
+                    intent.putExtra(JS.H5_TITLE, "商品");
+                    intent.putExtra(JS.H5_URL, HTML.SHOP);
+                    intent.putExtra("TOP_RIGHT", WebViewActivity.TOP_RIGHT.no_right_top);
+                    intent.putExtra("isGoods", true);
+                    intent.putExtra("goodsID", twoBean.getData().getGoods_list().get(position).getId());
+                    Logger.d(twoBean.getData().getGoods_list().get(position).getId());
+                    startActivity(intent);
+                }
+            });
+        }
     }
 
     @Override

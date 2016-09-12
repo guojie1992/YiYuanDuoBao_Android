@@ -69,10 +69,12 @@ public class OneFragment extends BaseFragment implements IOneView {
 
     @Override
     public void initView(OneBean oneBean, boolean isRefresh) {
-        if(!isRefresh){
-            initLoopViewPager(oneBean.getData().getPic());
+        if(oneBean != null && oneBean.getData() != null){
+            if(!isRefresh){
+                initLoopViewPager(oneBean.getData().getPic());
+            }
+            initLotteryList(oneBean.getData().getList());
         }
-        initLotteryList(oneBean.getData().getList());
     }
 
     private void initLoopViewPager(List<OneDataPic> oneDataPic) {

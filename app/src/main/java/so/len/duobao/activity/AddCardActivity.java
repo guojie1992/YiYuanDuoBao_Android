@@ -38,7 +38,7 @@ public class AddCardActivity extends BaseActivity implements IAddCardView {
     private AddCardPresenter addCardPresenter;
     private ArrayList<String> dataList;
     //    private ArrayAdapter<String> arrayAdapter;
-    private String bankID;
+    private String bankID = "";
     private OptionPicker picker;
 
     @Override
@@ -101,25 +101,6 @@ public class AddCardActivity extends BaseActivity implements IAddCardView {
 //                toast(bankID);
             }
         });
-
-//        //适配器
-//        arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, dataList);
-//        //设置样式
-//        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        //加载适配器
-//        spBankActivityAddCard.setAdapter(arrayAdapter);
-//        spBankActivityAddCard.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                bankID = bankListBean.getData().get(position).getId();
-////                toast(bankID);
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//                bankID = bankListBean.getData().get(0).getId();
-//            }
-//        });
     }
 
     @Override

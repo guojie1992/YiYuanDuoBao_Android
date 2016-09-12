@@ -56,8 +56,10 @@ public class ThreeFragment extends BaseFragment implements IThreeView {
 
     @Override
     public void initView(ThreeBean threeBean) {
-        tvSpeakerFragmentThree.setText(threeBean.getData());
-        tvSpeakerFragmentThree.setSelected(true);
+        if(threeBean != null && threeBean.getData() != null){
+            tvSpeakerFragmentThree.setText(threeBean.getData());
+            tvSpeakerFragmentThree.setSelected(true);
+        }
     }
 
 

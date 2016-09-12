@@ -66,7 +66,7 @@ public class ChangePasswordActivity extends BaseActivity implements IChangePassw
                         etNewActivityChangePassword.getText().toString().trim(),
                         etRepeatActivityChangePassword.getText().toString().trim()
                         );
-                finish();
+//                finish();
             }
         });
 
