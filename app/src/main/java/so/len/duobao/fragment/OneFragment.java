@@ -63,6 +63,8 @@ public class OneFragment extends BaseFragment implements IOneView {
     }
 
     private void control() {
+        tvSpeakerFragmentOne.setText("中奖名单");
+//        tvSpeakerFragmentOne.setSelected(true);
         onePresenter = new OnePresenter(this, context);
         onePresenter.initView(false);
     }
@@ -121,9 +123,6 @@ public class OneFragment extends BaseFragment implements IOneView {
     }
 
     private void initLotteryList(List<OneDataList> oneDataList) {
-        tvSpeakerFragmentOne.setText("中奖名单");
-//        tvSpeakerFragmentOne.setSelected(true);
-
         lotteryListData = new ArrayList<>();
         for (int i = 0; i < oneDataList.size(); i++) {
             map = new HashMap<>();

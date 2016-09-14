@@ -2,6 +2,7 @@ package so.len.duobao.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.widget.ImageView;
 
 import com.google.gson.Gson;
@@ -33,20 +34,34 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void init() {
-        Intent intent = new Intent();
-        if (Config.getInstance(SplashActivity.this).getConfig("uid") == null || Config.getInstance(SplashActivity.this).getConfig("uid").isEmpty()) {
-            intent.setClass(this, LoginActivity.class);
-        } else {
-            intent.setClass(this, MainActivity.class);
-        }
-        startActivity(intent);
-//        finish();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(3000);
+                    Intent intent = new Intent();
+
+                    String isFirstOpen = Config.getInstance(SplashActivity.this).getConfig("isFirstOpen");
+                    if (isFirstOpen == null || isFirstOpen.equals("")) {
+                        intent.setClass(SplashActivity.this, LaunchActivity.class);
+                    } else if (Config.getInstance(SplashActivity.this).getConfig("uid") == null || Config.getInstance(SplashActivity.this).getConfig("uid").isEmpty()) {
+                        intent.setClass(SplashActivity.this, LoginActivity.class);
+                    } else {
+                        intent.setClass(SplashActivity.this, MainActivity.class);
+                    }
+
+                    startActivity(intent);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        if (intent.getBooleanExtra("isExit", false)){
+        if (intent.getBooleanExtra("isExit", false)) {
             finish();
             return;
         }
