@@ -12,8 +12,6 @@ import android.widget.FrameLayout;
 
 import com.orhanobut.logger.Logger;
 
-import org.apache.http.util.EncodingUtils;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import so.len.duobao.R;
@@ -208,6 +206,13 @@ public class WebViewActivity extends WebBaseActivity implements IWebView {
         } else {
             webView.loadUrl(errorUrl);
         }
+
+        webView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                return true;//事件处理是否处理结束
+            }
+        });
 
     }
 

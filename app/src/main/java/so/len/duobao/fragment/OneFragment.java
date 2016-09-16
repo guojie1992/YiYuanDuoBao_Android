@@ -26,7 +26,6 @@ import so.len.duobao.bean.OneDataPic;
 import so.len.duobao.customAdapter.LotteryListViewAdapter;
 import so.len.duobao.customView.LoopViewPager;
 import so.len.duobao.customView.LotteryListView;
-import so.len.duobao.customView.SpeakerView;
 import so.len.duobao.mPresenter.OnePresenter;
 import so.len.duobao.mView.IOneView;
 
@@ -91,19 +90,14 @@ public class OneFragment extends BaseFragment implements IOneView {
         lvpFragmentOne.setOnLoopPagerChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
             }
-
             @Override
             public void onPageSelected(int position) {
                 selected(position);
             }
-
             @Override
             public void onPageScrollStateChanged(int state) {
-
             }
-
             private void selected(int position) {
                 for (ImageView imageView : dots) {
                     imageView.setSelected(false);

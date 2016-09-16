@@ -58,8 +58,17 @@ public class LotteryListViewAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
+        viewHolder.ivTitleItemListviewLottery.setTag((String) data.get(position).get("ivTitleItemListviewLottery"));
+
         Options opt = new Options();
-        VolleyHttp.getInstance().imageLoader((String) data.get(position).get("ivTitleItemListviewLottery"), viewHolder.ivTitleItemListviewLottery, opt);
+//        opt.defImage(R.mipmap.appicon);
+//        opt.errImage(R.mipmap.appicon);
+
+        String tag = (String) viewHolder.ivTitleItemListviewLottery.getTag();
+        if (tag != null && tag.equals((String) data.get(position).get("ivTitleItemListviewLottery"))) {
+            VolleyHttp.getInstance().imageLoader((String) data.get(position).get("ivTitleItemListviewLottery"), viewHolder.ivTitleItemListviewLottery, opt);
+        }
+
         viewHolder.tvUsernameItemListviewLottery.setText((CharSequence) data.get(position).get("tvUsernameItemListviewLottery"));
         viewHolder.tvTimeItemListviewLottery.setText((CharSequence) data.get(position).get("tvTimeItemListviewLottery"));
         viewHolder.tvContentItemListviewLottery.setText((CharSequence) data.get(position).get("tvContentItemListviewLottery"));

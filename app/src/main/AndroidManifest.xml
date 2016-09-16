@@ -52,19 +52,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.LaunchActivity"/>
-        <activity android:name=".activity.RegisterActivity"/>
-        <activity android:name=".activity.LoginActivity" />
-        <activity android:name=".activity.ForgetActivity"/>
+        <activity android:name=".activity.LaunchActivity" />
+        <activity android:name=".activity.RegisterActivity"
+            android:windowSoftInputMode="stateVisible"/>
+        <activity android:name=".activity.LoginActivity"
+            android:windowSoftInputMode="stateVisible"/>
+        <activity android:name=".activity.ForgetActivity"
+            android:windowSoftInputMode="stateVisible"/>
         <activity android:name=".activity.WebViewActivity" />
         <activity android:name=".activity.MineActivity"/>
         <activity android:name=".activity.PersonalInfoActivity"/>
-        <activity android:name=".activity.ChangeUsernameActivity"/>
-        <activity android:name=".activity.ChangePasswordActivity"/>
-        <activity android:name=".activity.ChangeRecommenderActivity"/>
+        <activity android:name=".activity.ChangeUsernameActivity"
+            android:windowSoftInputMode="stateVisible"/>
+        <activity android:name=".activity.ChangePasswordActivity"
+            android:windowSoftInputMode="stateVisible"/>
+        <activity android:name=".activity.ChangeRecommenderActivity"
+            android:windowSoftInputMode="stateVisible"/>
         <activity android:name=".activity.SettingsActivity"/>
-        <activity android:name=".activity.AddCardActivity"/>
-        <activity android:name=".activity.AddAddrActivity"/>
+        <activity android:name=".activity.AddCardActivity"
+            android:windowSoftInputMode="stateVisible"/>
+        <activity android:name=".activity.AddAddrActivity"
+            android:windowSoftInputMode="stateVisible"/>
 
 
         <!--Jpush-->
