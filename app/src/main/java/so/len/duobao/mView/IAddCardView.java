@@ -10,4 +10,5 @@ public interface IAddCardView {
     String getUsername();
     String getBankID();
     String getCardNum();
+    String getBankAddr();
 }

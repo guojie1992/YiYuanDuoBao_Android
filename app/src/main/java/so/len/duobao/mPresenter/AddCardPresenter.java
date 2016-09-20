@@ -45,6 +45,6 @@ public class AddCardPresenter {
             public void loadError(String msg) {
                 CommonUtils.toast(context, msg);
             }
-        },iAddCardView.getUsername() , iAddCardView.getBankID(), iAddCardView.getCardNum());
+        },iAddCardView.getUsername() , iAddCardView.getBankID(), iAddCardView.getCardNum(), iAddCardView.getBankAddr());
     }
 }

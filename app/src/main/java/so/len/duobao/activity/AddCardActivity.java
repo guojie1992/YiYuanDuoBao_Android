@@ -31,6 +31,8 @@ public class AddCardActivity extends BaseActivity implements IAddCardView {
     EditText etNumActivityAddCard;
     @BindView(R.id.op_bank_activity_add_card)
     TextView opBankActivityAddCard;
+    @BindView(R.id.et_addr_activity_add_card)
+    EditText etAddrActivityAddCard;
     //    @BindView(R.id.sp_bank_activity_add_card)
 //    Spinner spBankActivityAddCard;
 
@@ -67,7 +69,7 @@ public class AddCardActivity extends BaseActivity implements IAddCardView {
         tmbActivityAddCard.setOnMenuClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getUsername().isEmpty() || getBankID().isEmpty() || getCardNum().isEmpty()){
+                if (getUsername().isEmpty() || getBankID().isEmpty() || getCardNum().isEmpty() || getBankAddr().isEmpty()) {
                     CommonUtils.toast(context, "请认真填写");
                     return;
                 }
@@ -116,6 +118,11 @@ public class AddCardActivity extends BaseActivity implements IAddCardView {
     @Override
     public String getCardNum() {
         return etNumActivityAddCard.getText().toString().trim();
+    }
+
+    @Override
+    public String getBankAddr() {
+        return etAddrActivityAddCard.getText().toString().trim();
     }
 
     @OnClick(R.id.op_bank_activity_add_card)

@@ -66,4 +66,6 @@
     <string name="MB_FREEZE">冻结M币</string>
     <string name="share">推广二维码</string>
     <string name="choose_bank">选择银行</string>
+    <string name="card_bank">开户行</string>
+    <string name="input_bank_addr">请填写办理开户手续的营业网点</string>
 </resources>

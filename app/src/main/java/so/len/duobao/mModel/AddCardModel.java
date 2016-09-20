@@ -30,12 +30,13 @@ public class AddCardModel implements IAddCardModel {
     }
 
     @Override
-    public void addCard(final IHttpCompleteListener iHttpCompleteListener, String username, String bankID, String cardNum) {
+    public void addCard(final IHttpCompleteListener iHttpCompleteListener, String username, String bankID, String cardNum, String bankAddr) {
         Map<String,String> args = new HashMap<>();
         args.put("uid", Config.getInstance(context).getConfig("uid"));
         args.put("card_no", cardNum);
         args.put("user_name", username);
         args.put("bank_id", bankID);
+        args.put("area", bankAddr);
         VolleyHttp.getInstance().postParamsJson(SERVER.ADD_BANK_CARD, new VolleyHttp.JsonResponseListener() {
             @Override
             public void getJson(String json, boolean isConnectSuccess) {

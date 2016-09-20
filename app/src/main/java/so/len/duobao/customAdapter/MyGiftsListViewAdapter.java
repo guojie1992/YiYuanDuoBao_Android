@@ -22,6 +22,12 @@ public class MyGiftsListViewAdapter extends BaseAdapter {
     private List<Map<String, Object>> data;
     private LayoutInflater layoutInflater;
 
+//    public void setData(List<Map<String, Object>> data){
+//        this.data = data;
+//        notifyDataSetChanged();
+//    }
+
+
     public MyGiftsListViewAdapter(Context context, List<Map<String, Object>> data) {
         this.context = context;
         this.data = data;

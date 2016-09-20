@@ -39,6 +39,7 @@ public class HistoryGiftsFragment extends BaseFragment implements IHistoryGiftsV
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_gifts_history, null);
         ButterKnife.bind(this, view);
+        data = new LinkedHashMap<String, List<String>>();
 //        control();
         return view;
     }
@@ -50,8 +51,7 @@ public class HistoryGiftsFragment extends BaseFragment implements IHistoryGiftsV
 
     @Override
     public void initView() {
-        data = new LinkedHashMap<String, List<String>>();
-
+        data.clear();
         for(int i=0;i<fiveBean.getHistory_list().size();i++){
             list = new ArrayList<String>();
             for(int j=0;j<fiveBean.getHistory_list().get(i).getData_list().size();j++){
@@ -59,8 +59,12 @@ public class HistoryGiftsFragment extends BaseFragment implements IHistoryGiftsV
             }
             data.put(fiveBean.getHistory_list().get(i).getData_time(), list);
         }
-        historyGiftsListViewAdapter = new HistoryGiftsListViewAdapter(getActivity(), data);
-        hlvHistorygiftsFragmentGiftsHistory.setAdapter(historyGiftsListViewAdapter);
+//        if(historyGiftsListViewAdapter == null){
+            historyGiftsListViewAdapter = new HistoryGiftsListViewAdapter(getActivity(), data);
+            hlvHistorygiftsFragmentGiftsHistory.setAdapter(historyGiftsListViewAdapter);
+//        } else {
+//            historyGiftsListViewAdapter.setData(data);
+//        }
 
         hlvHistorygiftsFragmentGiftsHistory.setFocusable(false);
     }

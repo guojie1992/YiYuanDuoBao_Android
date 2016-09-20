@@ -38,6 +38,7 @@ public class MyGiftsFragment extends BaseFragment implements IMyGiftsView {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_gifts_my, null);
         ButterKnife.bind(this, view);
+        myGiftsListData = new ArrayList<>();
 //        control();
         return view;
     }
@@ -49,15 +50,19 @@ public class MyGiftsFragment extends BaseFragment implements IMyGiftsView {
 
     @Override
     public void initView() {
-        myGiftsListData = new ArrayList<>();
+        myGiftsListData.clear();
         for (int i = 0; i < fiveBean.getMy_list().size(); i++) {
             map = new HashMap<>();
             map.put("tvMoneyItemListviewMygifts", fiveBean.getMy_list().get(i).getRob_name());
             map.put("tvTimeItemListviewMygifts", fiveBean.getMy_list().get(i).getRob_time());
             myGiftsListData.add(map);
         }
-        myGiftsListViewAdapter = new MyGiftsListViewAdapter(getActivity(), myGiftsListData);
-        mlvMygiftsFragmentGiftsMy.setAdapter(myGiftsListViewAdapter);
+//        if(myGiftsListViewAdapter == null){
+            myGiftsListViewAdapter = new MyGiftsListViewAdapter(getActivity(), myGiftsListData);
+            mlvMygiftsFragmentGiftsMy.setAdapter(myGiftsListViewAdapter);
+//        } else {
+//            myGiftsListViewAdapter.notifyDataSetChanged();//.setData(myGiftsListData);
+//        }
 
         mlvMygiftsFragmentGiftsMy.setFocusable(false);
     }

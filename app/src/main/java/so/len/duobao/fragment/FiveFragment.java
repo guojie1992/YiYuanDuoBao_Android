@@ -78,6 +78,7 @@ public class FiveFragment extends BaseFragment implements IFiveView {
     @BindView(R.id.tv_go_fragment_five)
     TextView tvGoFragmentFive;
 
+    public static boolean isForeground = false;
     private Context context;
     public static FivePresenter fivePresenter;
     private FiveBean fiveBean;
@@ -108,129 +109,131 @@ public class FiveFragment extends BaseFragment implements IFiveView {
     @Override
     public void initView(FiveBean fiveBean) {
         this.fiveBean = fiveBean;
+        isError = false;
 
         if(fiveBean == null){
             return;
-        }
-        switch (fiveBean.getRob_list().getNext_time_status()) {
-            case -1:
-                pvProgressFragmentFive.setVisibility(View.GONE);
-                llCountDownFragmentFive.setVisibility(View.VISIBLE);
-                btnGoFragmentFive.setBackgroundResource(R.mipmap.five_btn_finished);
+        } else {
+            switch (fiveBean.getRob_list().getNext_time_status()) {
+                case -1:
+                    pvProgressFragmentFive.setVisibility(View.GONE);
+                    llCountDownFragmentFive.setVisibility(View.VISIBLE);
+                    btnGoFragmentFive.setBackgroundResource(R.mipmap.five_btn_finished);
 
-                tvGiftsFragmentFive.setText("");
-                tvGoFragmentFive.setText("没有新的抢钱任务");
-                tvTimesFragmentFive.setText("0");
-                tvNextFragmentFive.setText("");
-                tvCountDownFragmentFive.setText("");
-                break;
-            case 0:
-                pvProgressFragmentFive.setVisibility(View.GONE);
-                llCountDownFragmentFive.setVisibility(View.VISIBLE);
-                btnGoFragmentFive.setBackgroundResource(R.mipmap.five_btn_finished);
+                    tvGiftsFragmentFive.setText("");
+                    tvGoFragmentFive.setText("没有新的抢钱任务");
+                    tvTimesFragmentFive.setText("0");
+                    tvNextFragmentFive.setText("");
+                    tvCountDownFragmentFive.setText("");
+                    break;
+                case 0:
+                    pvProgressFragmentFive.setVisibility(View.GONE);
+                    llCountDownFragmentFive.setVisibility(View.VISIBLE);
+                    btnGoFragmentFive.setBackgroundResource(R.mipmap.five_btn_finished);
 
-                tvGiftsFragmentFive.setText("");
-                tvGoFragmentFive.setText("该轮已结束");
-                tvTimesFragmentFive.setText(fiveBean.getRob_list().getRob_number());
-                tvNextFragmentFive.setText("离下一轮开始:");
-                tvCountDownFragmentFive.setText("");
+                    tvGiftsFragmentFive.setText("");
+                    tvGoFragmentFive.setText("该轮已结束");
+                    tvTimesFragmentFive.setText(fiveBean.getRob_list().getRob_number());
+                    tvNextFragmentFive.setText("离下一轮开始:");
+                    tvCountDownFragmentFive.setText("");
 
-                sdf = new SimpleDateFormat("HH:mm:ss");
-                sdf.setTimeZone(TimeZone.getTimeZone("GMT+0"));
+                    sdf = new SimpleDateFormat("HH:mm:ss");
+                    sdf.setTimeZone(TimeZone.getTimeZone("GMT+0"));
 //                long time = 57600000;// 1970-01-01 08:00:00 加16小时，从1970-01-02 00:00:00开始计时
 
-                new CountDownTimer(1000 * fiveBean.getRob_list().getNext_time(), 1000) {//总时间， 间隔时间
-                    public void onTick(long millisUntilFinished) {
-                        tvCountDownFragmentFive.setText(sdf.format(millisUntilFinished));
-                    }
+                    new CountDownTimer(1000 * fiveBean.getRob_list().getNext_time(), 1000) {//总时间， 间隔时间
+                        public void onTick(long millisUntilFinished) {
+                            tvCountDownFragmentFive.setText(sdf.format(millisUntilFinished));
+                        }
 
-                    public void onFinish() {
-                        tvCountDownFragmentFive.setText("计时结束");
-                        fivePresenter.initView();
-                    }
-                }.start();
-                break;
-            case 1:
-                pvProgressFragmentFive.setVisibility(View.VISIBLE);
-                llCountDownFragmentFive.setVisibility(View.GONE);
-                btnGoFragmentFive.setBackgroundResource(R.drawable.selector_go);//setImageResource(R.mipmap.five_btn_unfinish);
+                        public void onFinish() {
+                            tvCountDownFragmentFive.setText("计时结束");
+                            fivePresenter.initView();
+                        }
+                    }.start();
+                    break;
+                case 1:
+                    pvProgressFragmentFive.setVisibility(View.VISIBLE);
+                    llCountDownFragmentFive.setVisibility(View.GONE);
+                    btnGoFragmentFive.setBackgroundResource(R.drawable.selector_go);//setImageResource(R.mipmap.five_btn_unfinish);
 
-                tvGiftsFragmentFive.setText(fiveBean.getRob_list().getRob_copies());
-                tvGoFragmentFive.setText("份商品/代金券");
-                tvTimesFragmentFive.setText(fiveBean.getRob_list().getRob_number());
-                tvNextFragmentFive.setText("");
-                tvCountDownFragmentFive.setText("");
+                    tvGiftsFragmentFive.setText(fiveBean.getRob_list().getRob_copies());
+                    tvGoFragmentFive.setText("份商品/代金券");
+                    tvTimesFragmentFive.setText(fiveBean.getRob_list().getRob_number());
+                    tvNextFragmentFive.setText("");
+                    tvCountDownFragmentFive.setText("");
 
-                pvProgressFragmentFive.setProgress(Float.parseFloat(fiveBean.getRob_list().getProgress_bar()));
-                break;
-            default:
-                break;
-        }
-
-
-        tvMygoodsFragmentFive.setText(fiveBean.getHtml_list().getGoods_count());
-        tvMyticketsFragmentFive.setText(fiveBean.getHtml_list().getVouchers_count());
-        tvMybeansFragmentFive.setText(fiveBean.getHtml_list().getBeans());
-
-        mvpGoodsFragmentFive.setDisplayMode(FragmentViewPager.DisplayMode.DISPLAY_BY_EVERY_ONE);//每个页面高度自适应
-
-        Point outSize = new Point();
-        getActivity().getWindowManager().getDefaultDisplay().getSize(outSize);
-        width = outSize.x / 2;
-        ViewGroup.LayoutParams lp = ivIndicatorFragmentFive.getLayoutParams();
-        lp.width = width;
-        ivIndicatorFragmentFive.setLayoutParams(lp);
-
-        if(myGiftsFragment==null && historyGiftsFragment==null){
-            myGiftsFragment = new MyGiftsFragment();
-            historyGiftsFragment = new HistoryGiftsFragment();
-        }
-
-        AppBus.getInstance().post(produceFiveBean());
-
-        if (adapter == null) {
-            fragmentList = new ArrayList<>();
-            fragmentList.add(myGiftsFragment);
-            fragmentList.add(historyGiftsFragment);
-            adapter = new FragmentViewPagerAdapter(getActivity().getSupportFragmentManager(), fragmentList);
-        } else {
-            myGiftsFragment.onFiveBean(fiveBean);
-            historyGiftsFragment.onFiveBean(fiveBean);
-        }
-        mvpGoodsFragmentFive.setAdapter(adapter);
-        tvMyFragmentFive.setSelected(true);
-        tvMyFragmentFive.setTextColor(getActivity().getResources().getColor(R.color.theme));
-        mvpGoodsFragmentFive.setScrollable(false);
-        mvpGoodsFragmentFive.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) ivIndicatorFragmentFive.getLayoutParams();
-                lp.leftMargin = (int) (position * width + positionOffset * width);
-                ivIndicatorFragmentFive.setLayoutParams(lp);
+                    pvProgressFragmentFive.setProgress(Float.parseFloat(fiveBean.getRob_list().getProgress_bar()));
+                    break;
+                default:
+                    break;
             }
-            @Override
-            public void onPageSelected(int position) {
-                mvpGoodsFragmentFive.requestLayout();//重新适应布局
-                tvMyFragmentFive.setSelected(false);
-                tvHistoryFragmentFive.setSelected(false);
-                switch (position) {
-                    case 0:
-                        tvMyFragmentFive.setSelected(true);
-                        tvMyFragmentFive.setTextColor(getActivity().getResources().getColor(R.color.theme));
-                        tvHistoryFragmentFive.setTextColor(getActivity().getResources().getColor(R.color.black));
-                        break;
-                    case 1:
-                        tvHistoryFragmentFive.setSelected(true);
-                        tvHistoryFragmentFive.setTextColor(getActivity().getResources().getColor(R.color.theme));
-                        tvMyFragmentFive.setTextColor(getActivity().getResources().getColor(R.color.black));
-                        break;
+
+
+            tvMygoodsFragmentFive.setText(fiveBean.getHtml_list().getGoods_count());
+            tvMyticketsFragmentFive.setText(fiveBean.getHtml_list().getVouchers_count());
+            tvMybeansFragmentFive.setText(fiveBean.getHtml_list().getBeans());
+
+            mvpGoodsFragmentFive.setDisplayMode(FragmentViewPager.DisplayMode.DISPLAY_BY_EVERY_ONE);//每个页面高度自适应
+
+            Point outSize = new Point();
+            getActivity().getWindowManager().getDefaultDisplay().getSize(outSize);
+            width = outSize.x / 2;
+            ViewGroup.LayoutParams lp = ivIndicatorFragmentFive.getLayoutParams();
+            lp.width = width;
+            ivIndicatorFragmentFive.setLayoutParams(lp);
+
+            if(myGiftsFragment==null && historyGiftsFragment==null){
+                myGiftsFragment = new MyGiftsFragment();
+                historyGiftsFragment = new HistoryGiftsFragment();
+            }
+
+            AppBus.getInstance().post(produceFiveBean());
+
+            if (adapter == null) {
+                fragmentList = new ArrayList<>();
+                fragmentList.add(myGiftsFragment);
+                fragmentList.add(historyGiftsFragment);
+                adapter = new FragmentViewPagerAdapter(getActivity().getSupportFragmentManager(), fragmentList);
+            } else {
+                myGiftsFragment.onFiveBean(fiveBean);
+                historyGiftsFragment.onFiveBean(fiveBean);
+            }
+            mvpGoodsFragmentFive.setAdapter(adapter);
+            tvMyFragmentFive.setSelected(true);
+            tvMyFragmentFive.setTextColor(getActivity().getResources().getColor(R.color.theme));
+            mvpGoodsFragmentFive.setScrollable(false);
+            mvpGoodsFragmentFive.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                @Override
+                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                    LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) ivIndicatorFragmentFive.getLayoutParams();
+                    lp.leftMargin = (int) (position * width + positionOffset * width);
+                    ivIndicatorFragmentFive.setLayoutParams(lp);
                 }
-            }
-            @Override
-            public void onPageScrollStateChanged(int state) {
+                @Override
+                public void onPageSelected(int position) {
+                    mvpGoodsFragmentFive.requestLayout();//重新适应布局
+                    tvMyFragmentFive.setSelected(false);
+                    tvHistoryFragmentFive.setSelected(false);
+                    switch (position) {
+                        case 0:
+                            tvMyFragmentFive.setSelected(true);
+                            tvMyFragmentFive.setTextColor(getActivity().getResources().getColor(R.color.theme));
+                            tvHistoryFragmentFive.setTextColor(getActivity().getResources().getColor(R.color.black));
+                            break;
+                        case 1:
+                            tvHistoryFragmentFive.setSelected(true);
+                            tvHistoryFragmentFive.setTextColor(getActivity().getResources().getColor(R.color.theme));
+                            tvMyFragmentFive.setTextColor(getActivity().getResources().getColor(R.color.black));
+                            break;
+                    }
+                }
+                @Override
+                public void onPageScrollStateChanged(int state) {
 //                logDebug("state:" + String.valueOf(state));
-            }
-        });
+                }
+            });
+        }
 
     }
 
@@ -300,6 +303,7 @@ public class FiveFragment extends BaseFragment implements IFiveView {
 
     @Override
     public void onResume() {
+        isForeground = true;
         AppBus.getInstance().register(this);
         fivePresenter.initView();
         super.onResume();
@@ -307,6 +311,7 @@ public class FiveFragment extends BaseFragment implements IFiveView {
 
     @Override
     public void onPause() {
+        isForeground = false;
         AppBus.getInstance().unregister(this);
         super.onPause();
     }

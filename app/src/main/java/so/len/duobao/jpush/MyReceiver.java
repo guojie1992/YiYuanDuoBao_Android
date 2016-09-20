@@ -108,7 +108,7 @@ public class MyReceiver extends BroadcastReceiver {
 
     //send msg to MainActivity
     private void processCustomMessage(Context context, Bundle bundle) {
-        if (MainActivity.isForeground) {
+        if (FiveFragment.isForeground) {
             String message = bundle.getString(JPushInterface.EXTRA_MESSAGE);
             String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
             Logger.i(message);
