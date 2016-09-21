@@ -30,10 +30,11 @@ public class HistoryGiftsListViewAdapter extends BaseExpandableListAdapter {
     private List<String> parentData;
     private Map<String, List<String>> data;
 
-//    public void setData(Map<String, List<String>> data){
-//        this.data = data;
-//        notifyDataSetChanged();
-//    }
+    public void setData(Map<String, List<String>> data){
+        data.clear();
+        this.data = data;
+        notifyDataSetChanged();
+    }
 
     public HistoryGiftsListViewAdapter(Context context, Map<String, List<String>> data) {
         this.context = context;

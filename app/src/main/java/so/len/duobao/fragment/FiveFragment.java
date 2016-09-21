@@ -5,20 +5,18 @@ import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
-import com.orhanobut.logger.Logger;
 import com.squareup.otto.Produce;
 
 import java.text.SimpleDateFormat;
@@ -90,6 +88,16 @@ public class FiveFragment extends BaseFragment implements IFiveView {
     private SimpleDateFormat sdf;
 
     private boolean isError = false;
+    private Handler handler = new Handler();
+    Runnable runnable = new Runnable(){
+        @Override
+        public void run() {
+            // TODO Auto-generated method stub
+            fivePresenter.initView();
+            logDebug("runnable");
+            handler.postDelayed(this, 5000);
+        }
+    };
 
     @Nullable
     @Override
@@ -109,13 +117,13 @@ public class FiveFragment extends BaseFragment implements IFiveView {
     @Override
     public void initView(FiveBean fiveBean) {
         this.fiveBean = fiveBean;
-        isError = false;
 
         if(fiveBean == null){
             return;
         } else {
             switch (fiveBean.getRob_list().getNext_time_status()) {
                 case -1:
+                    handler.removeCallbacks(runnable);
                     pvProgressFragmentFive.setVisibility(View.GONE);
                     llCountDownFragmentFive.setVisibility(View.VISIBLE);
                     btnGoFragmentFive.setBackgroundResource(R.mipmap.five_btn_finished);
@@ -127,6 +135,7 @@ public class FiveFragment extends BaseFragment implements IFiveView {
                     tvCountDownFragmentFive.setText("");
                     break;
                 case 0:
+                    handler.removeCallbacks(runnable);
                     pvProgressFragmentFive.setVisibility(View.GONE);
                     llCountDownFragmentFive.setVisibility(View.VISIBLE);
                     btnGoFragmentFive.setBackgroundResource(R.mipmap.five_btn_finished);
@@ -164,6 +173,9 @@ public class FiveFragment extends BaseFragment implements IFiveView {
                     tvCountDownFragmentFive.setText("");
 
                     pvProgressFragmentFive.setProgress(Float.parseFloat(fiveBean.getRob_list().getProgress_bar()));
+
+                    handler.postDelayed(runnable, 3000);
+
                     break;
                 default:
                     break;
@@ -195,11 +207,12 @@ public class FiveFragment extends BaseFragment implements IFiveView {
                 fragmentList.add(myGiftsFragment);
                 fragmentList.add(historyGiftsFragment);
                 adapter = new FragmentViewPagerAdapter(getActivity().getSupportFragmentManager(), fragmentList);
+                mvpGoodsFragmentFive.setAdapter(adapter);
             } else {
                 myGiftsFragment.onFiveBean(fiveBean);
                 historyGiftsFragment.onFiveBean(fiveBean);
+                adapter.notifyDataSetChanged();
             }
-            mvpGoodsFragmentFive.setAdapter(adapter);
             tvMyFragmentFive.setSelected(true);
             tvMyFragmentFive.setTextColor(getActivity().getResources().getColor(R.color.theme));
             mvpGoodsFragmentFive.setScrollable(false);
@@ -234,7 +247,7 @@ public class FiveFragment extends BaseFragment implements IFiveView {
                 }
             });
         }
-
+        isError = false;
     }
 
 
@@ -267,6 +280,7 @@ public class FiveFragment extends BaseFragment implements IFiveView {
                 if(!isError){
                     if(fiveBean.getRob_list().getNext_time_status() == 1){
                         fivePresenter.go();
+                        fivePresenter.initView();
                     } else {
                         toast("不在抢钱时间");
                     }
@@ -311,6 +325,7 @@ public class FiveFragment extends BaseFragment implements IFiveView {
 
     @Override
     public void onPause() {
+        handler.removeCallbacks(runnable);
         isForeground = false;
         AppBus.getInstance().unregister(this);
         super.onPause();

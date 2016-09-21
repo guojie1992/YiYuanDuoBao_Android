@@ -11,6 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.view.KeyEvent;
 import android.view.View;
 
+import com.kaopiz.kprogresshud.KProgressHUD;
 import com.orhanobut.logger.Logger;
 
 import org.json.JSONException;
@@ -41,6 +42,7 @@ import so.len.duobao.fragment.TwoFragment;
 import so.len.duobao.http.VolleyHttp;
 import so.len.duobao.mPresenter.MainPresenter;
 import so.len.duobao.mView.IMainView;
+import so.len.duobao.utils.CommonUtils;
 
 /**
  * Created by Chung on 2016/8/3.
@@ -64,6 +66,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     private Context context;
     private MainPresenter mainPresenter;
     private long backTime = 0;
+    private KProgressHUD kProgressHUD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +79,12 @@ public class MainActivity extends BaseActivity implements IMainView {
     }
 
     private void control() {
+        kProgressHUD = KProgressHUD.create(context)
+                .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
+                .setLabel("检查权限中...")
+                .setCancellable(true)
+                .setAnimationSpeed(2)
+                .setDimAmount(0.5f);
         mainPresenter = new MainPresenter(this, context);
         mainPresenter.initView();
     }
@@ -142,7 +151,9 @@ public class MainActivity extends BaseActivity implements IMainView {
         menuItem5.setMenuItemClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clickFive();
+                if(!CommonUtils.isFastClick()){
+                    clickFive();
+                }
             }
         });
     }
@@ -233,10 +244,11 @@ public class MainActivity extends BaseActivity implements IMainView {
     }
 
     private void clickFive(){
-        toast("检查权限中...");
+        kProgressHUD.show();
         final Handler handler = new Handler(){
             @Override
             public void handleMessage(Message msg) {
+                kProgressHUD.dismiss();
                 if(Config.getInstance(context).getConfig("vip").equals("0") || Config.getInstance(context).getConfig("vip").isEmpty()){
                     alertUnVIP();
                 } else if (msg.what == 0){

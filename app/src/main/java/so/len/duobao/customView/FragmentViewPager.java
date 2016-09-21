@@ -211,7 +211,7 @@ public class FragmentViewPager extends ViewPager {
 
         if (view != null) {
             int i=getChildCount();
-            Log.d("FragmentViewPager",i+"--");
+//            Log.d("FragmentViewPager",i+"--");
             for(int ii=0;ii<i;ii++){
                 View v = getChildAt(ii);
                 if(v!=null)
