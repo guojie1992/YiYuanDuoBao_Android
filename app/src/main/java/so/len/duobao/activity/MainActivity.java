@@ -85,6 +85,7 @@ public class MainActivity extends BaseActivity implements IMainView {
                 .setCancellable(true)
                 .setAnimationSpeed(2)
                 .setDimAmount(0.5f);
+
         mainPresenter = new MainPresenter(this, context);
         mainPresenter.initView();
     }
@@ -342,18 +343,5 @@ public class MainActivity extends BaseActivity implements IMainView {
         }
         return super.onKeyUp(keyCode, event);
     }
-
-//    @Override
-//    protected void onResume() {
-//        isForeground = true;
-//        super.onResume();
-//    }
-//
-//
-//    @Override
-//    protected void onPause() {
-//        isForeground = false;
-//        super.onPause();
-//    }
 
 }

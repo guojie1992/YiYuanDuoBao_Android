@@ -72,13 +72,13 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     protected void onResume() {
-        JPushInterface.onResume(SplashActivity.this);
+//        JPushInterface.onResume(SplashActivity.this);
         super.onResume();
     }
 
     @Override
     protected void onPause() {
-        JPushInterface.onPause(SplashActivity.this);
+//        JPushInterface.onPause(SplashActivity.this);
         super.onPause();
     }
 }
