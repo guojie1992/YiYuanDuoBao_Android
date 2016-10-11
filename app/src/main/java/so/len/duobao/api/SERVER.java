@@ -5,7 +5,8 @@ package so.len.duobao.api;
  */
 public class SERVER {
     //服务器地址
-    public static final String DOMAIN = "http://yydb.314s.com";
+//    public static final String DOMAIN = "http://yydb.314s.com";
+    public static final String DOMAIN = "http://23.234.54.170";
 
     //前缀
     public static final String BEFORE = DOMAIN + "/index.php?s=/Home";
