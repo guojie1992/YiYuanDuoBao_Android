@@ -77,7 +77,7 @@ public class WebViewActivity extends WebBaseActivity implements IWebView {
     @Override
     public void initView() {
         Intent intent = getIntent();
-        url = intent.getStringExtra(JS.H5_URL) + "&uid=" + Config.getInstance(WebViewActivity.this).getConfig("uid") ;
+        url = intent.getStringExtra(JS.H5_URL) + "&uid=" + Config.getInstance(WebViewActivity.this).getConfig("uid");
         title = intent.getStringExtra(JS.H5_TITLE);
         top_right = (TOP_RIGHT) intent.getSerializableExtra("TOP_RIGHT");
 

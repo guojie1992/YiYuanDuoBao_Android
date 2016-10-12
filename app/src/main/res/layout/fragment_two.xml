@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:id="@+id/fragment_two_frame"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -21,54 +23,5 @@
         android:horizontalSpacing="@dimen/dp_2"
         android:numColumns="2">
     </GridView>
-
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:background="@color/white"-->
-        <!--android:orientation="vertical">-->
-
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:orientation="horizontal">-->
-            <!--<TextView-->
-                <!--android:id="@+id/tv_points_fragment_two"-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:layout_weight="1"-->
-                <!--android:padding="@dimen/dp_10"-->
-                <!--android:gravity="center"-->
-                <!--android:text="@string/points"-->
-                <!--android:textSize="@dimen/sp_15"-->
-                <!--android:textColor="@color/black"/>-->
-
-            <!--<TextView-->
-                <!--android:id="@+id/tv_m_fragment_two"-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:layout_weight="1"-->
-                <!--android:padding="@dimen/dp_10"-->
-                <!--android:gravity="center"-->
-                <!--android:text="@string/M"-->
-                <!--android:textSize="@dimen/sp_15"-->
-                <!--android:textColor="@color/black"/>-->
-        <!--</LinearLayout>-->
-
-        <!--<View-->
-            <!--android:id="@+id/iv_indicator_fragment_two"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="@dimen/dp_2"-->
-            <!--android:paddingLeft="@dimen/dp_30"-->
-            <!--android:paddingRight="@dimen/dp_30"-->
-            <!--android:background="@color/theme"/>-->
-    <!--</LinearLayout>-->
-
-    <!--<so.len.duobao.customView.MyViewPager-->
-        <!--android:id="@+id/mvp_goods_fragment_two"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent">-->
-
-    <!--</so.len.duobao.customView.MyViewPager>-->
 
 </LinearLayout>

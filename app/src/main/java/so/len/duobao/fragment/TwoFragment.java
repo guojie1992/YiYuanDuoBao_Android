@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.orhanobut.logger.Logger;
 
@@ -38,6 +39,8 @@ public class TwoFragment extends BaseFragment implements ITwoView {
     ImageView ivTopFragmentTwo;
     @BindView(R.id.gv_fragment_two)
     GridView gvFragmentTwo;
+    @BindView(R.id.fragment_two_frame)
+    LinearLayout fragmentTwoFrame;
 
     private TwoPresenter twoPresenter;
     private Context context;
@@ -65,8 +68,9 @@ public class TwoFragment extends BaseFragment implements ITwoView {
     @Override
     public void initView(final TwoBean twoBean) {
         this.twoBean = twoBean;
-
-        if(twoBean != null && twoBean.getData() != null){
+        if (twoBean != null && twoBean.getData() != null) {
+            ivTopFragmentTwo.setVisibility(View.VISIBLE);
+            gvFragmentTwo.setVisibility(View.VISIBLE);
             goodsListData = new ArrayList<>();
             for (int i = 0; i < twoBean.getData().getGoods_list().size(); i++) {
                 map = new HashMap<>();
@@ -91,6 +95,10 @@ public class TwoFragment extends BaseFragment implements ITwoView {
                     startActivity(intent);
                 }
             });
+        } else {
+            ivTopFragmentTwo.setVisibility(View.GONE);
+            gvFragmentTwo.setVisibility(View.GONE);
+            fragmentTwoFrame.setBackgroundResource(R.mipmap.nogoods);
         }
     }
 

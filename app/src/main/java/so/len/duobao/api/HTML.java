@@ -4,9 +4,8 @@ package so.len.duobao.api;
  * Created by Chung on 2016/8/3.
  */
 public class HTML {
-    public static final String DOMAIN = "http://yydb.314s.com";
 
-    public static final String BEFORE = DOMAIN + "/index.php?s=/Home";
+    public static final String BEFORE = SERVER.DOMAIN + "/index.php?s=/Home";
 
     /**
      * 商城
