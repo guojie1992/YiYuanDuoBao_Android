@@ -5,12 +5,15 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.orhanobut.logger.Logger;
 import com.squareup.otto.Subscribe;
+
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import so.len.duobao.R;
@@ -50,23 +53,26 @@ public class HistoryGiftsFragment extends BaseFragment implements IHistoryGiftsV
 
     @Override
     public void initView() {
-        data.clear();
-        for(int i=0;i<fiveBean.getHistory_list().size();i++){
-            list = new ArrayList<String>();
-            for(int j=0;j<fiveBean.getHistory_list().get(i).getData_list().size();j++){
-                list.add(fiveBean.getHistory_list().get(i).getData_list().get(j).getContent());
+        if (fiveBean.getHistory_list() != null) {
+            data.clear();
+            for (int i = 0; i < fiveBean.getHistory_list().size(); i++) {
+                list = new ArrayList<String>();
+                for (int j = 0; j < fiveBean.getHistory_list().get(i).getData_list().size(); j++) {
+                    list.add(fiveBean.getHistory_list().get(i).getData_list().get(j).getContent());
+                }
+                data.put(fiveBean.getHistory_list().get(i).getData_time(), list);
             }
-            data.put(fiveBean.getHistory_list().get(i).getData_time(), list);
-        }
-        if(historyGiftsListViewAdapter == null){
-            historyGiftsListViewAdapter = new HistoryGiftsListViewAdapter(getActivity(), data);
-        }
-        hlvHistorygiftsFragmentGiftsHistory.setAdapter(historyGiftsListViewAdapter);
+            if (historyGiftsListViewAdapter == null) {
+                historyGiftsListViewAdapter = new HistoryGiftsListViewAdapter(getActivity(), data);
+            }
+            hlvHistorygiftsFragmentGiftsHistory.setAdapter(historyGiftsListViewAdapter);
 //        else {
 //            historyGiftsListViewAdapter.notifyDataSetChanged();//.setData(data);
 //        }
 
-        hlvHistorygiftsFragmentGiftsHistory.setFocusable(false);
+            hlvHistorygiftsFragmentGiftsHistory.setFocusable(false);
+        }
+
     }
 
     @Override
@@ -82,9 +88,9 @@ public class HistoryGiftsFragment extends BaseFragment implements IHistoryGiftsV
     }
 
     @Subscribe
-    public void onFiveBean(FiveBean fiveBean){
+    public void onFiveBean(FiveBean fiveBean) {
         this.fiveBean = fiveBean;
-        if(fiveBean.getHistory_list() != null){
+        if (fiveBean.getHistory_list() != null) {
             control();
         }
     }

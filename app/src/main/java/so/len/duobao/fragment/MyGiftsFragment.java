@@ -5,11 +5,14 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.squareup.otto.Subscribe;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import so.len.duobao.R;
@@ -49,22 +52,24 @@ public class MyGiftsFragment extends BaseFragment implements IMyGiftsView {
 
     @Override
     public void initView() {
-        myGiftsListData.clear();
-        for (int i = 0; i < fiveBean.getMy_list().size(); i++) {
-            map = new HashMap<>();
-            map.put("tvMoneyItemListviewMygifts", fiveBean.getMy_list().get(i).getRob_name());
-            map.put("tvTimeItemListviewMygifts", fiveBean.getMy_list().get(i).getRob_time());
-            myGiftsListData.add(map);
-        }
-        if(myGiftsListViewAdapter == null){
-            myGiftsListViewAdapter = new MyGiftsListViewAdapter(getActivity(), myGiftsListData);
-        }
-        mlvMygiftsFragmentGiftsMy.setAdapter(myGiftsListViewAdapter);
+        if (fiveBean.getMy_list() != null) {
+            myGiftsListData.clear();
+            for (int i = 0; i < fiveBean.getMy_list().size(); i++) {
+                map = new HashMap<>();
+                map.put("tvMoneyItemListviewMygifts", fiveBean.getMy_list().get(i).getRob_name());
+                map.put("tvTimeItemListviewMygifts", fiveBean.getMy_list().get(i).getRob_time());
+                myGiftsListData.add(map);
+            }
+            if (myGiftsListViewAdapter == null) {
+                myGiftsListViewAdapter = new MyGiftsListViewAdapter(getActivity(), myGiftsListData);
+            }
+            mlvMygiftsFragmentGiftsMy.setAdapter(myGiftsListViewAdapter);
 //        else {
 //            myGiftsListViewAdapter.notifyDataSetChanged();//.setData(myGiftsListData);
 //        }
 
-        mlvMygiftsFragmentGiftsMy.setFocusable(false);
+            mlvMygiftsFragmentGiftsMy.setFocusable(false);
+        }
     }
 
     @Override
@@ -80,9 +85,9 @@ public class MyGiftsFragment extends BaseFragment implements IMyGiftsView {
     }
 
     @Subscribe
-    public void onFiveBean(FiveBean fiveBean){
+    public void onFiveBean(FiveBean fiveBean) {
         this.fiveBean = fiveBean;
-        if(fiveBean.getMy_list() != null){
+        if (fiveBean.getMy_list() != null) {
             control();
         }
     }
