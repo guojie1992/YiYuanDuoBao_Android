@@ -3,6 +3,8 @@ package so.len.duobao.mPresenter;
 import android.content.Context;
 import android.view.View;
 
+import com.kaopiz.kprogresshud.KProgressHUD;
+
 import so.len.duobao.customView.iOSAlertDialog;
 import so.len.duobao.mListener.IHttpCompleteListener;
 import so.len.duobao.mModel.ISettingsModel;
@@ -17,11 +19,18 @@ public class SettingsPresenter {
     private Context context;
     private ISettingsModel iSettingsModel;
     private ISettingsView iSettingsView;
+    private KProgressHUD kProgressHUD;
 
     public SettingsPresenter(ISettingsView iSettingsView, Context context) {
         this.context = context;
         this.iSettingsModel = new SettingsModel(context);
         this.iSettingsView = iSettingsView;
+        this.kProgressHUD = KProgressHUD.create(context)
+                .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
+                .setLabel("检测更新中...")
+                .setCancellable(true)
+                .setAnimationSpeed(2)
+                .setDimAmount(0.5f);
     }
 
     public void initView(){
@@ -42,10 +51,12 @@ public class SettingsPresenter {
     }
 
     public void update(final String currentVersion) {
+        kProgressHUD.show();
         iSettingsModel.update(new IHttpCompleteListener() {
             @Override
             public void loadComplete(String newVersion) {
                 String content = "　　当前版本：" + currentVersion + "，发现新版本" + newVersion + "，是否下载最新版本安装包？";
+                kProgressHUD.dismiss();
                 new iOSAlertDialog(context).builder()
                         .setTitle("温馨提示")
                         .setMsg(content)

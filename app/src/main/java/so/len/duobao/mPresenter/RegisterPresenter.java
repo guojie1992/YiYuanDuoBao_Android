@@ -37,6 +37,7 @@ public class RegisterPresenter {
             @Override
             public void loadComplete(String code) {
                 CODE = code;
+                Logger.d(CODE);
             }
             @Override
             public void loadError(String msg) {

@@ -75,32 +75,34 @@ public class SettingsActivity extends BaseActivity implements ISettingsView {
 
     @OnClick({R.id.ll_update_activity_settings, R.id.ll_logout_activity_settings})
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.ll_update_activity_settings:
-                settingsPresenter.update(version);
-                break;
-            case R.id.ll_logout_activity_settings:
-                new iOSAlertDialog(SettingsActivity.this).builder()
-                        .setTitle("温馨提示")
-                        .setMsg("您确定要退出吗？")
-                        .setCancelable(false)
-                        .setPositiveButton("确认", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
+        if (!CommonUtils.isFastClick()) {
+            switch (view.getId()) {
+                case R.id.ll_update_activity_settings:
+                    settingsPresenter.update(version);
+                    break;
+                case R.id.ll_logout_activity_settings:
+                    new iOSAlertDialog(SettingsActivity.this).builder()
+                            .setTitle("温馨提示")
+                            .setMsg("您确定要退出吗？")
+                            .setCancelable(false)
+                            .setPositiveButton("确认", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
 //                                settingsPresenter.logout();
-                                Config.getInstance(context).setConfig("uid", "");
-                                Intent intent = new Intent();
-                                intent.setClass(SettingsActivity.this, LoginActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                startActivity(intent);
-                            }
-                        })
-                        .setNegativeButton("取消", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                            }
-                        }).show();
-                break;
+                                    Config.getInstance(context).setConfig("uid", "");
+                                    Intent intent = new Intent();
+                                    intent.setClass(SettingsActivity.this, LoginActivity.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(intent);
+                                }
+                            })
+                            .setNegativeButton("取消", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                }
+                            }).show();
+                    break;
+            }
         }
     }
 

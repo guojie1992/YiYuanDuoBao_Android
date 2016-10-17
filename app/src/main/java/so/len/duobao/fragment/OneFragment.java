@@ -70,11 +70,13 @@ public class OneFragment extends BaseFragment implements IOneView {
 
     @Override
     public void initView(OneBean oneBean, boolean isRefresh) {
-        if(oneBean != null && oneBean.getData() != null){
-            if(!isRefresh){
+        if (oneBean != null && oneBean.getData() != null) {
+            if (!isRefresh) {
                 initLoopViewPager(oneBean.getData().getPic());
             }
-            initLotteryList(oneBean.getData().getList());
+            if (oneBean.getData().getList() != null) {
+                initLotteryList(oneBean.getData().getList());
+            }
         }
     }
 
@@ -91,13 +93,16 @@ public class OneFragment extends BaseFragment implements IOneView {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
             }
+
             @Override
             public void onPageSelected(int position) {
                 selected(position);
             }
+
             @Override
             public void onPageScrollStateChanged(int state) {
             }
+
             private void selected(int position) {
                 for (ImageView imageView : dots) {
                     imageView.setSelected(false);
@@ -133,7 +138,7 @@ public class OneFragment extends BaseFragment implements IOneView {
     @Override
     public void onResume() {
         onePresenter.initView(true);
-        if (lvpFragmentOne != null){
+        if (lvpFragmentOne != null) {
             lvpFragmentOne.openLoopTimer();
         }
         super.onResume();
@@ -141,7 +146,7 @@ public class OneFragment extends BaseFragment implements IOneView {
 
     @Override
     public void onPause() {
-        if (lvpFragmentOne != null){
+        if (lvpFragmentOne != null) {
             lvpFragmentOne.cancelLoopTimer();
         }
         super.onPause();

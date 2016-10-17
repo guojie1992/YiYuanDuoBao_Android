@@ -121,6 +121,15 @@ public class CommonUtils {
         return versionName;
     }
 
+    public static int getVersionCode(Context context) throws Exception {
+        // 获取packagemanager的实例
+        PackageManager packageManager = context.getPackageManager();
+        // getPackageName()是你当前类的包名，0代表是获取版本信息
+        PackageInfo packInfo = packageManager.getPackageInfo(context.getPackageName(), 0);
+        int versionCode = packInfo.versionCode;
+        return versionCode;
+    }
+
     public static File downFile(String httpUrl, Context context, Handler handler) {
         String fileName = httpUrl.substring(httpUrl.lastIndexOf("/") + 1);
         File tmpFile = new File("/sdcard/update");

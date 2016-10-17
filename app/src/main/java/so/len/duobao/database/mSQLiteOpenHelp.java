@@ -4,11 +4,12 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class JXBSQLiteOpenHelp extends SQLiteOpenHelper {
-    private final static int JXBSQLITE_VERSION=1;
-    private final static String JXBSQLITE_NAME="jxb.db";
-    public JXBSQLiteOpenHelp(Context context) {
-        super(context, JXBSQLITE_NAME, null, JXBSQLITE_VERSION);
+public class mSQLiteOpenHelp extends SQLiteOpenHelper {
+    private final static int mSQLITE_VERSION = 1;
+    private final static String mSQLITE_NAME = "m.db";
+
+    public mSQLiteOpenHelp(Context context) {
+        super(context, mSQLITE_NAME, null, mSQLITE_VERSION);
     }
 
     @Override

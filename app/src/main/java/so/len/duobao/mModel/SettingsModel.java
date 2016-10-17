@@ -33,16 +33,16 @@ public class SettingsModel implements ISettingsModel {
 
     @Override
     public void update(final IHttpCompleteListener iHttpCompleteListener, String currentVersion) {
-        Map<String,String> args = new HashMap<>();
+        Map<String, String> args = new HashMap<>();
         args.put("is_ios", "0");
         args.put("version", currentVersion);
         VolleyHttp.getInstance().postParamsJson(SERVER.UPDATE_VERSION, new VolleyHttp.JsonResponseListener() {
             @Override
             public void getJson(String json, boolean isConnectSuccess) {
-                if(isConnectSuccess && (!json.isEmpty())){
+                if (isConnectSuccess && (!json.isEmpty())) {
                     try {
                         JSONObject jsonObject = new JSONObject(json);
-                        if(jsonObject.getString("status").equals("1")){
+                        if (jsonObject.getString("status").equals("1")) {
                             iHttpCompleteListener.loadComplete(jsonObject.getString("msg"));
                             path = jsonObject.getString("path");
                         } else {
@@ -63,11 +63,11 @@ public class SettingsModel implements ISettingsModel {
         VolleyHttp.getInstance().postJson(SERVER.LOGOUT, new VolleyHttp.JsonResponseListener() {
             @Override
             public void getJson(String json, boolean isConnectSuccess) {
-                if(isConnectSuccess && (!json.isEmpty())){
+                if (isConnectSuccess && (!json.isEmpty())) {
                     try {
 //                        Logger.json(json);
                         JSONObject jsonObject = new JSONObject(json);
-                        if(jsonObject.getString("status").equals("1")){
+                        if (jsonObject.getString("status").equals("1")) {
                             iHttpCompleteListener.loadComplete(jsonObject.getString("msg"));
                         } else {
                             iHttpCompleteListener.loadError(jsonObject.getString("msg"));
@@ -85,7 +85,7 @@ public class SettingsModel implements ISettingsModel {
     @Override
     public void download() {
         this.downloadAsyncTask = new DownloadAsyncTask();
-        if(CommonUtils.isNetworkConnected(context)){
+        if (CommonUtils.isNetworkConnected(context)) {
             downloadAsyncTask.execute();
         } else {
             CommonUtils.toast(context, "请检查网络设置");
@@ -94,6 +94,7 @@ public class SettingsModel implements ISettingsModel {
 
     public class DownloadAsyncTask extends AsyncTask<Integer, Integer, String> {
         KProgressHUD kProgressHUD;
+
         public DownloadAsyncTask() {
             super();
             this.kProgressHUD = KProgressHUD.create(context)
@@ -105,7 +106,7 @@ public class SettingsModel implements ISettingsModel {
 
         @Override
         protected String doInBackground(Integer... params) {
-            CommonUtils.openFile(CommonUtils.downFile(SERVER.DOMAIN + path, context, new Handler(context.getMainLooper()){
+            CommonUtils.openFile(CommonUtils.downFile(path, context, new Handler(context.getMainLooper()) {
                 @Override
                 public void handleMessage(Message msg) {
                     int progress = (int) msg.obj;
