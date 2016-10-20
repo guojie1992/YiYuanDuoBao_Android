@@ -77,14 +77,12 @@ public class PersonalInfoActivity extends BaseActivity implements IPersonalInfoV
 
     @Override
     public void initView(PersonalBean personalBean) {
-
-        Options opt = new Options();
-        VolleyHttp.getInstance().imageLoader(SERVER.DOMAIN + personalBean.getData().getPath(), tvLevelActivityPersonalInfo, opt);
-
-        tvUsernameActivityPersonalInfo.setText(personalBean.getData().getNickname());
-
-        tvIdActivityPersonalInfo.setText(personalBean.getData().getUid());
-
+        if (personalBean != null && personalBean.getData() != null) {
+            Options opt = new Options();
+            VolleyHttp.getInstance().imageLoader(SERVER.DOMAIN + personalBean.getData().getPath(), tvLevelActivityPersonalInfo, opt);
+            tvUsernameActivityPersonalInfo.setText(personalBean.getData().getNickname());
+            tvIdActivityPersonalInfo.setText(personalBean.getData().getUid());
+        }
     }
 
     @OnClick({

@@ -32,6 +32,8 @@ public class RegisterActivity extends BaseActivity implements IRegisterView {
     EditText etActivityRegisterPassword;
     @BindView(R.id.btn_activity_register_submit)
     Button btnActivityRegisterSubmit;
+    @BindView(R.id.et_activity_register_upper)
+    EditText etActivityRegisterUpper;
 
     private RegisterPresenter registerPresenter;
     private Context context;
@@ -53,7 +55,6 @@ public class RegisterActivity extends BaseActivity implements IRegisterView {
 
     @Override
     public void initView() {
-
         tmbActivityRegister.setTitleText("注册");
         tmbActivityRegister.setBackVisibility(View.VISIBLE);
         tmbActivityRegister.setBackSrc(R.mipmap.top_back);
@@ -82,6 +83,11 @@ public class RegisterActivity extends BaseActivity implements IRegisterView {
     }
 
     @Override
+    public String getUpperID() {
+        return etActivityRegisterUpper.getText().toString().trim();
+    }
+
+    @Override
     public void clearEditText() {
         etActivityRegisterPhone.setText("");
         etActivityRegisterCode.setText("");
@@ -91,7 +97,7 @@ public class RegisterActivity extends BaseActivity implements IRegisterView {
     @OnClick({R.id.btn_activity_register_getcode, R.id.btn_activity_register_submit})
     public void onClick(View view) {
         if (CommonUtils.isFastClick()) {
-            return ;
+            return;
         }
         switch (view.getId()) {
             case R.id.btn_activity_register_getcode:
@@ -101,6 +107,7 @@ public class RegisterActivity extends BaseActivity implements IRegisterView {
                         btnActivityRegisterGetcode.setClickable(false);
                         btnActivityRegisterGetcode.setText(millisUntilFinished / 1000 + "秒");
                     }
+
                     public void onFinish() {
                         btnActivityRegisterGetcode.setClickable(true);
                         btnActivityRegisterGetcode.setText("获取");

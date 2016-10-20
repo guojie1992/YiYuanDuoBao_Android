@@ -7,5 +7,5 @@ import so.len.duobao.mListener.IHttpCompleteListener;
  */
 public interface IRegisterModel {
     void getServerCode(String phone, IHttpCompleteListener iHttpCompleteListener);
-    void doRegister(String phone, String code, String password, IHttpCompleteListener iHttpCompleteListener);
+    void doRegister(String phone, String code, String password, String upper, IHttpCompleteListener iHttpCompleteListener);
 }

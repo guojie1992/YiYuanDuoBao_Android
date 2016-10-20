@@ -76,6 +76,7 @@ public class SettingsPresenter {
             @Override
             public void loadError(String msg) {
                 String content = "当前已是最新版本";
+                kProgressHUD.dismiss();
                 new iOSAlertDialog(context).builder()
                         .setTitle("温馨提示")
                         .setMsg(content)

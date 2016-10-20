@@ -84,25 +84,27 @@ public class AddCardActivity extends BaseActivity implements IAddCardView {
 
     @Override
     public void initView(final BankListBean bankListBean) {
+        if (bankListBean != null && bankListBean.getData() != null) {
+            //选择器
+            dataList = new ArrayList<String>();
+            for (int i = 0; i < bankListBean.getData().size(); i++) {
+                dataList.add(bankListBean.getData().get(i).getName());
+            }
 
-        //选择器
-        dataList = new ArrayList<String>();
-        for (int i = 0; i < bankListBean.getData().size(); i++) {
-            dataList.add(bankListBean.getData().get(i).getName());
+            picker = new OptionPicker(this, dataList);
+            picker.setOffset(2);
+            picker.setSelectedIndex(0);
+            picker.setTextSize(15);
+            picker.setOnOptionPickListener(new OptionPicker.OnOptionPickListener() {
+                @Override
+                public void onOptionPicked(int position, String option) {
+                    bankID = bankListBean.getData().get(position).getId();
+                    opBankActivityAddCard.setText(bankListBean.getData().get(position).getName());
+//                toast(bankID);
+                }
+            });
         }
 
-        picker = new OptionPicker(this, dataList);
-        picker.setOffset(2);
-        picker.setSelectedIndex(0);
-        picker.setTextSize(15);
-        picker.setOnOptionPickListener(new OptionPicker.OnOptionPickListener() {
-            @Override
-            public void onOptionPicked(int position, String option) {
-                bankID = bankListBean.getData().get(position).getId();
-                opBankActivityAddCard.setText(bankListBean.getData().get(position).getName());
-//                toast(bankID);
-            }
-        });
     }
 
     @Override

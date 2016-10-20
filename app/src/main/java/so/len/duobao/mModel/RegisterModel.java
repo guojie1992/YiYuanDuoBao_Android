@@ -64,10 +64,11 @@ public class RegisterModel implements IRegisterModel {
      * @return 返回
      */
     @Override
-    public void doRegister(String phone, String code, String password, final IHttpCompleteListener iHttpCompleteListener) {
+    public void doRegister(String phone, String code, String password, String upper, final IHttpCompleteListener iHttpCompleteListener) {
         Map<String, String> args = new HashMap<>();
         args.put("mobile", phone);
         args.put("password", password);
+        args.put("pid", upper);
 
         VolleyHttp.getInstance().postParamsJson(SERVER.REGISTER, new VolleyHttp.JsonResponseListener() {
             @Override

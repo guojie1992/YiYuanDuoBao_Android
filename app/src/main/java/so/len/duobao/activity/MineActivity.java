@@ -100,51 +100,51 @@ public class MineActivity extends BaseActivity implements IMineView {
 
     @Override
     public void initView(MineBean mineBean) {
-        this.mineBean = mineBean;
-
-        if(mineBean.getSign_status().equals("1")){
-            ivSignActivityMine.setImageResource(R.mipmap.my_sign);
+        if (mineBean != null && mineBean.getData() != null) {
+            this.mineBean = mineBean;
+            if (mineBean.getSign_status().equals("1")) {
+                ivSignActivityMine.setImageResource(R.mipmap.my_sign);
+            }
+            if (mineBean.getSign_status().equals("0")) {
+                ivSignActivityMine.setImageResource(R.mipmap.my_signed);
+            }
+            Options opt = new Options();
+            VolleyHttp.getInstance().imageLoader(SERVER.DOMAIN + mineBean.getData().getPic(), civHeadActivityMine, opt);
+            String vip = "0";
+            switch (mineBean.getData().getVip()) {
+                case 0:
+                    vip = "普通会员";
+                    Config.getInstance(context).setConfig("vip", "");
+                    break;
+                case 1:
+                    vip = "一级会员";
+                    break;
+                case 2:
+                    vip = "二级会员";
+                    break;
+                case 3:
+                    vip = "三级会员";
+                    break;
+                case 4:
+                    vip = "四级会员";
+                    break;
+                case 5:
+                    vip = "五级会员";
+                    break;
+                case 6:
+                    vip = "黄金会员";
+                    break;
+                default:
+                    vip = "null";
+                    break;
+            }
+            tvUsernameActivityMine.setText(mineBean.getData().getNickname() + "(" + vip + ")");
+            tvSigndayActivityMine.setText(mineBean.getData().getSignIn() + "天");
+            tvMActivityMine.setText(mineBean.getData().getMoneyBack());
+            tvPointActivityMine.setText(mineBean.getData().getIntegralBack());
+            tvMFreezeActivityMine.setText(mineBean.getData().getFreezeMoney());
+            tvMyrecommenderActivityMine.setText("ID:" + mineBean.getData().getPid());
         }
-        if(mineBean.getSign_status().equals("0")){
-            ivSignActivityMine.setImageResource(R.mipmap.my_signed);
-        }
-
-        Options opt = new Options();
-        VolleyHttp.getInstance().imageLoader(SERVER.DOMAIN + mineBean.getData().getPic(), civHeadActivityMine, opt);
-        String vip = "0";
-        switch (mineBean.getData().getVip()) {
-            case 0:
-                vip = "普通会员";
-                Config.getInstance(context).setConfig("vip", "");
-                break;
-            case 1:
-                vip = "一级会员";
-                break;
-            case 2:
-                vip = "二级会员";
-                break;
-            case 3:
-                vip = "三级会员";
-                break;
-            case 4:
-                vip = "四级会员";
-                break;
-            case 5:
-                vip = "五级会员";
-                break;
-            case 6:
-                vip = "黄金会员";
-                break;
-            default:
-                vip = "null";
-                break;
-        }
-        tvUsernameActivityMine.setText(mineBean.getData().getNickname() + "(" + vip + ")");
-        tvSigndayActivityMine.setText(mineBean.getData().getSignIn() + "天");
-        tvMActivityMine.setText(mineBean.getData().getMoneyBack());
-        tvPointActivityMine.setText(mineBean.getData().getIntegralBack());
-        tvMFreezeActivityMine.setText(mineBean.getData().getFreezeMoney());
-        tvMyrecommenderActivityMine.setText("ID:" + mineBean.getData().getPid());
     }
 
     @OnClick({R.id.civ_head_activity_mine,
@@ -169,7 +169,7 @@ public class MineActivity extends BaseActivity implements IMineView {
                 intent.setClass(MineActivity.this, PersonalInfoActivity.class);
                 break;
             case R.id.ll_sign_activity_mine:
-                if(mineBean.getSign_status().equals("1")){
+                if (mineBean.getSign_status().equals("1")) {
                     ivSignActivityMine.setImageResource(R.mipmap.my_signed);
                 }
                 intent.setClass(MineActivity.this, WebViewActivity.class);

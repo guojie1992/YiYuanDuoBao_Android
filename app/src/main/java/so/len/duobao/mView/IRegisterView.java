@@ -8,5 +8,6 @@ public interface IRegisterView {
     String getPhone();
     String getMessageCode();
     String getPassword();
+    String getUpperID();
     void clearEditText();
 }

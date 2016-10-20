@@ -2,6 +2,7 @@ package so.len.duobao.activity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -79,7 +80,7 @@ public class ChangeRecommenderActivity extends BaseActivity implements IChangeRe
         etActivityChangeRecommender.setVisibility(View.GONE);
         v.setVisibility(View.GONE);
         tvActivityChangeRecommender.setVisibility(View.VISIBLE);
-        if(pid.equals("0")){
+        if (pid.equals("0") || TextUtils.isEmpty(pid)) {
             tvActivityChangeRecommender.setText("暂无推荐人");
         } else {
             tvActivityChangeRecommender.setText("推荐人ID:" + pid);
